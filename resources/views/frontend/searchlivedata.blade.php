@@ -49,26 +49,26 @@
                     and trading partners.
                 </p>
             </div>
-            {{-- Btn's --}}
-            <div class="mb-6">
-                <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
-                    <li class="flex justify-end items-center text-center">
-                        <input checked type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required />
-                        <label for="hosting-small" class="inline-flex items-center w-3/4 lg:w-1/6 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
-                            <div class="w-full text-md font-semibold">Data</div>
-                        </label>
-                    </li>
-                    <li class="flex justify-start items-center text-center">
-                        <input type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
-                        <label for="hosting-big" class="inline-flex items-center w-3/4 lg:w-1/6  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
-                            <div class="w-full text-md font-semibold">Company</div>
-                        </label>
-                    </li>
-                </ul>            
-            </div>
+            {{-- Form --}}
             <div class="px-5 flex justify-center items-center">
                 <form class="max-w-6xl mx-auto" method="GET" action="{{ url('/search-live') }}" enctype="multipart/form-data">
                     @csrf
+                    <div class="mb-6">
+                        <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
+                            <li class="flex justify-end items-center text-center">
+                                <input checked type="radio" id="hosting-small" name="type" value="data" class="hidden peer" required />
+                                <label for="hosting-small" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
+                                    <div class="w-full text-md font-semibold">Data</div>
+                                </label>
+                            </li>
+                            <li class="flex justify-start items-center text-center">
+                                <input type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
+                                <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                                    <div class="w-full text-md font-semibold">Company</div>
+                                </label>
+                            </li>
+                        </ul>            
+                    </div>
                     <div class="grid grid-cols-2 lg:flex">
                         <select name="role" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg rounded-tl-lg focus:ring-blue-500 focus:border-blue-500">
                             <option selected>Choose...</option>

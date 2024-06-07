@@ -7,37 +7,43 @@ use Illuminate\Http\Request;
 
 class SearchLiveDataController extends Controller
 {
-
-
     function searchlivedata(Request $request) {
         $results = [];
         $validate = $request->validate([
             'role' => 'nullable',
             'hs_code' => 'nullable',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'type' => 'nullable'
         ]);
         $role = $request['role'];
         $hscode = $request['hs_code'];
         $desc = $request['description'];
+        $type = $request['type'];
         // dd($validate);
-        if ($request['role'] == "import") {
-            $result = DB::table('usa_import')
-            ->select('*')
-            ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-            ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-            ->limit(10)
-            ->get();  
-        }else {
-            # code...
-            $result = DB::table('jul')
-            ->select('*')
-            ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-            ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-            ->limit(10)
-            ->get(); 
+
+        if($type['type'] == "data") {
+            if ($request['role'] == "import") {
+                $result = DB::table('usa_import')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+            } else {
+                $result = DB::table('jul')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+            }
+       
+            return view('frontend.livedata.search', ['result'=>$result , 'hscode' => $hscode, 'desc' => $desc, 'role' => $role]);
+        } elseif($request['type'] == "company") {
+
         }
-   
-        return view('frontend.livedata.search', ['result'=>$result , 'hscode' => $hscode, 'desc' => $desc, 'role' => $role]);
+
+        
     }
 
     // Data Fetching

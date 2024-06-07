@@ -51,7 +51,7 @@
     {{-- search bar --}}
     <section class="bg-solid-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
-            <div class="px-5 mb-6">
+            <div class="px-5 mb-12">
                 <h1 class="mb-3 text-center text-white font-medium text-4xl">
                     Search United States Shipping Manifest Databases
                 </h1>
@@ -60,25 +60,26 @@
                     and trading partners.
                 </p>
             </div>
-            {{-- Btn's --}}
-            <div class="mb-6">
-                <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
-                    <li class="flex justify-end items-center text-center">
-                        <input checked type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required />
-                        <label for="hosting-small" class="inline-flex items-center w-3/4 lg:w-1/6 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
-                            <div class="w-full text-md font-semibold">Data</div>
-                        </label>
-                    </li>
-                    <li class="flex justify-start items-center text-center">
-                        <input type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
-                        <label for="hosting-big" class="inline-flex items-center w-3/4 lg:w-1/6  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
-                            <div class="w-full text-md font-semibold">Company</div>
-                        </label>
-                    </li>
-                </ul>            
-            </div>
+            {{-- forms --}}
             <div class="px-5 flex justify-center items-center">
                 <form class="max-w-6xl mx-auto" method="GET" action="{{ url('/search-live')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-6">
+                        <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
+                            <li class="flex justify-end items-center text-center">
+                                <input checked type="radio" id="hosting-small" name="type" value="data" class="hidden peer" required />
+                                <label for="hosting-small" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
+                                    <div class="w-full text-md font-semibold">Data</div>
+                                </label>
+                            </li>
+                            <li class="flex justify-start items-center text-center">
+                                <input type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
+                                <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                                    <div class="w-full text-md font-semibold">Company</div>
+                                </label>
+                            </li>
+                        </ul>            
+                    </div>
                     <div class="grid grid-cols-2 lg:flex">
                         <select name="role" id="large-input"  class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg focus:ring-blue-500 focus:border-blue-500">
                             <option selected>Choose...</option>
@@ -280,8 +281,9 @@
         {{-- end of table --}}
     </section>
     {{-- @dd($result) --}}
+
     {{-- Card view of table for mobile view --}}
-    <section class="bg-white block  lg:hidden">
+    <section class="bg-white block lg:hidden">
         <div class="mx-auto mx-w-screen-xl px-5 py-8">
             {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> --}}
                 @if(isset($result))
@@ -405,72 +407,77 @@
 
     {{-- company data --}}
     <section class="bg-white">
-        <div class="mx-auto max-w-sreen-xl py-12 px-5">
+        <div class="mx-auto max-w-sreen-xl py-2 px-5">
+            <div class="flex justify-center">
+                <h1 class="mb-6 text-4xl text-center font-medium text-gray-800">
+                    Company Details Of Rubber
+                </h1>
+            </div>
             <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                <div class="max-w-sm p-6 bg-solid-blue border border-gray-200 rounded-lg shadow">
-                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-3">
+                <div class="max-w-sm p-6 bg-glory-blue border border-gray-200 rounded-lg shadow">
+                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-4">
                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%]">
                         USA
                     </span>
                     <a>
-                        <h5 class="mb-3 text-xl font-medium text-white hover:underline">
+                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                             ARMOTEKS DOKUMA ÖRME SANAYI VE TICARET ANONIM SIRKETI
                         </h5>
                     </a>
                     <span class="flex items-center">
                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                        <p class="pl-2 text-lg font-medium text-gray-200">
-                            Knitted Rubbe
+                        <p class="pl-2 text-lg font-semibold text-red-400">
+                            Knitted Rubber
                         </p>
                     </span>
                 </div>
                 <div class="max-w-sm p-6 bg-solid-blue border border-gray-200 rounded-lg shadow">
-                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-3">
+                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-4">
                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%]">
                         USA
                     </span>
                     <a>
-                        <h5 class="mb-3 text-xl font-medium text-white hover:underline">
+                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                             TEKLAS KAUÇUK SANAYIVE TICARET A S
                         </h5>
                     </a>
                     <span class="flex items-center">
                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                        <p class="pl-2 text-lg font-medium text-gray-200">
+                        <p class="pl-2 text-lg font-semibold text-red-400">
                             Parts made of rubber '' 150
                         </p>
                     </span>
                 </div>
                 <div class="max-w-sm p-6 bg-solid-blue border border-gray-200 rounded-lg shadow">
-                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-3">
+                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-4">
                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%]">
                         USA
                     </span>
                     <a>
-                        <h5 class="mb-3 text-xl font-medium text-white hover:underline">
+                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                             AKWEL GEBZE TURKEY OTOMOTIV SANAYI LIMITED SIRKETI
                         </h5>
                     </a>
                     <span class="flex items-center">
                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                        <p class="pl-2 text-lg font-medium text-gray-200">
+                        <p class="pl-2 text-lg font-semibold text-red-400">
                             Rubber hose (17.791 pieces)
                         </p>
                     </span>
                 </div>
                 <div class="max-w-sm p-6 bg-solid-blue border border-gray-200 rounded-lg shadow">
-                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-3">
+                    <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-4">
                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%]">
                         USA
                     </span>
                     <a>
-                        <h5 class="mb-2 text-xl font-medium text-white hover:underline">
+                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                             RIVA TOZ BOYA SAN VETIC A S
                         </h5>
                     </a>
                     <span class="flex items-center">
                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                        <p class="pl-2 text-lg font-medium text-gray-200">
+                        <p class="pl-2 text-lg font-semibold text-red-400">
                             Rubber wick
                         </p>
                     </span>
@@ -478,6 +485,7 @@
             </div>
         </div>
     </section>
+    {{-- company data --}}
 
     <!-- Modal Form -->
     <div id="crud-modal-1" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">

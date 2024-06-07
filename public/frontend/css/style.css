@@ -84,6 +84,9 @@ h5 {
 .bg-solid-blue {
     background-color: #0A3161;  
 } 
+.bg-light-blue {
+    background-color: #375375;
+}
 .bg-gradient {
     background: rgb(178,219,230);
     background: linear-gradient(29deg, rgba(178,219,230,0.7483368347338936) 12%, rgba(235,245,249,0.8183648459383753) 53%, rgba(178,219,230,0.7371323529411764) 91%);
