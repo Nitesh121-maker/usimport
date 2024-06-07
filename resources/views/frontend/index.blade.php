@@ -191,7 +191,7 @@
                         <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
                             <li class="mb-10 ms-4">
                                 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                                <img src="{{url('frontend/img/13.png')}}" class="w-1/5 md:w-1/12 lg:w-1/12 hover:transform scaleX(-1)">
+                                <img src="{{url('frontend/img/13.png')}}" class="w-1/5 md:w-1/12 lg:w-[10%] hover:transform scaleX(-1)">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                     Comprehensive Data Coverage
                                 </h3>
@@ -202,7 +202,7 @@
                             </li>
                             <li class="mb-10 ms-4">
                                 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                                <img src="{{url('frontend/img/14.png')}}" class="w-1/5 md:w-1/12 lg:w-1/12">
+                                <img src="{{url('frontend/img/14.png')}}" class="w-1/5 md:w-1/12 w-[10%]">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                     Real-Time Updates
                                 </h3>
@@ -214,7 +214,7 @@
                             </li>
                             <li class="mb-10 ms-4">
                                 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                                <img src="{{url('frontend/img/15.png')}}" class="w-1/5 md:w-1/12 lg:w-1/12">
+                                <img src="{{url('frontend/img/15.png')}}" class="w-1/5 md:w-1/12 w-[10%]">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                     Customizable Reports
                                 </h3>
@@ -225,7 +225,7 @@
                             </li>
                             <li class="ms-4">
                                 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                                <img src="{{url('frontend/img/16.png')}}" class="w-1/5 md:w-1/12 lg:w-1/12">
+                                <img src="{{url('frontend/img/16.png')}}" class="w-1/5 md:w-1/12 w-[10%]">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                     Affordable Pricing
                                 </h3>
