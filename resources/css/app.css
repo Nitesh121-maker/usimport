@@ -1,0 +1,23 @@
+/* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    ::-webkit-scrollbar {
+      width: 6px; /* Width of the scrollbar */
+    }
+  
+    ::-webkit-scrollbar-track {
+      background: transparent; /* Background of the scrollbar track */
+    }
+  
+    ::-webkit-scrollbar-thumb {
+      background-color: #B31942; /* Glory red color */
+      border-radius: 9999px; /* Makes the scrollbar rounded */
+    }
+  
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #cc2b33; /* Darker red on hover */
+    }
+  }
