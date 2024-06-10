@@ -35,7 +35,7 @@ class ContactFormController extends Controller
         // Handle the verification response
         $responseData = $response->json();
         dd('responseData',$responseData);
-        if ($validatedData) {
+        if ($responseData['score'] >= "0.5" && $responseData['success'] == "true") {
             // Token is valid and has a score above the threshold
             // Proceed with form submission and sending email
             Mail::to('info@tradeimex.in')->send(new ContactFormMail($validatedData));

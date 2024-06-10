@@ -110,7 +110,7 @@
                         Search Live Data for US Trade
                     </h1>
                     <p class="mt-3 mb-3 text-md font-normal lg:text-start md:text-start text-center text-gray-500">
-                        US Trade Data will enable you to discover many answers to your queries regarding 
+                        US Trade Data will enable you to discover many answers to your queries regarding
                         the US import-export data. When accessing real-time information about US trade data, 
                         utilizing our advanced search features is a professional and efficient way to stay 
                         informed. With our advanced search filters, users can easily search and access live 
@@ -130,7 +130,7 @@
                             Simultaneous Insights
                         </h1>
                         <p class="mb-3 text-center md:text-start lg:text-start text-gray-500 text-md font-normal">
-                            One of the main advantages of using the Search live 
+                            One of the main advantages of using the Search live
                             data feature for US trade data is the ability to access 
                             simultaneous and real-time insights.
                         </p>
