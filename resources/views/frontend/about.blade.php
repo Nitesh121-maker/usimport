@@ -171,7 +171,7 @@
                     <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                             <li class="me-2" role="presentation">
-                                <button 
+                                <button
                                     class="text-lg inline-block p-4 border-b-2 rounded-t-lg" 
                                     id="research-tab" 
                                     data-tabs-target="#research" 
@@ -180,7 +180,7 @@
                                     aria-controls="research" 
                                     aria-selected="false"
                                 >
-                                    Reliability And Accuracy 
+                                    Reliability And Accuracy
                                 </button>
                             </li>
                             <li class="me-2" role="presentation">

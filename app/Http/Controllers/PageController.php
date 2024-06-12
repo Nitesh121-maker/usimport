@@ -53,4 +53,7 @@ class PageController extends Controller
     function usimportcompany() {
         return view('frontend.livedata/companyimport');
     }
+    function companydetail() {
+        return view('frontend.livedata/companyimport');
+    }
  }

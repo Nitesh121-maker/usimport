@@ -29,6 +29,7 @@ Route::get('/privacypolicy', [PageController::class, 'privacypolicy']);
 // Route::get('/search-live-data', [PageController::class, 'searchlivedata']);
 Route::get('/livedata/search', [PageController::class, 'livedataimport']);
 Route::get('/import-data/product', [PageController::class, 'productimport']);
+Route::get('/companydetail', [PageController::class, 'companydetail']);
 
 // livedata
 Route::get('/search-live', [SearchLiveDataController::class, 'searchlivedata']);

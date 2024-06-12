@@ -285,13 +285,13 @@
     {{-- Card view of table for mobile view --}}
     <section class="bg-white block lg:hidden">
         <div class="mx-auto mx-w-screen-xl px-5 py-8">
-            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @if(isset($result))
                     @php
                         $results = is_array($result) ? $result : [$result];
                     @endphp
                     {{-- @dd($results) --}}
-                    @if(count($results) > 0)
+                    @if(count($results) < 0)
                         @foreach ($results as $item)
                             <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
                                 <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
@@ -401,7 +401,7 @@
                         @endforeach
                     @endif
                 @endif
-            {{-- </div> --}}
+            </div>
         </div>
     </section>
 

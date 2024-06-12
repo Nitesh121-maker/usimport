@@ -21,7 +21,7 @@ class SearchLiveDataController extends Controller
         $type = $request['type'];
         // dd($validate);
 
-        if($type['type'] == "data") {
+        // if($type['type'] == "data") {
             if ($request['role'] == "import") {
                 $result = DB::table('usa_import')
                 ->select('*')
@@ -29,7 +29,9 @@ class SearchLiveDataController extends Controller
                 ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
                 ->limit(10)
                 ->get();
-            } else {
+                
+                // dd($result->toSql(), $result->getBindings());
+            } elseif($request['role'] == "export") {
                 $result = DB::table('jul')
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
@@ -38,10 +40,18 @@ class SearchLiveDataController extends Controller
                 ->get();
             }
        
-            return view('frontend.livedata.search', ['result'=>$result , 'hscode' => $hscode, 'desc' => $desc, 'role' => $role]);
-        } elseif($request['type'] == "company") {
+            return view(
+                'frontend.livedata.search', 
+                [
+                    'result' => $result, 
+                    'hscode' => $hscode, 
+                    'desc' => $desc, 
+                    'role' => $role
+                ]
+            );
+        // } elseif($request['type'] == "company") {
 
-        }
+        // }
 
         
     }
