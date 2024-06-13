@@ -38,7 +38,7 @@
     </div>
     
     {{-- search bar --}}
-    <section class="bg-solid-blue">
+    <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto mx-w-screen-xl px-5 md:px-12 lg:px-5 py-32">
             <div class="px-5 mb-6">
                 <h1 class="mb-3 text-center text-white font-medium text-4xl">
@@ -70,7 +70,7 @@
                         </ul>            
                     </div>
                     <div class="grid grid-cols-2 lg:flex">
-                        <select name="role" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg rounded-tl-lg focus:ring-blue-500 focus:border-blue-500">
+                        <select required name="role" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg rounded-tl-lg focus:ring-blue-500 focus:border-blue-500">
                             <option selected>Choose...</option>
                             <option value="import">Import</option>
                             <option value="export">Export</option>

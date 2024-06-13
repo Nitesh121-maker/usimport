@@ -21,7 +21,7 @@ class SearchLiveDataController extends Controller
         $type = $request['type'];
         // dd($validate);
 
-        // if($type['type'] == "data") {
+        if($request['type'] == "data") {
             if ($request['role'] == "import") {
                 $result = DB::table('usa_import')
                 ->select('*')
@@ -29,13 +29,12 @@ class SearchLiveDataController extends Controller
                 ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
                 ->limit(10)
                 ->get();
-                
-                // dd($result->toSql(), $result->getBindings());
+
             } elseif($request['role'] == "export") {
                 $result = DB::table('jul')
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
                 ->limit(10)
                 ->get();
             }
@@ -44,52 +43,77 @@ class SearchLiveDataController extends Controller
                 'frontend.livedata.search', 
                 [
                     'result' => $result, 
-                    'hscode' => $hscode, 
+                    'hscode' => $hscode,
                     'desc' => $desc, 
-                    'role' => $role
+                    'role' => $role,
+                    'type' => $type
                 ]
             );
-        // } elseif($request['type'] == "company") {
-
-        // }
-
-        
+        } elseif($request['type'] == "company") {
+            if ($request['role'] == "import") {
+                $result = DB::table('usa_import')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(12)
+                ->get();
+                
+            } elseif($request['role'] == "export") {
+                $result = DB::table('jul')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
+                ->limit(12)
+                ->get();
+            }
+       
+            return view (
+                'frontend.livedata.search', 
+                [
+                    'result' => $result, 
+                    'hscode' => $hscode,
+                    'desc' => $desc, 
+                    'role' => $role,
+                    'type' => $type
+                ]
+            );
+        }
     }
 
     // Data Fetching
-    function searchlist($description, $hsCode, $role)
-    {
-        if($role == 'import') {
-            try {
-                $results = DB::table('usa_import')
-                ->select('*')
-                ->where('HS Code', $hsCode)
-                ->get();
+    // function searchlist($description, $hsCode, $role)
+    // {
+    //     if($role == 'import') {
+    //         try {
+    //             $results = DB::table('usa_import')
+    //             ->select('*')
+    //             ->where('HS Code', $hsCode)
+    //             ->get();
           
-                if ($results->isEmpty()) {
-                  return view('frontend.livedata.search')->with('error-hscode', 'Your message has not been sent, please check the form and try again!');
-                }
-                return view('frontend.searchlivedata', ['results' => $results]);
-            } catch (Exception $e) {
-                // Handle the exception (e.g., log, display error message)
-                dd($e->getMessage());
-            }
-        } else {
-            try {
-                $results = DB::table('jul')
-                ->select('*')
-                ->where('hs_code', $hsCode)
-                ->get();
+    //             if ($results->isEmpty()) {
+    //               return view('frontend.livedata.search')->with('error-hscode', 'Your message has not been sent, please check the form and try again!');
+    //             }
+    //             return view('frontend.searchlivedata', ['results' => $results]);
+    //         } catch (Exception $e) {
+    //             // Handle the exception (e.g., log, display error message)
+    //             dd($e->getMessage());
+    //         }
+    //     } else {
+    //         try {
+    //             $results = DB::table('jul')
+    //             ->select('*')
+    //             ->where('hs_code', $hsCode)
+    //             ->get();
           
-                if ($results->isEmpty()) {
-                  return view('frontend.livedata.search')->with('error-hscode', 'Your message has not been sent, please check the form and try again!');
-                }
-                return view('frontend.searchlivedata', ['results' => $results]);
-            } catch (Exception $e) {
-                // Handle the exception (e.g., log, display error message)
-                dd($e->getMessage());
-            }
-        }
+    //             if ($results->isEmpty()) {
+    //               return view('frontend.livedata.search')->with('error-hscode', 'Your message has not been sent, please check the form and try again!');
+    //             }
+    //             return view('frontend.searchlivedata', ['results' => $results]);
+    //         } catch (Exception $e) {
+    //             // Handle the exception (e.g., log, display error message)
+    //             dd($e->getMessage());
+    //         }
+    //     }
         
-    }
+    // }
 }

@@ -10,98 +10,40 @@
 <body>
     @include('frontend.header')
 
-    {{-- Breadcrumb --}}
-    <div class="mx-auto max-w-screen-xl">
-        <nav class="flex px-5 pt-24 lg:pt-24 md:pt-28 pb-4 text-gray-700 bg-white" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                <li class="inline-flex items-center">
-                    <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                        <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path 
-                                d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
-                            />
-                        </svg>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <a href="/search-live-data" class="line-clamp-1 ms-1 text-sm font-medium text-gray-900 hover:text-blue-600 md:ms-2 dark:text-gray-400">
-                            Search Live Data
-                        </a>
-                    </div>
-                </li>
-                <li aria-current="page">
-                    <div class="flex items-center">
-                        <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="line-clamp-1 ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                            Import Live Data
-                        </span>
-                    </div>
-                </li>
-            </ol>
-        </nav>
-    </div>
 
-    {{-- search bar --}}
-    <section class="bg-solid-blue">
-        <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
-            <div class="px-5 mb-6">
-                <h1 class="mb-3 text-center text-white font-medium text-4xl">
-                    Search United States Shipping Manifest Databases
+    {{-- Company --}}
+    <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
+        <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-28">
+            <div class="mt-6">
+                <h1 class="mb-3 text-start text-white font-medium text-4xl">
+                    BEAUTE KOZMETIK ANONIM SIRKETI
                 </h1>
-                <p class="mb-3 text-center text-gray-200 font-normal text-lg">
-                    Search for your competitors and suppliers to reveal shipping activities 
-                    and trading partners.
-                </p>
-            </div>
-            {{-- Btn's --}}
-            <div class="mb-6">
-                <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
-                    <li class="flex justify-end items-center text-center">
-                        <input checked type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required />
-                        <label for="hosting-small" class="inline-flex items-center w-3/4 lg:w-1/6 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
-                            <div class="w-full text-md font-semibold">Data</div>
-                        </label>
-                    </li>
-                    <li class="flex justify-start items-center text-center">
-                        <input type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
-                        <label for="hosting-big" class="inline-flex items-center w-3/4 lg:w-1/6  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
-                            <div class="w-full text-md font-semibold">Company</div>
-                        </label>
-                    </li>
-                </ul>            
-            </div>
-            <div class="px-5 flex justify-center items-center">
-                <form class="max-w-6xl mx-auto" method="GET" action="{{ url('/search-live')}}" enctype="multipart/form-data">
-                    <div class="grid grid-cols-2 lg:flex">
-                        <select name="role" id="large-input"  class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg focus:ring-blue-500 focus:border-blue-500">
-                            <option selected>Choose...</option>
-                            <option value="import">Import</option>
-                            <option value="export">Export</option>
-                        </select>
-                        <input name="hs_code" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="HS Code"/>
-                        <input name="description" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Description"/>
-                        <button type="submit" class="text-white bg-blue-600 hover:bg-white hover:text-blue-600 font-medium rounded-none lg:rounded-r-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                            Search
-                        </button>
-                    </div>
-                </form>
+                <div class="flex py-6">
+                    <span class="text-white flex flex-wrap items-center mx-2">
+                        <i class="fa-solid fa-lg fa-server"></i>
+                        <p class="text-xl text-gray-200 pl-2">Importer</p>
+                    </span>
+                    <span class="text-white flex flex-wrap items-center mx-2">
+                        <i class="fa-solid fa-lg fa-globe"></i>
+                        <p class="text-xl text-gray-200 pl-2">Turkey</p>
+                    </span>
+                </div>
+                <div class="py-6">
+                    <button data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" type="button" class="text-white bg-transparent border border-white font-medium rounded-3xl text-lg px-5 py-2.5 text-center me-2 mb-2">
+                        Track all shipment
+                    </button>
+                </div>
             </div>
         </div>
     </section>
     {{-- End of search bar --}}
 
+    {{-- Sample Bill Of Lading with table & Form --}}
     <section class="bg-gray-50">
         <div class="mx-auto max-w-screen-xl px-5 py-20">
             <div class="grid gap-8 grid-cols-12">
-                <div class="col-span-8 flex justify-center overflow-auto max-h-[32rem]">
-                    <div class="overflow-auto">
+                <div class="col-span-12 md:col-span-12 lg:col-span-8 flex justify-center overflow-auto max-h-[32rem]">
+                    <div class="overflow-auto px-5 mb-3">
                         <div class="text-center mb-6">
                             <h1 class="mb-6 text-4xl font-medium text-gray-800">
                                 Sample Bill Of Lading
@@ -111,9 +53,9 @@
                                 import market and other trading activities. Fill-up our request a demo form to access
                                 full import data of BITUMEN GLOBAL ALLIANZ INC. 
                             </p>
-                        </div> 
-                        <div class="relative">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        </div>
+                        <div class="relative sm:rounded-lg">
+                            <table class="responsive-table w-full text-sm text-left rtl:text-right text-gray-500">
                                 <tbody>
                                     <tr class="odd:bg-white even:bg-gray-100">
                                         <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
@@ -224,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4">
+                <div class="col-span-12 md:col-span-12 lg:col-span-4">
                     <h1 class="mb-6 text-4xl font-medium text-gray-800 text-center">Request A Demo</h1>
                     <form class="min-w-80" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()" id="contact-form">
                         @csrf
@@ -306,13 +248,14 @@
         </div>
     </section>
 
+    {{-- Shipment Details of KATEX TEKSTIL ANONIM SIRKETI --}}
     <section class="bg-gray-50">
         <div class="mx-auto max-w-screen-xl px-5 py-12">
             <div>
                 <h1 class="mb-6 text-center text-3xl font-medium text-gray-800">
                     Shipment Details of KATEX TEKSTIL ANONIM SIRKETI
                 </h1>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="flex justify-center">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="responsive-table w-full text-sm text-left text-gray-500">
                             <thead class="text-sm text-gray-100 uppercase bg-gray-600">
@@ -354,18 +297,14 @@
                                     <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                         2020-02-17T00:00:00Z
                                     </td>
-                                    <th scope="row" class="px-6 py-4 align-top">
-                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                            520513000000
-                                        </p>
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 align-top"> 
+                                        520513000000
                                     </th>
                                     <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                         100% cotton yarn (ne 30/1 carded yarn)
                                     </td>
-                                    <td class="px-6 py-4 align-top">
-                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                            Uzbekistan
-                                        </p>
+                                    <td class="px-6 py-4 font-medium text-gray-900 align-top"> 
+                                        Uzbekistan
                                     </td>
                                     <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                         21200.91
@@ -390,20 +329,16 @@
                                 </tr>
                                 <tr class="bg-white border-b hover:bg-gray-50">
                                     <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                        2020-02-19T00:00:00Z
+                                        2020-02-17T00:00:00Z
                                     </td>
-                                    <th scope="row" class="px-6 py-4 align-top">
-                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                            520513000000
-                                        </p>
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 align-top"> 
+                                        520513000000
                                     </th>
                                     <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                         100% cotton yarn (ne 30/1 carded yarn)
                                     </td>
-                                    <td class="px-6 py-4 align-top">
-                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                            Uzbekistan
-                                        </p>
+                                    <td class="px-6 py-4 font-medium text-gray-900 align-top"> 
+                                        Uzbekistan
                                     </td>
                                     <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                         21200.91
@@ -434,11 +369,11 @@
         </div>
     </section>
     
-
+    {{-- Top Foreign with Timeline --}}
     <section class="bg-blue-50">
-        <div class="mx-auto max-w-screen-xl px-5 py-12">
+        <div class="mx-auto max-w-screen-xl px-5 py-28">
             <div class="p-2">
-                <h1 class="mb-8 text-center text-gray-800 text-2xl font-medium">
+                <h1 class="mb-10 text-center text-gray-800 text-3xl font-medium">
                     Top Foreign Suppliers Exporting to KATEX TEKSTIL ANONIM SIRKETI?
                 </h1>
                 <div>
@@ -453,7 +388,7 @@
                                 <div class="hidden sm:flex w-full bg-gray-200 h-0.5"></div>
                             </div>
                             <div class="mt-3 sm:pe-8">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                <h3 class="text-sm font-semibold text-gray-900 dark:text-white">
                                     FC POSCO INTERNATIONAL TEXTILE LLC
                                 </h3>
                             </div>
@@ -523,6 +458,116 @@
             </div>
         </div>
     </section>
+
+    {{-- country Names --}}
+    <section class="bg-gray-50">
+        <div class="mx-auto max-w-screen-xl px-5 py-28">
+            <div class="mb-10">
+                <h1 class="text-center font-medium text-3xl">
+                    Where BEAUTE KOZMETIK ANONIM SIRKETI imports from ?
+                </h1>
+            </div>
+            <div class="flex justify-center">
+                <div>
+                    <button data-tooltip-target="tooltip-houston" type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/usa.png')}}" width="100%">
+                        United States Of America
+                    </button>
+
+                    <button data-tooltip-target="tooltip-corpus" type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/france.png')}}" width="100%">
+                        France
+                    </button>
+
+                    <button data-tooltip-target="tooltip-louisiana" type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/japan.png')}}" width="100%">
+                        Japan
+                    </button>
+
+                    <button data-tooltip-target="tooltip-hampton" type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/italy.png')}}" width="100%">
+                        Italy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Form -->
+    <div id="crud-modal-1" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
+        <div class="relative p-2 w-full max-w-4xl max-h-full px-5">
+            <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 bg-white rounded-lg shadow">
+                <div class="flex justify-center items-center">
+                    <img src="{{ url('frontend/img/modal-img.png') }}">
+                </div>
+                <div>
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Request For Complete Data
+                        </h3>
+                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal-1">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal form -->
+                    <form class="mx-auto px-5 lg:px-5 py-6" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()">
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Name
+                                </label>
+                            </div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Phone number
+                                </label>
+                            </div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Company
+                                </label>
+                            </div>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <label for="underline_select" class="sr-only">Underline select</label>
+                            <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                <option selected>Choose...</option>
+                                <option value="import">Import</option>
+                                <option value="export">Export</option>
+                                <option value="Both">Both</option>
+                            </select>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Message
+                            </label>
+                        </div>
+                        <div class="flex justify-center">
+                            <button type="submit" class="text-white bg-gradient-to-br from-glory-red to-glory-blue focus:ring-2 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- Modal Form -->
 
     @include('frontend.footer')
     @include('frontend.script')
