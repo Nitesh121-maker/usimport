@@ -279,7 +279,7 @@
                                             @foreach ($productResults as $productResults)
                                                 <a href="{{ route('product.list', ['type' => 'data', 'role' => 'import', 'description' => $productResults->product_name]) }}" target="_blank">
                                                     <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
-                                                        <p class="text-lg font-medium">
+                                                        <p class="text-lg font-medium capitalize">
                                                             {{ $productResults->product_name }}
                                                         </p>
                                                     </div>
@@ -299,7 +299,7 @@
                                             @foreach ($companyResults as $companyResults)
                                                 <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $companyResults->company_name]) }}" target="_blank">
                                                     <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
-                                                        <p class="text-lg font-medium">
+                                                        <p class="text-lg font-medium capitalize">
                                                             {{$companyResults->company_name}}
                                                         </p>
                                                     </div>
@@ -319,7 +319,7 @@
                                             @foreach ($companyResults as $companyResults)
                                                 <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $companyResults->product_name]) }}" target="_blank">
                                                     <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
-                                                        <p class="text-lg font-medium">
+                                                        <p class="text-lg font-medium capitalize">
                                                             {{$companyResults->product_name}}
                                                         </p>
                                                     </div>

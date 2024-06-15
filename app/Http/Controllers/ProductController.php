@@ -21,7 +21,7 @@ class ProductController extends Controller
             $result = DB::table('products')
             ->select('*')
             // ->where(DB::raw('`product_name`'), 'like', $product . '%')
-            ->limit(12)
+            ->limit(15)
             ->get();
 
             return view (

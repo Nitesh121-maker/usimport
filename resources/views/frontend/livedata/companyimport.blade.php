@@ -18,14 +18,19 @@
                 <h1 class="mb-3 text-start text-white font-medium text-4xl">
                     BEAUTE KOZMETIK ANONIM SIRKETI
                 </h1>
-                <div class="flex py-6">
-                    <span class="text-white flex flex-wrap items-center mx-2">
+                <div class="flex flex-col py-6">
+                    <span class="py-1 text-white flex flex-wrap items-center mx-2">
                         <i class="fa-solid fa-lg fa-server"></i>
                         <p class="text-xl text-gray-200 pl-2">Importer</p>
                     </span>
-                    <span class="text-white flex flex-wrap items-center mx-2">
+                    <span class="py-1 text-white flex flex-wrap items-center mx-2">
                         <i class="fa-solid fa-lg fa-globe"></i>
-                        <p class="text-xl text-gray-200 pl-2">Turkey</p>
+                        <p class="text-xl text-gray-200 pl-2">USA</p>
+                    </span>
+                    <span class="py-1 text-white flex flex-wrap items-center mx-2">
+                        {{-- <i class="fa-solid fa-lg fa-globe"></i> --}}
+                        <i class="fa-solid fa-lg fa-location-dot"></i>
+                        <p class="text-xl text-gray-200 pl-2">USA</p>
                     </span>
                 </div>
                 <div class="py-6">

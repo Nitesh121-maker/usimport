@@ -52,10 +52,10 @@
     <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
             <div class="px-5 mb-12">
-                <h1 class="mb-3 text-center text-white font-medium text-4xl uppercase">
+                <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase">
                     {{ $desc }}&nbsp;{{ $role }} Data Of USA || {{ $desc }}&nbsp;{{ $role }}s
                 </h1>
-                <p class="mb-3 text-center text-gray-200 font-normal text-lg">
+                <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg">
                     Search {{ $desc }}&nbsp;{{ $role }} data of USA based on bill of lading database and other shipment details 
                     by customs. Our USA import statistics of {{ $desc }} includes hs code, product, port, importers name, 
                     value, qty etc.
@@ -139,7 +139,7 @@
     {{-- End of search bar --}}
 
     {{-- @dd($type) --}}
-    @if($type == 'data') 
+    @if($type == "") 
         {{-- Table Of desktop, Laptop & Tab View --}}
         <section class="bg-white py-12 hidden md:block lg:block">
             @if($role == 'import')
@@ -199,7 +199,7 @@
                 </div>
                 
                 {{-- Import Table --}}
-                <div class="mx-auto mx-w-screen-xl px-5 hidden lg:block">
+                <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="responsive-table w-full text-sm text-left text-gray-500">
                             <thead class="text-sm text-gray-700 uppercase bg-gray-200">
@@ -236,6 +236,7 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                    {{-- @dd($result) --}}
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                                 {{ $result->day }}/{{ $result->month }}/{{ $result->year }}
@@ -485,22 +486,377 @@
                     </div>
                 </div>
             @else
-                <p class="text-4xl text-gray-800 text-center">Role Isn't Defined</p>
+                <p class="text-4xl text-gray-800 text-center">
+                    Role Isn't Defined
+                </p>
+            @endif
+        </section>
+    @elseif($type == 'data')
+        {{-- Table Of desktop, Laptop & Tab View --}}
+        <section class="bg-white py-12 hidden md:block lg:block">
+            @if($role == 'import')
+                {{-- Filter By Option --}}
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
+                    <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
+                        <h1 class="text-end text-2xl font-medium">Filter By:</h1>
+                    </div>
+                    <div class="col-span-5">
+                        <form>
+                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Unloading Port</option>
+                                            <option value="">1703, SAVANNAH, GA</option>
+                                            <option value="">1401, NORFOLK, VA</option>
+                                            <option value="">2811, OAKLAND, CA</option>
+                                            <option value="">1803, JACKSONVILLE, FL</option>
+                                            <option value="">0401, BOSTON, MA</option>
+                                            <option value="">1601, CHARLESTON, SC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Origin Country</option>
+                                            <option value="">CN, China</option>
+                                            <option value="">VN, VIET NAM</option>
+                                            <option value="">MY, MALAYSIA</option>
+                                            <option value="">TW, TAIWAN</option>
+                                            <option value="">TH, THAILAND</option>
+                                            <option value="">JP, JAPAN</option>
+                                            <option value="">AT, AUSTRIA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose HS Code</option>
+                                            <option value="">401170, 401190</option>
+                                            <option value="">401170</option>
+                                            <option value="">730210</option>
+                                            <option value="">400122</option>
+                                            <option value="">902230</option>
+                                            <option value="">940161</option>
+                                            <option value="">400129</option>
+                                        </select>
+                                    </div>
+                                </div>  
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-span-1"></div>
+                </div>
+                
+                {{-- Import Table --}}
+                <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="responsive-table w-full text-sm text-left text-gray-500">
+                            <thead class="text-sm text-gray-700 uppercase bg-gray-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Date
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        HS Code
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Product Description 
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Origin Country
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Unloading Port
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Qty.
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Unit
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Weight
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Importer Name
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(isset($result) && $result->count() > 0)
+                                    @foreach ($result as $result)
+                                    {{-- @dd($result) --}}
+                                        <tr class="bg-white border-b hover:bg-gray-50">
+                                            <td class="w-4 p-4 font-medium text-gray-900 align-top">
+                                                {{ $result->day }}/{{ $result->month }}/{{ $result->year }}
+                                            </td>
+                                            <th scope="row" class="px-6 py-4 align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->HS_Code }}
+                                                </p>
+                                            </th>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{$result->Product_Description}}</p>
+                                            </td>
+                                            <td class="px-6 py-4 align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->Country }}
+                                                </p>
+                                            </td>
+                                            <td class="px-6 py-4 align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->Unloading_Port }}
+                                                </p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                               <p>{{ $result->Quantity }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{ $result->Quantity_Unit }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{ $result->Weight_KG }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
+                                                    Importer Name
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 p-4 block w-full md:inline md:w-auto">
+                                Showing 
+                                <span class="font-semibold text-gray-900 dark:text-white">
+                                    1-10
+                                </span> 
+                                of 
+                                <span class="font-semibold text-gray-900 dark:text-white">
+                                    10
+                                </span>
+                            </span>
+                            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
+                                <li>
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                        1
+                                    </a>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        2
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        3
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        Next
+                                    </p>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            @elseif($role == 'export')
+                {{-- Filter By Option --}}
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
+                    <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
+                        <h1 class="text-end text-2xl font-medium">Filter By:</h1>
+                    </div>
+                    <div class="col-span-5">
+                        <form>
+                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Unloading Port</option>
+                                            <option value="">1703, SAVANNAH, GA</option>
+                                            <option value="">1401, NORFOLK, VA</option>
+                                            <option value="">2811, OAKLAND, CA</option>
+                                            <option value="">1803, JACKSONVILLE, FL</option>
+                                            <option value="">0401, BOSTON, MA</option>
+                                            <option value="">1601, CHARLESTON, SC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Origin Country</option>
+                                            <option value="">CN, China</option>
+                                            <option value="">VN, VIET NAM</option>
+                                            <option value="">MY, MALAYSIA</option>
+                                            <option value="">TW, TAIWAN</option>
+                                            <option value="">TH, THAILAND</option>
+                                            <option value="">JP, JAPAN</option>
+                                            <option value="">AT, AUSTRIA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose HS Code</option>
+                                            <option value="">401170, 401190</option>
+                                            <option value="">401170</option>
+                                            <option value="">730210</option>
+                                            <option value="">400122</option>
+                                            <option value="">902230</option>
+                                            <option value="">940161</option>
+                                            <option value="">400129</option>
+                                        </select>
+                                    </div>
+                                </div>  
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-span-1"></div>
+                </div>
+
+                {{-- Export Table --}}
+                <div class="mx-auto mx-w-screen-xl px-5 hidden lg:block">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="responsive-table w-full text-sm text-left text-gray-500">
+                            <thead class="text-sm text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Date
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        HS Code
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Product Description 
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Origin Country
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Unloading Port
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Qty.
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Unit
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Weight
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Importer Name
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(isset($result) && $result->count() > 0)
+                                    @foreach ($result as $result)
+                                        <tr class="bg-white border-b hover:bg-gray-50">
+                                            <td class="w-4 p-4 font-medium text-gray-900 align-top">
+                                                <p>{{ $result->Act_Arrival_Date }}</p>
+                                            </td>
+                                            <th scope="row" class="px-6 py-4 align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->HS_Code }}
+                                                </p>
+                                            </th>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{$result->Products }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->Port_of_Departure }}
+                                                </p>
+                                            </td>
+                                            <td class="px-6 py-4 align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->Foreign_Port }}
+                                                </p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{ $result->Quantity }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{ $result->Quantity_Unit }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                                <p>{{ $result->Weight_Unit }}</p>
+                                            </td>
+                                            <td class="px-6 py-4 font-medium align-top">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
+                                                    Importer Name
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 p-4 block w-full md:inline md:w-auto">
+                                Showing 
+                                <span class="font-semibold text-gray-900 dark:text-white">
+                                    1-10
+                                </span> 
+                                of 
+                                <span class="font-semibold text-gray-900 dark:text-white">
+                                    10
+                                </span>
+                            </span>
+                            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
+                                <li>
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                        1
+                                    </a>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        2
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        3
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        Next
+                                    </p>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            @else
+                <p class="text-4xl text-gray-800 text-center">
+                    Role Isn't Defined
+                </p>
             @endif
         </section>
 
         {{-- Card view of table for mobile view --}}
-        <section class="bg-white block lg:hidden">
+        {{-- <section class="bg-white block md:hidden lg:hidden">
             <div class="mx-auto mx-w-screen-xl px-5 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {{-- @php
-                        $results = $result;
-                    @endphp --}}
-                    {{-- @dd($result) --}}
-                    {{-- @if(isset($result) && count($result) > 0) --}}
-                    {{-- @if(isset($result) && $result->count() > 0) --}}
-                    {{-- @if($result->isNotEmpty())
-                        @foreach ($result as $result)
+                    @php
+                        // Uncomment this to debug the structure of $result
+                        @dd($result);
+                    @endphp
+                    @dd($result)
+                    @if(isset($result) && $result->count() > 0)
+                    @if(isset($result) && is_iterable($result) && count($result) > 0)
+                        @dd($result);
+                        @foreach ($result as $MobileResult)
                             <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
                                 <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
                                     Shipment No. {{ $loop->iteration }}
@@ -513,7 +869,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $result->day ?? '' }}/{{ $result->month ?? '' }}/{{ $result->year ?? '' }} 
+                                            {{ $MobileResult->day ?? '' }}/{{ $MobileResult->month ?? '' }}/{{ $MobileResult->year ?? '' }} 
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -524,7 +880,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $result->HS_Code ?? '' }}
+                                                {{ $MobileResult->HS_Code ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -535,7 +891,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $result->Product_Description ?? '' }}
+                                            {{ $MobileResult->Product_Description ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -546,7 +902,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $result->Country ?? '' }}
+                                                {{ $MobileResult->Country ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -558,7 +914,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $result->Unloading_Port ?? '' }}
+                                                {{ $MobileResult->Unloading_Port ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -569,7 +925,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $result->Quantity ?? '' }}
+                                            {{ $MobileResult->Quantity ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -579,7 +935,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $result->Quantity_Unit ?? '' }}
+                                            {{ $MobileResult->Quantity_Unit ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -589,7 +945,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $result->Weight_KG ?? '' }}
+                                            {{ $MobileResult->Weight_KG ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -607,10 +963,10 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif --}}
+                    @endif
                 </div>
             </div>
-        </section>    
+        </section>--}}
     
     @elseif($type == 'company')
         @if($role == 'import')
@@ -618,7 +974,7 @@
             <section class="bg-white">
                 <div class="mx-auto max-w-sreen-xl py-12 px-5">
                     <div class="flex justify-center">
-                        <h1 class="mb-6 text-4xl text-center font-medium text-gray-800">
+                        <h1 class="mb-6 text-2xl lg:text-4xl text-center font-medium text-gray-800">
                             List Of 
                             <span class="text-blue-800 capitalize">{{ $desc }}&nbsp;{{ $role }}</span> 
                             In USA
@@ -696,75 +1052,78 @@
     
     <!-- Modal Form -->
     <div id="crud-modal-1" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
-        <div class="relative p-2 w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Request For Complete Data
-                    </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal-1">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
+        <div class="relative p-2 w-full max-w-4xl max-h-full px-5">
+            <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 bg-white rounded-lg shadow">
+                <div class="flex justify-center items-center">
+                    <img src="{{ url('frontend/img/modal-img.png') }}">
                 </div>
-                <!-- Modal form -->
-                <form class="mx-auto px-3 lg:px-5 py-6" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()">
-                    <div class="grid md:grid-cols-2 md:gap-6">
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Name
-                            </label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Email
-                            </label>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-2 md:gap-6">
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Phone number
-                            </label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Company
-                            </label>
-                        </div>
-                    </div>
-                    <div class="relative z-0 w-full mb-5 group">
-                        <label for="underline_select" class="sr-only">Underline select</label>
-                        <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                            <option selected>Choose...</option>
-                            <option value="Both">Both</option>
-                            <option value="US">Import</option>
-                            <option value="CA">Export</option>
-                        </select>
-                    </div>
-                    <div class="relative z-0 w-full mb-5 group">
-                        <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                            Message
-                        </label>
-                    </div>
-                    <div class="flex justify-center">
-                        <button type="submit" class="text-white bg-gradient-to-br from-glory-red to-glory-blue focus:ring-2 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                            Submit
+                <div>
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Request For Complete Data
+                        </h3>
+                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="crud-modal-1">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
                         </button>
                     </div>
-                </form>
+                    <!-- Modal form -->
+                    <form class="mx-auto px-5 lg:px-5 py-6" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()">
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Name
+                                </label>
+                            </div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Phone number
+                                </label>
+                            </div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Company
+                                </label>
+                            </div>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <label for="underline_select" class="sr-only">Underline select</label>
+                            <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                <option selected>Choose...</option>
+                                <option value="import">Import</option>
+                                <option value="export">Export</option>
+                                <option value="Both">Both</option>
+                            </select>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Message
+                            </label>
+                        </div>
+                        <div class="flex justify-center">
+                            <button type="submit" class="text-white bg-gradient-to-br from-glory-red to-glory-blue focus:ring-2 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!-- Modal Form -->
     
     @include('frontend.footer')

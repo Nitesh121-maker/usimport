@@ -85,6 +85,7 @@
                 </div>
                 <div class="flex justify-center items-center">
                     <form class="max-w-screen-xl mx-auto" method="GET" action="{{ url('/search-live')}}" enctype="multipart/form-data">
+                        @csrf
                         <div class="grid grid-cols-2 lg:flex">
                             <select name="role" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg rounded-tl-lg focus:ring-blue-500 focus:border-blue-500">
                                 <option selected>Choose...</option>
