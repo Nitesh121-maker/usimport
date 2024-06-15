@@ -4,6 +4,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"
         crossorigin="anonymous"></script>
 
+    {{-- Ajax Call For Product ]--}}
+    <script>
+        $(document).ready(function() {
+            $('#importButton').click(function() {
+                $.ajax({
+                    url: "{{ url('/usa-import-data/import') }}",
+                    type: 'GET',
+                    success: function(data) {
+                        alert(results);
+                        // var tableBody = $('#dataBody');
+                        // tableBody.empty(); // Clear existing data
+                        // $.each(data, function(index, item) {
+                        //     tableBody.append('<tr><td>' + item.id + '</td><td>' + item.name + '</td><td>' + item.email + '</td></tr>');
+                        // });
+                    }
+                });
+            });
+        
+            // $('#searchInput').on('keyup', function() {
+            //     var value = $(this).val().toLowerCase();
+            //     $("#dataBody tr").filter(function() {
+            //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            //     });
+            // });
+        });
+    </script>
+
     {{-- Recaptcha Response --}}
     <script>
         function onSubmit(token) {
@@ -42,27 +69,26 @@
     {{-- Key point Counting Js  --}}
     <script type="text/JavaScript">
         let count = document.querySelectorAll(".count")
-                let arr = Array.from(count)
+            let arr = Array.from(count)
 
-                arr.map(function(item){
-                let startnumber = 0
+            arr.map(function(item){
+            let startnumber = 0
 
-                function counterup(){
-                startnumber++
-                item.innerHTML= startnumber
-                
-                if(startnumber == item.dataset.number){
-                    clearInterval(stop)
-                }
-                }
+            function counterup(){
+            startnumber++
+            item.innerHTML= startnumber
+            
+            if(startnumber == item.dataset.number){
+                clearInterval(stop)
+            }
+            }
 
-                let stop =setInterval(function(){
-                counterup()
-                },50)
+            let stop =setInterval(function(){
+            counterup()
+            },50)
 
-            })
+        })
     </script>
-
     
     {{-- Background Connecting js --}}
     <script>
@@ -187,7 +213,6 @@
 
         // initialise plugin
         telInput.intlTelInput({
-
             allowExtensions: true,
             formatOnDisplay: true,
             autoFormat: true,
@@ -195,7 +220,6 @@
             autoPlaceholder: true,
             defaultCountry: "auto",
             ipinfoToken: "yolo",
-
             nationalMode: false,
             numberType: "MOBILE",
             //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
@@ -233,8 +257,30 @@
 
         // on keyup / change flag: reset
         telInput.on("keyup change", reset);
+
+        function getPhoneNumberData() {
+            var fullNumber = telInput.intlTelInput("getNumber"); // Get the full number with ISD code
+
+            console.log("Full Number: ", fullNumber);
+
+            // Remove existing hidden input field if present
+            $("#contact-form input[name='full_phone']").remove();
+
+            // Append hidden input field with the full phone number
+            $("<input>").attr({
+                type: "hidden",
+                name: "full_phone",
+                value: fullNumber
+            }).appendTo("#contact-form");
+        }
+
+        // Handle form submission
+        $("#contact-form").submit(function(event) {
+            getPhoneNumberData();
+        });
     </script>
 
+    {{-- phone selection input js --}}
     <script>
         var telInput = $("#phone-cf"),
             errorMsg = $("#error-msg"),
@@ -242,7 +288,6 @@
 
         // initialise plugin
         telInput.intlTelInput({
-
             allowExtensions: true,
             formatOnDisplay: true,
             autoFormat: true,
@@ -250,7 +295,6 @@
             autoPlaceholder: true,
             defaultCountry: "auto",
             ipinfoToken: "yolo",
-
             nationalMode: false,
             numberType: "MOBILE",
             //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
@@ -288,4 +332,25 @@
 
         // on keyup / change flag: reset
         telInput.on("keyup change", reset);
+
+        function getPhoneNumberData() {
+            var fullNumber = telInput.intlTelInput("getNumber"); // Get the full number with ISD code
+
+            console.log("Full Number: ", fullNumber);
+
+            // Remove existing hidden input field if present
+            $("#contact-form input[name='full_phone']").remove();
+
+            // Append hidden input field with the full phone number
+            $("<input>").attr({
+                type: "hidden",
+                name: "full_phone",
+                value: fullNumber
+            }).appendTo("#contact-form");
+        }
+
+        // Handle form submission
+        $("#contact-form").submit(function(event) {
+            getPhoneNumberData();
+        });
     </script>

@@ -45,7 +45,7 @@ class PageController extends Controller
         return view('frontend.livedata/search');
     }
     function productimport() {
-        return view('frontend.import-data/product/index');
+        return view('frontend.import-data/import');
     }
     function searchpage() {
         return view('frontend.searchlivedata');

@@ -39,6 +39,8 @@ class SearchLiveDataController extends Controller
                 ->get();
             }
        
+            $resultsArray = $result->toArray();
+
             return view(
                 'frontend.livedata.search', 
                 [

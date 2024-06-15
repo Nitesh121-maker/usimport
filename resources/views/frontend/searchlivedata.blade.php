@@ -10,6 +10,7 @@
 <body>
     @include('frontend.header')
 
+    {{-- Breadcrumb --}}
     <div class="mx-auto max-w-screen-xl">
         <nav class="flex px-5 pt-24 lg:pt-24 md:pt-28 pb-4 text-gray-700 bg-white" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -45,7 +46,7 @@
                     Search United States Shipping Manifest Databases
                 </h1>
                 <p class="mb-3 text-center text-gray-200 font-normal text-lg">
-                    Search for your competitors and suppliers to reveal shipping activities 
+                    Search for your competitors and suppliers to reveal shipping activities
                     and trading partners.
                 </p>
             </div>
@@ -84,8 +85,7 @@
                 </form>
             </div>
         </div>
-    </section>
-    {{-- End of search bar --}}  
+    </section> 
     
     {{-- Benefits --}}
     <section class="bg-white">
@@ -144,7 +144,6 @@
             </div>
         </div>
     </section>
-    {{-- Benefits --}}
 
     {{-- Easily Find HS Codes with our Live Search Toolbar. --}}
     <section class="bg-white">

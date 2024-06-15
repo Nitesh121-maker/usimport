@@ -24,7 +24,7 @@
                         Home
                     </a>
                 </li>
-                <li>
+                <li class="inline-flex items-center">
                     <div class="flex items-center">
                         <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
@@ -34,13 +34,13 @@
                         </a>
                     </div>
                 </li>
-                <li aria-current="page">
+                <li class="inline-flex items-center aria-current="page">
                     <div class="flex items-center">
                         <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                         </svg>
-                        <span class="line-clamp-1 ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                            Import Live Data
+                        <span class="line-clamp-1 ms-1 text-sm font-medium text-gray-500 md:ms-2 capitalize">
+                            {{ $desc }}&nbsp;{{ $role }} Live Data
                         </span>
                     </div>
                 </li>
@@ -52,9 +52,6 @@
     <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
             <div class="px-5 mb-12">
-                {{-- <h1 class="mb-3 text-center text-white font-medium text-4xl">
-                    Search United States Shipping Manifest Databases
-                </h1> --}}
                 <h1 class="mb-3 text-center text-white font-medium text-4xl uppercase">
                     {{ $desc }}&nbsp;{{ $role }} Data Of USA || {{ $desc }}&nbsp;{{ $role }}s
                 </h1>
@@ -63,31 +60,66 @@
                     by customs. Our USA import statistics of {{ $desc }} includes hs code, product, port, importers name, 
                     value, qty etc.
                 </p>
-                {{-- <p class="mb-3 text-center text-gray-200 font-normal text-lg">
-                    Search for your competitors and suppliers to reveal shipping activities 
-                    and trading partners.
-                </p> --}}
             </div>
             {{-- forms --}}
             <div class="px-5 flex justify-center items-center">
                 <form class="max-w-6xl mx-auto" method="GET" action="{{ url('/search-live')}}" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-6">
-                        <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
-                            <li class="flex justify-end items-center text-center">
-                                <input checked type="radio" id="hosting-small" name="type" value="data" class="hidden peer" required />
-                                <label for="hosting-small" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
-                                    <div class="w-full text-md font-semibold">Data</div>
-                                </label>
-                            </li>
-                            <li class="flex justify-start items-center text-center">
-                                <input type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
-                                <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
-                                    <div class="w-full text-md font-semibold">Company</div>
-                                </label>
-                            </li>
-                        </ul>            
-                    </div>
+                    @if($type == 'data')
+                        <div class="mb-6">
+                            <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
+                                <li class="flex justify-end items-center text-center">
+                                    <input checked type="radio" id="hosting-small" name="type" value="data" class="hidden peer" required />
+                                    <label for="hosting-small" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
+                                        <div class="w-full text-md font-semibold">Data</div>
+                                    </label>
+                                </li>
+                                <li class="flex justify-start items-center text-center">
+                                    <input type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
+                                    <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                                        <div class="w-full text-md font-semibold">Company</div>
+                                    </label>
+                                </li>
+                            </ul>            
+                        </div>
+
+                        @elseif($type == 'company')
+                        <div class="mb-6">
+                            <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
+                                <li class="flex justify-end items-center text-center">
+                                    <input type="radio" id="hosting-small" name="type" value="data" class="hidden peer" required />
+                                    <label for="hosting-small" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
+                                        <div class="w-full text-md font-semibold">Data</div>
+                                    </label>
+                                </li>
+                                <li class="flex justify-start items-center text-center">
+                                    <input checked type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
+                                    <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                                        <div class="w-full text-md font-semibold">Company</div>
+                                    </label>
+                                </li>
+                            </ul>            
+                        </div>
+
+                        @else 
+                        <div class="mb-6">
+                            <ul class="grid w-full gap-2 grid-cols-2 md:grid-cols-2">
+                                <li class="flex justify-end items-center text-center">
+                                    <input checked type="radio" id="hosting-small" name="type" value="data" class="hidden peer" required />
+                                    <label for="hosting-small" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">                           
+                                        <div class="w-full text-md font-semibold">Data</div>
+                                    </label>
+                                </li>
+                                <li class="flex justify-start items-center text-center">
+                                    <input type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
+                                    <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                                        <div class="w-full text-md font-semibold">Company</div>
+                                    </label>
+                                </li>
+                            </ul>            
+                        </div>
+                    @endif
+
                     <div class="grid grid-cols-2 lg:flex">
                         <select required name="role" id="large-input"  class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg focus:ring-blue-500 focus:border-blue-500">
                             <option selected>Choose...</option>
@@ -109,71 +141,68 @@
     {{-- @dd($type) --}}
     @if($type == 'data') 
         {{-- Table Of desktop, Laptop & Tab View --}}
-        <section class="bg-white py-12 hidden lg:block">
-            {{-- Filter By Option --}}
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
-                <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
-                    <h1 class="text-end text-2xl font-medium">Filter By:</h1>
-                </div>
-                <div class="col-span-5">
-                    <form>
-                        <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
-                            <div>
-                                <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                    <label for="underline_select" class="sr-only">Underline select</label>
-                                    <select id="underline_select" class="block py-2.5 px-0 w-full text-md font-medium text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                        <option selected>Choose Unloading Port</option>
-                                        <option value="">1703, SAVANNAH, GA</option>
-                                        <option value="">4601, NEW YORK/NEWARK AREA, NEWARK, NJ</option>
-                                        <option value="">1401, NORFOLK, VA</option>
-                                        <option value="">2811, OAKLAND, CA</option>
-                                        <option value="">1803, JACKSONVILLE, FL</option>
-                                        <option value="">0401, BOSTON, MA</option>
-                                        <option value="">1601, CHARLESTON, SC</option>
-                                    </select>
+        <section class="bg-white py-12 hidden md:block lg:block">
+            @if($role == 'import')
+                {{-- Filter By Option --}}
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
+                    <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
+                        <h1 class="text-end text-2xl font-medium">Filter By:</h1>
+                    </div>
+                    <div class="col-span-5">
+                        <form>
+                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Unloading Port</option>
+                                            <option value="">1703, SAVANNAH, GA</option>
+                                            <option value="">1401, NORFOLK, VA</option>
+                                            <option value="">2811, OAKLAND, CA</option>
+                                            <option value="">1803, JACKSONVILLE, FL</option>
+                                            <option value="">0401, BOSTON, MA</option>
+                                            <option value="">1601, CHARLESTON, SC</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Origin Country</option>
+                                            <option value="">CN, China</option>
+                                            <option value="">VN, VIET NAM</option>
+                                            <option value="">MY, MALAYSIA</option>
+                                            <option value="">TW, TAIWAN</option>
+                                            <option value="">TH, THAILAND</option>
+                                            <option value="">JP, JAPAN</option>
+                                            <option value="">AT, AUSTRIA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose HS Code</option>
+                                            <option value="">401170, 401190</option>
+                                            <option value="">401170</option>
+                                            <option value="">730210</option>
+                                            <option value="">400122</option>
+                                            <option value="">902230</option>
+                                            <option value="">940161</option>
+                                            <option value="">400129</option>
+                                        </select>
+                                    </div>
+                                </div>  
                             </div>
-                            <div>
-                                <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                    <label for="underline_select" class="sr-only">Underline select</label>
-                                    <select id="underline_select" class="block py-2.5 px-0 w-full text-md font-medium text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                        <option selected>Choose Origin Country</option>
-                                        <option value="">CN, China</option>
-                                        <option value="">VN, VIET NAM</option>
-                                        <option value="">MY, MALAYSIA</option>
-                                        <option value="">TW, TAIWAN</option>
-                                        <option value="">TH, THAILAND</option>
-                                        <option value="">JP, JAPAN</option>
-                                        <option value="">AT, AUSTRIA</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                    <label for="underline_select" class="sr-only">Underline select</label>
-                                    <select id="underline_select" class="block py-2.5 px-0 w-full text-md font-medium text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                        <option selected>Choose HS Code</option>
-                                        <option value="">401170, 401190</option>
-                                        <option value="">401170</option>
-                                        <option value="">730210</option>
-                                        <option value="">400122</option>
-                                        <option value="">902230</option>
-                                        <option value="">940161</option>
-                                        <option value="">400129</option>
-                                    </select>
-                                </div>
-                            </div>  
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <div class="col-span-1"></div>
                 </div>
-                <div class="col-span-1"></div>
-            </div>
-            @if($role == 'import') {
+                
                 {{-- Import Table --}}
                 <div class="mx-auto mx-w-screen-xl px-5 hidden lg:block">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="responsive-table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table class="responsive-table w-full text-sm text-left text-gray-500">
+                            <thead class="text-sm text-gray-700 uppercase bg-gray-200">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         Date
@@ -217,7 +246,7 @@
                                                 </p>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{$result->Product_Description}}
+                                                <p>{{$result->Product_Description}}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
@@ -230,13 +259,13 @@
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Quantity }}
+                                               <p>{{ $result->Quantity }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Quantity_Unit }}
+                                                <p>{{ $result->Quantity_Unit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Weight_KG }}
+                                                <p>{{ $result->Weight_KG }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
@@ -284,12 +313,67 @@
                         </nav>
                     </div>
                 </div>
-            } @elseif($role == 'export') {
+            @elseif($role == 'export')
+                {{-- Filter By Option --}}
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
+                    <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
+                        <h1 class="text-end text-2xl font-medium">Filter By:</h1>
+                    </div>
+                    <div class="col-span-5">
+                        <form>
+                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Unloading Port</option>
+                                            <option value="">1703, SAVANNAH, GA</option>
+                                            <option value="">1401, NORFOLK, VA</option>
+                                            <option value="">2811, OAKLAND, CA</option>
+                                            <option value="">1803, JACKSONVILLE, FL</option>
+                                            <option value="">0401, BOSTON, MA</option>
+                                            <option value="">1601, CHARLESTON, SC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Origin Country</option>
+                                            <option value="">CN, China</option>
+                                            <option value="">VN, VIET NAM</option>
+                                            <option value="">MY, MALAYSIA</option>
+                                            <option value="">TW, TAIWAN</option>
+                                            <option value="">TH, THAILAND</option>
+                                            <option value="">JP, JAPAN</option>
+                                            <option value="">AT, AUSTRIA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose HS Code</option>
+                                            <option value="">401170, 401190</option>
+                                            <option value="">401170</option>
+                                            <option value="">730210</option>
+                                            <option value="">400122</option>
+                                            <option value="">902230</option>
+                                            <option value="">940161</option>
+                                            <option value="">400129</option>
+                                        </select>
+                                    </div>
+                                </div>  
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-span-1"></div>
+                </div>
+
                 {{-- Export Table --}}
                 <div class="mx-auto mx-w-screen-xl px-5 hidden lg:block">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="responsive-table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table class="responsive-table w-full text-sm text-left text-gray-500">
+                            <thead class="text-sm text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         Date
@@ -325,7 +409,7 @@
                                     @foreach ($result as $result)
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Act_Arrival_Date }}
+                                                <p>{{ $result->Act_Arrival_Date }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
@@ -333,7 +417,7 @@
                                                 </p>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{$result->Products }}
+                                                <p>{{$result->Products }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
@@ -346,13 +430,13 @@
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Quantity }}
+                                                <p>{{ $result->Quantity }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Quantity_Unit }}
+                                                <p>{{ $result->Quantity_Unit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                {{ $result->Weight_Unit }}
+                                                <p>{{ $result->Weight_Unit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
@@ -400,9 +484,8 @@
                         </nav>
                     </div>
                 </div>
-            } @else {
+            @else
                 <p class="text-4xl text-gray-800 text-center">Role Isn't Defined</p>
-            }
             @endif
         </section>
 
@@ -410,134 +493,134 @@
         <section class="bg-white block lg:hidden">
             <div class="mx-auto mx-w-screen-xl px-5 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    @if(isset($result))
-                        @php
-                            $results = is_array($result) ? $result : [$result];
-                        @endphp
-                        {{-- @dd($results) --}}
-                        @if(count($results) < 0)
-                            @foreach ($results as $item)
-                                <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
-                                    <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
-                                        Shipment No. {{ $loop->iteration }} 
-                                    </h5>
-                                    <div class="grid grid-cols-2">
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Date
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                {{ $item->day ?? '' }}/{{ $item->month ?? '' }}/{{ $item->year ?? '' }} 
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                HS Code
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                <a href="#" class="text-blue-600 hover:underline">
-                                                    {{ $item->HS_Code ?? '' }}
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Product Description
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                {{ $item->Product_Description ?? '' }}
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Origin Country
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                <a href="#" class="text-blue-600 hover:underline">
-                                                    {{ $item->Country ?? '' }}
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Unloading Port
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                <a href="#" class="text-blue-600 hover:underline">
-                                                    {{ $item->Unloading_Port ?? '' }}
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Quantity
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                {{ $item->Quantity ?? '' }}
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Unit
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                {{ $item->Quantity_Unit ?? '' }}
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
-                                                Weight
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                {{ $item->Weight_KG ?? '' }}
-                                            </p>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                    {{-- @php
+                        $results = $result;
+                    @endphp --}}
+                    {{-- @dd($result) --}}
+                    {{-- @if(isset($result) && count($result) > 0) --}}
+                    {{-- @if(isset($result) && $result->count() > 0) --}}
+                    {{-- @if($result->isNotEmpty())
+                        @foreach ($result as $result)
+                            <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+                                <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
+                                    Shipment No. {{ $loop->iteration }}
+                                </h5>
+                                <div class="grid grid-cols-2">
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Date
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $result->day ?? '' }}/{{ $result->month ?? '' }}/{{ $result->year ?? '' }} 
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            HS Code
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="#" class="text-blue-600 hover:underline">
+                                                {{ $result->HS_Code ?? '' }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Product Description
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $result->Product_Description ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Origin Country
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="#" class="text-blue-600 hover:underline">
+                                                {{ $result->Country ?? '' }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Unloading Port
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="#" class="text-blue-600 hover:underline">
+                                                {{ $result->Unloading_Port ?? '' }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Quantity
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $result->Quantity ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Unit
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $result->Quantity_Unit ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Weight
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $result->Weight_KG ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Importer Name
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="#" class="text-blue-600 hover:underline">
                                                 Importer Name
-                                            </h1>
-                                        </div>
-                                        <div class="mt-4">
-                                            <p class="text-md font-normal">
-                                                <a href="#" class="text-blue-600 hover:underline">
-                                                    Importer Name
-                                                </a>
-                                            </p>
-                                        </div>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
-                            @endforeach
-                        @endif
-                    @endif
+                            </div>
+                        @endforeach
+                    @endif --}}
                 </div>
             </div>
         </section>    
     
     @elseif($type == 'company')
-        @if($role == 'import') {
+        @if($role == 'import')
             {{-- Import Company Data --}}
             <section class="bg-white">
                 <div class="mx-auto max-w-sreen-xl py-12 px-5">
                     <div class="flex justify-center">
                         <h1 class="mb-6 text-4xl text-center font-medium text-gray-800">
                             List Of 
-                            <span class="text-blue-800 uppercase">{{ $desc }}&nbsp;{{ $role }}</span> 
+                            <span class="text-blue-800 capitalize">{{ $desc }}&nbsp;{{ $role }}</span> 
                             In USA
                         </h1>
                     </div>  
@@ -549,7 +632,7 @@
                                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%] mr-2">
                                         USA
                                     </span>
-                                    <a href="/us-importer-of-rubber" target="_blank">
+                                    <a href="/usa-import" target="_blank">
                                         <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                                             {{$result->Product_Description}}
                                         </h5>
@@ -566,14 +649,14 @@
                     </div>
                 </div>
             </section>
-        } @elseif($role == 'export') {
+        @elseif($role == 'export') 
             {{-- Import Company Data --}}
             <section class="bg-white">
                 <div class="mx-auto max-w-sreen-xl py-12 px-5">
                     <div class="flex justify-center">
                         <h1 class="mb-6 text-4xl text-center font-medium text-gray-800">
                             List Of 
-                            <span class="text-blue-800 uppercase">{{ $desc }}&nbsp;{{ $role }}</span> 
+                            <span class="text-blue-800 capitalize">{{ $desc }}&nbsp;{{ $role }}</span> 
                             In USA
                         </h1>
                     </div>  
@@ -585,7 +668,7 @@
                                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%] mr-2">
                                         USA
                                     </span>
-                                    <a href="/us-importer-of-rubber" target="_blank">
+                                    <a href="/usa-import" target="_blank">
                                         <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                                             {{$result->Products}}
                                         </h5>
@@ -602,9 +685,8 @@
                     </div>
                 </div>
             </section>
-        } @else {
+        @else 
             <p class="text-4xl text-gray-800 text-center">Role Isn't Defined</p>
-        }
         @endif
     @else 
         @php

@@ -14,7 +14,9 @@
                 {{-- Company & Our data --}}
                 <div class="grid grid-cols-2 mt-3 md:mt-0 lg:mt-0">
                     <div>
-                        <h2 class="mb-6 text-lg lg:text-md font-semibold text-gray-900 uppercase">Company</h2>
+                        <h2 class="mb-6 text-lg lg:text-md font-semibold text-gray-900 uppercase">
+                            Company
+                        </h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
                                 <a href="/about" class="hover:underline">About Us</a>
@@ -34,7 +36,9 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-lg lg:text-md font-semibold text-gray-900 uppercase">Our Data</h2>
+                        <h2 class="mb-6 text-lg lg:text-md font-semibold text-gray-900 uppercase">
+                            Our Data
+                        </h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
                                 <a href="/importdata" class="hover:underline ">Import data</a>
@@ -49,7 +53,7 @@
                                 <a href="/search-live-data" class="hover:underline">Search Live Data</a>
                             </li>
                             <li class="mb-4">
-                                <a href="/import-data/product" class="hover:underline">Our Data Directory</a>
+                                <a href="/usa-import-data/import" class="hover:underline">Our Data Directory</a>
                             </li>
                         </ul>
                     </div>
@@ -57,11 +61,12 @@
                 {{-- Form --}}
                 <div class="lg:col-span-1 sm:col-span-2">
                     <div class="mt-6 mb-6 lg:mt-0">
-                        <form class="mx-auto px-3 lg:px-5">
+                        <div class="mx-auto px-3 lg:px-5">
                             <h1 class="text-center mb-4 text-lg lg:text-md font-semibold">
                                 CONTACT US
                             </h1>
-                            <form class="py-6 min-w-80" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()" id="contact-form">
+                            <form class="py-6 min-w-80" action="{{url('/contact')}}" method="POST" onsubmit="return validatecontactForm()" id="contact-form">
+                                @method('post')
                                 @csrf
                                 <div class="grid md:grid-cols-2 md:gap-6">
                                     <div class="relative z-0 w-full mb-5 group">
@@ -136,59 +141,11 @@
                                     Submit
                                 </button>
                             </form>
-                            {{-- <div class="grid md:grid-cols-2 md:gap-6">
-                                <div class="relative z-0 w-full mb-5 group">
-                                    <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        Name
-                                    </label>
-                                </div>
-                                <div class="relative z-0 w-full mb-5 group">
-                                    <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        Email
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 md:gap-6">
-                                <div class="relative z-0 w-full mb-5 group">
-                                    <input type="tel" id="phone" aria-describedby="helper-text-explanation" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        Phone number
-                                    </label>
-                                </div>
-                                <div class="relative z-0 w-full mb-5 group">
-                                    <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        Company
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="relative z-0 w-full mb-5 group">
-                                <label for="underline_select" class="sr-only">Underline select</label>
-                                <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                    <option selected>Choose...</option>
-                                    <option value="Both">Both</option>
-                                    <option value="US">Import</option>
-                                    <option value="CA">Export</option>
-                                </select>
-                            </div>
-                            <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    Message
-                                </label>
-                            </div>
-                            <div class="flex justify-center">
-                                <button type="submit" class="text-white bg-gradient-to-br from-glory-red to-glory-blue hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                                    Submit
-                                </button>
-                            </div> --}}
-                        </form>  
+                        </div>
                     </div>
                 </div>
             </div>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
             <div class="sm:flex sm:items-center sm:justify-between">
                 <span class="text-sm font-medium text-gray-500 sm:text-center dark:text-gray-500">
                     © 2024 
