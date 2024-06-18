@@ -10,7 +10,6 @@
 <body>
     @include('frontend.header')
 
-
     {{-- Company --}}
     <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-28">
@@ -46,21 +45,21 @@
     {{-- Sample Bill Of Lading with table & Form --}}
     <section class="bg-gray-50">
         <div class="mx-auto max-w-screen-xl px-5 py-20">
-            <div class="grid gap-8 grid-cols-12">
-                <div class="col-span-12 md:col-span-12 lg:col-span-8 flex justify-center overflow-auto max-h-[32rem]">
-                    <div class="overflow-auto px-5 mb-3">
+            <div class="grid gap-8 grid-cols-12 md:grid-cols-6 lg:grid-cols-6">
+                <div class="col-span-12 lg:col-span-4 flex justify-center overflow-auto max-h-[32rem]">
+                    <div class="overflow-auto mb-3 justify-center">
                         <div class="text-center mb-6">
-                            <h1 class="mb-6 text-4xl font-medium text-gray-800">
+                            <h1 class="mb-6 text-3xl lg:text-4xl font-medium text-gray-800">
                                 Sample Bill Of Lading
                             </h1>
-                            <p class="text-md font-medium text-gray-600">
+                            <p class="text-sm lg:text-md font-medium text-gray-600">
                                 View a sample of KATEX TEKSTIL ANONIM SIRKETI. bill of lading data and analyse 
                                 import market and other trading activities. Fill-up our request a demo form to access
                                 full import data of BITUMEN GLOBAL ALLIANZ INC. 
                             </p>
                         </div>
                         <div class="relative sm:rounded-lg">
-                            <table class="responsive-table w-full text-sm text-left rtl:text-right text-gray-500">
+                            <table class="responsive-table lg:w-full text-sm text-left text-gray-500">
                                 <tbody>
                                     <tr class="odd:bg-white even:bg-gray-100">
                                         <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
@@ -171,8 +170,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-12 lg:col-span-4">
-                    <h1 class="mb-6 text-4xl font-medium text-gray-800 text-center">Request A Demo</h1>
+                <div class="col-span-12 lg:col-span-2 px-2">
+                    <h1 class="mb-6 text-4xl font-medium text-gray-800 text-center">
+                        Request A Demo
+                    </h1>
                     <form class="min-w-80" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()" id="contact-form">
                         @csrf
                         <div class="grid md:grid-cols-2 md:gap-6">
@@ -244,7 +245,7 @@
                             </label>
                             <textarea name="message" required id="message" rows="4" placeholder="Describe Your Requirement..." class="block p-2.5 w-full text-sm text-gray-900 font-medium bg-gray-50 rounded-lg border border-gray-300"></textarea>
                         </div>
-                        <button type="submit" class="text-white border border-white hover:bg-white hover:text-glory-red focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-md w-full sm:w-full px-5 py-2.5 text-center">
+                        <button type="submit" class="text-glory-red border border-glory-red hover:bg-white hover:text-glory-red focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-md w-full sm:w-full px-5 py-2.5 text-center">
                             Submit
                         </button>
                     </form>

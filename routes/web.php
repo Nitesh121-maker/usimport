@@ -32,10 +32,13 @@ Route::get('/livedata/search', [PageController::class, 'livedataimport']);
 Route::get('/companydetail', [PageController::class, 'companydetail']);
 
 // livedata
-Route::get('/usa-import-data/import', [ProductController::class, 'productsearch']);
-Route::get('/usa-export-data/export', [ProductController::class, 'productsearch']);
+// Route::get('/usa-import-data/import', [ProductController::class, 'productsearch'])->name('directory.list');
+Route::get('/usa-import-data/import/{letter}', [ProductController::class, 'productsearch'])->name('directory.list');
+Route::get('/usa-export-data/export/{letter}', [ProductController::class, 'productsearch'])->name('directoryexport.list');
+
 Route::get('/search-live-data', [PageController::class, 'searchpage']);
 Route::get('/search-live', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list');
+Route::get('/search-live/{type}/{role}/{description}', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list');
 Route::get('/usa-import', [PageController::class, 'usimportcompany']);
 
 // Contact Form Route

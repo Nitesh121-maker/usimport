@@ -53,7 +53,7 @@
                                 <a href="/search-live-data" class="hover:underline">Search Live Data</a>
                             </li>
                             <li class="mb-4">
-                                <a href="/usa-import-data/import" class="hover:underline">Our Data Directory</a>
+                                <a href="{{route('directory.list',['letter'=> 'a'])}}" class="hover:underline">Our Data Directory</a>
                             </li>
                         </ul>
                     </div>

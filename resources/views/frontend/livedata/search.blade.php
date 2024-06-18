@@ -507,26 +507,33 @@
                                     <div class="relative z-0 w-full mb-5 lg:mb-0 group">
                                         <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option selected>Choose Unloading Port</option>
-                                            <option value="">1703, SAVANNAH, GA</option>
-                                            <option value="">1401, NORFOLK, VA</option>
-                                            <option value="">2811, OAKLAND, CA</option>
-                                            <option value="">1803, JACKSONVILLE, FL</option>
-                                            <option value="">0401, BOSTON, MA</option>
-                                            <option value="">1601, CHARLESTON, SC</option>
-                                        </select>
+                                            @php
+                                                $SelectResult = $result;
+                                            @endphp
+                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
+                                                @foreach ($result as $SelectResult)
+                                                    <option value="{{ $SelectResult->Unloading_Port }}">
+                                                        {{ $SelectResult->Unloading_Port }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select> 
                                     </div>
                                 </div>
                                 <div>
                                     <div class="relative z-0 w-full mb-5 lg:mb-0 group">
                                         <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option selected>Choose Origin Country</option>
-                                            <option value="">CN, China</option>
-                                            <option value="">VN, VIET NAM</option>
-                                            <option value="">MY, MALAYSIA</option>
-                                            <option value="">TW, TAIWAN</option>
-                                            <option value="">TH, THAILAND</option>
-                                            <option value="">JP, JAPAN</option>
-                                            <option value="">AT, AUSTRIA</option>
+                                            @php
+                                                $SelectResult = $result;
+                                            @endphp
+                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
+                                                @foreach ($result as $SelectResult)
+                                                    <option value="{{ $SelectResult->Country }}">
+                                                        {{ $SelectResult->Country }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
@@ -534,13 +541,16 @@
                                     <div class="relative z-0 w-full mb-5 lg:mb-0 group">
                                         <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option selected>Choose HS Code</option>
-                                            <option value="">401170, 401190</option>
-                                            <option value="">401170</option>
-                                            <option value="">730210</option>
-                                            <option value="">400122</option>
-                                            <option value="">902230</option>
-                                            <option value="">940161</option>
-                                            <option value="">400129</option>
+                                            @php
+                                                $SelectResult = $result;
+                                            @endphp
+                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
+                                                @foreach ($result as $SelectResult)
+                                                    <option value="{{ $SelectResult->HS_Code }}">
+                                                        {{ $SelectResult->HS_Code }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                 </div>  
@@ -586,39 +596,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($result) && $result->count() > 0)
-                                    @foreach ($result as $result)
-                                    {{-- @dd($result) --}}
+                                @php
+                                    $Dresult = $result;
+                                @endphp
+                                {{-- @dd($Dresult) --}}
+                                @if(isset($Dresult) && $Dresult->count() > 0)
+                                    @foreach ($Dresult as $Dresult)
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                {{ $result->day }}/{{ $result->month }}/{{ $result->year }}
+                                                {{ $Dresult->day }}/{{ $Dresult->month }}/{{ $Dresult->year }}
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->HS_Code }}
+                                                    {{ $Dresult->HS_Code }}
                                                 </p>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{$result->Product_Description}}</p>
+                                                <p>{{ strip_tags($Dresult->Product_Description) }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Country }}
+                                                    {{ $Dresult->Country }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Unloading_Port }}
+                                                    {{ $Dresult->Unloading_Port }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                               <p>{{ $result->Quantity }}</p>
+                                               <p>{{ $Dresult->Quantity }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity_Unit }}</p>
+                                                <p>{{ $Dresult->Quantity_Unit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Weight_KG }}</p>
+                                                <p>{{ $Dresult->Weight_KG }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
@@ -845,17 +858,13 @@
         </section>
 
         {{-- Card view of table for mobile view --}}
-        {{-- <section class="bg-white block md:hidden lg:hidden">
+        <section class="bg-white block md:hidden lg:hidden">
             <div class="mx-auto mx-w-screen-xl px-5 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @php
-                        // Uncomment this to debug the structure of $result
-                        @dd($result);
+                        $MobileResult = $result;
                     @endphp
-                    @dd($result)
-                    @if(isset($result) && $result->count() > 0)
                     @if(isset($result) && is_iterable($result) && count($result) > 0)
-                        @dd($result);
                         @foreach ($result as $MobileResult)
                             <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
                                 <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
@@ -890,8 +899,8 @@
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            {{ $MobileResult->Product_Description ?? '' }}
+                                        <p class="text-md font-normal text-justify">
+                                            {{ strip_tags($MobileResult->Product_Description ?? '') }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -966,7 +975,7 @@
                     @endif
                 </div>
             </div>
-        </section>--}}
+        </section>
     
     @elseif($type == 'company')
         @if($role == 'import')

@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    function productsearch(Request $request) {
+    function productsearch(Request $request,$letter) {
         $results = [];
+        // dd($letter);
         $validate = $request->validate([
             'role' => 'nullable',
             'product_name' => 'nullable'
@@ -15,12 +16,16 @@ class ProductController extends Controller
         $role = $request['role'];
         $product = $request['product_name'];
 
-        // dd($role);
-
         if($request['role'] == "") {
             $result = DB::table('products')
             ->select('*')
-            // ->where(DB::raw('`product_name`'), 'like', $product . '%')
+            ->where('product_name', 'like', $letter . '%')
+            ->limit(15)
+            ->get();
+
+            $companyresult = DB::table('products')
+            ->select('*')
+            ->where('company_name', 'like', $letter . '%')
             ->limit(15)
             ->get();
 
@@ -28,10 +33,12 @@ class ProductController extends Controller
                 'frontend.import-data.import.index',
                 [
                     'result' => $result, 
+                    'companyresult' => $companyresult,
+                    'activeLetter' => $letter,
+                    'role' => $role
                 ]
             );
-        }
-        elseif($request['role'] == "import") {
+        } elseif($request['role'] == "import") {
             $result = DB::table('products')
             ->select('*')
             // ->where(DB::raw('`product_name`'), 'like', $product . '%')
@@ -44,8 +51,7 @@ class ProductController extends Controller
                     'result' => $result, 
                 ]
             );
-        }
-        elseif($request['role'] == "export") {
+        } elseif($request['role'] == "export") {
             $result = DB::table('products')
             ->select('*')
             ->where(DB::raw('`product_name`'))

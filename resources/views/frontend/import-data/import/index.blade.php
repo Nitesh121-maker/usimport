@@ -56,6 +56,7 @@
                     Browse Our Data Directory
                 </h1>
                 <div class="col-span-1">
+                    {{-- @dd($role) --}}
                     <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2" id="ButtonTab" data-tabs-toggle="#ButtonTab" role="tablist">
                         <li class="flex justify-end items-center text-center" role="presentation">
                             <button class="active text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:text-gray-600 hover:bg-glory-blue hover:text-white aria-selected:bg-glory-blue aria-selected:text-white aria-selected:border-glory-blue" id="import-tab" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
@@ -67,6 +68,15 @@
                                 Export
                             </button>
                         </li>
+                        {{-- @if ($role == 'import')
+                            <a href="{{ route('directory.list',['letter'=>'a']) }}" class="active text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:text-gray-600 hover:bg-glory-blue hover:text-white aria-selected:bg-glory-blue aria-selected:text-white aria-selected:border-glory-blue" id="import-tab" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                Import
+                            </a>
+                        @else
+                            <a href="{{ route('directoryexport.list',['letter'=>'a']) }}" class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:text-gray-600 hover:bg-glory-blue hover:text-white aria-selected:bg-glory-blue aria-selected:text-white aria-selected:border-glory-blue" id="import-tab" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                Export
+                            </a>
+                        @endif --}}
                     </ul>
                     {{-- <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2">
                         <li class="flex justify-end items-center text-center" id="usa-import">
@@ -96,156 +106,33 @@
                         US Product Wise Import Data
                     </h1>
                 </div>
-                <div class="flex justify-start lg:justify-center px-2 py-3 max-w-6xl lg:max-w-full overflow-auto">
-                    <nav class="flex mb-6" aria-label="Page navigation example">
-                        <ul class="flex -space-x-px text-base h-10">
-                            @foreach(range('A', 'Z') as $letter)
-                                <li>
-                                    <a href="{{ route('product.list', ['letter' => $letter]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                        {{ $letter }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                        {{-- <ul class="flex -space-x-px text-base h-10">
-                            <li>
-                                <a href="#" aria-current="page" class="flex items-center justify-center px-4 h-10 text-glory-blue border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    A
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    B
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    C
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    D
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    E
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    F
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    G
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    H
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    I
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    J
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    K
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    L
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    M
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    N
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    O
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    P
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    Q
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    R
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    S
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    T
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    U
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    V
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    W
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    X
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    Y
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
-                                    Z
-                                </a>
-                            </li>
-                        </ul> --}}
-                    </nav>
-                </div>
             </div>
+            {{-- US Product --}}
             
             <div id="ButtonTab">
                 {{-- Import Product Tab --}}
                 <div id="import" role="tabpanel" aria-labelledby="import-tab">
+                    <div class="flex justify-start lg:justify-center px-2 py-3 max-w-6xl lg:max-w-full overflow-auto">
+                        <nav class="flex mb-6" aria-label="Page navigation example">
+                            <ul class="flex -space-x-px text-base h-10">
+                                @foreach(range('A', 'Z') as $letter)
+                                   @if ($letter == Str::upper($activeLetter))
+                                       <li class="active">
+                                            <a href="{{ route('directory.list', ['letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 bg-blue-50 bg-glory-blue text-white">
+                                                {{ $letter }}
+                                            </a>
+                                        </li>
+                                   @else
+                                   <li class="active">
+                                        <a href="{{ route('directory.list', ['letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
+                                            {{ $letter }}
+                                        </a>
+                                    </li>
+                                   @endif
+                                @endforeach
+                            </ul>
+                        </nav>
+                    </div>
                     <div class="px-5 py-8">
                         <div class="grid gap-0 md:gap-2 lg:gap-2 grid-cols-1 md:grid-cols-5 lg:grid-cols-6">
                             <div class="col-span-1">
@@ -292,8 +179,9 @@
                                 {{-- Company Wise Data --}}
                                 <div id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab" class="bg-transparent text-medium text-gray-500 rounded-lg w-full">
                                     <div class="grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+                                        {{-- @dd($result) --}}
                                         @php
-                                            $companyResults = $result;
+                                            $companyResults = $companyresult;
                                         @endphp
                                         @if(isset($companyResults) && count($companyResults) > 0)
                                             @foreach ($companyResults as $companyResults)
@@ -377,6 +265,27 @@
 
                 {{-- Export Product Tab --}}
                 <div id="export" role="tabpanel" aria-labelledby="export-tab">
+                    <div class="flex justify-start lg:justify-center px-2 py-3 max-w-6xl lg:max-w-full overflow-auto">
+                        <nav class="flex mb-6" aria-label="Page navigation example">
+                            <ul class="flex -space-x-px text-base h-10">
+                                @foreach(range('A', 'Z') as $letter)
+                                   @if ($letter == Str::upper($activeLetter))
+                                       <li class="active">
+                                            <a href="{{ route('directoryexport.list', ['letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 bg-blue-50 bg-glory-blue text-white">
+                                                {{ $letter }}
+                                            </a>
+                                        </li>
+                                   @else
+                                   <li class="active">
+                                        <a href="{{ route('directoryexport.list', ['letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
+                                            {{ $letter }}
+                                        </a>
+                                    </li>
+                                   @endif
+                                @endforeach
+                            </ul>
+                        </nav>
+                    </div>
                     <div class="px-5 py-8">
                         <div class="grid gap-0 md:gap-2 lg:gap-2 grid-cols-1 md:grid-cols-5 lg:grid-cols-6">
                             <div class="col-span-1">
@@ -410,7 +319,7 @@
                                             @foreach ($productResults as $productResults)
                                                 <a href="{{ route('product.list', ['type' => 'data', 'role' => 'export', 'description' => $productResults->product_name]) }}" target="_blank">
                                                     <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
-                                                        <p class="text-lg font-medium">
+                                                        <p class="text-lg font-medium capitalize">
                                                             {{ $productResults->product_name }}
                                                         </p>
                                                     </div>
@@ -430,7 +339,7 @@
                                             @foreach ($companyResults as $companyResults)
                                                 <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $companyResults->company_name]) }}" target="_blank">
                                                     <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
-                                                        <p class="text-lg font-medium">
+                                                        <p class="text-lg font-medium capitalize">
                                                             {{$companyResults->company_name}}
                                                         </p>
                                                     </div>
@@ -450,7 +359,7 @@
                                             @foreach ($companyResults as $companyResults)
                                                 <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $companyResults->product_name]) }}" target="_blank">
                                                     <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
-                                                        <p class="text-lg font-medium">
+                                                        <p class="text-lg font-medium capitalize">
                                                             {{$companyResults->product_name}}
                                                         </p>
                                                     </div>
