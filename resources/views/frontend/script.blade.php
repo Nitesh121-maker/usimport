@@ -354,3 +354,86 @@
             getPhoneNumberData();
         });
     </script>
+{{-- Active class --}}
+
+<script>
+    // Import button 
+    function handleimport(){
+        const importbtn = document.getElementById("import-btn");
+        const exporttab = document.getElementById("export-data");
+        const importtab = document.getElementById("import-btn");
+        const exportbtn = document.getElementById("export-btn");
+
+        if (importtab.style.display === 'none') {
+            exporttab.style.display === 'none'
+            importtab.style.display === 'block'
+            importtab.style.display === 'block';
+        } else {
+            importtab.style.display === 'none'
+        }
+    }
+    function handleExport(){
+        const importtab = document.getElementById("import");
+        const exporttab = document.getElementById("export");
+
+        if (exporttab.style.display === 'none') {
+            exporttab.style.display === 'block'
+            importtab.style.display === 'none'
+            exporttab.classList.add('active-main');
+        } else {
+            exporttab.style.display === 'none'
+        }
+    }
+    function handleProductWise() {
+        // console.log('Button Clicked Product');
+        const productWiseDiv = document.getElementById('profile');
+        const companyWiseDiv = document.getElementById('dashboard');
+        const productWiseCompanyDiv = document.getElementById('productwise');
+        const productbtn = document.getElementById('profile-tab');
+        const companybtn = document.getElementById('dashboard-tab');
+        const productWisebtn = document.getElementById('productwise-tab');
+        
+        productWiseDiv.style.display = "block";
+        companyWiseDiv.style.display = "none";
+        productWiseCompanyDiv.style.display = "none";
+        productbtn.classList.add('active');
+        companybtn.classList.remove('active');
+        productWisebtn.classList.remove('active');
+    }
+
+    function handleCompanyWise() {
+        // console.log('Button Clicked Company');
+        const productWiseDiv = document.getElementById('profile');  
+        const companyWiseDiv = document.getElementById('dashboard');
+        const productWiseCompanyDiv = document.getElementById('productwise');
+        const productbtn = document.getElementById('profile-tab');
+        const companybtn = document.getElementById('dashboard-tab');
+        const productWisebtn = document.getElementById('productwise-tab');
+        
+        
+        productWiseDiv.style.display = "none";
+        companyWiseDiv.style.display = "block";
+        productWiseCompanyDiv.style.display = "none";
+        companybtn.classList.add('active');
+        productbtn.classList.remove('active');
+        productWisebtn.classList.remove('active');
+    }
+
+    function handleProductWiseCompany() {
+        // console.log('Button Clicked Product Wise Company');
+        const productWiseDiv = document.getElementById('profile');
+        const companyWiseDiv = document.getElementById('dashboard');
+        const productWiseCompanyDiv = document.getElementById('productwise');
+        const productbtn = document.getElementById('profile-tab');
+        const companybtn = document.getElementById('dashboard-tab');
+        const productWisebtn = document.getElementById('productwise-tab');
+        
+        productWiseDiv.style.display = "none";
+        companyWiseDiv.style.display = "none";
+        productWiseCompanyDiv.style.display = "block";
+        companybtn.classList.remove('active');
+        productbtn.classList.remove('active');
+        productWisebtn.classList.add('active');
+    }
+
+</script>

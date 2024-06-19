@@ -110,6 +110,14 @@ h5 {
     }
 }
 
+.active-main {
+    background-color: #0A3161 !important;
+    color: white !important;
+}
+.active {
+    background-image: linear-gradient(to bottom right, #B31942, #0A3161) !important;
+    color: white;
+}
   
 
 /* Responsive map */

@@ -6,17 +6,18 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    function productsearch(Request $request,$letter) {
+    function productsearch(Request $request,$role,$letter) {
         $results = [];
-        // dd($letter);
+    
         $validate = $request->validate([
-            'role' => 'nullable',
+            // 'role' => 'nullable',
             'product_name' => 'nullable'
         ]);
-        $role = $request['role'];
+        // $role = $request['role'];
         $product = $request['product_name'];
-
-        if($request['role'] == "") {
+        $activeLetter = $letter;
+        // dd($activeLetter);
+        if($role == "import") {
             $result = DB::table('products')
             ->select('*')
             ->where('product_name', 'like', $letter . '%')
@@ -34,34 +35,35 @@ class ProductController extends Controller
                 [
                     'result' => $result, 
                     'companyresult' => $companyresult,
-                    'activeLetter' => $letter,
+                    'activeLetter' => $activeLetter,
                     'role' => $role
                 ]
             );
-        } elseif($request['role'] == "import") {
-            $result = DB::table('products')
+        } elseif($role == "export") {
+            $result = DB::table('export')
             ->select('*')
-            // ->where(DB::raw('`product_name`'), 'like', $product . '%')
+            ->where(DB::raw('`product_name`'), 'like', $letter . '%')
             ->limit(10)
             ->get();
-
+            $companyresult = DB::table('export')
+            ->select('*')
+            ->where('company_name', 'like', $letter . '%')
+            ->limit(15)
+            ->get();
             return view (
                 'frontend.import-data.import.index',
                 [
-                    'result' => $result, 
+                    'exportresult' => $result, 
+                    'exportactiveLetter' => $letter,
+                    'exportcompanyresult' => $companyresult,
+                    'role' => $role
                 ]
             );
-        } elseif($request['role'] == "export") {
-            $result = DB::table('products')
-            ->select('*')
-            ->where(DB::raw('`product_name`'))
-            ->limit(10)
-            ->get();
-
-            return view (
-                'frontend.import-data.import.index',
-                [
-                    'result' => $result, 
+        } else {
+            # code...
+            return view(
+                'frontend.import-data.import.index',[
+                    'message' => 'Error in retrieving data',
                 ]
             );
         }

@@ -33,8 +33,8 @@ Route::get('/companydetail', [PageController::class, 'companydetail']);
 
 // livedata
 // Route::get('/usa-import-data/import', [ProductController::class, 'productsearch'])->name('directory.list');
-Route::get('/usa-import-data/import/{letter}', [ProductController::class, 'productsearch'])->name('directory.list');
-Route::get('/usa-export-data/export/{letter}', [ProductController::class, 'productsearch'])->name('directoryexport.list');
+Route::get('/usa-import-data/{role}/{letter}', [ProductController::class, 'productsearch'])->name('directory.list');
+Route::get('/usa-export-data/{role}/{letter}', [ProductController::class, 'productsearch'])->name('directoryexport.list');
 
 Route::get('/search-live-data', [PageController::class, 'searchpage']);
 Route::get('/search-live', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list');
