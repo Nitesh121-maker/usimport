@@ -118,6 +118,114 @@ class SearchLiveDataController extends Controller
     //     }
         
     // }
+    function handleForm(Request $request) {
+        $type = $request->input('type');
+        $role = $request->input('role');
+        $description = $request->input('description') ?: '-';
+        $hs_code = $request->input('hs_code') ?: '-';
+
+        if ($hs_code === '-') {
+            $url = route('search', ['type' => $type, 'role' => $role, 'description' => $description]);
+        } else {
+            $url = route('search', ['type' => $type, 'role' => $role, 'description' => $description, 'hs_code' => $hs_code]);
+        }
+
+        return redirect($url);
+    }
+    // Search Live data
+    public function search($type, $role, $description = null,$hs_code = null)
+    {
+        $searched_desc = $description;
+        $searched_hs_code = $hs_code;
+        // dd('HS-Code',$hs_code,'Description',$description);
+        // Your search logic here
+
+        if($type == "data") {
+            if ($role == "import") {
+                $result = DB::table('usa_import')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $description . '%')
+                ->limit(10)
+                ->get();
+
+            } elseif($role == "export") {
+                $result = DB::table('jul')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
+                ->where(DB::raw('Products'), 'LIKE', '%' . $description . '%')
+                ->limit(10)
+                ->get();
+            }
+       
+            $resultsArray = $result->toArray();
+
+            return view(
+                'frontend.livedata.search', 
+                [
+                    'result' => $result, 
+                    'hscode' => $hs_code,
+                    'desc' => $description,
+                    'role' => $role,
+                    'type' => $type
+                ]
+            );
+        } elseif($type == "company") {
+            if ($role == "import") {
+                $result = DB::table('usa_import')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $description . '%')
+                ->limit(12)
+                ->get();
+                
+            } elseif($role == "export") {
+                $result = DB::table('jul')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
+                ->where(DB::raw('Products'), 'LIKE', '%' . $description . '%')
+                ->limit(12)
+                ->get();
+            }
+       
+            return view (
+                'frontend.livedata.search', 
+                [
+                    'result' => $result,
+                    'hscode' => $hs_code,
+                    'desc' => $description, 
+                    'role' => $role,
+                    'type' => $type,
+                ]
+            );
+        }
+    }
+    
+    // Search Filter
+    public function searchFilter($type, $role,$resultDetails, $filterby, $filterdata) {
+        // Handle different filters based on the filterby parameter
+        // dd('Search Filter',$filterdata);
+
+        switch ($filterby) {
+            case 'hs_code':
+                $results = DB::table('usa_import')
+                    ->where('HS_Code', 'like', $filterdata . '%')
+                    ->limit(12)
+                    ->get();
+                break;
+            case 'country':
+                $results = DB::table('usa_import')
+                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                    ->limit(12)
+                    ->get();
+                break;
+            case 'unloading_port':
+                $results = DB::table('usa_import')
+                    ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                    ->limit(12)
+                    ->get();
+                break;
+            default:
                 $results = collect();
         }
         // dd($resultDetails);
