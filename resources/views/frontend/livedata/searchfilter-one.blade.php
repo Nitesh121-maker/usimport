@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @include('frontend.link')
-    <title>Search - US Import Data</title>
+    <title>Filter Search - US Import Data</title>
 </head>
 <body>
     @include('frontend.header')
@@ -412,6 +412,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                         
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
                                         <tr class="bg-white border-b hover:bg-gray-50">
@@ -631,6 +632,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{-- @dd($filterdata1) --}}
                                 @php
                                     $Dresult = $result;
                                 @endphp
@@ -660,10 +662,10 @@
                                             // Port Url
                                             if ($hscode) {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filter1' => $filterdata1]);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filter1' => $filterdata1]);
                                             }
                                         @endphp
                                         

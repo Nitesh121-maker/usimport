@@ -437,3 +437,23 @@
     }
 
 </script>
+{{-- Filter Unloading port --}}
+<script>
+    document.getElementById('large').addEventListener('change', async function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        window.location.href = selectedOption;
+    });
+</script>
+<script>
+    document.getElementById('large-1').addEventListener('change', async function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        window.location.href = selectedOption;
+    });
+</script>
+<script>
+    document.getElementById('large-2').addEventListener('change', async function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        window.location.href = selectedOption;
+    });
+</script>
+    

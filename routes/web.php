@@ -37,8 +37,16 @@ Route::get('/usa-import-data/{role}/{letter}', [ProductController::class, 'produ
 Route::get('/usa-export-data/{role}/{letter}', [ProductController::class, 'productsearch'])->name('directoryexport.list');
 
 Route::get('/search-live-data', [PageController::class, 'searchpage']);
-Route::get('/search-live', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list');
-Route::get('/search-live/{type}/{role}/{description}', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list');
+Route::get('/search-live/{type}/{role}/{description}', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list1');
+Route::get('/search', [SearchLiveDataController::class, 'handleForm'])->name('product.list');
+
+// Route::get('/search/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
+// Route::get('/search-data/{type}/{role}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
+Route::get('/search-data/{type}/{role}/{description?}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
+
+Route::get('/search/{type}/{role}/{searchDetails}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
+Route::get('/search/{type}/{role}/{searchDetails}/{filterby}-{filterdata}/{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
+Route::get('/search/port/{type}/{role}/{searchDetails}/{filter1}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
 Route::get('/usa-import', [PageController::class, 'usimportcompany']);
 
 // Contact Form Route

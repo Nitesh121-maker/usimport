@@ -84,7 +84,7 @@
                     </p>
                 </div>
                 <div class="flex justify-center items-center">
-                    <form class="max-w-screen-xl mx-auto" method="GET" action="{{ url('/search-live')}}" enctype="multipart/form-data">
+                    <form class="max-w-screen-xl mx-auto" method="GET" action="{{ route('product.list') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-2 lg:flex">
                             <select name="role" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg rounded-tl-lg focus:ring-blue-500 focus:border-blue-500">
@@ -92,6 +92,7 @@
                                 <option value="import">Import</option>
                                 <option value="export">Export</option>
                             </select>
+                            <input name="type" type="hidden" value="data">
                             <input name="hs_code" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 lg:rounded-none rounded-tr-lg" placeholder="HS Code"/>
                             <input name="description" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 lg:rounded-none rounded-bl-lg" placeholder="Description"/>
                             <button type="submit" class="text-white bg-blue-600 hover:bg-white hover:text-blue-600 focus:border-glory-red font-medium rounded-none lg:rounded-r-lg rounded-br-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">

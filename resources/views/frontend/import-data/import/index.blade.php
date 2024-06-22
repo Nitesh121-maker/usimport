@@ -160,7 +160,7 @@
                                             @endphp
                                             @if(isset($productResults) && count($productResults) > 0)
                                                 @foreach ($productResults as $productResult)
-                                                    <a href="{{ route('product.list', ['type' => 'data', 'role' => 'import', 'description' => $productResult->product_name]) }}" target="_blank">
+                                                    <a href="{{ route('product.list1', ['type' => 'data', 'role' => 'import', 'description' => $productResult->product_name]) }}" target="_blank">
                                                         <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                             <p class="text-lg font-medium capitalize">
                                                                 {{ $productResult->product_name }}
