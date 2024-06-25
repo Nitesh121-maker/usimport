@@ -446,46 +446,43 @@
                 </div>
                 <div class="flex justify-center">
                     <div>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles.svg')}}" width="100%">
                             Port of Los Angeles 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/chicago.webp')}}" width="100%">
                             Chicago’s O’Hare International Airport 
-                            {{-- <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                            </svg> --}}
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/JFK.svg')}}" width="100%">
                             New York’s JFK International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/houston.svg')}}" width="100%">
                             Port of Houston
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/newark.svg')}}" width="100%">
                             Port of Newark
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/ambassador.webp')}}" width="80%">
                             Detroit’s Ambassador Bridge
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles_inter.svg')}}" width="100%">
                             Los Angeles International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/savannah.svg')}}" width="100%">
                             Port of Savannah
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/huron_bridge.svg')}}" width="100%">
                             Port Huron Blue Water Bridge
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/plaquemines.png')}}" width="100%">
                             Plaquemines Port
                         </button>
@@ -1004,6 +1001,7 @@
                 </div>
             </div>
         </section>
+        {{-- Sample Data --}}
 
         {{-- Benefits --}}
         <section class="bg-white">

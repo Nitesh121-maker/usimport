@@ -45,8 +45,6 @@
                             @else
                                 {{ $role }} Live Data
                             @endif
-                        
-                           
                         </span>
                     </div>
                 </li>
@@ -128,8 +126,7 @@
 
                     <div class="grid grid-cols-2 lg:flex">
                         <select required name="role" id="large-input"  class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg focus:ring-blue-500 focus:border-blue-500">
-                            <option selected>Choose...</option>
-                            <option value="import">Import</option>
+                            <option selected value="import">Import</option>
                             <option value="export">Export</option>
                         </select>
                         <input name="hs_code" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="HS Code"/>
@@ -941,103 +938,101 @@
                                 <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
                                     Shipment No. {{ $loop->iteration }}
                                 </h5>
-                                <div class="grid grid-cols-2">
+                                <div class="grid grid-cols-1">
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Date
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal text-center">
                                             {{ $MobileResult->day ?? '' }}/{{ $MobileResult->month ?? '' }}/{{ $MobileResult->year ?? '' }} 
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             HS Code
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
                                                 {{ $MobileResult->HS_Code ?? '' }}
                                             </a>
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Product Description
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal text-justify">
+                                        <p class="text-md text-center font-normal">
                                             {{ strip_tags($MobileResult->Product_Description ?? '') }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Origin Country
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
                                                 {{ $MobileResult->Country ?? '' }}
                                             </a>
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Unloading Port
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
                                                 {{ $MobileResult->Unloading_Port ?? '' }}
                                             </a>
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Quantity
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal">
                                             {{ $MobileResult->Quantity ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Unit
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal">
                                             {{ $MobileResult->Quantity_Unit ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Weight
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
+                                        <p class="text-md text-center font-normal">
                                             {{ $MobileResult->Weight_KG ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                        <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                             Importer Name
                                         </h1>
                                     </div>
                                     <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
-                                                Importer Name
-                                            </a>
+                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="text-md text-center font-normal text-blue-600 hover:underline">
+                                            Importer Name
                                         </p>
                                     </div>
                                 </div>

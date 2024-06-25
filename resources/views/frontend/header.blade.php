@@ -87,7 +87,7 @@
     <div class="relative p-2 w-full max-w-4xl max-h-full px-5">
       <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 bg-white rounded-lg shadow">
           <div class="flex justify-center items-center">
-              <img src="{{ url('frontend/img/modal-img.png') }}">
+              <img src="{{ url('frontend/img/modal_form.png') }}">
           </div>
           <div>
               <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">

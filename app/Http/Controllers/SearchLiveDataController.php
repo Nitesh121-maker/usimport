@@ -27,7 +27,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
                 ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
+                ->limit(12)
                 ->get();
 
             } elseif($request['role'] == "export") {
@@ -35,7 +35,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
                 ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
+                ->limit(12)
                 ->get();
             }
        
@@ -146,7 +146,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
                 ->where(DB::raw('Product_Description'), 'LIKE', '%' . $description . '%')
-                ->limit(10)
+                ->limit(12)
                 ->get();
 
             } elseif($role == "export") {
@@ -154,7 +154,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
                 ->where(DB::raw('Products'), 'LIKE', '%' . $description . '%')
-                ->limit(10)
+                ->limit(12)
                 ->get();
             }
        

@@ -72,8 +72,7 @@
                     </div>
                     <div class="grid grid-cols-2 lg:flex">
                         <select required name="role" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 rounded-none lg:rounded-l-lg rounded-tl-lg focus:ring-blue-500 focus:border-blue-500">
-                            <option selected>Choose...</option>
-                            <option value="import">Import</option>
+                            <option selected value="import">Import</option>
                             <option value="export">Export</option>
                         </select>
                         <input name="hs_code" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 lg:rounded-none rounded-tr-lg" placeholder="HS Code" />

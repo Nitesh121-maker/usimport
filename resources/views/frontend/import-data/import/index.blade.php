@@ -57,22 +57,41 @@
                 </h1>
                 <div class="col-span-1">
                     {{-- @dd($role) --}}
-                    <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2" id="ButtonTab" data-tabs-toggle="#ButtonTab" role="tablist">
-                        <li class="flex justify-end items-center text-center" role="presentation">
-                            <button
-                            onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
-                            class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:text-gray-600 hover:bg-glory-blue hover:text-white aria-selected:bg-glory-blue aria-selected:text-white aria-selected:border-glory-blue" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
-                                Import
-                            </button>
-                        </li>
-                        <li class="flex justify-start items-center text-center" role="presentation">
-                            <button
-                            onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
-                            class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:text-gray-600 hover:bg-glory-blue hover:text-white aria-selected:bg-glory-blue aria-selected:text-white aria-selected:border-glory-blue" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
-                                Export
-                            </button>
-                        </li>
-                    </ul>
+                    @if($role == "import")
+                        <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2" id="ButtonTab" data-tabs-toggle="#ButtonTab" role="tablist">
+                            <li class="flex justify-end items-center text-center" role="presentation">
+                                <button
+                                onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-200" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                    Import
+                                </button>
+                            </li>
+                            <li class="flex justify-start items-center text-center" role="presentation">
+                                <button
+                                onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 !text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:bg-glory-blue hover:!text-white" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
+                                    Export
+                                </button>
+                            </li>
+                        </ul>
+                    @elseif($role == "export")
+                        <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2" id="ButtonTab" data-tabs-toggle="#ButtonTab" role="tablist">
+                            <li class="flex justify-end items-center text-center" role="presentation">
+                                <button
+                                onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:bg-glory-blue hover:text-white" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                    Import
+                                </button>
+                            </li>
+                            <li class="flex justify-start items-center text-center" role="presentation">
+                                <button
+                                onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-200" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
+                                    Export
+                                </button>
+                            </li>
+                        </ul>
+                    @endif
                     {{-- <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2">
                         <li class="flex justify-end items-center text-center" id="usa-import">
                             <input checked type="radio" id="hosting-small" name="name" value="import" class="hidden peer">

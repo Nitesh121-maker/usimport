@@ -96,15 +96,15 @@
                             <div class="mb-2 flex justify-center lg:justify-start">
                                 <img src="{{url('frontend/img/accurate.png')}}" width="25%">
                             </div>
-                            <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                            <h5 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
                                 Accurate US Trade Data Analysis
                             </h5>
                             <p class="mb-3 text-sm font-normal text-gray-500 text-center lg:text-start">
                                 Our team of experts compiles and analyzes vast amounts of US import-export 
                                 data from various reliable sources to provide our clients with accurate and 
                                 actionable insights. Whether you need information on market trends, competitor 
-                                analysis, or regulatory changes, TradeImeX has got you covered.With TradeImeX, you will get 
-                                hassle-free and easy access to accurate US trade data.
+                                analysis, or regulatory changes, TradeImeX has got you covered.With TradeImeX, 
+                                you will get hassle-free and easy access to accurate US trade data.
                             </p>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                             <div class="mb-2 flex justify-center lg:justify-start">
                                 <img src="{{url('frontend/img/personalized.png')}}" width="20%">
                             </div>
-                            <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                            <h5 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
                                 Personalized Data
                             </h5>
                             <p class="mb-3 text-sm font-normal text-gray-500 text-center lg:text-start">
@@ -132,7 +132,7 @@
                             <div class="mb-2 flex justify-center lg:justify-start">
                                 <img src="{{url('frontend/img/immediate.png')}}" width="20%">
                             </div>
-                            <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                            <h5 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
                                 Immediate results
                             </h5>
                             <p class="mb-3 text-sm font-normal text-gray-500 text-center lg:text-start">

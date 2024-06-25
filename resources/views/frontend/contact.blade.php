@@ -182,7 +182,7 @@
                         </p>
                     </div>
                     <div class="flex items-center justify-center">
-                        <img src="{{('frontend/img/contact_us.png')}}" class="w-full lg:w-3/5 md:w-4/5">
+                        <img src="{{ url('frontend/img/contact_us.png')}}" class="w-full lg:w-3/5 md:w-4/5">
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@
                             <h5 class="mb-2 text-lg md:text-xl font-medium text-gray-900 text-center lg:text-start">
                                 Address
                             </h5>
-                            <p class="mb-3 text-md font-normal text-gray-500 text-center lg:text-start">
+                            <p class="mb-3 text-md font-medium text-gray-500 text-center lg:text-start">
                                 372, 3rd floor, RU BLOCK, Pitampura 110034, New Delhi
                             </p>
                         </div>
@@ -214,9 +214,9 @@
                         <h5 class="mb-2 text-lg md:text-xl font-medium text-gray-900 text-center lg:text-start">
                             Phone
                         </h5>
-                        <p class="mb-3 text-md font-normal text-gray-500 text-center lg:text-start">
-                            +91-7042034462 <br>
-                            +91-9319646667
+                        <p class="mb-3 text-md font-medium text-gray-500 text-center lg:text-start">
+                            <a class="hover:underline" href="tel:+91-7042034462">+91-7042034462</a> <br>
+                            <a class="hover:underline" href="tel:+91-9319646667">+91-9319646667</a>
                         </p>
                     </div>
                 </div>

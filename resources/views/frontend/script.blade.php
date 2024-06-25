@@ -361,13 +361,15 @@
     function handleimport(){
         const importbtn = document.getElementById("import-btn");
         const exporttab = document.getElementById("export-data");
-        const importtab = document.getElementById("import-btn");
-        const exportbtn = document.getElementById("export-btn");
+        // const importtab = document.getElementById("import-btn");
+        // const exportbtn = document.getElementById("export-btn");
 
         if (importtab.style.display === 'none') {
             exporttab.style.display === 'none'
             importtab.style.display === 'block'
             importtab.style.display === 'block';
+            // importtab.classList.add('active-main');
+            // exportbtn.classList.remove('active-main');
         } else {
             importtab.style.display === 'none'
         }
@@ -375,11 +377,14 @@
     function handleExport(){
         const importtab = document.getElementById("import");
         const exporttab = document.getElementById("export");
+        // const importtab = document.getElementById("import-btn");
+        // const exportbtn = document.getElementById("export-btn");
 
         if (exporttab.style.display === 'none') {
             exporttab.style.display === 'block'
             importtab.style.display === 'none'
-            exporttab.classList.add('active-main');
+            // exporttab.classList.add('active-main');
+            // importbtn.classList.remove('active-main');
         } else {
             exporttab.style.display === 'none'
         }
