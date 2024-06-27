@@ -14,7 +14,7 @@ class ContactFormController extends Controller
     //
     public function sendContactForm(Request $request)
     {
-        dd($request); 
+        // dd($request); 
         $validatedData = $request->validate([
             'name'    => 'required',
             'email'   => 'required|email',
@@ -25,6 +25,7 @@ class ContactFormController extends Controller
             // 'recaptcha_response' => 'required',
         ]);
     
+        dd($validatedData);
         // Send the token to Google for verification
         $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => config('services.recaptcha.secret'),

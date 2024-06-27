@@ -44,6 +44,20 @@ h5 {
     font-style: normal;
 }
 
+/* select option */
+.layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+}
+.select2-results__option {
+    color: #555;
+}
+.flag-text {
+    margin-left: 10px;
+}
+
 /* navbar */
 .main-nav {
     -webkit-box-shadow: 0px 5px 10px -10px rgba(0,0,0,0.64);

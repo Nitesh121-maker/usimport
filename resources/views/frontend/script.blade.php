@@ -4,7 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"
         crossorigin="anonymous"></script>
 
-    {{-- Ajax Call For Product ]--}}
+    {{-- Ajax Call For Product ] --}}
     <script>
         $(document).ready(function() {
             $('#importButton').click(function() {
@@ -21,7 +21,7 @@
                     }
                 });
             });
-        
+
             // $('#searchInput').on('keyup', function() {
             //     var value = $(this).val().toLowerCase();
             //     $("#dataBody tr").filter(function() {
@@ -69,27 +69,27 @@
     {{-- Key point Counting Js  --}}
     <script type="text/JavaScript">
         let count = document.querySelectorAll(".count")
-            let arr = Array.from(count)
+                let arr = Array.from(count)
 
-            arr.map(function(item){
-            let startnumber = 0
+                arr.map(function(item){
+                let startnumber = 0
 
-            function counterup(){
-            startnumber++
-            item.innerHTML= startnumber
-            
-            if(startnumber == item.dataset.number){
-                clearInterval(stop)
-            }
-            }
+                function counterup(){
+                startnumber++
+                item.innerHTML= startnumber
+                
+                if(startnumber == item.dataset.number){
+                    clearInterval(stop)
+                }
+                }
 
-            let stop =setInterval(function(){
-            counterup()
-            },50)
+                let stop =setInterval(function(){
+                counterup()
+                },50)
 
-        })
-    </script>
-    
+            })
+        </script>
+
     {{-- Background Connecting js --}}
     <script>
         var canvasContainer = document.getElementById("canvas-container"),
@@ -354,111 +354,111 @@
             getPhoneNumberData();
         });
     </script>
-{{-- Active class --}}
+    {{-- Active class --}}
 
-<script>
-    // Import button 
-    function handleimport(){
-        const importbtn = document.getElementById("import-btn");
-        const exporttab = document.getElementById("export-data");
-        // const importtab = document.getElementById("import-btn");
-        // const exportbtn = document.getElementById("export-btn");
+    <script>
+        // Import button 
+        function handleimport() {
+            const importbtn = document.getElementById("import-btn");
+            const exporttab = document.getElementById("export-data");
+            // const importtab = document.getElementById("import-btn");
+            // const exportbtn = document.getElementById("export-btn");
 
-        if (importtab.style.display === 'none') {
-            exporttab.style.display === 'none'
-            importtab.style.display === 'block'
-            importtab.style.display === 'block';
-            // importtab.classList.add('active-main');
-            // exportbtn.classList.remove('active-main');
-        } else {
-            importtab.style.display === 'none'
+            if (importtab.style.display === 'none') {
+                exporttab.style.display === 'none'
+                importtab.style.display === 'block'
+                importtab.style.display === 'block';
+                // importtab.classList.add('active-main');
+                // exportbtn.classList.remove('active-main');
+            } else {
+                importtab.style.display === 'none'
+            }
         }
-    }
-    function handleExport(){
-        const importtab = document.getElementById("import");
-        const exporttab = document.getElementById("export");
-        // const importtab = document.getElementById("import-btn");
-        // const exportbtn = document.getElementById("export-btn");
 
-        if (exporttab.style.display === 'none') {
-            exporttab.style.display === 'block'
-            importtab.style.display === 'none'
-            // exporttab.classList.add('active-main');
-            // importbtn.classList.remove('active-main');
-        } else {
-            exporttab.style.display === 'none'
+        function handleExport() {
+            const importtab = document.getElementById("import");
+            const exporttab = document.getElementById("export");
+            // const importtab = document.getElementById("import-btn");
+            // const exportbtn = document.getElementById("export-btn");
+
+            if (exporttab.style.display === 'none') {
+                exporttab.style.display === 'block'
+                importtab.style.display === 'none'
+                // exporttab.classList.add('active-main');
+                // importbtn.classList.remove('active-main');
+            } else {
+                exporttab.style.display === 'none'
+            }
         }
-    }
-    function handleProductWise() {
-        // console.log('Button Clicked Product');
-        const productWiseDiv = document.getElementById('profile');
-        const companyWiseDiv = document.getElementById('dashboard');
-        const productWiseCompanyDiv = document.getElementById('productwise');
-        const productbtn = document.getElementById('profile-tab');
-        const companybtn = document.getElementById('dashboard-tab');
-        const productWisebtn = document.getElementById('productwise-tab');
-        
-        productWiseDiv.style.display = "block";
-        companyWiseDiv.style.display = "none";
-        productWiseCompanyDiv.style.display = "none";
-        productbtn.classList.add('active');
-        companybtn.classList.remove('active');
-        productWisebtn.classList.remove('active');
-    }
 
-    function handleCompanyWise() {
-        // console.log('Button Clicked Company');
-        const productWiseDiv = document.getElementById('profile');  
-        const companyWiseDiv = document.getElementById('dashboard');
-        const productWiseCompanyDiv = document.getElementById('productwise');
-        const productbtn = document.getElementById('profile-tab');
-        const companybtn = document.getElementById('dashboard-tab');
-        const productWisebtn = document.getElementById('productwise-tab');
-        
-        
-        productWiseDiv.style.display = "none";
-        companyWiseDiv.style.display = "block";
-        productWiseCompanyDiv.style.display = "none";
-        companybtn.classList.add('active');
-        productbtn.classList.remove('active');
-        productWisebtn.classList.remove('active');
-    }
+        function handleProductWise() {
+            // console.log('Button Clicked Product');
+            const productWiseDiv = document.getElementById('profile');
+            const companyWiseDiv = document.getElementById('dashboard');
+            const productWiseCompanyDiv = document.getElementById('productwise');
+            const productbtn = document.getElementById('profile-tab');
+            const companybtn = document.getElementById('dashboard-tab');
+            const productWisebtn = document.getElementById('productwise-tab');
 
-    function handleProductWiseCompany() {
-        // console.log('Button Clicked Product Wise Company');
-        const productWiseDiv = document.getElementById('profile');
-        const companyWiseDiv = document.getElementById('dashboard');
-        const productWiseCompanyDiv = document.getElementById('productwise');
-        const productbtn = document.getElementById('profile-tab');
-        const companybtn = document.getElementById('dashboard-tab');
-        const productWisebtn = document.getElementById('productwise-tab');
-        
-        productWiseDiv.style.display = "none";
-        companyWiseDiv.style.display = "none";
-        productWiseCompanyDiv.style.display = "block";
-        companybtn.classList.remove('active');
-        productbtn.classList.remove('active');
-        productWisebtn.classList.add('active');
-    }
+            productWiseDiv.style.display = "block";
+            companyWiseDiv.style.display = "none";
+            productWiseCompanyDiv.style.display = "none";
+            productbtn.classList.add('active');
+            companybtn.classList.remove('active');
+            productWisebtn.classList.remove('active');
+        }
 
-</script>
-{{-- Filter Unloading port --}}
-<script>
-    document.getElementById('large').addEventListener('change', async function() {
-        var selectedOption = this.options[this.selectedIndex].value;
-        window.location.href = selectedOption;
-    });
-</script>
-<script>
-    document.getElementById('large-1').addEventListener('change', async function() {
-        var selectedOption = this.options[this.selectedIndex].value;
-        window.location.href = selectedOption;
-    });
-</script>
-<script>
-    document.getElementById('large-2').addEventListener('change', async function() {
-        var selectedOption = this.options[this.selectedIndex].value;
-        window.location.href = selectedOption;
-    });
-</script>
-    
+        function handleCompanyWise() {
+            // console.log('Button Clicked Company');
+            const productWiseDiv = document.getElementById('profile');
+            const companyWiseDiv = document.getElementById('dashboard');
+            const productWiseCompanyDiv = document.getElementById('productwise');
+            const productbtn = document.getElementById('profile-tab');
+            const companybtn = document.getElementById('dashboard-tab');
+            const productWisebtn = document.getElementById('productwise-tab');
+
+
+            productWiseDiv.style.display = "none";
+            companyWiseDiv.style.display = "block";
+            productWiseCompanyDiv.style.display = "none";
+            companybtn.classList.add('active');
+            productbtn.classList.remove('active');
+            productWisebtn.classList.remove('active');
+        }
+
+        function handleProductWiseCompany() {
+            // console.log('Button Clicked Product Wise Company');
+            const productWiseDiv = document.getElementById('profile');
+            const companyWiseDiv = document.getElementById('dashboard');
+            const productWiseCompanyDiv = document.getElementById('productwise');
+            const productbtn = document.getElementById('profile-tab');
+            const companybtn = document.getElementById('dashboard-tab');
+            const productWisebtn = document.getElementById('productwise-tab');
+
+            productWiseDiv.style.display = "none";
+            companyWiseDiv.style.display = "none";
+            productWiseCompanyDiv.style.display = "block";
+            companybtn.classList.remove('active');
+            productbtn.classList.remove('active');
+            productWisebtn.classList.add('active');
+        }
+    </script>
+    {{-- Filter Unloading port --}}
+    <script>
+        document.getElementById('large').addEventListener('change', async function() {
+            var selectedOption = this.options[this.selectedIndex].value;
+            window.location.href = selectedOption;
+        });
+    </script>
+    <script>
+        document.getElementById('large-1').addEventListener('change', async function() {
+            var selectedOption = this.options[this.selectedIndex].value;
+            window.location.href = selectedOption;
+        });
+    </script>
+    <script>
+        document.getElementById('large-2').addEventListener('change', async function() {
+            var selectedOption = this.options[this.selectedIndex].value;
+            window.location.href = selectedOption;
+        });
+    </script>

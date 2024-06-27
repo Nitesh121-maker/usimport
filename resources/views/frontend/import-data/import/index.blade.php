@@ -307,7 +307,7 @@
                         <div class="col-span-1">
                             <ul class="flex-column space-y-4 text-sm font-medium text-gray-500 md:me-4 mb-4 md:mb-0" id="myTab" role="tablist">
                                 <li class="mr-2" role="presentation">
-                                    <button onclick="handleProductWise()" class="tab-link inline-flex items-center justify-center w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">
+                                    <button onclick="handleProductWise()" class="active tab-link inline-flex items-center justify-center w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">
                                         Product Wise Data
                                     </button>
                                 </li>

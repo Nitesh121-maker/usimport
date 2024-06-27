@@ -508,33 +508,33 @@
                         <form action="">
                             <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                 <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                    <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
                                         <label class="mb-2 text-sm font-medium">
-                                            Choose Unloading Port
+                                            Choose HS Code
                                         </label>
-                                        <select  id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Unloading Port</option>
+                                        <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose HS Code</option>
                                             @php
                                                 $SelectResult = $result;
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                   @if ($hscode)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port])}}">
-                                                            {{ $SelectResult->Unloading_Port }}
+                                                    @if ($hscode)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
+                                                            {{ $SelectResult->HS_Code }}
                                                         </option>
-                                                   @else
-                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port])}}">
-                                                            {{ $SelectResult->Unloading_Port }}
+                                                    @else
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
+                                                            {{ $SelectResult->HS_Code }}
                                                         </option>
-                                                   @endif
+                                                    @endif
                                                 @endforeach
                                             @endif
-                                        </select> 
+                                        </select>
                                     </div>
-                                </div>
+                                </div> 
                                 <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                    <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
                                         <label class="mb-2 text-sm font-medium">
                                             Choose Origin Country
                                         </label>
@@ -561,31 +561,31 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                    <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
                                         <label class="mb-2 text-sm font-medium">
-                                            Choose HS Code
+                                            Choose Unloading Port
                                         </label>
-                                        <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose HS Code</option>
+                                        <select  id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option selected>Choose Unloading Port</option>
                                             @php
                                                 $SelectResult = $result;
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
-                                                            {{ $SelectResult->HS_Code }}
+                                                   @if ($hscode)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port])}}">
+                                                            {{ $SelectResult->Unloading_Port }}
                                                         </option>
-                                                    @else
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
-                                                            {{ $SelectResult->HS_Code }}
+                                                   @else
+                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port])}}">
+                                                            {{ $SelectResult->Unloading_Port }}
                                                         </option>
-                                                    @endif
+                                                   @endif
                                                 @endforeach
                                             @endif
-                                        </select>
+                                        </select> 
                                     </div>
-                                </div>  
+                                </div>
                             </div>
                         </form>
                     </div>
