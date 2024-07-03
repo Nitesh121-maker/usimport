@@ -43,11 +43,11 @@ Route::get('/search', [SearchLiveDataController::class, 'handleForm'])->name('pr
 
 // Route::get('/search/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
 // Route::get('/search-data/{type}/{role}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
-Route::get('/search-data/{type}/{role}/{description?}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
+Route::get('/search-datap1/{type}/{role}/{description?}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
 
-Route::get('/search/{type}/{role}/{searchDetails}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
-Route::get('/search/{type}/{role}/{searchDetails}/{filterby}-{filterdata}/{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
-Route::get('/search/port/{type}/{role}/{searchDetails}/{filter1}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
+Route::get('/searchp2/{type}/{role}/{searchDetails}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
+Route::get('/searchp3/{type}/{role}/{searchDetails}/{filterby}-{filterdata}/{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
+Route::get('/searchp4/port/{type}/{role}/{searchDetails}/{filter1}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
 Route::get('/usa-import', [PageController::class, 'usimportcompany']);
 
 // Contact Form Route

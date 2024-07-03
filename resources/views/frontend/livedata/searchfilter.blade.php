@@ -506,28 +506,79 @@
                         <h1 class="text-end text-2xl font-medium">Filter By:</h1>
                     </div>
                     <div class="col-span-5">
-                     
+                        {{-- @dd($result) --}}
                         <form action="">
                             <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                 <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
+                                    <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
+                                        <label class="mb-2 text-sm font-medium">
+                                            Choose HS Code
+                                        </label>
+                                        <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option value="">Choose HS Code</option>
+                                            @php
+                                                $SelectResult = $result;
+                                            @endphp
+                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
+                                                @foreach ($result as $SelectResult)
+                                                    @if ($hscode)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
+                                                            {{ $SelectResult->HS_Code }}
+                                                        </option>
+                                                    @else
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
+                                                            {{ $SelectResult->HS_Code }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div>
+                                    <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
+                                        <label class="mb-2 text-sm font-medium">
+                                            Choose Origin Country
+                                        </label>
+                                        <select id="large-1" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <option value="">Choose Origin Country</option>
+                                            @php
+                                                $SelectResult = $result;
+                                            @endphp
+                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
+                                                @foreach ($result as $SelectResult)
+                                                    @if ($hscode)
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
+                                                            {{ $SelectResult->Country }}
+                                                        </option>
+                                                        @else
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
+                                                            {{ $SelectResult->Country }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
                                         <label class="mb-2 text-sm font-medium">
                                             Choose Unloading Port
                                         </label>
                                         <select  id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Unloading Port</option>
+                                            <option value="">Choose Unloading Port</option>
                                             @php
                                                 $SelectResult = $result;
                                             @endphp
-
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-one',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->Unloading_Port }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter-one',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
+                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->Unloading_Port }}
                                                         </option>
                                                    @endif
@@ -536,59 +587,6 @@
                                         </select> 
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <label class="mb-2 text-sm font-medium">
-                                            Choose Origin Country
-                                        </label>
-                                        <select id="large-1" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Origin Country</option>
-                                            @php
-                                                $SelectResult = $result;
-                                            @endphp
-                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
-                                                @foreach ($result as $SelectResult)
-                                                @if ($hscode)
-                                                    <option value="{{route('search-filter-one',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'country','filterdata'=>$SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
-                                                        {{ $SelectResult->Country }}
-                                                    </option>
-                                                    @else
-                                                    <option value="{{route('search-filter-one',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'country','filterdata'=>$SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
-                                                        {{ $SelectResult->Country }}
-                                                    </option>
-                                                @endif
-
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <label class="mb-2 text-sm font-medium">
-                                            Choose HS Code
-                                        </label>
-                                        <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose HS Code</option>
-                                            @php
-                                                $SelectResult = $result;
-                                            @endphp
-                                            @if(isset($SelectResult) && $SelectResult->count() > 0)
-                                                @foreach ($result as $SelectResult)
-                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-one',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code,'filterdata1'=>$searfilterdata])}}">
-                                                            {{ $SelectResult->HS_Code }}
-                                                        </option>
-                                                    @else
-                                                        <option value="{{route('search-filter-one',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code,'filterdata1'=>$searfilterdata])}}">
-                                                            {{ $SelectResult->HS_Code }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                    </div>
-                                </div>  
                             </div>
                         </form>
                     </div>
