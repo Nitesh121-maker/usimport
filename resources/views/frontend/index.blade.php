@@ -4,7 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>USA Import || US Trade Data</title>
+        {{-- <meta name="keywords"
+            content="us import list, top 10 imports of us, importers in us, us import data,
+            us import data by country, us imports, major us imports, us import data 2024,
+            us live export data, usa import data"
+        /> --}}
+        <meta name="description"
+            content="Discover live US trade data insights with TradeImpeX - your trusted source for 
+            US import-export data. Bridge the gap between US importers and exporters, optimise strategies, 
+            and stay competitive in the global market." 
+        />
+        <title>
+            Explore the live US trade import
+            export data with Tradeimex
+        </title>
         @include('frontend.link')
     </head>
     <body>
@@ -536,7 +549,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/vietnam.png')}}" alt="Egypt">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/vietnam-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Vietnam
                                         <span>
@@ -551,7 +564,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/img/bangladesh.jpg')}}" alt="Bangladesh">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/bangladesh-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Bangladesh
                                         <span>
@@ -566,7 +579,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/turkey_1.jpg')}}" alt="Turkey">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/turkey-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Turkey
                                         <span>
@@ -581,7 +594,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/philipines.jpg')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/philippines-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Philippines
                                         <span>
@@ -596,7 +609,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/indonesia.jpg')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/indonesia-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Indonesia
                                         <span>
@@ -611,7 +624,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/russia_lg.jpg')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/russia-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Russia
                                         <span>
@@ -626,7 +639,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ukraine.jpg')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ukraine-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Ukraine
                                         <span>
@@ -641,7 +654,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ethiopia.png')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ethiopia-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Ethiopia
                                         <span>
@@ -656,7 +669,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ghana.png')}}" alt="">      
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ghana-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Ghana
                                         <span>
@@ -671,7 +684,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/uganda.png')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/uganda-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Uganda
                                         <span>
@@ -686,7 +699,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/mexico.webp')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/mexico-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Mexico
                                         <span>
@@ -701,7 +714,7 @@
                                 <div class="flip-card-front">
                                     <img class="h-auto max-w-32 rounded-lg hover:drop-shadow-2xl" src="{{url('frontend/flag/panama.png')}}" alt="">
                                 </div>
-                                <div class="flex items-center justify-center bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 rounded flip-card-back drop-shadow-xl">
+                                <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/panama-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Panama
                                         <span>

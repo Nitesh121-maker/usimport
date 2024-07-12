@@ -504,7 +504,7 @@
                         <h1 class="text-end text-2xl font-medium">Filter By:</h1>
                     </div>
                     <div class="col-span-5">
-                        {{-- @dd($result) --}}
+                        {{-- @dd($hscode) --}}
                         <form action="">
                             <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                 <div>
@@ -519,13 +519,15 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
-                                                            {{ $SelectResult->HS_Code }}
+                                                {{-- @dd('data import') --}}
+                                                <option value="{{$SelectResult->hsCode}}">{{$SelectResult->hsCode}}</option>
+                                                    @if ($hs_code)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hs_code,'filterby'=>'hsCode','filterdata'=>$SelectResult->hsCode])}}">
+                                                            {{ $SelectResult->hsCode }}
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
-                                                            {{ $SelectResult->HS_Code }}
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hsCode','filterdata'=>$SelectResult->hsCode])}}">
+                                                            {{ $SelectResult->hsCode }}
                                                         </option>
                                                     @endif
                                                 @endforeach
@@ -545,13 +547,13 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                @if ($hscode)
-                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'country','filterdata'=>$SelectResult->Country])}}">
-                                                        {{ $SelectResult->Country }}
+                                                @if ($hs_code)
+                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hs_code,'filterby'=>'country','filterdata'=>$SelectResult->origPort])}}">
+                                                        {{ $SelectResult->origPort }}
                                                     </option>
                                                     @else
-                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'country','filterdata'=>$SelectResult->Country])}}">
-                                                        {{ $SelectResult->Country }}
+                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'country','filterdata'=>$SelectResult->origPort])}}">
+                                                        {{ $SelectResult->origPort }}
                                                     </option>
                                                 @endif
 
@@ -572,13 +574,13 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                   @if ($hscode)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port])}}">
-                                                            {{ $SelectResult->Unloading_Port }}
+                                                   @if ($hs_code)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hs_code,'filterby'=>'unloading_port','filterdata'=>$SelectResult->destPort])}}">
+                                                            {{ $SelectResult->destPort }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->Unloading_Port])}}">
-                                                            {{ $SelectResult->Unloading_Port }}
+                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->destPort])}}">
+                                                            {{ $SelectResult->destPort }}
                                                         </option>
                                                    @endif
                                                 @endforeach
@@ -635,29 +637,29 @@
                                 @if(isset($Dresult) && $Dresult->count() > 0)
                                     @foreach ($Dresult as $Dresult)
                                         @php
-                                            $hs_code = $Dresult->HS_Code;
-                                            $country = $Dresult->Country;
-                                            $unloading_port  = $Dresult->Unloading_Port;
+                                            $hs_code = $Dresult->hsCode;
+                                            $country = $Dresult->origCountry;
+                                            $unloading_port  = $Dresult->destPort;
                                             // Hs code Url
-                                            if ($hscode) {
+                                            if ($hs_code) {
                                                 # code...
-                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
                                             } else {
                                                 # code...
                                                 $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
                                             }
                                             // Country URl
-                                            if ($hscode) {
+                                            if ($hs_code) {
                                                 # code...
-                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country]);
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'country', 'filterdata' => $country]);
                                             } else {
                                                 # code...
                                                 $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country]);
                                             }
                                             // Port Url
-                                            if ($hscode) {
+                                            if ($hs_code) {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
                                             } else {
                                                 # code...
                                                 $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
@@ -666,21 +668,21 @@
                                         
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                {{ $Dresult->day }}/{{ $Dresult->month }}/{{ $Dresult->year }}
+                                                {{ $Dresult->date }}
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 {{-- @dd('hs_code', $hs_code_url) --}}
                                                 <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $Dresult->HS_Code }}
+                                                    {{ $Dresult->hsCode }}
                                                 </a>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ strip_tags($Dresult->Product_Description) }}</p>
+                                                <p>{{ strip_tags($Dresult->prodDesc) }}</p>
                                             </td>
                                             {{-- @dd($result) --}}
                                             <td class="px-6 py-4 align-top">
                                                 <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $Dresult->Country }}
+                                                    {{ $Dresult->origCountry }}
                                                 </a>
                                                 {{-- <a href="{{ route('search-filter', ['type' => $type, 'role' => $role, 'filterby' => 'unloading_port', 'filterdata' => $Dresult->Unloading_Port]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                                     {{ $Dresult->Unloading_Port }}
@@ -688,18 +690,18 @@
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $Dresult->Unloading_Port }}
+                                                    {{ $Dresult->destPort }}
                                                 </a>
                                             </td>                                            
                                             
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                               <p>{{ $Dresult->Quantity }}</p>
+                                               <p>{{ $Dresult->quantity }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $Dresult->Quantity_Unit }}</p>
+                                                <p>{{ $Dresult->quantityUnit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $Dresult->Weight_KG }}</p>
+                                                <p>{{ $Dresult->weight }} {{ $Dresult->weightUnit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">

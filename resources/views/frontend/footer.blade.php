@@ -136,8 +136,8 @@
                                 </label>
                                 <textarea name="message" required id="message" rows="4" placeholder="Describe Your Requirement..." class="block p-2.5 w-full text-sm text-gray-900 font-medium bg-gray-50 rounded-lg border border-gray-300"></textarea>
                             </div>
-                            <button type="submit" class="text-glory-red border border-glory-red hover:bg-glory-red hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-md w-full sm:w-full px-5 py-2.5 text-center">
-                                Submit
+                            <button type="submit" class="text-glory-red border border-glory-red footer-submit focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-md w-full sm:w-full px-5 py-2.5 text-center">
+                                SUBMIT
                             </button>
                         </form>
                     </div>

@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords"
+        content="us import list, top 10 imports of us, importers in us, us import data,
+        us import data by country, us imports, major us imports, us import data 2024,
+        us live export data, usa import data"
+    />
+    <meta name="description"
+        content="Search free live US trade import export & shipment data 
+        now with in tradeimex explore the latest us trade 
+        trends and opportunities now" 
+    />
+    <title>Search live US Import Export & Shipment Data now</title>
     @include('frontend.link')
-    <title>Search Live Data || Tradeimex</title>
 </head>
 <body>
     @include('frontend.header')

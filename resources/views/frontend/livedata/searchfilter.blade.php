@@ -505,8 +505,9 @@
                     <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
                         <h1 class="text-end text-2xl font-medium">Filter By:</h1>
                     </div>
+                    {{-- @dd($resultDetails) --}}
                     <div class="col-span-5">
-                        {{-- @dd($result) --}}
+                        {{-- @dd($resultDetails) --}}
                         <form action="">
                             <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                 <div>
@@ -522,11 +523,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hscode,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_Code,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_Code }}
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_Code])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_Code,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_Code }}
                                                         </option>
                                                     @endif
@@ -548,11 +549,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->Country }}
                                                         </option>
                                                         @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->Country,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->Country }}
                                                         </option>
                                                     @endif
@@ -574,11 +575,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->Unloading_Port }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
+                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->Unloading_Port,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->Unloading_Port }}
                                                         </option>
                                                    @endif
@@ -642,26 +643,26 @@
                                             // Hs code Url
                                             if ($hscode) {
                                                 # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filterdata1'=>$searfilterdata]);
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filterdata1'=>$searfilterdata]);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filterdata1'=>$searfilterdata]);
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filterdata1'=>$searfilterdata]);
                                             }
                                             // Country URl
                                             if ($hscode) {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
                                             } else {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
                                             }
                                             // Port Url
                                             if ($hscode) {
                                                 # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
                                             }
                                         @endphp
                                         

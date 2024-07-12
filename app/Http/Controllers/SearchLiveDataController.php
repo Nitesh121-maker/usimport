@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Hamcrest\Type\IsNumeric;
 use Illuminate\Http\Request;
 
 class SearchLiveDataController extends Controller
@@ -22,12 +23,38 @@ class SearchLiveDataController extends Controller
         // dd($validate);
 
         if($request['type'] == "data") {
+            dd('data');
             if ($request['role'] == "import") {
-                $result = DB::table('usa_import')
+                dd('data');
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_1')
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
                 ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(12)
+                ->limit(10)
+                ->get();
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_test')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_e')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+                $query4 = DB::table('IMP_AMERICA_BL_SEA_f')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+
+                $result = $query1->union($query2)
+                ->union($query3)
+                ->union($query4)
+                ->limit(10)
                 ->get();
 
             } elseif($request['role'] == "export") {
@@ -35,7 +62,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
                 ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
-                ->limit(12)
+                ->limit(10)
                 ->get();
             }
        
@@ -52,13 +79,39 @@ class SearchLiveDataController extends Controller
                 ]
             );
         } elseif($request['type'] == "company") {
+            dd('data');
             if ($request['role'] == "import") {
-                $result = DB::table('usa_import')
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_1')
                 ->select('*')
                 ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
                 ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(12)
+                ->limit(10)
                 ->get();
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_test')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_e')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+                $query4 = DB::table('IMP_AMERICA_BL_SEA_f')
+                ->select('*')
+                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+                ->limit(10)
+                ->get();
+
+                $result = $query1->union($query2)
+                ->union($query3)
+                ->union($query4)
+                ->limit(10)
+                ->get();
+
                 
             } elseif($request['role'] == "export") {
                 $result = DB::table('jul')
@@ -133,7 +186,7 @@ class SearchLiveDataController extends Controller
         return redirect($url);
     }
     // Search Live data
-    public function search($type, $role, $description = null,$hs_code = null)
+    public function search ($type, $role, $description = null,$hs_code = null)
     {
         $searched_desc = $description;
         $searched_hs_code = $hs_code;
@@ -142,12 +195,109 @@ class SearchLiveDataController extends Controller
 
         if($type == "data") {
             if ($role == "import") {
-                $result = DB::table('usa_import')
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_a')
                 ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $description . '%')
-                ->limit(12)
+                ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_b')
+                ->select('*')
+                ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+            
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_c')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                
+                $query4 = DB::table('IMP_AMERICA_BL_SEA_part_e')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                
+                $query5 = DB::table('IMP_AMERICA_BL_SEA_part_f')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query6 = DB::table('IMP_AMERICA_BL_SEA_part_h')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query7 = DB::table('IMP_AMERICA_BL_SEA_part_i')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query8 = DB::table('IMP_AMERICA_BL_SEA_part_j')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query9 = DB::table('IMP_AMERICA_BL_SEA_part_k')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query10 = DB::table('IMP_AMERICA_BL_SEA_part_l')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query11 = DB::table('IMP_AMERICA_BL_SEA_part_m')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query12 = DB::table('IMP_AMERICA_BL_SEA_part_n')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query13 = DB::table('IMP_AMERICA_BL_SEA_part_o')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query14 = DB::table('IMP_AMERICA_BL_SEA_part_p')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query15 = DB::table('IMP_AMERICA_BL_SEA_part_q')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query16 = DB::table('IMP_AMERICA_BL_SEA_part_v')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query17 = DB::table('IMP_AMERICA_BL_SEA_part_w')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+                $query18 = DB::table('IMP_AMERICA_BL_SEA_part_x')
+                    ->select('*')
+                    ->where(DB::raw('`hsCode`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('prodDesc'), 'LIKE', '%' . $description . '%');
+
+                // Combine the queries using union
+                $combinedQuery = $query1->union($query2)
+                    ->union($query3)
+                    ->union($query4)
+                    ->union($query5)
+                    ->union($query6)
+                    ->union($query7)
+                    ->union($query8)
+                    ->union($query9)
+                    ->union($query10)
+                    ->union($query11)
+                    ->union($query12)
+                    ->union($query13)
+                    ->union($query14)
+                    ->union($query15)
+                    ->union($query16)
+                    ->union($query17)
+                    ->union($query18)
+                    ;
+            
+            // Apply the limit and get the results
+            $result = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
                 ->get();
+            
+            // dd($hs_code);
 
             } elseif($role == "export") {
                 $result = DB::table('jul')
@@ -164,7 +314,7 @@ class SearchLiveDataController extends Controller
                 'frontend.livedata.search', 
                 [
                     'result' => $result, 
-                    'hscode' => $hs_code,
+                    'hs_code' => $hs_code,
                     'desc' => $description,
                     'role' => $role,
                     'type' => $type
@@ -204,30 +354,31 @@ class SearchLiveDataController extends Controller
     // Search Filter
     public function searchFilter($type, $role,$resultDetails, $filterby, $filterdata) {
         // Handle different filters based on the filterby parameter
-        // dd('Search Filter',$resultDetails);
+        // dd('type',$type,'role', $role,'resultdetails',$resultDetails,'filterby', $filterby,'filterdata', $filterdata);
         
         if (is_numeric($resultDetails)) {
             $hs_codedetails = $resultDetails;
+            // dd($resultDetails);
             switch ($filterby) {
                 case 'hs_code':
                     $results = DB::table('usa_import')
-                        ->where('Product_Description','like',$hs_codedetails .'%')
+                        ->where('HS_Code','like',$hs_codedetails .'%')
                         ->where('HS_Code', 'like', $filterdata . '%')
-                        ->limit(12)
+                        ->limit(10)
                         ->get();
                     break;
                 case 'country':
                     $results = DB::table('usa_import')
-                        ->where('Product_Description','like',$hs_codedetails .'%')
+                        ->where('HS_Code','like',$hs_codedetails .'%')
                         ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(12)
+                        ->limit(10)
                         ->get();
                     break;
                 case 'unloading_port':
                     $results = DB::table('usa_import')
-                        ->where('Product_Description','like',$hs_codedetails .'%')
+                        ->where('HS_Code','like',$hs_codedetails .'%')
                         ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(12)
+                        ->limit(10)
                         ->get();
                     break;
                 default:
@@ -242,7 +393,7 @@ class SearchLiveDataController extends Controller
                         ->select('*')
                         ->where('Product_Description','like',$descdetails .'%')
                         ->where('HS_Code', 'like', $filterdata . '%')
-                        ->limit(12)
+                        ->limit(10)
                         ->get();
                     break;
                 case 'country':
@@ -250,7 +401,7 @@ class SearchLiveDataController extends Controller
                         ->select('*')
                         ->where('Product_Description','like',$descdetails .'%')
                         ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(12)
+                        ->limit(10)
                         ->get();
                     break;
                 case 'unloading_port':
@@ -258,7 +409,7 @@ class SearchLiveDataController extends Controller
                         ->select('*')
                         ->where('Product_Description','like',$descdetails .'%')
                         ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(12)
+                        ->limit(10)
                         ->get();
                     break;
                 default:
@@ -278,52 +429,103 @@ class SearchLiveDataController extends Controller
             'role'   => $role,
             'hscode' => $filterdata,
             'filterdata' => $filterdata,
+            'resultDetails'=> $resultDetails,
             'searfilterdata' => $filterdata,
             'searchfilterby' => $filterby,
          ]);
     }
     // Search Filter One
-    public function searchFilter1($type, $role,$searchDetails, $filterby,$filterdata, $filterdata1) {
+    public function searchFilter1($type, $role,$searchDetails1,$searchDetails, $filterby,$filterdata, $filterdata1) {
         // Handle different filters based on the filterby parameter
         // dd($filterdata,$filterby,$filterdata1);
-        // dd($filterby);
-        if ($filterby == 'hs_code') {
-            $results = DB::table('usa_import')
-                ->where('HS_Code', 'like', $filterdata . '%')
-                ->where(function($query) use ($filterdata1) {
-                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                })
-                ->limit(12)
-                ->get();
-            // dd('if BlockS');
-        } else if ($filterby == 'country') {
-            $results = DB::table('usa_import')
-                ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                ->where(function($query) use ($filterdata1) {
-                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                })
-                ->limit(12)
-                ->get();
-            // dd('Country Block');
-        } else if ($filterby == 'unloading_port')          {
-            $results = DB::table('usa_import')
-                ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                ->where(function($query) use ($filterdata1) {
-                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                })
-                ->limit(12)
-                ->get();
-           
+        // dd($searchDetails);
+        if (is_numeric($searchDetails1)) {
+            // dd('Numeric bloc');
+            # code...
+            if ($filterby == 'hs_code') {
+                $results = DB::table('usa_import')
+                    ->where('HS_Code', 'like', $filterdata . '%')
+                    ->where(function($query) use ($filterdata1) {
+                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                    })
+                    ->limit(12)
+                    ->get();
+                // dd('if BlockS');
+            } else if ($filterby == 'country') {
+                $results = DB::table('usa_import')
+                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                    ->where(function($query) use ($filterdata1,$searchDetails) {
+                        $query->where('HS_Code', 'like', '%' . $searchDetails . '%')
+                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                    })
+                    ->limit(12)
+                    ->get();
+                // dd('Country Block');
+            } else if ($filterby == 'unloading_port'){
+                // dd($filterdata);
+                $results = DB::table('usa_import')
+                    ->where('Unloading_port', 'LIKE', '%' . $filterdata . '%')
+                    ->where(function($query) use ($filterdata1) {
+                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%');
+                    })
+                    ->limit(12)
+                    ->get();
+               
+            } else {
+                # code...
+                 $results = collect();
+            }
         } else {
             # code...
-             $results = collect();
+            
+            if ($filterby == 'hs_code') {
+                $results = DB::table('usa_import')
+                    ->where('HS_Code', 'like', $filterdata . '%')
+                    ->Where('Product_Description', 'like', '%' . $searchDetails1 . '%')
+                    ->where(function($query) use ($filterdata1,$searchDetails1) {
+                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                    })
+                    ->limit(12)
+                    ->get();
+                dd('if BlockS');
+            } else if ($filterby == 'country') {
+                $results = DB::table('usa_import')
+                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                    ->where('Product_Description', 'like', '%' . $searchDetails1 . '%')
+                    ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                        $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                            //   ->orWhere('Product_Description', 'like', '%' . $searchDetails1 . '%');
+                    })
+                    ->limit(12)
+                    ->get();
+                // dd('Country Block');
+            } else if ($filterby == 'unloading_port')          {
+                $results = DB::table('usa_import')
+                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                    ->Where('Product_Description', 'like', '%' . $searchDetails1 . '%')
+                    ->where(function($query) use ($filterdata1,$searchDetails1) {
+                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                    })
+                    ->limit(12)
+                    ->get();
+               
+            } else {
+                # code...
+                 $results = collect();
+            }
         }
+        
+
 
         
         // switch ($filterby) {
@@ -369,40 +571,120 @@ class SearchLiveDataController extends Controller
             'type'   => $type,
             'role'   => $role,
             'hscode' => $filterdata,
+            'searchDetails1' => $searchDetails1,
             'filterdata' => $filterdata,
             'filterdata1' => $filterdata1
          ]);
     }
 
     // Search Filter two
-public function searchFilter2($type, $role, $searchDetails, $filter1, $filterby, $filterdata) {
+public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $filter1, $filterby, $filterdata) {
     // Check and debug input parameters
-    // dd('SearchDetails', $searchDetails, 'filterdata', $filterdata, 'filterby', $filterby, 'filter1', $filter1);
-    
+    // dd('SearchDetails', $searchDetails, 'filterdata', $filterdata, 'filterby', $filterby, 'filter1', $filter1,'SearchDetails1',$searchDetails1);
+    // dd($searchDetails1);
     // Determine which variable contains HS_Code and which contains Country
     if (is_numeric($searchDetails)) {
         $hs_code = $searchDetails;
-        $country = $filter1;
+        $filter_search = $filter1;
+
     } else {
         $hs_code = $filter1;
-        $country = $searchDetails;
+        $filter_search = $searchDetails;
+        // dd('Else Block');
+
+    }
+    if (is_numeric($searchDetails1)) {
+        # code...
+        // dd('Numeric Bloc');
+        if ($filterby == 'hs_code') {
+            $results = DB::table('usa_import')
+                ->select('*')
+                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                ->where('Country', 'LIKE', '%' . $filter_search . '%')
+                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+                ->limit(12)
+                ->get();
+            // dd('if BlockS');
+        } else if ($filterby == 'country') {
+            // dd('country',$filter_search);
+            $results = DB::table('usa_import')
+                ->select('*')
+                ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+                ->where('Unloading_Port', 'LIKE', '%' . $filter_search . '%')
+                ->limit(12)
+                ->get();
+            // dd('Country Block');
+        } else if ($filterby == 'unloading_port') {
+            $results = DB::table('usa_import')
+                ->select('*')
+                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                ->where('Country', 'LIKE', '%' . $filter_search . '%')
+                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+                ->limit(12)
+                ->get();
+           
+        } else {
+            # code...
+             $results = collect();
+        }
+    } else {
+        # code...
+        if ($filterby == 'hs_code') {
+            $results = DB::table('usa_import')
+                ->select('*')
+                ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                ->where('Country', 'LIKE', '%' . $filter_search . '%')
+                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+                ->limit(12)
+                ->get();
+            dd('if BlockS');
+        } else if ($filterby == 'country') {
+            $results = DB::table('usa_import')
+                ->select('*')
+                ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                ->where('Country', 'LIKE', '%' . $filter_search . '%')
+                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+                ->limit(12)
+                ->get();
+            // dd('Country Block');
+        } else if ($filterby == 'unloading_port') {
+            $results = DB::table('usa_import')
+                ->select('*')
+                ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                ->where('Country', 'LIKE', '%' . $filter_search . '%')
+                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+                ->limit(12)
+                ->get();
+           
+        } else {
+            # code...
+             $results = collect();
+        }
     }
     
     // Handle different filters based on the filterby parameter
-    if ($filterby == 'unloading_port') {
-        $results = DB::table('usa_import')
-            ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-            ->where('Country', 'LIKE', '%' . $country . '%')
-            ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-            ->limit(12)
-            ->get();
-    } else {
-        $results = DB::table('usa_import')
-            ->where('Country', 'LIKE', '%' . $country . '%')
-            ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-            ->limit(12)
-            ->get();
-    }
+    // if ($filterby == 'unloading_port') {
+    //     $results = DB::table('usa_import')
+    //         ->select('*')
+    //         ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+    //         ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+    //         ->where('Country', 'LIKE', '%' . $country . '%')
+    //         ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+    //         ->limit(12)
+    //         ->get();
+    // } else {
+    //     $results = DB::table('usa_import')
+    //         ->select('*')
+    //         ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+    //         ->where('Country', 'LIKE', '%' . $country . '%')
+    //         ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+    //         ->limit(12)
+    //         ->get();
+    // }
     
     // Debugging to verify results
     // dd($results);
@@ -414,6 +696,7 @@ public function searchFilter2($type, $role, $searchDetails, $filter1, $filterby,
         'type' => $type,
         'role' => $role,
         'hscode' => $filterdata,
+        'searchDetails1' => $searchDetails1,
         'filterdata' => $filterdata,
         'filterdata1' => $filter1
     ]);

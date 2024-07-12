@@ -2,10 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="keywords"
+            content="Import Export Data,Export Import Data, Import Export Data Provider, 
+            Export Import Data Provider, Business Intelligence Report, Import Export Trade Data, 
+            Best Market Research, Importers Exporters Data, Buyers List, List of Suppliers, 
+            Trade Data, Best Import Export Data" 
+        />
+        <meta name="robots" content="index, follow" id="robots" />
+        <meta name="description"
+            content="Explore the live us import data with list of all us importers and all 
+            imported product list in detailed information and opportunities  get a free demo data now" 
+        />
         <title>
-            USA Import Data || Tradeimex 
+            US import data  2024 | Top us import products database by country
         </title>
         @include('frontend.link')
     </head>
@@ -66,7 +77,7 @@
                             into US import trends, top US imports, and key markets.
                         </p>
                         <div class="py-6">
-                            <button data-modal-target="authentication-modal"  data-modal-toggle="authentication-modal"  type="button" class="text-white border border-white hover:bg-white hover:text-glory-red font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2">
+                            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"  type="button" class="text-white border border-white hover:bg-white hover:text-red-800 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2">
                                 Request a Demo
                                 <span class="ml-2.5">
                                     <i class="fa-solid fa-circle-arrow-right"></i>
@@ -446,43 +457,43 @@
                 </div>
                 <div class="flex justify-center">
                     <div>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles.svg')}}" width="100%">
                             Port of Los Angeles 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/chicago.webp')}}" width="100%">
                             Chicago’s O’Hare International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/JFK.svg')}}" width="100%">
                             New York’s JFK International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/houston.svg')}}" width="100%">
                             Port of Houston
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/newark.svg')}}" width="100%">
                             Port of Newark
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/ambassador.webp')}}" width="80%">
                             Detroit’s Ambassador Bridge
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles_inter.svg')}}" width="100%">
                             Los Angeles International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/savannah.svg')}}" width="100%">
                             Port of Savannah
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/huron_bridge.svg')}}" width="100%">
                             Port Huron Blue Water Bridge
                         </button>
-                        <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white hover:border-glory-blue border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/plaquemines.png')}}" width="100%">
                             Plaquemines Port
                         </button>
@@ -875,7 +886,7 @@
                     <h1 class="mb-4 text-3xl lg:text-4xl font-medium text-center">
                         Sample US Import Data
                     </h1>
-                    <p class="text-md text-gray-500 font-medium text-center">
+                    <p class="text-md text-gray-500 font-normal text-center">
                         We attain import data from reliable US government organizations, shipping manifests, 
                         and customs ports. Numerous fields are blanketed on these import statistics, inclusive 
                         of HS codes, product descriptions, expenses, quantities, origin and destination 

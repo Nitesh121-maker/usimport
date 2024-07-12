@@ -2,10 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="keywords"
+            content="us export list, top 10 exports of us, exporters in us, us export data, 
+            us export data by country, us exports, major us exports, us export data 2024, 
+            us live export data, usa import data, us customs data, us imports statistics"
+        />
+        <meta name="description"
+            content="Explore the live us Export data with list of 
+            all us Exporters and all exported product list in detailed 
+            information and opportunities  get a free demo data now" 
+        />
         <title>
-            USA Export Data || Tradeimex 
+            US export data 2024 | top us export products database by country
         </title>
         @include('frontend.link')
     </head>
@@ -90,7 +100,7 @@
                             highlighting the top US exports and export partners.
                         </p>
                         <div class="py-6">
-                            <button data-modal-target="authentication-modal"  data-modal-toggle="authentication-modal"  type="button" class="text-white border border-white hover:bg-white hover:text-glory-blue font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2">
+                            <button data-modal-target="authentication-modal"  data-modal-toggle="authentication-modal"  type="button" class="text-white border border-white hover:bg-white  hover:text-red-800 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2">
                                 Request a Demo
                                 <span class="ml-2.5">
                                     <i class="fa-solid fa-circle-arrow-right"></i>

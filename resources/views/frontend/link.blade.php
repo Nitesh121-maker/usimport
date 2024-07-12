@@ -1,8 +1,9 @@
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css','resources/js/app.js']) --}}
 
     {{-- Font Family --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     {{-- For Heading text Noto Sans Serif  font --}}
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     {{-- For all other text raleway font --}}
@@ -16,9 +17,17 @@
 
     <link rel="stylesheet" type="text/css" href="{{url('frontend/css/style.css')}}">
 
+    {{-- tailwind css --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
     <script src="https://www.amcharts.com/lib/3/maps/js/usaHigh.js" type="text/javascript"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js" type="text/javascript"></script>
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6Ld1Ax8pAAAAAJWU_TaW2gMhMvAOeRl885SXqVPT"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RP6MLZ9XFC"></script>
+    <script>
+        function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-RP6MLZ9XFC")
+    </script>
