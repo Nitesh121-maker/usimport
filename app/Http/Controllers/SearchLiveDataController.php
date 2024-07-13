@@ -8,132 +8,132 @@ use Illuminate\Http\Request;
 
 class SearchLiveDataController extends Controller
 {
-    function searchlivedata(Request $request) {
-        $results = [];
-        $validate = $request->validate([
-            'role' => 'nullable',
-            'hs_code' => 'nullable',
-            'description' => 'nullable',
-            'type' => 'nullable'
-        ]);
-        $role = $request['role'];
-        $hscode = $request['hs_code'];
-        $desc = $request['description'];
-        $type = $request['type'];
-        // dd($validate);
+    // function searchlivedata(Request $request) {
+    //     $results = [];
+    //     $validate = $request->validate([
+    //         'role' => 'nullable',
+    //         'hs_code' => 'nullable',
+    //         'description' => 'nullable',
+    //         'type' => 'nullable'
+    //     ]);
+    //     $role = $request['role'];
+    //     $hscode = $request['hs_code'];
+    //     $desc = $request['description'];
+    //     $type = $request['type'];
+    //     // dd($validate);
 
-        if($request['type'] == "data") {
-            dd('data');
-            if ($request['role'] == "import") {
-                dd('data');
-                $query1 = DB::table('IMP_AMERICA_BL_SEA_1')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-                $query2 = DB::table('IMP_AMERICA_BL_SEA_test')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-                $query3 = DB::table('IMP_AMERICA_BL_SEA_e')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-                $query4 = DB::table('IMP_AMERICA_BL_SEA_f')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
+    //     if($request['type'] == "data") {
+    //         dd('data');
+    //         if ($request['role'] == "import") {
+    //             // dd('data');
+    //             $query1 = DB::table('IMP_AMERICA_BL_SEA_1')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //             $query2 = DB::table('IMP_AMERICA_BL_SEA_test')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //             $query3 = DB::table('IMP_AMERICA_BL_SEA_e')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //             $query4 = DB::table('IMP_AMERICA_BL_SEA_f')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
 
-                $result = $query1->union($query2)
-                ->union($query3)
-                ->union($query4)
-                ->limit(10)
-                ->get();
+    //             $result = $query1->union($query2)
+    //             ->union($query3)
+    //             ->union($query4)
+    //             ->limit(10)
+    //             ->get();
 
-            } elseif($request['role'] == "export") {
-                $result = DB::table('jul')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-            }
+    //         } elseif($request['role'] == "export") {
+    //             $result = DB::table('jul')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //         }
        
-            $resultsArray = $result->toArray();
+    //         $resultsArray = $result->toArray();
 
-            return view(
-                'frontend.livedata.search', 
-                [
-                    'result' => $result, 
-                    'hscode' => $hscode,
-                    'desc' => $desc,
-                    'role' => $role,
-                    'type' => $type
-                ]
-            );
-        } elseif($request['type'] == "company") {
-            dd('data');
-            if ($request['role'] == "import") {
-                $query1 = DB::table('IMP_AMERICA_BL_SEA_1')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-                $query2 = DB::table('IMP_AMERICA_BL_SEA_test')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-                $query3 = DB::table('IMP_AMERICA_BL_SEA_e')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
-                $query4 = DB::table('IMP_AMERICA_BL_SEA_f')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
-                ->limit(10)
-                ->get();
+    //         return view(
+    //             'frontend.livedata.search', 
+    //             [
+    //                 'result' => $result, 
+    //                 'hscode' => $hscode,
+    //                 'desc' => $desc,
+    //                 'role' => $role,
+    //                 'type' => $type
+    //             ]
+    //         );
+    //     } elseif($request['type'] == "company") {
+    //         dd('data');
+    //         if ($request['role'] == "import") {
+    //             $query1 = DB::table('IMP_AMERICA_BL_SEA_1')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //             $query2 = DB::table('IMP_AMERICA_BL_SEA_test')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //             $query3 = DB::table('IMP_AMERICA_BL_SEA_e')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
+    //             $query4 = DB::table('IMP_AMERICA_BL_SEA_f')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Product_Description'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(10)
+    //             ->get();
 
-                $result = $query1->union($query2)
-                ->union($query3)
-                ->union($query4)
-                ->limit(10)
-                ->get();
+    //             $result = $query1->union($query2)
+    //             ->union($query3)
+    //             ->union($query4)
+    //             ->limit(10)
+    //             ->get();
 
                 
-            } elseif($request['role'] == "export") {
-                $result = DB::table('jul')
-                ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
-                ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
-                ->limit(12)
-                ->get();
-            }
+    //         } elseif($request['role'] == "export") {
+    //             $result = DB::table('jul')
+    //             ->select('*')
+    //             ->where(DB::raw('`HS_Code`'), 'like', $hscode . '%')
+    //             ->where(DB::raw('Products'), 'LIKE', '%' . $desc . '%')
+    //             ->limit(12)
+    //             ->get();
+    //         }
        
-            return view (
-                'frontend.livedata.search', 
-                [
-                    'result' => $result, 
-                    'hscode' => $hscode,
-                    'desc' => $desc, 
-                    'role' => $role,
-                    'type' => $type
-                ]
-            );
-        }
-    }
+    //         return view (
+    //             'frontend.livedata.search', 
+    //             [
+    //                 'result' => $result, 
+    //                 'hscode' => $hscode,
+    //                 'desc' => $desc, 
+    //                 'role' => $role,
+    //                 'type' => $type
+    //             ]
+    //         );
+    //     }
+    // }
 
     // Data Fetching
     // function searchlist($description, $hsCode, $role)
@@ -171,7 +171,7 @@ class SearchLiveDataController extends Controller
     //     }
         
     // }
-    function handleForm(Request $request) {
+function handleForm(Request $request) {
         $type = $request->input('type');
         $role = $request->input('role');
         $description = $request->input('description') ?: '-';
@@ -197,18 +197,18 @@ class SearchLiveDataController extends Controller
             if ($role == "import") {
                 $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                 ->select('*')
-                ->where('HS_CODE','like',$hs_codedetails .'%')
-                ->where('HS_CODE', 'like', $filterdata . '%');
+                ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                     ->select('*')
-                    ->where('HS_CODE','like',$hs_codedetails .'%')
-                    ->where('HS_CODE', 'like', $filterdata . '%');
+                    ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                     ->select('*')
-                    ->where('HS_CODE','like',$hs_codedetails .'%')
-                    ->where('HS_CODE', 'like', $filterdata . '%');
+                    ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
 
                 // Combine the queries using union
                 $combinedQuery = $query1
@@ -232,7 +232,7 @@ class SearchLiveDataController extends Controller
             }
        
             $resultsArray = $result->toArray();
-
+            // dd($result);
             return view(
                 'frontend.livedata.search', 
                 [
@@ -310,18 +310,58 @@ class SearchLiveDataController extends Controller
                     ->get();
                     break;
                 case 'country':
-                    $results = DB::table('usa_import')
-                        ->where('HS_Code','like',$hs_codedetails .'%')
-                        ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(10)
-                        ->get();
+                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    ->select('*')
+                    ->where('HS_CODE','like',$hs_codedetails .'%')
+                    ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                    
+                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                        ->select('*')
+                        ->where('HS_CODE','like',$hs_codedetails .'%')
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                
+                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                        ->select('*')
+                        ->where('HS_CODE','like',$hs_codedetails .'%')
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+
+                    // Combine the queries using union
+                    $combinedQuery = $query1
+                        ->union($query2)
+                        ->union($query3)
+                        ;
+                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    ->limit(10)
+                    ->get();
+
                     break;
                 case 'unloading_port':
-                    $results = DB::table('usa_import')
-                        ->where('HS_Code','like',$hs_codedetails .'%')
-                        ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(10)
-                        ->get();
+                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    ->select('*')
+                    ->where('HS_CODE','like',$hs_codedetails .'%')
+                    ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                    
+                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                        ->select('*')
+                        ->where('HS_CODE','like',$hs_codedetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                
+                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                        ->select('*')
+                        ->where('HS_CODE','like',$hs_codedetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+
+                    // Combine the queries using union
+                    $combinedQuery = $query1
+                        ->union($query2)
+                        ->union($query3)
+                        ;
+                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    ->limit(10)
+                    ->get();
+
                     break;
                 default:
                     $results = collect();
@@ -331,28 +371,100 @@ class SearchLiveDataController extends Controller
             $descdetails = $resultDetails;
             switch ($filterby) {
                 case 'hs_code':
-                    $results = DB::table('usa_import')
+                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    ->select('*')
+                    ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                    ->where('HS_CODE', 'like', $filterdata . '%');
+                    
+                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
-                        ->where('Product_Description','like',$descdetails .'%')
-                        ->where('HS_Code', 'like', $filterdata . '%')
-                        ->limit(10)
-                        ->get();
+                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('HS_CODE', 'like', $filterdata . '%');
+                
+                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                        ->select('*')
+                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('HS_CODE', 'like', $filterdata . '%');
+
+                    // Combine the queries using union
+                    $combinedQuery = $query1
+                        ->union($query2)
+                        ->union($query3)
+                        ;
+                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    ->limit(10)
+                    ->get();
+                    // $results = DB::table('usa_import')
+                    //     ->select('*')
+                    //     ->where('Product_Description','like',$descdetails .'%')
+                    //     ->where('HS_Code', 'like', $filterdata . '%')
+                    //     ->limit(10)
+                    //     ->get();
                     break;
                 case 'country':
-                    $results = DB::table('usa_import')
+                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    ->select('*')
+                    ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                    ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                    
+                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
-                        ->where('Product_Description','like',$descdetails .'%')
-                        ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(10)
-                        ->get();
-                    break;
+                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                
+                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                        ->select('*')
+                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+
+                    // Combine the queries using union
+                    $combinedQuery = $query1
+                        ->union($query2)
+                        ->union($query3)
+                        ;
+                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    ->limit(10)
+                    ->get();
+                    // $results = DB::table('usa_import')
+                    //     ->select('*')
+                    //     ->where('Product_Description','like',$descdetails .'%')
+                    //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                    //     ->limit(10)
+                    //     ->get();
+                    // break;
                 case 'unloading_port':
-                    $results = DB::table('usa_import')
+                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    ->select('*')
+                    ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                    ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                    
+                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
-                        ->where('Product_Description','like',$descdetails .'%')
-                        ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                        ->limit(10)
-                        ->get();
+                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                
+                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                        ->select('*')
+                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+
+                    // Combine the queries using union
+                    $combinedQuery = $query1
+                        ->union($query2)
+                        ->union($query3)
+                        ;
+                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    ->limit(10)
+                    ->get();
+                    // $results = DB::table('usa_import')
+                    //     ->select('*')
+                    //     ->where('Product_Description','like',$descdetails .'%')
+                    //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                    //     ->limit(10)
+                    //     ->get();
                     break;
                 default:
                     $results = collect();
