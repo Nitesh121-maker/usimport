@@ -245,12 +245,36 @@ function handleForm(Request $request) {
             );
         } elseif($type == "company") {
             if ($role == "import") {
-                $result = DB::table('usa_import')
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                 ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
-                ->where(DB::raw('Product_Description'), 'LIKE', '%' . $description . '%')
-                ->limit(12)
+                ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                    ->select('*')
+                    ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+            
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                    ->select('*')
+                    ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                    ->union($query2)
+                    ->union($query3)
+                    ;
+                $result = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
                 ->get();
+                // $result = DB::table('usa_import')
+                // ->select('*')
+                // ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
+                // ->where(DB::raw('Product_Description'), 'LIKE', '%' . $description . '%')
+                // ->limit(12)
+                // ->get();
                 
             } elseif($role == "export") {
                 $result = DB::table('jul')
@@ -265,7 +289,7 @@ function handleForm(Request $request) {
                 'frontend.livedata.search', 
                 [
                     'result' => $result,
-                    'hscode' => $hs_code,
+                    'hs_code' => $hs_code,
                     'desc' => $description, 
                     'role' => $role,
                     'type' => $type,
@@ -278,10 +302,10 @@ function handleForm(Request $request) {
     public function searchFilter($type, $role,$resultDetails, $filterby, $filterdata) {
         // Handle different filters based on the filterby parameter
         // dd('type',$type,'role', $role,'resultdetails',$resultDetails,'filterby', $filterby,'filterdata', $filterdata);
-        
+        // dd($resultDetails);
         if (is_numeric($resultDetails)) {
             $hs_codedetails = $resultDetails;
-            // dd($resultDetails);
+            dd($resultDetails);
             switch ($filterby) {
                 case 'hs_code':
                     $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
@@ -497,37 +521,136 @@ function handleForm(Request $request) {
             // dd('Numeric bloc');
             # code...
             if ($filterby == 'hs_code') {
-                $results = DB::table('usa_import')
-                    ->where('HS_Code', 'like', $filterdata . '%')
-                    ->where(function($query) use ($filterdata1) {
-                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                    })
-                    ->limit(12)
-                    ->get();
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where('HS_CODE', 'like', $filterdata . '%')
+                ->where(function($query) use ($filterdata1) {
+                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                });
+                
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->where('HS_CODE', 'like', $filterdata . '%')
+                ->where(function($query) use ($filterdata1) {
+                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                });
+            
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->where('HS_CODE', 'like', $filterdata . '%')
+                ->where(function($query) use ($filterdata1) {
+                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                });
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                    ->union($query2)
+                    ->union($query3)
+                    ;
+                $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
+                ->get();
+                // $results = DB::table('usa_import')
+                //     ->where('HS_Code', 'like', $filterdata . '%')
+                //     ->where(function($query) use ($filterdata1) {
+                //         $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                //     })
+                //     ->limit(10)
+                //     ->get();
                 // dd('if BlockS');
             } else if ($filterby == 'country') {
-                $results = DB::table('usa_import')
-                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                    ->where(function($query) use ($filterdata1,$searchDetails) {
-                        $query->where('HS_Code', 'like', '%' . $searchDetails . '%')
-                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                    })
-                    ->limit(12)
-                    ->get();
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails) {
+                    $query->where('HS_CODE', 'like', '%' . $searchDetails . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                });
+                
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails) {
+                    $query->where('HS_CODE', 'like', '%' . $searchDetails . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                });
+            
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails) {
+                    $query->where('HS_CODE', 'like', '%' . $searchDetails . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                });
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                    ->union($query2)
+                    ->union($query3)
+                    ;
+                $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
+                ->get();
+                // $results = DB::table('usa_import')
+                //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                //     ->where(function($query) use ($filterdata1,$searchDetails) {
+                //         $query->where('HS_Code', 'like', '%' . $searchDetails . '%')
+                //               ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                //     })
+                //     ->limit(12)
+                //     ->get();
                 // dd('Country Block');
             } else if ($filterby == 'unloading_port'){
                 // dd($filterdata);
-                $results = DB::table('usa_import')
-                    ->where('Unloading_port', 'LIKE', '%' . $filterdata . '%')
-                    ->where(function($query) use ($filterdata1) {
-                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%');
-                    })
-                    ->limit(12)
-                    ->get();
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+                ->where(function($query) use ($filterdata1) {
+                    $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%');
+                });
+                
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+                ->where(function($query) use ($filterdata1) {
+                    $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%');
+                });
+            
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+                ->where(function($query) use ($filterdata1) {
+                    $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%');
+                });
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                    ->union($query2)
+                    ->union($query3)
+                    ;
+                $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
+                ->get();
+                // $results = DB::table('usa_import')
+                //     ->where('Unloading_port', 'LIKE', '%' . $filterdata . '%')
+                //     ->where(function($query) use ($filterdata1) {
+                //         $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Country', 'like', '%' . $filterdata1 . '%');
+                //     })
+                //     ->limit(12)
+                //     ->get();
                
             } else {
                 # code...
@@ -537,41 +660,154 @@ function handleForm(Request $request) {
             # code...
             
             if ($filterby == 'hs_code') {
-                $results = DB::table('usa_import')
-                    ->where('HS_Code', 'like', $filterdata . '%')
-                    ->Where('Product_Description', 'like', '%' . $searchDetails1 . '%')
-                    ->where(function($query) use ($filterdata1,$searchDetails1) {
-                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                    })
-                    ->limit(12)
-                    ->get();
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where('HS_CODE', 'like', $filterdata . '%')
+                ->Where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails1) {
+                    $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                });
+                
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->where('HS_CODE', 'like', $filterdata . '%')
+                ->Where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails1) {
+                    $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                });
+            
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->where('HS_CODE', 'like', $filterdata . '%')
+                ->Where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                });
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                    ->union($query2)
+                    ->union($query3)
+                    ;
+                $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
+                ->get();
+                // $results = DB::table('usa_import')
+                //     ->where('HS_Code', 'like', $filterdata . '%')
+                //     ->Where('Product_Description', 'like', '%' . $searchDetails1 . '%')
+                //     ->where(function($query) use ($filterdata1,$searchDetails1) {
+                //         $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                //     })
+                //     ->limit(12)
+                //     ->get();
                 dd('if BlockS');
             } else if ($filterby == 'country') {
-                $results = DB::table('usa_import')
-                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                    ->where('Product_Description', 'like', '%' . $searchDetails1 . '%')
-                    ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
-                        $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
-                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                            //   ->orWhere('Product_Description', 'like', '%' . $searchDetails1 . '%');
-                    })
-                    ->limit(12)
-                    ->get();
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                        //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                });
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                        //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                });
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                        //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                });
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                ->union($query2)
+                ->union($query3)
+                ;
+                $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
+                ->get();
+                // $results = DB::table('usa_import')
+                //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                //     ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                //     ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                //         $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                //               ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                //             //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                //     })
+                //     ->limit(12)
+                //     ->get();
                 // dd('Country Block');
-            } else if ($filterby == 'unloading_port')          {
-                $results = DB::table('usa_import')
-                    ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                    ->Where('Product_Description', 'like', '%' . $searchDetails1 . '%')
-                    ->where(function($query) use ($filterdata1,$searchDetails1) {
-                        $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                              ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
-                    })
-                    ->limit(12)
-                    ->get();
+            } else if ($filterby == 'unloading_port'){
+                $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                        ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                        //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                });
+                $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                        ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                        //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                });
+                $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+                ->where('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%')
+                ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
+                    $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
+                        ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                        //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
+                });
+
+                // Combine the queries using union
+                $combinedQuery = $query1
+                ->union($query2)
+                ->union($query3)
+                ;
+                $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                ->limit(10)
+                ->get();     
+                // $results = DB::table('usa_import')
+                //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                //     ->Where('Product_Description', 'like', '%' . $searchDetails1 . '%')
+                //     ->where(function($query) use ($filterdata1,$searchDetails1) {
+                //         $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
+                //               ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                //     })
+                //     ->limit(12)
+                //     ->get();
                
             } else {
                 # code...
@@ -651,32 +887,104 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
         # code...
         // dd('Numeric Bloc');
         if ($filterby == 'hs_code') {
-            $results = DB::table('usa_import')
-                ->select('*')
-                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                ->where('Country', 'LIKE', '%' . $filter_search . '%')
-                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-                ->limit(12)
-                ->get();
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+            ->select('*')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+            ->select('*')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+            ->select('*')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+
+            $combinedQuery = $query1
+            ->union($query2)
+            ->union($query3)
+            ;
+            $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+            ->limit(10)
+            ->get();   
+            // $results = DB::table('usa_import')
+            //     ->select('*')
+            //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+            //     ->where('Country', 'LIKE', '%' . $filter_search . '%')
+            //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+            //     ->limit(12)
+            //     ->get();
             // dd('if BlockS');
         } else if ($filterby == 'country') {
             // dd('country',$filter_search);
-            $results = DB::table('usa_import')
-                ->select('*')
-                ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-                ->where('Unloading_Port', 'LIKE', '%' . $filter_search . '%')
-                ->limit(12)
-                ->get();
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+            ->select('*')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%');
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+            ->select('*')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%');
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+            ->select('*')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%');
+
+            $combinedQuery = $query1
+            ->union($query2)
+            ->union($query3)
+            ;
+            $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+            ->limit(10)
+            ->get();   
+            // $results = DB::table('usa_import')
+            //     ->select('*')
+            //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
+            //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+            //     ->where('Unloading_Port', 'LIKE', '%' . $filter_search . '%')
+            //     ->limit(12)
+            //     ->get();
             // dd('Country Block');
         } else if ($filterby == 'unloading_port') {
-            $results = DB::table('usa_import')
-                ->select('*')
-                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                ->where('Country', 'LIKE', '%' . $filter_search . '%')
-                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-                ->limit(12)
-                ->get();
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+            ->select('*')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+            ->select('*')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+            ->select('*')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+
+            $combinedQuery = $query1
+            ->union($query2)
+            ->union($query3)
+            ;
+            $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+            ->limit(10)
+            ->get();   
+            // $results = DB::table('usa_import')
+            //     ->select('*')
+            //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+            //     ->where('Country', 'LIKE', '%' . $filter_search . '%')
+            //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+            //     ->limit(12)
+            //     ->get();
            
         } else {
             # code...
@@ -685,34 +993,115 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
     } else {
         # code...
         if ($filterby == 'hs_code') {
-            $results = DB::table('usa_import')
-                ->select('*')
-                ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
-                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                ->where('Country', 'LIKE', '%' . $filter_search . '%')
-                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-                ->limit(12)
-                ->get();
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+
+            $combinedQuery = $query1
+            ->union($query2)
+            ->union($query3)
+            ;
+            $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+            ->limit(10)
+            ->get();   
+            // $results = DB::table('usa_import')
+            //     ->select('*')
+            //     ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+            //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+            //     ->where('Country', 'LIKE', '%' . $filter_search . '%')
+            //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+            //     ->limit(12)
+            //     ->get();
             dd('if BlockS');
         } else if ($filterby == 'country') {
-            $results = DB::table('usa_import')
-                ->select('*')
-                ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
-                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                ->where('Country', 'LIKE', '%' . $filter_search . '%')
-                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-                ->limit(12)
-                ->get();
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+
+            $combinedQuery = $query1
+            ->union($query2)
+            ->union($query3)
+            ;
+            $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+            ->limit(10)
+            ->get(); 
+            // $results = DB::table('usa_import')
+            //     ->select('*')
+            //     ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+            //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+            //     ->where('Country', 'LIKE', '%' . $filter_search . '%')
+            //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+            //     ->limit(12)
+            //     ->get();
             // dd('Country Block');
         } else if ($filterby == 'unloading_port') {
-            $results = DB::table('usa_import')
-                ->select('*')
-                ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
-                ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                ->where('Country', 'LIKE', '%' . $filter_search . '%')
-                ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
-                ->limit(12)
-                ->get();
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+            ->select('*')
+            ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+            ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+
+            $combinedQuery = $query1
+            ->union($query2)
+            ->union($query3)
+            ;
+            $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+            ->limit(10)
+            ->get(); 
+            // $results = DB::table('usa_import')
+            //     ->select('*')
+            //     ->where('Product_Description', 'LIKE','%'.$searchDetails1 .'%')
+            //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+            //     ->where('Country', 'LIKE', '%' . $filter_search . '%')
+            //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
+            //     ->limit(12)
+            //     ->get();
            
         } else {
             # code...

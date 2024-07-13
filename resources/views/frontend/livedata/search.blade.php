@@ -633,20 +633,24 @@
                                 @php
                                     $Dresult = $result;
                                 @endphp
-
+                                {{-- @if ($hs_code)
+                                    @dd("Hs_code block")
+                                @else
+                                    @dd("desc_block")
+                                @endif --}}
                                 @if(isset($Dresult) && $Dresult->count() > 0)
                                     @foreach ($Dresult as $Dresult)
                                         @php
-                                            $hs_code = $Dresult->HS_CODE;
+                                            $res_hs_code = $Dresult->HS_CODE;
                                             $country = $Dresult->ORIGIN_COUNTRY;
                                             $unloading_port  = $Dresult->UNLOADING_PORT;
                                             // Hs code Url
                                             if ($hs_code) {
                                                 # code...
-                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code]);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code]);
                                             }
                                             // Country URl
                                             if ($hs_code) {
