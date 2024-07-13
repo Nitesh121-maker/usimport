@@ -12,7 +12,7 @@
         <meta name="description"
             content="Discover live US trade data insights with TradeImpeX - your trusted source for 
             US import-export data. Bridge the gap between US importers and exporters, optimise strategies, 
-            and stay competitive in the global market." 
+            and stay competitive in the global market."
         />
         <title>
             Explore the live US trade import
