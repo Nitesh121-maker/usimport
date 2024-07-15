@@ -515,18 +515,22 @@
                                         <label class="mb-2 text-sm font-medium">
                                             Choose HS Code
                                         </label>
+                                        
                                         <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Choose HS Code</option>
                                             @php
                                                 $SelectResult = $result;
                                             @endphp
+                                          
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
+                                                   
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE,'filterdata1'=>$searfilterdata])}}">
-                                                            {{ $SelectResult->HS_CODE}}
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
+                                                            {{ $SelectResult->HS_CODE }}                          
+                                                        </option>
                                                     @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @endif
@@ -535,6 +539,7 @@
                                         </select>
                                     </div>
                                 </div> 
+                                {{-- @dd('Filter data') --}}
                                 <div>
                                     <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
                                         <label class="mb-2 text-sm font-medium">
@@ -642,10 +647,10 @@
                                             // Hs code Url
                                             if ($hscode) {
                                                 # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filterdata1'=>$searfilterdata]);
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filterdata1'=>$searfilterdata]);
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
                                             }
                                             // Country URl
                                             if ($hscode) {
@@ -672,10 +677,10 @@
                                             <td class="px-6 py-4 align-top">
                                                 {{-- @dd('hs_code', $hs_code_url) --}}
                                                 <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $Dresult->HS_CODE }}
+                                                    {{ $Dresult->HS_CODE ?? 'null' }}
                                                 </a>
                                             </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top line-clamp-2">
                                                 <p>{{ strip_tags($Dresult->PRODUCT_DESCRIPTION) }}</p>
                                             </td>
                                             {{-- @dd($result) --}}
