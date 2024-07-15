@@ -520,14 +520,14 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                 {{-- @dd('data import') --}}
-                                                <option value="{{$SelectResult->HS_CODE}}">{{$SelectResult->HS_CODE}}</option>
+                                                    {{-- <option value="{{$SelectResult->HS_CODE}}">{{$SelectResult->HS_CODE}}</option> --}}
                                                     @if ($hs_code)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hs_code,'filterby'=>'hsCode','filterdata'=>$SelectResult->HS_CODE])}}">
-                                                            {{ $SelectResult->HS_CODE }}
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $hs_code,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_CODE??'null'])}}">
+                                                            {{ $SelectResult->HS_CODE??'null' }}
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hsCode','filterdata'=>$SelectResult->HS_CODE])}}">
-                                                            {{ $SelectResult->HS_CODE }}
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'searchDetails' => $desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_CODE])}}">
+                                                            {{ $SelectResult->HS_CODE??'null' }}
                                                         </option>
                                                     @endif
                                                 @endforeach
@@ -1071,13 +1071,13 @@
                                     </span>
                                     <a href="/usa-import" target="_blank">
                                         <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
-                                            {{$result->Product_Description}}
+                                            {{$result->PRODUCT_DESCRIPTION}}
                                         </h5>
                                     </a>
-                                    <span class="flex items-center">
+                                    <span class="flex">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
                                         <p class="pl-2 text-lg font-semibold text-red-400">
-                                            {{$result->HS_Code}}
+                                            {{$result->US_IMPORTER_NAME}}
                                         </p>
                                     </span>
                                 </div>

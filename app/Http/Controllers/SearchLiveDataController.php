@@ -305,13 +305,13 @@ function handleForm(Request $request) {
         // dd($resultDetails);
         if (is_numeric($resultDetails)) {
             $hs_codedetails = $resultDetails;
-            dd($resultDetails);
+
             switch ($filterby) {
                 case 'hs_code':
                     $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                    ->select('*')
-                    ->where('HS_CODE','like',$hs_codedetails .'%')
-                    ->where('HS_CODE', 'like', $filterdata . '%');
+                        ->select('*')
+                        ->where('HS_CODE','like',$hs_codedetails .'%')
+                        ->where('HS_CODE', 'like', $filterdata . '%');
                     
                     $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
@@ -335,9 +335,9 @@ function handleForm(Request $request) {
                     break;
                 case 'country':
                     $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                    ->select('*')
-                    ->where('HS_CODE','like',$hs_codedetails .'%')
-                    ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                        ->select('*')
+                        ->where('HS_CODE','like',$hs_codedetails .'%')
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
                     
                     $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
@@ -393,21 +393,22 @@ function handleForm(Request $request) {
         } else {
             // $hs_code = $filter1;
             $descdetails = $resultDetails;
+            // dd($filterdata);
             switch ($filterby) {
                 case 'hs_code':
                     $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                     ->select('*')
-                    ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                    ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
                     ->where('HS_CODE', 'like', $filterdata . '%');
                     
                     $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
                         ->where('HS_CODE', 'like', $filterdata . '%');
                 
                     $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                         ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
                         ->where('HS_CODE', 'like', $filterdata . '%');
 
                     // Combine the queries using union
@@ -419,6 +420,7 @@ function handleForm(Request $request) {
                     ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
                     ->limit(10)
                     ->get();
+                    // dd($results);
                     // $results = DB::table('usa_import')
                     //     ->select('*')
                     //     ->where('Product_Description','like',$descdetails .'%')
@@ -427,20 +429,28 @@ function handleForm(Request $request) {
                     //     ->get();
                     break;
                 case 'country':
+                    // dd('Filter data',$filterdata,'De3scription',$descdetails);
                     $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                     ->select('*')
-                    ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
-                    ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
-                    
+                    ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                    ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                    ->whereNotNull('HS_CODE')
+                    ->whereNotNull('US_IMPORTER_NAME')
+                    ;
+                   
                     $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
                 
                     $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                         ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
 
                     // Combine the queries using union
                     $combinedQuery = $query1
@@ -451,28 +461,35 @@ function handleForm(Request $request) {
                     ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
                     ->limit(10)
                     ->get();
+                    // dd($results);
                     // $results = DB::table('usa_import')
                     //     ->select('*')
                     //     ->where('Product_Description','like',$descdetails .'%')
                     //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
                     //     ->limit(10)
                     //     ->get();
-                    // break;
+                    break;
                 case 'unloading_port':
                     $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                     ->select('*')
-                    ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
-                    ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                    ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                    ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                    ->whereNotNull('HS_CODE')
+                    ->whereNotNull('US_IMPORTER_NAME');
                     
                     $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                         ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
-                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
                 
                     $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                         ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like',$descdetails .'%')
-                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
 
                     // Combine the queries using union
                     $combinedQuery = $query1
@@ -495,7 +512,7 @@ function handleForm(Request $request) {
             }
         }
 
-        // dd($results);
+        // dd($filterdata);
         $searfilterdata = $filterdata;
         $searchfilterby = $filterby;
 
@@ -527,7 +544,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1) {
                     $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
                           ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
@@ -535,7 +554,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1) {
                     $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
                           ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
@@ -543,7 +564,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1) {
                     $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
                           ->orWhere('Country', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
 
                 // Combine the queries using union
@@ -572,7 +595,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails) {
                     $query->where('HS_CODE', 'like', '%' . $searchDetails . '%')
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
@@ -580,7 +605,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails) {
                     $query->where('HS_CODE', 'like', '%' . $searchDetails . '%')
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
@@ -588,7 +615,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails) {
                     $query->where('HS_CODE', 'like', '%' . $searchDetails . '%')
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
 
                 // Combine the queries using union
@@ -617,21 +646,27 @@ function handleForm(Request $request) {
                 ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
                 ->where(function($query) use ($filterdata1) {
                     $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                 ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
                 ->where(function($query) use ($filterdata1) {
                     $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                 ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
                 ->where(function($query) use ($filterdata1) {
                     $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
 
                 // Combine the queries using union
@@ -667,7 +702,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails1) {
                     $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 });
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
@@ -676,7 +713,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails1) {
                     $query->where('HS_CODE', 'like', '%' . $filterdata1 . '%')
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                          ->whereNotNull('HS_CODE')
+                          ->whereNotNull('US_IMPORTER_NAME');
                 });
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
@@ -685,7 +724,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $filterdata1 . '%')
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                          ->whereNotNull('HS_CODE')
+                          ->whereNotNull('US_IMPORTER_NAME');
                 });
 
                 // Combine the queries using union
@@ -707,7 +748,7 @@ function handleForm(Request $request) {
                 //     })
                 //     ->limit(12)
                 //     ->get();
-                dd('if BlockS');
+                // dd('if BlockS');
             } else if ($filterby == 'country') {
                 $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                 ->select('*')
@@ -716,7 +757,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%')
+                          ->whereNotNull('HS_CODE')
+                          ->whereNotNull('US_IMPORTER_NAME');
                         //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                 });
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
@@ -725,7 +768,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%')
+                          ->whereNotNull('HS_CODE')
+                          ->whereNotNull('US_IMPORTER_NAME');
                         //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                 });
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
@@ -734,7 +779,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
                           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%');
+                          ->orWhere('Unloading_port', 'like', '%' . $filterdata1 . '%')
+                          ->whereNotNull('HS_CODE')
+                          ->whereNotNull('US_IMPORTER_NAME');
                         //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                 });
 
@@ -767,7 +814,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
                         ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
                         //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                 });
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
@@ -776,7 +825,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
                         ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
                         //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                 });
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
@@ -785,7 +836,9 @@ function handleForm(Request $request) {
                 ->where(function($query) use ($filterdata1,$searchDetails,$searchDetails1) {
                     $query->where('HS_Code', 'like', '%' . $searchDetails . '%')                          
                         ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata1 . '%')
-                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%');
+                        ->orWhere('UNLOADING_PORT', 'like', '%' . $filterdata1 . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
                         //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                 });
 
@@ -891,12 +944,16 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
             ->select('*')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
             ->select('*')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
             ->select('*')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
@@ -925,17 +982,23 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
             ->select('*')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
             ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
-            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%');
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
             ->select('*')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
             ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
-            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%');
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
             ->select('*')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata . '%')
             ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
-            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%');
+            ->where('UNLOADING_PORT', 'LIKE', '%' . $filter_search . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
 
             $combinedQuery = $query1
             ->union($query2)
@@ -958,17 +1021,23 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
             ->select('*')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
             ->select('*')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
             ->select('*')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
 
             $combinedQuery = $query1
             ->union($query2)
@@ -998,19 +1067,25 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
 
             $combinedQuery = $query1
             ->union($query2)
@@ -1028,26 +1103,32 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
             //     ->where('HS_Code', 'LIKE', '%' . $hs_code . '%')
             //     ->limit(12)
             //     ->get();
-            dd('if BlockS');
+         
         } else if ($filterby == 'country') {
             $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
 
             $combinedQuery = $query1
             ->union($query2)
@@ -1072,19 +1153,25 @@ public function searchFilter2($type, $role, $searchDetails,$searchDetails1, $fil
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
             $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
             ->select('*')
             ->where('PRODUCT_DESCRIPTION', 'LIKE','%'.$searchDetails1 .'%')
             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
             ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filter_search . '%')
-            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%');
+            ->where('HS_CODE', 'LIKE', '%' . $hs_code . '%')
+            ->whereNotNull('HS_CODE')
+            ->whereNotNull('US_IMPORTER_NAME');
 
             $combinedQuery = $query1
             ->union($query2)
