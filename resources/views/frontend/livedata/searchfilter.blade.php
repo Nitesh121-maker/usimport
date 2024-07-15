@@ -849,34 +849,34 @@
                                     @foreach ($result as $result)
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Act_Arrival_Date }}</p>
+                                                <p>{{ $result->DATE }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->HS_Code }}
+                                                    {{ $result->HS_CODE }}
                                                 </p>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{$result->Products }}</p>
+                                                <p>{{$result->PRODUCT_DESCRIPTION }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Port_of_Departure }}
+                                                    {{ $result->ORIGIN_COUNTRY }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Foreign_Port }}
+                                                    {{ $result->UNLOADING_PORT }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity }}</p>
+                                                <p>{{ $result->QUANTITY }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity_Unit }}</p>
+                                                <p>{{ $result->UNIT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Weight_Unit }}</p>
+                                                <p>{{ $result->WEIGHT_UNIT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">

@@ -847,36 +847,65 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                        @php
+                                            $res_hs_code = $result->HS_CODE;
+                                            $country = $result->ORIGIN_COUNTRY;
+                                            $unloading_port  = $result->UNLOADING_PORT;
+                                            // Hs code Url
+                                            if ($hs_code) {
+                                                # code...
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code??'null']);
+                                            } else {
+                                                # code...
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code??'null']);
+                                            }
+                                            // Country URl
+                                            if ($hs_code) {
+                                                # code...
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'country', 'filterdata' => $country]);
+                                            } else {
+                                                # code...
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country]);
+                                            }
+                                            // Port Url
+                                            if ($hs_code) {
+                                                # code...
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                            } else {
+                                                # code...
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                            }
+                                        @endphp
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Act_Arrival_Date }}</p>
+                                                <p>{{ $result->DATE }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
-                                                <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->HS_Code }}
-                                                </p>
+                                                <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->HS_CODE }}
+                                                </a>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{$result->Products }}</p>
+                                                <p>{{$result->PRODUCT_DESCRIPTION }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Port_of_Departure }}
+                                                    {{ $result->ORIGIN_COUNTRY }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Foreign_Port }}
+                                                    {{ $result->UNLOADING_PORT }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity }}</p>
+                                                <p>{{ $result->QUANTITY }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity_Unit }}</p>
+                                                <p>{{ $result->UNIT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Weight_Unit }}</p>
+                                                <p>{{ $result->WEIGHT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">

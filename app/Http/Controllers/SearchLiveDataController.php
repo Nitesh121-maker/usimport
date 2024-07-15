@@ -171,7 +171,7 @@ class SearchLiveDataController extends Controller
     //     }
         
     // }
-function handleForm(Request $request) {
+    function handleForm(Request $request) {
         $type = $request->input('type');
         $role = $request->input('role');
         $description = $request->input('description') ?: '-';
@@ -190,25 +190,32 @@ function handleForm(Request $request) {
     {
         $searched_desc = $description;
         $searched_hs_code = $hs_code;
-        // dd('HS-Code',$hs_code,'Description',$description);
+        // dd('HS-Code',$searched_hs_code,'Description',$searched_desc);
         // Your search logic here
 
         if($type == "data") {
             if ($role == "import") {
+             
                 $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                 ->select('*')
                 ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
-                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                     ->select('*')
                     ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
-                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                    ->whereNotNull('HS_CODE')
+                    ->whereNotNull('US_IMPORTER_NAME');
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                     ->select('*')
                     ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
-                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                    ->whereNotNull('HS_CODE')
+                    ->whereNotNull('US_IMPORTER_NAME');
 
                 // Combine the queries using union
                 $combinedQuery = $query1
@@ -222,17 +229,16 @@ function handleForm(Request $request) {
             
             // dd($hs_code);
 
-            } elseif($role == "export") {
-                $result = DB::table('jul')
+            } elseif($role == "export") {         
+                $result = DB::table('EXP_AMERICA_BL_SEA')
                 ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
-                ->where(DB::raw('Products'), 'LIKE', '%' . $description . '%')
-                ->limit(12)
+                ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
+                ->orwhere(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE',  $searched_desc . '%')
+                ->limit(10)
                 ->get();
             }
        
             $resultsArray = $result->toArray();
-            // dd($result);
             return view(
                 'frontend.livedata.search', 
                 [
@@ -248,17 +254,23 @@ function handleForm(Request $request) {
                 $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                 ->select('*')
                 ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
-                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME');
                 
                 $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                     ->select('*')
                     ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
-                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                    ->whereNotNull('HS_CODE')
+                    ->whereNotNull('US_IMPORTER_NAME');
             
                 $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                     ->select('*')
                     ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
-                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%');
+                    ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                    ->whereNotNull('HS_CODE')
+                    ->whereNotNull('US_IMPORTER_NAME');
 
                 // Combine the queries using union
                 $combinedQuery = $query1
@@ -277,11 +289,13 @@ function handleForm(Request $request) {
                 // ->get();
                 
             } elseif($role == "export") {
-                $result = DB::table('jul')
+                $result = DB::table('EXP_AMERICA_BL_SEA_part_MAIN')
                 ->select('*')
-                ->where(DB::raw('`HS_Code`'), 'like', $hs_code . '%')
+                ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
                 ->where(DB::raw('Products'), 'LIKE', '%' . $description . '%')
-                ->limit(12)
+                ->whereNotNull('HS_CODE')
+                ->whereNotNull('US_IMPORTER_NAME')
+                ->limit(10)
                 ->get();
             }
        
@@ -303,214 +317,246 @@ function handleForm(Request $request) {
         // Handle different filters based on the filterby parameter
         // dd('type',$type,'role', $role,'resultdetails',$resultDetails,'filterby', $filterby,'filterdata', $filterdata);
         // dd($resultDetails);
-        if (is_numeric($resultDetails)) {
-            $hs_codedetails = $resultDetails;
-
-            switch ($filterby) {
-                case 'hs_code':
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                        ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('HS_CODE', 'like', $filterdata . '%');
+        if ($role == 'import') {
+            # code...
+            if (is_numeric($resultDetails)) {
+                $hs_codedetails = $resultDetails;
+    
+                switch ($filterby) {
+                    case 'hs_code':
+                        $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('HS_CODE', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+                        
+                        $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('HS_CODE', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
                     
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
-                        ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('HS_CODE', 'like', $filterdata . '%');
-                
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                        ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('HS_CODE', 'like', $filterdata . '%');
-
-                    // Combine the queries using union
-                    $combinedQuery = $query1
-                        ->union($query2)
-                        ->union($query3)
-                        ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-                    ->limit(10)
-                    ->get();
-                    break;
-                case 'country':
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                        ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
+                        $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('HS_CODE', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+    
+                        // Combine the queries using union
+                        $combinedQuery = $query1
+                            ->union($query2)
+                            ->union($query3)
+                            ;
+                        $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                        ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                        ->limit(10)
+                        ->get();
+                        break;
+                    case 'country':
+                        $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+                        
+                        $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
                     
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                        $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+    
+                        // Combine the queries using union
+                        $combinedQuery = $query1
+                            ->union($query2)
+                            ->union($query3)
+                            ;
+                        $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                        ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                        ->limit(10)
+                        ->get();
+    
+                        break;
+                    case 'unloading_port':
+                        $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                         ->select('*')
                         ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
-                
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                        ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%');
-
-                    // Combine the queries using union
-                    $combinedQuery = $query1
-                        ->union($query2)
-                        ->union($query3)
-                        ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-                    ->limit(10)
-                    ->get();
-
-                    break;
-                case 'unloading_port':
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                    ->select('*')
-                    ->where('HS_CODE','like',$hs_codedetails .'%')
-                    ->where('UNLOADING_PORT', 'like', $filterdata . '%');
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
+                        
+                        $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
                     
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                        $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                            ->select('*')
+                            ->where('HS_CODE','like',$hs_codedetails .'%')
+                            ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+    
+                        // Combine the queries using union
+                        $combinedQuery = $query1
+                            ->union($query2)
+                            ->union($query3)
+                            ;
+                        $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                        ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                        ->limit(10)
+                        ->get();
+    
+                        break;
+                    default:
+                        $results = collect();
+                }
+            } else {
+                // $hs_code = $filter1;
+                $descdetails = $resultDetails;
+                // dd($filterdata);
+                switch ($filterby) {
+                    case 'hs_code':
+                        $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                         ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
-                
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->where('HS_CODE', 'like', $filterdata . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
+                        
+                        $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                            ->select('*')
+                            ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                            ->where('HS_CODE', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+                    
+                        $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                            ->select('*')
+                            ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                            ->where('HS_CODE', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+    
+                        // Combine the queries using union
+                        $combinedQuery = $query1
+                            ->union($query2)
+                            ->union($query3)
+                            ;
+                        $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                        ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                        ->limit(10)
+                        ->get();
+                        // dd($results);
+                        // $results = DB::table('usa_import')
+                        //     ->select('*')
+                        //     ->where('Product_Description','like',$descdetails .'%')
+                        //     ->where('HS_Code', 'like', $filterdata . '%')
+                        //     ->limit(10)
+                        //     ->get();
+                        break;
+                    case 'country':
+                        // dd('Filter data',$filterdata,'De3scription',$descdetails);
+                        $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
                         ->select('*')
-                        ->where('HS_CODE','like',$hs_codedetails .'%')
-                        ->where('UNLOADING_PORT', 'like', $filterdata . '%');
-
-                    // Combine the queries using union
-                    $combinedQuery = $query1
-                        ->union($query2)
-                        ->union($query3)
+                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME')
                         ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-                    ->limit(10)
-                    ->get();
-
-                    break;
-                default:
-                    $results = collect();
+                       
+                        $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                            ->select('*')
+                            ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                            ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+                    
+                        $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                            ->select('*')
+                            ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
+                            ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+    
+                        // Combine the queries using union
+                        $combinedQuery = $query1
+                            ->union($query2)
+                            ->union($query3)
+                            ;
+                        $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                        ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                        ->limit(10)
+                        ->get();
+                        // dd($results);
+                        // $results = DB::table('usa_import')
+                        //     ->select('*')
+                        //     ->where('Product_Description','like',$descdetails .'%')
+                        //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
+                        //     ->limit(10)
+                        //     ->get();
+                        break;
+                    case 'unloading_port':
+                        $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                        ->select('*')
+                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                        ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                        ->whereNotNull('HS_CODE')
+                        ->whereNotNull('US_IMPORTER_NAME');
+                        
+                        $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                            ->select('*')
+                            ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                            ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+                    
+                        $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                            ->select('*')
+                            ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
+                            ->where('UNLOADING_PORT', 'like', $filterdata . '%')
+                            ->whereNotNull('HS_CODE')
+                            ->whereNotNull('US_IMPORTER_NAME');
+    
+                        // Combine the queries using union
+                        $combinedQuery = $query1
+                            ->union($query2)
+                            ->union($query3)
+                            ;
+                        $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                        ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                        ->limit(10)
+                        ->get();
+                        // $results = DB::table('usa_import')
+                        //     ->select('*')
+                        //     ->where('Product_Description','like',$descdetails .'%')
+                        //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
+                        //     ->limit(10)
+                        //     ->get();
+                        break;
+                    default:
+                        $results = collect();
+                }
             }
         } else {
-            // $hs_code = $filter1;
-            $descdetails = $resultDetails;
-            // dd($filterdata);
-            switch ($filterby) {
-                case 'hs_code':
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                    ->select('*')
-                    ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                    ->where('HS_CODE', 'like', $filterdata . '%');
-                    
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
-                        ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                        ->where('HS_CODE', 'like', $filterdata . '%');
-                
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                        ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                        ->where('HS_CODE', 'like', $filterdata . '%');
-
-                    // Combine the queries using union
-                    $combinedQuery = $query1
-                        ->union($query2)
-                        ->union($query3)
-                        ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-                    ->limit(10)
-                    ->get();
-                    // dd($results);
-                    // $results = DB::table('usa_import')
-                    //     ->select('*')
-                    //     ->where('Product_Description','like',$descdetails .'%')
-                    //     ->where('HS_Code', 'like', $filterdata . '%')
-                    //     ->limit(10)
-                    //     ->get();
-                    break;
-                case 'country':
-                    // dd('Filter data',$filterdata,'De3scription',$descdetails);
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                    ->select('*')
-                    ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
-                    ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME')
-                    ;
-                   
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
-                        ->select('*')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
-                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                        ->whereNotNull('HS_CODE')
-                        ->whereNotNull('US_IMPORTER_NAME');
-                
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                        ->select('*')
-                        ->where('ORIGIN_COUNTRY', 'like', $filterdata . '%')
-                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                        ->whereNotNull('HS_CODE')
-                        ->whereNotNull('US_IMPORTER_NAME');
-
-                    // Combine the queries using union
-                    $combinedQuery = $query1
-                        ->union($query2)
-                        ->union($query3)
-                        ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-                    ->limit(10)
-                    ->get();
-                    // dd($results);
-                    // $results = DB::table('usa_import')
-                    //     ->select('*')
-                    //     ->where('Product_Description','like',$descdetails .'%')
-                    //     ->where('Country', 'LIKE', '%' . $filterdata . '%')
-                    //     ->limit(10)
-                    //     ->get();
-                    break;
-                case 'unloading_port':
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
-                    ->select('*')
-                    ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                    ->where('UNLOADING_PORT', 'like', $filterdata . '%')
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
-                    
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
-                        ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                        ->where('UNLOADING_PORT', 'like', $filterdata . '%')
-                        ->whereNotNull('HS_CODE')
-                        ->whereNotNull('US_IMPORTER_NAME');
-                
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                        ->select('*')
-                        ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                        ->where('UNLOADING_PORT', 'like', $filterdata . '%')
-                        ->whereNotNull('HS_CODE')
-                        ->whereNotNull('US_IMPORTER_NAME');
-
-                    // Combine the queries using union
-                    $combinedQuery = $query1
-                        ->union($query2)
-                        ->union($query3)
-                        ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-                    ->limit(10)
-                    ->get();
-                    // $results = DB::table('usa_import')
-                    //     ->select('*')
-                    //     ->where('Product_Description','like',$descdetails .'%')
-                    //     ->where('Unloading_Port', 'LIKE', '%' . $filterdata . '%')
-                    //     ->limit(10)
-                    //     ->get();
-                    break;
-                default:
-                    $results = collect();
-            }
+            # code...
+            dd('export');
         }
+        
+
 
         // dd($filterdata);
         $searfilterdata = $filterdata;
