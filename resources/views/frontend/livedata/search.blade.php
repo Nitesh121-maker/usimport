@@ -825,7 +825,7 @@
                                         Product Description 
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Origin Country
+                                        Destination Country
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Unloading Port
@@ -847,35 +847,37 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                    {{-- @dd($hs_code) --}}
                                         @php
-                                            $res_hs_code = $result->HS_CODE;
-                                            $country = $result->ORIGIN_COUNTRY;
+                                            $exp_res_hs_code = $result->HS_CODE;
+                                            $country = $result->DESTINATION_COUNTRY;
                                             $unloading_port  = $result->UNLOADING_PORT;
                                             // Hs code Url
                                             if ($hs_code) {
                                                 # code...
-                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code??'null']);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'hs_code', 'filterdata' => $exp_res_hs_code ?? '']);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code??'null']);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $exp_res_hs_code ?? '']);
                                             }
                                             // Country URl
                                             if ($hs_code) {
                                                 # code...
-                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'country', 'filterdata' => $country]);
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'country', 'filterdata' => $country ?? '']);
                                             } else {
                                                 # code...
-                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country]);
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country ?? '']);
                                             }
                                             // Port Url
                                             if ($hs_code) {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port ?? '']);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port ?? '']);
                                             }
                                         @endphp
+                                        {{-- @dd( $port_url) --}}
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                                 <p>{{ $result->DATE }}</p>
@@ -889,14 +891,14 @@
                                                 <p>{{$result->PRODUCT_DESCRIPTION }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->ORIGIN_COUNTRY }}
-                                                </p>
+                                                <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->DESTINATION_COUNTRY }}
+                                                </a>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                                     {{ $result->UNLOADING_PORT }}
-                                                </p>
+                                                </a>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                                 <p>{{ $result->QUANTITY }}</p>
