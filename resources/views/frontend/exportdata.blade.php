@@ -27,7 +27,7 @@
             <nav class="flex px-5 pt-24 lg:pt-24 md:pt-28 pb-4 text-gray-700 bg-white" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <li class="inline-flex items-center">
-                        <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
                             <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
                             </svg>
@@ -39,7 +39,7 @@
                             <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                             </svg>
-                            <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                            <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">
                                 Export Data
                             </span>
                         </div>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <div class="mt-4 flex justify-center items-start">
-                        <img src="{{url('frontend/img/export_data.svg')}}" class="w-4/6 object-contain" />
+                        <img src="{{url('frontend/img/export_data.svg')}}" class="w-4/6 object-contain"/>
                     </div>
                 </div>
             </div>
@@ -281,7 +281,7 @@
                         oils are the biggest US exports with a total export value of $323.17 billion in 2023. 
                         The top 10 exports of the US in 2023 include: 
                     </p>
-                    <ul class="max-w-2xl space-y-1 font-medium text-gray-100 list-disc list-inside dark:text-gray-400">
+                    <ul class="max-w-2xl space-y-1 font-medium text-gray-100 list-disc list-inside">
                         <li>
                             Mineral fuels and mineral oils: $323.17 billion (16.01%)
                         </li>
@@ -342,7 +342,7 @@
                 <div class="mt-6 px-6 max-h-96 overflow-x-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-thumb:rounded scrollbar-thumb-glory-blue scrollbar-track-gray-100">
                     <ol class="relative border-s border-glory-blue">                  
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/canada_r.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -475,7 +475,7 @@
                 </div>
                 <div class="flex justify-center">
                     <div>
-                        <button data-tooltip-target="tooltip-houston" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-houston" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/houston.svg')}}" width="100%">
                             Port of Houston
                         </button>
@@ -484,83 +484,83 @@
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-corpus" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-corpus" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/corpus.png')}}" width="100%">
                             Port of Corpus Christi
                         </button>
-                        <div id="tooltip-corpus" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-corpus" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             108.09 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-louisiana" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-louisiana" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/south.png')}}" width="100%">
                             Port of South Louisiana
                         </button>
-                        <div id="tooltip-louisiana" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-louisiana" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             82.29 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-hampton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-hampton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/hampton.png')}}" width="100%">
                             Port of Hampton Roads Virginia
                         </button>
-                        <div id="tooltip-hampton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-hampton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             40.72 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-beaumont" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-beaumont" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/beaumont.png')}}" width="100%">
                             Port of Beaumont Texas
                         </button>
-                        <div id="tooltip-beaumont" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-beaumont" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             29.61 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-baton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-baton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/ambassador.webp')}}" width="80%">
                             Port of Greater Baton Rouge Louisiana
                         </button>
-                        <div id="tooltip-baton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-baton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             22.60 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-orleans" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-orleans" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/orlena.png')}}" width="100%">
                             Port of New Orleans Louisiana
                         </button>
-                        <div id="tooltip-orleans" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-orleans" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             22.52 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-beach" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-beach" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/california.jpg')}}" width="100%">
                             Port of Long Beach California
                         </button>
-                        <div id="tooltip-beach" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-beach" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             19.13 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-angeles" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-angeles" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles.svg')}}" width="100%">
                             Port of Los Angeles California
                         </button>
-                        <div id="tooltip-angeles" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-angeles" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             16.29 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
-                        <button data-tooltip-target="tooltip-jersey" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button data-tooltip-target="tooltip-jersey" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/new_jersey.png')}}" width="100%">
                             Port of New York and New Jersey Port Newark
                         </button>
-                        <div id="tooltip-jersey" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-jersey" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             15.25 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
@@ -570,7 +570,7 @@
         </section>
         {{-- Top 10 US Import Ports in 2023 --}}
 
-        {{-- Top 10 US Exporter Companies in 2023 --}} 
+        {{-- Top 10 US Exporter Companies in 2023 --}}
         <section class="bg-white">
             <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
                 <div class="flex items-center">
@@ -590,7 +590,7 @@
                 <div class="mt-6 px-6 overflow-x-auto max-h-96">
                     <ol class="relative border-s border-glory-blue">                  
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/exxon.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -598,7 +598,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/chevron.jpg')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -606,7 +606,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/cargill.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -614,7 +614,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/koch.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -622,7 +622,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/ldc.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -630,7 +630,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/dow.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -638,7 +638,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/paper.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -646,7 +646,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/cellmark.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -654,7 +654,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/delong.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -662,7 +662,7 @@
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/apple.png')}}">
                             </span>
                             <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -683,8 +683,8 @@
                         Statistical comparison of US Export data in the last 5 years
                     </h1>
                     <div class="inline-flex items-center justify-center w-full">
-                        <hr class="w-64 h-1 my-8 bg-glory-blue border-0 rounded dark:bg-gray-700">
-                        <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-900">
+                        <hr class="w-64 h-1 my-8 bg-glory-blue border-0 rounded">
+                        <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2">
                             <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                                 <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"/>
                             </svg>
@@ -966,7 +966,7 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="w-4/5 relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <tbody>
                                 <tr class="odd:bg-white even:bg-gray-100">
                                     <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-blue">
@@ -1090,31 +1090,31 @@
                             </h1>
                             <ul class="max-w-full space-y-1 font-medium text-gray-500 list-inside">
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Assess the current status and export performance of the US economy. 
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Generate authentic leads from the US export sector.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Learn what the most recent product demand in the US is.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Monitor your competitors in the US and outperform them.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Develop your marketing strategy using US export data.
@@ -1139,9 +1139,9 @@
                     </h1>
                 </div>
                 <div class="mb-8 py-4 mx-auto">
-                    <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                    <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white text-gray-900 dark:text-white" data-inactive-classes="text-gray-500">
                         <h2 id="accordion-flush-heading-26">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
                                 <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
                                     What is the US export data?
                                 </span>
@@ -1160,7 +1160,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-27">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-27" aria-expanded="false" aria-controls="accordion-flush-body-27">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-27" aria-expanded="false" aria-controls="accordion-flush-body-27">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     How much value of goods did the US export in 2023?
                                 </span>
@@ -1178,7 +1178,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-28">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-28" aria-expanded="false" aria-controls="accordion-flush-body-28">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-28" aria-expanded="false" aria-controls="accordion-flush-body-28">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     What are the biggest US export goods in 2023?
                                 </span>
@@ -1197,7 +1197,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-29">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-29" aria-expanded="false" aria-controls="accordion-flush-body-29">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-29" aria-expanded="false" aria-controls="accordion-flush-body-29">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     Who is the biggest import partner of the US in 2023?
                                 </span>
@@ -1215,7 +1215,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-30">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-30" aria-expanded="false" aria-controls="accordion-flush-body-30">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-30" aria-expanded="false" aria-controls="accordion-flush-body-30">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     What are the major details included in the US export data?
                                 </span>
