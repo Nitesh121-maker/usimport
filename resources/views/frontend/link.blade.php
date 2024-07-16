@@ -18,7 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{url('frontend/css/style.css')}}">
 
     {{-- tailwind css --}}
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
     <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
     <script src="https://www.amcharts.com/lib/3/maps/js/usaHigh.js" type="text/javascript"></script>
