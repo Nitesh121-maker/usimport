@@ -28,7 +28,7 @@
             <nav class="flex px-5 pt-24 lg:pt-24 md:pt-28 pb-4 text-gray-700 bg-white" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <li class="inline-flex items-center">
-                        <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
                             <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
                             </svg>
@@ -40,7 +40,7 @@
                             <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                             </svg>
-                            <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                            <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">
                                 Import Data
                             </span>
                         </div>
@@ -261,7 +261,7 @@
                             demand in the US. Electrical machinery and equipment are the biggest US imports worth 
                             $463.36 billion in 2023. The top 10 US import commodities in 2023 include: 
                         </p>
-                        <ul class="max-w-2xl space-y-1 font-medium text-gray-100 list-disc list-inside dark:text-gray-400">
+                        <ul class="max-w-2xl space-y-1 font-medium text-gray-100 list-disc list-inside">
                             <li>
                                 Electrical machinery and equipment: $463.36 billion (14.61%)
                             </li>
@@ -322,10 +322,10 @@
                 <div class="mt-6 px-6 max-h-96 overflow-x-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-thumb:rounded scrollbar-thumb-glory-red scrollbar-track-gray-100">
                     <ol class="relative border-s border-glory-red">
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/mexico_kp.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Mexico: $480.08 billion (15.1%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -333,10 +333,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/china.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 China: $448.03 billion (14.1%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -344,10 +344,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/canada.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Canada: $431.19 billion (13.6%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -356,10 +356,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/germany.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Germany: $163.08 billion (5.1%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -368,10 +368,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/japan.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Japan: $151.58 billion (4.8%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -379,10 +379,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/south-korea.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 South Korea: $119.72 billion (3.8%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -390,10 +390,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/vietnam.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Vietnam: $118.94 billion (3.7%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -402,10 +402,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/taiwan.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Taiwan: $89.91 billion (2.8%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -414,10 +414,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/india.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 India: $87.28 billion (2.8%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -426,10 +426,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/ireland.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Ireland: $82.71 billion (2.6%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -457,43 +457,43 @@
                 </div>
                 <div class="flex justify-center">
                     <div>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles.svg')}}" width="100%">
                             Port of Los Angeles 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/chicago.webp')}}" width="100%">
                             Chicago’s O’Hare International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/JFK.svg')}}" width="100%">
                             New York’s JFK International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/houston.svg')}}" width="100%">
                             Port of Houston
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/newark.svg')}}" width="100%">
                             Port of Newark
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/ambassador.webp')}}" width="80%">
                             Detroit’s Ambassador Bridge
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles_inter.svg')}}" width="100%">
                             Los Angeles International Airport 
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/savannah.svg')}}" width="100%">
                             Port of Savannah
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/huron_bridge.svg')}}" width="100%">
                             Port Huron Blue Water Bridge
                         </button>
-                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                        <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/plaquemines.png')}}" width="100%">
                             Plaquemines Port
                         </button>
@@ -523,82 +523,82 @@
                 <div class="mt-6 px-6 overflow-x-auto max-h-96">
                     <ol class="relative border-s border-glory-red">                  
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/walmart.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Walmart: 864800 TEU 
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/target.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Target: 590300 TEU
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/home_depot.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Home Depot: 388000 TEU
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/lowe.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Lowe's: 287500 TEU
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/dole_food.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Dole Food: 220200 TEU
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/samsung.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Samsung America: 184800 TEU 
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/family_dollar.jpg')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Family Dollar: 168400 TEU 
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/lg.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 LG Group: 161600 TEU
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/philips.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Philips Electronics: 142900 TEU
                             </h3>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/ikea.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Ikea: 120500 TEU 
                             </h3>
                         </li>
@@ -618,7 +618,7 @@
                     </h1>
                     <div class="inline-flex items-center justify-center w-full">
                         <hr class="w-64 h-1 my-8 bg-glory-red border-0 rounded dark:bg-gray-700">
-                        <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-900">
+                        <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2">
                             <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                                 <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"/>
                             </svg>
@@ -1025,31 +1025,31 @@
                             </h1>
                             <ul class="max-w-full space-y-1 font-medium text-gray-500 list-inside">
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Businesses looking to increase revenue can gain from the US import data.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     US import data is crucial for businesses looking to expand into other markets.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Utilize US import statistics when creating your marketing strategy in the US.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Establish a strong brand identification in the import market in the US.
                                 </li>
                                 <li class="flex items-start">
-                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-red flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Establish long-term goals for your US business and boost return on investment.
@@ -1074,9 +1074,9 @@
                     </h1>
                 </div>
                 <div class="mb-8 py-4 mx-auto">
-                    <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                    <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white text-gray-900" data-inactive-classes="text-gray-500 dark:text-gray-400">
                         <h2 id="accordion-flush-heading-26">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
                                 <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
                                     What is the US import data?
                                 </span>
@@ -1095,7 +1095,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-27">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-27" aria-expanded="false" aria-controls="accordion-flush-body-27">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-27" aria-expanded="false" aria-controls="accordion-flush-body-27">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     How much did the US import in total in 2023?
                                 </span>
@@ -1114,7 +1114,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-28">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-28" aria-expanded="false" aria-controls="accordion-flush-body-28">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-28" aria-expanded="false" aria-controls="accordion-flush-body-28">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     What is the biggest US import commodity in 2023?
                                 </span>
@@ -1133,7 +1133,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-29">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-29" aria-expanded="false" aria-controls="accordion-flush-body-29">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-29" aria-expanded="false" aria-controls="accordion-flush-body-29">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     Who is the biggest import partner of the US in 2023?
                                 </span>
@@ -1151,7 +1151,7 @@
                         </div>
     
                         <h2 id="accordion-flush-heading-30">
-                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-30" aria-expanded="false" aria-controls="accordion-flush-body-30">
+                            <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-30" aria-expanded="false" aria-controls="accordion-flush-body-30">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     How can businesses use US import data to inform their strategies?
                                 </span>

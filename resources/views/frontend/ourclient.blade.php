@@ -15,7 +15,7 @@
         <nav class="flex px-5 pt-24 lg:pt-24 md:pt-28 pb-4 text-gray-700 bg-white" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-                <a href="/" class="inline-flex items-center text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                <a href="/" class="inline-flex items-center text-md font-medium text-gray-700 hover:text-blue-600">
                     <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path 
                             d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
@@ -29,7 +29,7 @@
                     <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                     </svg>
-                    <span class="ms-1 text-md font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                    <span class="ms-1 text-md font-medium text-gray-500 md:ms-2">
                         Our Clients
                     </span>
                 </div>
@@ -66,7 +66,7 @@
     </section>
 
     {{-- Unparalleled expertise in providing US Trade Data --}}
-    <section class="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
+    <section class="bg-white bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
         <div class="py-16 px-5 md:px-12 lg:px-5 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
             <button data-modal-target="authentication-modal"  data-modal-toggle="authentication-modal" class="inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-glory-blue bg-blue-200 rounded-full hover:bg-blue-300">
                 <span class="text-xs bg-glory-blue rounded-full text-white px-4 py-1.5 me-3">
@@ -86,8 +86,8 @@
                 TradeImeX has more than five years of experience in the field and has developed extensive 
                 knowledge and proficiency in providing US trade data. Our company's vast experience allows 
                 users to understand the unique difficulties that companies face when it comes to importing and 
-                exporting commodities in and out of the US. Our in-depth knowledge of the US trade market provides 
-                customized solutions that improve our clients' US trade operations. 
+                exporting commodities in and out of the US. Our in-depth knowledge of the US trade market provides
+                customized solutions that improve our clients' US trade operations.
             </p>
         </div>
     </section>
@@ -102,7 +102,7 @@
                 <p class="mb-4 text-md font-medium text-gray-500">
                     TradeImeX is extremely proud of its varied and expanding clientele in 
                     the US and abroad. With more than 10,000 clients spanning numerous industries, 
-                    TradeImeX has effectively positioned itself as a reliable business partner for 
+                    TradeImeX has effectively positioned itself as a reliable business partner for
                     companies both in the US and globally. This vast network is evidence of our 
                     ability to provide outstanding services and encouraging outcomes for our 
                     faithful clients in the US and around the world. Among our most dependable and 
@@ -153,7 +153,7 @@
     </section>
 
     {{-- What are the benefits for our clients and businesses in the US? --}}
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-white">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
             <div class="mb-8 px-2">
                 <h1 class="text-3xl lg:text-4xl font-medium text-center">
@@ -179,7 +179,7 @@
                 </div>
 
                 {{-- Supply Chains --}}
-                <div class="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
                     <a class="bg-blue-100 text-glory-blue text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
                         <i class="fa-solid fa-link mr-1"></i>
                         Supply Chains
@@ -196,7 +196,7 @@
                 </div>
 
                 {{-- Consumer Trends --}}
-                <div class="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
                     <a href="#" class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2">
                         <i class="fa-solid fa-arrow-trend-up mr-1"></i>
                         Consumer Trends
@@ -212,7 +212,7 @@
                 </div>
 
                 {{-- Logistics Companies --}}
-                <div class="bg-gray-50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
                     <a href="#" class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2">
                         <i class="fa-solid fa-truck-fast mr-1"></i>
                         Logistics Companies
@@ -245,7 +245,7 @@
                         </div>
                     </div>
                 </h1>
-                <p class="text-md font-medium text-gray-500 mb-4 text-center">    
+                <p class="text-md font-medium text-gray-500 mb-4 text-center">  
                     TradeImeX works hard for its clients by combining technological expertise with economic sense to 
                     ensure that our US trade database is accurate and updated in every manner. Our main goal is always 
                     to satisfy our customers and clients with our US import-export data, and we put a lot of effort into 
