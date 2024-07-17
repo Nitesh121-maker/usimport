@@ -847,13 +847,44 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                    @php
+                                        $hs_code = $result->HS_CODE;
+                                        $country = $result->ORIGIN_COUNTRY;
+                                        $unloading_port  = $result->UNLOADING_PORT;
+                                        // Hs code Url
+                                        if ($hscode) {
+                                            # code...
+                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                        } else {
+                                            # code...
+                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                        }
+                                        // Country URl
+                                        if ($hscode) {
+                                            # code...
+                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                        } else {
+                                            # code...
+                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                        }
+                                        // Port Url
+                                        if ($hscode) {
+                                            # code...
+                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                        } else {
+                                            # code...
+                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                        }
+                                    @endphp
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                                 <p>{{ $result->DATE }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->HS_CODE }}
+                                                    <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                        {{ $result->HS_CODE ?? 'null' }}
+                                                    </a>
                                                 </p>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
@@ -861,12 +892,17 @@
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->DESTINATION_COUNTRY }}
+                                                    <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                        {{ $result->DESTINATION_COUNTRY }}
+                                                    </a>                                                 
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->UNLOADING_PORT }}
+                                                    <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                        {{ $result->UNLOADING_PORT }}
+                                                    </a>   
+                                                
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
@@ -952,7 +988,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->day ?? '' }}/{{ $MobileResult->month ?? '' }}/{{ $MobileResult->year ?? '' }} 
+                                            {{ $MobileResult->DATE ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -963,7 +999,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->HS_Code ?? '' }}
+                                                {{ $MobileResult->HS_CODE ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -974,7 +1010,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal text-justify">
-                                            {{ strip_tags($MobileResult->Product_Description ?? '') }}
+                                            {{ strip_tags($MobileResult->PRODUCT_DESCRIPTION ?? '') }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -985,7 +1021,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->Country ?? '' }}
+                                                {{ $MobileResult->ORIGIN_COUNTRY ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -997,7 +1033,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->Unloading_Port ?? '' }}
+                                                {{ $MobileResult->UNLOADING_PORT ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -1008,7 +1044,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->Quantity ?? '' }}
+                                            {{ $MobileResult->QUANTITY ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -1018,7 +1054,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->Quantity_Unit ?? '' }}
+                                            {{ $MobileResult->UNIT ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -1028,7 +1064,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->Weight_KG ?? '' }}
+                                            {{ $MobileResult->WEIGHT ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
