@@ -59,10 +59,10 @@
             <div id="dropdownDelay" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownDelayButton">
                   <li>
-                    <a href="/importdata" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Import</a>
+                    <a href="/us-import-data" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Import</a>
                   </li>
                   <li>
-                    <a href="/exportdata" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Export</a>
+                    <a href="/us-export-data" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Export</a>
                   </li>
                 </ul>
             </div>
