@@ -526,11 +526,11 @@
                                                 @foreach ($result as $SelectResult)
                                                    
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_CODE }}                          
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @endif
@@ -553,11 +553,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
                                                         @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
                                                     @endif
@@ -579,11 +579,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
+                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @endif
@@ -645,28 +645,28 @@
                                             $country = $Dresult->ORIGIN_COUNTRY;
                                             $unloading_port  = $Dresult->UNLOADING_PORT;
                                             // Hs code Url
-                                            if ($hscode) {
-                                                # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                            if ($base_search) {
+                                            # code...
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $hs_code ??'hs_code']);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $hs_code ??'hs_code']);
                                             }
                                             // Country URl
-                                            if ($hscode) {
+                                            if ($base_search) {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
                                             } else {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
                                             }
                                             // Port Url
-                                            if ($hscode) {
+                                            if ($base_search) {
                                                 # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $unloading_port]);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $unloading_port]);
                                             }
                                         @endphp
                                         
@@ -825,7 +825,7 @@
                                         Product Description 
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Origin Country
+                                        DESTINATION Country
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Unloading Port
@@ -847,36 +847,73 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                    {{-- @dd('HS CODE',$base_search,$hscode) --}}
+                                    @php
+                                        $hs_code = $result->HS_CODE;
+                                        $country = $result->DESTINATION_COUNTRY;
+                                        $unloading_port  = $result->UNLOADING_PORT;
+                                        // Hs code Url
+                                        if ($base_search) {
+                                            # code...
+                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $hs_code ??'hs_code']);
+                                        } else {
+                                            # code...
+                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $hs_code ??'hs_code']);
+                                        }
+                                        // Country URl
+                                        if ($base_search) {
+                                            # code...
+                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
+                                        } else {
+                                            # code...
+                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
+                                        }
+                                        // Port Url
+                                        if ($base_search) {
+                                            # code...
+                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $unloading_port]);
+                                        } else {
+                                            # code...
+                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $unloading_port]);
+                                        }
+                                    @endphp
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Act_Arrival_Date }}</p>
+                                                <p>{{ $result->DATE }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->HS_Code }}
+                                                    <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                        {{ $result->HS_CODE ?? 'null' }}
+                                                    </a>
                                                 </p>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{$result->Products }}</p>
+                                                <p>{{$result->PRODUCT_DESCRIPTION }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Port_of_Departure }}
+                                                    <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                        {{ $result->DESTINATION_COUNTRY }}
+                                                    </a>                                                 
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->Foreign_Port }}
+                                                    <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                        {{ $result->UNLOADING_PORT }}
+                                                    </a>   
+                                                
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity }}</p>
+                                                <p>{{ $result->QUANTITY }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity_Unit }}</p>
+                                                <p>{{ $result->UNIT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Weight_Unit }}</p>
+                                                <p>{{ $result->WEIGHT_UNIT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
@@ -952,7 +989,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->day ?? '' }}/{{ $MobileResult->month ?? '' }}/{{ $MobileResult->year ?? '' }} 
+                                            {{ $MobileResult->DATE ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -963,7 +1000,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->HS_Code ?? '' }}
+                                                {{ $MobileResult->HS_CODE ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -974,7 +1011,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal text-justify">
-                                            {{ strip_tags($MobileResult->Product_Description ?? '') }}
+                                            {{ strip_tags($MobileResult->PRODUCT_DESCRIPTION ?? '') }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -985,7 +1022,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->Country ?? '' }}
+                                                {{ $MobileResult->ORIGIN_COUNTRY ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -997,7 +1034,7 @@
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
                                             <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->Unloading_Port ?? '' }}
+                                                {{ $MobileResult->UNLOADING_PORT ?? '' }}
                                             </a>
                                         </p>
                                     </div>
@@ -1008,7 +1045,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->Quantity ?? '' }}
+                                            {{ $MobileResult->QUANTITY ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -1018,7 +1055,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->Quantity_Unit ?? '' }}
+                                            {{ $MobileResult->UNIT ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
@@ -1028,7 +1065,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            {{ $MobileResult->Weight_KG ?? '' }}
+                                            {{ $MobileResult->WEIGHT ?? '' }}
                                         </p>
                                     </div>
                                     <div class="mt-4">
