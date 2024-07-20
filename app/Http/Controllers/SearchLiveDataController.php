@@ -74,6 +74,7 @@ class SearchLiveDataController extends Controller
                 ->limit(10)
                 ->get();
             }
+            // dd($result);
             // dd($base_hs_code);
             $resultsArray = $result->toArray();
             return view(
