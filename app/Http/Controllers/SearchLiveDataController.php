@@ -128,7 +128,7 @@ class SearchLiveDataController extends Controller
                 // ->get();
                 
             } elseif($role == "export") {
-                $result = DB::table('EXP_AMERICA_BL_SEA_part_MAIN')
+                $result = DB::table('EXP_AMERICA_BL_SEA')
                 ->select('*')
                 ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
                 ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
@@ -426,12 +426,13 @@ class SearchLiveDataController extends Controller
                             // dd('HS_CODE', $hs_codedetails,'UNLOADING_PORT', $filterdata);
                             $results = DB::table('EXP_AMERICA_BL_SEA')
                             ->select('*')
-                            ->where('HS_CODE','like',$hs_codedetails .'%')
                             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
+                            ->where('HS_CODE','like', '%' .$hs_codedetails .'%')
                             ->whereNotNull('HS_CODE')
                             ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
+                            // dd('Numeric unloading_port',$results);
                         break;
                     default:
                         $results = collect();
@@ -834,14 +835,15 @@ class SearchLiveDataController extends Controller
                     ->get();
               
                 } else if ($filterby == 'unloading_port'){
-                    // dd('UNLOADING_PORT',$filterdata1,'DESTINATION_COUNTRY',$filterdata);
+                    // dd('UNLOADING_PORT',$filterdata1,'DESTINATION_COUNTRY',$filterdata,$base_search);
                     $results = DB::table('EXP_AMERICA_BL_SEA')
                     ->select('*')
                     ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata1 . '%')
                     ->where('HS_CODE','like','%'.$base_search.'%')
                     ->where(function($query) use ($filterdata) {
                         $query->where('DESTINATION_COUNTRY', 'like', '%' . $filterdata . '%')
-                              ->orWhere('HS_CODE', 'like', $filterdata . '%');
+                              ->orWhere('HS_CODE', 'like', $filterdata . '%')
+                              ->orwhere('UNLOADING_PORT','like','%'. $filterdata. '%');
                     })
                     // ->whereNotNull('HS_CODE')
                     // ->whereNotNull('US_EXPORTER_NAME')

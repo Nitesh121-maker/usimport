@@ -771,15 +771,15 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                   @if ($hs_code)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $hs_code,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT])}}">
+                                                @if ($hs_code)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_hs_code,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
-                                                   @else
-                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT])}}">
+                                                @else
+                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
-                                                   @endif
+                                                @endif
                                                 @endforeach
                                             @endif
                                         </select>
@@ -794,16 +794,15 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                @if ($hs_code)
-                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $hs_code,'filterby'=>'country','filterdata'=>$SelectResult->DESTINATION_COUNTRY])}}">
-                                                        {{ $SelectResult->DESTINATION_COUNTRY }}
-                                                    </option>
-                                                    @else
-                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $desc,'filterby'=>'country','filterdata'=>$SelectResult->DESTINATION_COUNTRY])}}">
-                                                        {{ $SelectResult->DESTINATION_COUNTRY }}
-                                                    </option>
-                                                @endif
-
+                                                    @if ($hs_code)
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_hs_code,'filterby'=>'country','filterdata'=> $SelectResult->DESTINATION_COUNTRY])}}">
+                                                            {{ $SelectResult->DESTINATION_COUNTRY }}
+                                                        </option>
+                                                        @else
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_desc,'filterby'=>'country','filterdata'=>$SelectResult->ORIGIN_COUNTRY])}}">
+                                                            {{ $SelectResult->DESTINATION_COUNTRY }}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
                                             @endif
                                         </select>
@@ -1169,13 +1168,13 @@
                                     </span>
                                     <a href="/usa-import" target="_blank">
                                         <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
-                                            {{$result->Products}}
+                                            {{$result->PRODUCT_DESCRIPTION}}
                                         </h5>
                                     </a>
                                     <span class="flex items-center">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
                                         <p class="pl-2 text-lg font-semibold text-red-400">
-                                            {{$result->HS_Code}}
+                                            {{$result->HS_CODE}}
                                         </p>
                                     </span>
                                 </div>
