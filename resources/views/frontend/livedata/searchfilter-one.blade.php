@@ -526,12 +526,12 @@
 
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE,'filter1' => $filterdata1])}}">
+                                                    @if ($searchDetails1)
+                                                        <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $hscode??'null', 'filterby' => 'hs_code','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $SelectResult->HS_CODE?? '0'])}}">
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE,'filter1' => $filterdata1])}}">
+                                                        <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $desc??'null', 'filterby' => 'hs_code','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $res_hs_code?? '0'])}}">
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @endif
@@ -553,11 +553,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                 @if ($hscode)
-                                                    <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'country', 'filterdata' =>  $SelectResult->ORIGIN_COUNTRY,'filter1' => $filterdata1])}}">
+                                                    <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $hscode??'null', 'filterby' => 'country','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $SelectResult->DESTINATION_COUNTRY])}}">
                                                         {{ $SelectResult->ORIGIN_COUNTRY }}
                                                     </option>
                                                     @else
-                                                    <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'country', 'filterdata' =>  $SelectResult->ORIGIN_COUNTRY,'filter1' => $filterdata1])}}">
+                                                    <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $desc??'null', 'filterby' => 'country','filter'=>$filterdata,'filterdata' => $filterdata1,'filterdata1' => $SelectResult->DESTINATION_COUNTRY])}}">
                                                         {{ $SelectResult->ORIGIN_COUNTRY }}
                                                     </option>
                                                 @endif
@@ -580,11 +580,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filter1' => $filterdata1])}}">
+                                                        <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $SelectResult->HS_CODE??'null', 'filterby' => 'unloading_port','filter'=>$filterdata,'filterdata' => $filterdata1 ,'filterdata1' => $unloading_port??'default'])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'UNLOADING_PORT', 'filterdata' => $SelectResult->UNLOADING_PORT,'filter1' => $filterdata1])}}">
+                                                       <option value="{{route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $SelectResult->PRODUCT_DESCRIPTION??'null', 'filterby' => 'unloading_port','filter'=>$filterdata,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default'])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @endif
@@ -635,47 +635,49 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @dd($filterdata1) --}}
+                                {{-- @dd($hscode) --}}
                                 @php
                                     $Dresult = $result;
                                 @endphp
 
                                 @if(isset($Dresult) && $Dresult->count() > 0)
                                     @foreach ($Dresult as $Dresult)
+                                    {{-- @dd($searchDetails1) --}}
                                         @php
-                                            $hs_code = $Dresult->HS_CODE;
+                                            $res_hs_code = $Dresult->HS_CODE;
+                                            // dd($res_hs_code);
                                             $country = $Dresult->ORIGIN_COUNTRY;
                                             $unloading_port  = $Dresult->UNLOADING_PORT;
                                             // Hs code Url
-                                            if ($hscode) {
+                                            if ($searchDetails1) {
                                                 # code...
-                                                $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filter1' => $filterdata1]);
-                                                // $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $hscode??'null', 'filterby' => 'hs_code','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $res_hs_code?? '0']);
+                                                // $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'hs_code', 'filterdata' => $hs_code,'filter1' => $filterdata1]);
-                                                // $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $desc??'null', 'filterby' => 'hs_code','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $res_hs_code]?? '0');
+                                                // $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
                                             }
                                             // Country URl
-                                            if ($hscode) {
+                                            if ($searchDetails1) {
                                                 # code...
-                                                $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'country', 'filterdata' => $country,'filter1' => $filterdata1]);
-                                                // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'country', 'filterdata' => $country]);
+                                                $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $hscode??'null', 'filterby' => 'country','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                                // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country]);
                                             } else {
                                                 # code...
-                                                $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'country', 'filterdata' => $country,'filter1' => $filterdata1]);
-                                                // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'country', 'filterdata' => $country]);
+                                                $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $desc??'null', 'filterby' => 'country','filter'=>$filterdata,'filterdata' => $filterdata1,'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                                // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country]);
                                             }
                                             // Port Url
-                                            if ($hscode) {
+                                            if ($searchDetails1) {
                                                 # code...
-                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $hscode,'searchDetails1'=>$searchDetails1, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filter1' => $filterdata1]);
+                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $Dresult->HS_CODE??'null', 'filterby' => 'unloading_port','filter'=>$filterdata,'filterdata' => $filterdata1 ,'filterdata1' => $unloading_port??'default']);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails' => $desc,'searchDetails1'=>$searchDetails1, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filter1' => $filterdata1]);
+                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $Dresult->PRODUCT_DESCRIPTION??'null', 'filterby' => 'unloading_port','filter'=>$filterdata,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
                                             }
                                         @endphp
-                                        
+                            
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                                 {{ $Dresult->DATE }}
@@ -853,27 +855,64 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                        {{-- @dd($filter,$filterdata1) --}}
+                                        
+                                        @php
+                                            $res_hs_code = $result->HS_CODE;
+                                            $country = $result->DESTINATION_COUNTRY;
+                                            $unloading_port  = $result->UNLOADING_PORT;
+                                            // $filterdata=$filter;
+                                            // Hs code Url
+                                            if ($searchDetails1) {
+                                                # code...
+                                                $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $hscode??'null', 'filterby' => 'hs_code','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $res_hs_code?? '0']);
+                                                // $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                            } else {
+                                                # code...
+                                                $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $desc??'null', 'filterby' => 'hs_code','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $res_hs_code]?? '0');
+                                                // $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                            }
+                                            // Country URl
+                                            if ($searchDetails1) {
+                                                # code...
+                                                $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $hscode??'null', 'filterby' => 'country','filter'=>$filterdata,'filterdata' => $filterdata1, 'filterdata1' => $result->DESTINATION_COUNTRY]);
+                                                // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country]);
+                                            } else {
+                                                # code...
+                                                $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $desc??'null', 'filterby' => 'country','filter'=>$filterdata,'filterdata' => $filterdata1,'filterdata1' => $result->DESTINATION_COUNTRY]);
+                                                // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country]);
+                                            }
+                                            // Port Url
+                                            if ($searchDetails1) {
+                                                # code...
+                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $result->HS_CODE??'null', 'filterby' => 'unloading_port','filter'=>$filterdata,'filterdata' => $filterdata1 ,'filterdata1' => $unloading_port??'default']);
+                                            } else {
+                                                # code...
+                                                $port_url = route('search-filter-two', ['type' => $type, 'role' => $role,'searchDetails1'=>$searchDetails1,'searchDetails' => $result->PRODUCT_DESCRIPTION??'null', 'filterby' => 'unloading_port','filter'=>$filterdata,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
+                                            }
+                                        @endphp
+                            
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                                 <p>{{ $result->DATE }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
-                                                <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline line-clamp-1">
                                                     {{ $result->HS_CODE }}
-                                                </p>
+                                                </a>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                                 <p>{{$result->PRODUCT_DESCRIPTION }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                                    {{ $result->ORIGIN_COUNTRY }}
-                                                </p>
+                                                <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                    {{ $result->DESTINATION_COUNTRY }}
+                                                </a>  
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                                     {{ $result->UNLOADING_PORT }}
-                                                </p>
+                                                </a>  
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                                 <p>{{ $result->QUANTITY }}</p>

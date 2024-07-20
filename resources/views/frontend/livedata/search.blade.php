@@ -881,7 +881,7 @@
                                     {{-- @dd($hs_code) --}}
                                         @php
                                             $res_hs_code = $result->HS_CODE;
-                                            $country = $result->ORIGIN_COUNTRY;
+                                            $country = $result->DESTINATION_COUNTRY;
                                             $unloading_port  = $result->UNLOADING_PORT;
                                             // Hs code Url
                                             if ($hs_code) {
@@ -902,10 +902,10 @@
                                             // Port Url
                                             if ($hs_code) {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port]);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'port'=>$unloading_port]);
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port]);
                                             }
                                         @endphp
                                         {{-- @dd( $port_url) --}}

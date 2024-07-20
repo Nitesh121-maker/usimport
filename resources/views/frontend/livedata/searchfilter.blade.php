@@ -526,11 +526,11 @@
                                                 @foreach ($result as $SelectResult)
                                                    
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_CODE }}                          
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $searchDetails, 'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE ?? 'default_value','filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @endif
@@ -553,11 +553,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                     @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
                                                         @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $SelectResult->ORIGIN_COUNTRY,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
                                                     @endif
@@ -579,11 +579,11 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                    @if ($hscode)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
+                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $SelectResult->UNLOADING_PORT,'filterdata1'=>$searfilterdata])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @endif
@@ -645,28 +645,28 @@
                                             $country = $Dresult->ORIGIN_COUNTRY;
                                             $unloading_port  = $Dresult->UNLOADING_PORT;
                                             // Hs code Url
-                                            if ($hscode) {
-                                                # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                            if ($base_search) {
+                                            # code...
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $hs_code ??'hs_code']);
                                             } else {
                                                 # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $hs_code ??'hs_code']);
                                             }
                                             // Country URl
-                                            if ($hscode) {
+                                            if ($base_search) {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
                                             } else {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
                                             }
                                             // Port Url
-                                            if ($hscode) {
+                                            if ($base_search) {
                                                 # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $unloading_port]);
                                             } else {
                                                 # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $unloading_port]);
                                             }
                                         @endphp
                                         
@@ -847,33 +847,34 @@
                             <tbody>
                                 @if(isset($result) && $result->count() > 0)
                                     @foreach ($result as $result)
+                                    {{-- @dd('HS CODE',$base_search,$hscode) --}}
                                     @php
                                         $hs_code = $result->HS_CODE;
-                                        $country = $result->ORIGIN_COUNTRY;
+                                        $country = $result->DESTINATION_COUNTRY;
                                         $unloading_port  = $result->UNLOADING_PORT;
                                         // Hs code Url
-                                        if ($hscode) {
+                                        if ($base_search) {
                                             # code...
-                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $hs_code ??'hs_code']);
                                         } else {
                                             # code...
-                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'hs_code', 'filterdata' => $hs_code ??'hs_code','filterdata1'=>$searfilterdata]);
+                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $hs_code ??'hs_code']);
                                         }
                                         // Country URl
-                                        if ($hscode) {
+                                        if ($base_search) {
                                             # code...
-                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
                                         } else {
                                             # code...
-                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'country', 'filterdata' => $country,'filterdata1'=>$searfilterdata]);
+                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
                                         }
                                         // Port Url
-                                        if ($hscode) {
+                                        if ($base_search) {
                                             # code...
-                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $hscode, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $unloading_port]);
                                         } else {
                                             # code...
-                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'searchDetails1'=>$resultDetails,'searchDetails' => $desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port,'filterdata1'=>$searfilterdata]);
+                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $unloading_port]);
                                         }
                                     @endphp
                                         <tr class="bg-white border-b hover:bg-gray-50">
