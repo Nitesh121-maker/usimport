@@ -117,10 +117,10 @@
         </section>
 
         {{-- Search Live Data for US Trade --}}
-        <section class="bg-white dark:bg-gray-900">
+        <section class="bg-white">
             <div class="py-12 md:py-12 lg:py-20 px-5 md:px-12 lg:px-5 mx-auto max-w-screen-xl"> 
                 <div>
-                    <h1 class="mb-2 text-3xl lg:text-4xl lg:text-start md:text-start text-center font-medium text-gray-900 dark:text-white">
+                    <h1 class="mb-2 text-3xl lg:text-4xl lg:text-start md:text-start text-center font-medium text-gray-900">
                         Search Live Data for US Trade
                     </h1>
                     <p class="mt-3 mb-3 text-md font-normal lg:text-start md:text-start text-center text-gray-500">
@@ -202,48 +202,48 @@
                         <h1 class="mb-8 md:mb-10 text-3xl lg:text-4xl font-medium lg:text-start text-center">
                             Key Features of TradeImeX for US Trade Data
                         </h1>
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
+                        <ol class="relative border-s border-gray-200">                  
                             <li class="mb-10 ms-4">
-                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white"></div>
                                 <img src="{{url('frontend/img/13.png')}}" class="w-1/5 md:w-1/12 lg:w-[10%]">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                <h3 class="text-lg font-semibold text-gray-900">
                                     Comprehensive Data Coverage
                                 </h3>
-                                <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                                <p class="mb-4 text-base font-normal text-gray-500">
                                     Access detailed US trade data including import and export information. 
                                     With TradeImeX, users get full access to comprehensive US import-export data. 
                                 </p>
                             </li>
                             <li class="mb-10 ms-4">
-                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white"></div>
                                 <img src="{{url('frontend/img/14.png')}}" class="w-1/5 md:w-1/12 lg:w-[10%]">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                <h3 class="text-lg font-semibold text-gray-900">
                                     Real-Time Updates
                                 </h3>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                <p class="text-base font-normal text-gray-500">
                                     Stay informed of the latest US trade data as it happens. 
                                     TradeImeX provides real-time updates on the US trade 
                                     data for a better experience.
                                 </p>
                             </li>
                             <li class="mb-10 ms-4">
-                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white"></div>
                                 <img src="{{url('frontend/img/15.png')}}" class="w-1/5 md:w-1/12 lg:w-[10%]">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                <h3 class="text-lg font-semibold text-gray-900">
                                     Customizable Reports
                                 </h3>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                <p class="text-base font-normal text-gray-500">
                                     Customize reports to your unique requirements and preferences. Customization of reports 
                                     is our exclusive feature for users looking to enhance their business in the US. 
                                 </p>
                             </li>
                             <li class="ms-4">
-                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white"></div>
                                 <img src="{{url('frontend/img/16.png')}}" class="w-1/5 md:w-1/12 lg:w-[10%]">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                <h3 class="text-lg font-semibold text-gray-900">
                                     Affordable Pricing
                                 </h3>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                                <p class="text-base font-normal text-gray-500">
                                     Avail yourself of the services for US trade data at affordable prices. 
                                     We provide data at an extremely reasonable and genuine price. 
                                 </p>
@@ -291,11 +291,11 @@
                             <img src="{{url('frontend/img/9.png')}}" class="w-1/4 mb-3">
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
+                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Market analysis
                             </h5>
                         </div>
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
+                        <p class="mb-3 font-normal text-gray-500">
                             Gain insights into US market trends and consumer behavior 
                             to make informed business decisions.
                         </p>
@@ -305,11 +305,11 @@
                             <img src="{{url('frontend/img/10.png')}}" class="w-1/4 mb-3">
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
+                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Monitor Competitors
                             </h5>
                         </div>
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
+                        <p class="mb-3 font-normal text-gray-500">
                             Keep track of your competitors' activities in the US market 
                             and adjust your strategies accordingly.
                         </p>
@@ -319,11 +319,11 @@
                             <img src="{{url('frontend/img/11.png')}}" class="w-1/4 mb-3">
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
+                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Improve supply chain management
                             </h5>
                         </div>
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
+                        <p class="mb-3 font-normal text-gray-500">
                             Optimize your supply chain by identifying key US 
                             suppliers and logistics partners.
                         </p>
@@ -354,31 +354,31 @@
                         <div class="pt-6">
                             <ul class="max-w-2xl space-y-1 font-normal text-gray-500 list-inside">
                                 <li class="flex items-center">
-                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Companies looking to increase revenue can gain immensely from the US.
                                 </li>
                                 <li class="flex items-center">
-                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     US trade data is crucial for businesses looking to expand into other markets.
                                 </li>
                                 <li class="flex items-center">
-                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Build your marketing strategy on statistics.
                                 </li>
                                 <li class="flex items-center">
-                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Establish a strong brand identification in the import-export market in the US.
                                 </li>
                                 <li class="flex items-center">
-                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-3.5 h-3.5 me-2 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
                                     </svg>
                                     Establish long-term goals for your business and boost return on investment.
