@@ -18,15 +18,36 @@ class ProductController extends Controller
         $activeLetter = $letter;
         // dd($activeLetter);
         if($role == "import") {
-            $result = DB::table('products')
-            ->select('*')
-            ->where('product_name', 'like', $letter . '%')
+            $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                ->select('*')
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'like', $letter . '%');
+            
+            $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                ->select('*')
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'like', $letter . '%');
+        
+            $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                ->select('*')
+                ->where(DB::raw('PRODUCT_DESCRIPTION'), 'like', $letter . '%');
+
+            // Combine the queries using union
+            $combinedQuery = $query1
+                ->union($query2)
+                ->union($query3);
+            $result = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+            ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
             ->limit(15)
             ->get();
 
-            $companyresult = DB::table('products')
+            // $result = DB::table('EXP_AMERICA_BL_SEA')
+            // ->select('*')
+            // ->where('PRODUCT_DESCRIPTION', 'like', $letter . '%')
+            // ->limit(15)
+            // ->get();
+
+            $companyresult = DB::table('EXP_AMERICA_BL_SEA')
             ->select('*')
-            ->where('company_name', 'like', $letter . '%')
+            ->where('US_EXPORTER_NAME', 'like', $letter . '%')
             ->limit(15)
             ->get();
 
@@ -40,9 +61,9 @@ class ProductController extends Controller
                 ]
             );
         } elseif($role == "export") {
-            $result = DB::table('export')
+            $result = DB::table('EXP_AMERICA_BL_SEA')
             ->select('*')
-            ->where(DB::raw('`product_name`'), 'like', $letter . '%')
+            ->where(DB::raw('`PRODUCT_DESCRIPTION`'), 'like', $letter . '%')
             ->limit(10)
             ->get();
             $companyresult = DB::table('export')
