@@ -41,10 +41,10 @@
                         </h2>
                         <ul class="text-gray-500 font-medium">
                             <li class="mb-4">
-                                <a href="/importdata" class="hover:underline ">Import data</a>
+                                <a href="/us-import-data" class="hover:underline ">Import data</a>
                             </li>
                             <li class="mb-4">
-                                <a href="/exportdata" class="hover:underline">Export Data</a>
+                                <a href="/us-export-data" class="hover:underline">Export Data</a>
                             </li>
                             <li class="mb-4">
                                 <a href="https://www.tradeimex.in/global-trade-data" target="_blank" class="hover:underline">Global Trade Data</a>

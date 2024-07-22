@@ -95,6 +95,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
                 ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                ->where('US_IMPORTER_NAME', '!=', 'N/A')
                 ->whereNotNull('HS_CODE')
                 ->whereNotNull('US_IMPORTER_NAME');
                 
@@ -102,6 +103,7 @@ class SearchLiveDataController extends Controller
                     ->select('*')
                     ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
                     ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                    ->where('US_IMPORTER_NAME', '!=', 'N/A')
                     ->whereNotNull('HS_CODE')
                     ->whereNotNull('US_IMPORTER_NAME');
             
@@ -109,6 +111,7 @@ class SearchLiveDataController extends Controller
                     ->select('*')
                     ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
                     ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                    ->where('US_IMPORTER_NAME', '!=', 'N/A')
                     ->whereNotNull('HS_CODE')
                     ->whereNotNull('US_IMPORTER_NAME');
 
@@ -133,6 +136,7 @@ class SearchLiveDataController extends Controller
                 ->select('*')
                 ->where(DB::raw('`HS_CODE`'), 'like', $hs_code . '%')
                 ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
+                ->where('US_EXPORTER_NAME', '!=', 'N/A')
                 ->whereNotNull('HS_CODE')
                 ->whereNotNull('US_EXPORTER_NAME')
                 ->limit(10)
