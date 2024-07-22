@@ -15,7 +15,7 @@
         <nav class="flex px-5 pt-24 lg:pt-24 md:pt-28 pb-4 text-gray-700 bg-white" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                    <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                    <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
                         <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path 
                                 d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
@@ -29,7 +29,7 @@
                         <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                         </svg>
-                        <a href="/search-live-data" class="line-clamp-1 ms-1 text-sm font-medium text-gray-900 hover:text-blue-600 md:ms-2 dark:text-gray-400">
+                        <a href="/search-live-data" class="line-clamp-1 ms-1 text-sm font-medium text-gray-900 hover:text-blue-600 md:ms-2">
                             Search Live Data
                         </a>
                     </div>
@@ -45,8 +45,6 @@
                             @else
                                 {{ $role }} Live Data
                             @endif
-                        
-                           
                         </span>
                     </div>
                 </li>
@@ -82,7 +80,7 @@
                                 </li>
                                 <li class="flex justify-start items-center text-center">
                                     <input type="radio" id="hosting-big" name="type" value="company" class="hidden peer">
-                                    <label for="hosting-big" class="inline-flex items-center w-3/4  p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                                    <label for="hosting-big" class="inline-flex items-center w-3/4 p-3 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white hover:border-blue-600 hover:text-white hover:bg-blue-600">
                                         <div class="w-full text-md font-semibold">Company</div>
                                     </label>
                                 </li>
@@ -247,7 +245,7 @@
                                                 {{ $result->day }}/{{ $result->month }}/{{ $result->year }}
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result-HS_CODE }}
                                                 </p>
                                             </th>
@@ -255,12 +253,12 @@
                                                 <p>{{$result->PRODUCT_DESCRIPTION}}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->ORIGIN_COUNTRY }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->UNLOADING_PORT }}
                                                 </p>
                                             </td>
@@ -274,7 +272,7 @@
                                                 <p>{{ $result->WEIGHT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
                                                     Importer Name
                                                 </p>
                                             </td>
@@ -284,34 +282,34 @@
                             </tbody>
                         </table>
                         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 p-4 block w-full md:inline md:w-auto">
+                            <span class="text-sm font-normal text-gray-500 mb-4 p-4 block w-full md:inline md:w-auto">
                                 Showing 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     1-10
                                 </span> 
                                 of 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     10
                                 </span>
                             </span>
                             <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
                                 <li>
-                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
                                         1
                                     </a>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         2
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         3
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
                                         Next
                                     </p>
                                 </li>
@@ -419,7 +417,7 @@
                                                 <p>{{ $result->Act_Arrival_Date }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->HS_Code }}
                                                 </p>
                                             </th>
@@ -427,12 +425,12 @@
                                                 <p>{{$result->Products }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->Port_of_Departure }}
                                                 </p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->Foreign_Port }}
                                                 </p>
                                             </td>
@@ -446,7 +444,7 @@
                                                 <p>{{ $result->Weight_Unit }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
                                                     Importer Name
                                                 </p>
                                             </td>
@@ -456,34 +454,34 @@
                             </tbody>
                         </table>
                         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 p-4 block w-full md:inline md:w-auto">
+                            <span class="text-sm font-normal text-gray-500 mb-4 p-4 block w-full md:inline md:w-auto">
                                 Showing 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     1-10
                                 </span> 
                                 of 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     10
                                 </span>
                             </span>
                             <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
                                 <li>
-                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
                                         1
                                     </a>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         2
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         3
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
                                         Next
                                     </p>
                                 </li>
@@ -684,7 +682,7 @@
                                             </td>
                                             <td class="px-6 py-4 align-top">
                                                 {{-- @dd('hs_code', $hs_code_url) --}}
-                                                <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline line-clamp-1">
+                                                <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 hover:underline line-clamp-1">
                                                     {{ $Dresult->HS_CODE }}
                                                 </a>
                                             </td>
@@ -693,15 +691,15 @@
                                             </td>
                                             {{-- @dd($result) --}}
                                             <td class="px-6 py-4 align-top">
-                                                <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $country_url }}" class="font-medium text-blue-600 hover:underline">
                                                     {{ $Dresult->ORIGIN_COUNTRY }}
                                                 </a>
-                                                {{-- <a href="{{ route('search-filter', ['type' => $type, 'role' => $role, 'filterby' => 'unloading_port', 'filterdata' => $Dresult->Unloading_Port]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                {{-- <a href="{{ route('search-filter', ['type' => $type, 'role' => $role, 'filterby' => 'unloading_port', 'filterdata' => $Dresult->Unloading_Port]) }}" class="font-medium text-blue-600 hover:underline">
                                                     {{ $Dresult->Unloading_Port }}
                                                 </a> --}}
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $port_url }}" class="font-medium text-blue-600 hover:underline">
                                                     {{ $Dresult->UNLOADING_PORT }}
                                                 </a>
                                             </td>                                            
@@ -716,7 +714,7 @@
                                                 <p>{{ $Dresult->WEIGHT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
                                                     Importer Name
                                                 </p>
                                             </td>
@@ -726,34 +724,34 @@
                             </tbody>
                         </table>
                         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 p-4 block w-full md:inline md:w-auto">
+                            <span class="text-sm font-normal text-gray-500 mb-4 p-4 block w-full md:inline md:w-auto">
                                 Showing 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     1-10
                                 </span> 
                                 of 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     10
                                 </span>
                             </span>
                             <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
                                 <li>
-                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
                                         1
                                     </a>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         2
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         3
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
                                         Next
                                     </p>
                                 </li>
@@ -897,7 +895,7 @@
                                                 <p>{{ $result->DATE }}</p>
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
-                                                <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline line-clamp-1">
+                                                <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 hover:underline line-clamp-1">
                                                     {{ $result->HS_CODE }}
                                                 </a>
                                             </th>
@@ -905,12 +903,12 @@
                                                 <p>{{$result->PRODUCT_DESCRIPTION }}</p>
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <a href="{{ $country_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $country_url }}" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->DESTINATION_COUNTRY }}
                                                 </a>  
                                             </td>
                                             <td class="px-6 py-4 align-top">
-                                                <a href="{{ $port_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                                <a href="{{ $port_url }}" class="font-medium text-blue-600 hover:underline">
                                                     {{ $result->UNLOADING_PORT }}
                                                 </a>  
                                             </td>
@@ -924,7 +922,7 @@
                                                 <p>{{ $result->WEIGHT }}</p>
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 dark:text-blue-500 hover:underline transition-all">
+                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
                                                     Importer Name
                                                 </p>
                                             </td>
@@ -934,34 +932,34 @@
                             </tbody>
                         </table>
                         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 p-4 block w-full md:inline md:w-auto">
+                            <span class="text-sm font-normal text-gray-500 mb-4 p-4 block w-full md:inline md:w-auto">
                                 Showing 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     1-10
                                 </span> 
                                 of 
-                                <span class="font-semibold text-gray-900 dark:text-white">
+                                <span class="font-semibold text-gray-900">
                                     10
                                 </span>
                             </span>
                             <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
                                 <li>
-                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
                                         1
                                     </a>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         2
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                                         3
                                     </p>
                                 </li>
                                 <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
                                         Next
                                     </p>
                                 </li>
@@ -1201,35 +1199,37 @@
                     <form class="mx-auto px-5 lg:px-5 py-6" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()">
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                     Name
                                 </label>
                             </div>
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <l/abel for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                     Email
-                                </l>
+                                </label>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                     Phone number
                                 </label>
                             </div>
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                     Company
                                 </label>
                             </div>
                         </div>
                         <div class="relative z-0 w-full mb-5 group">
-                            <label for="underline_select" class="sr-only">Underline select</label>
-                            <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                            <label for="underline_select" class="sr-only">
+                                Underline select
+                            </label>
+                            <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                 <option selected>Choose...</option>
                                 <option value="import">Import</option>
                                 <option value="export">Export</option>
@@ -1237,8 +1237,8 @@
                             </select>
                         </div>
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                            <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                 Message
                             </label>
                         </div>

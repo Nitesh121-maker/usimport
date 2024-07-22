@@ -17,7 +17,7 @@
                         <h2 class="mb-6 text-lg lg:text-md font-semibold text-gray-900 uppercase">
                             Company
                         </h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <ul class="text-gray-500 font-medium">
                             <li class="mb-4">
                                 <a href="/about" class="hover:underline">About Us</a>
                             </li>
@@ -39,7 +39,7 @@
                         <h2 class="mb-6 text-lg lg:text-md font-semibold text-gray-900 uppercase">
                             Our Data
                         </h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <ul class="text-gray-500 font-medium">
                             <li class="mb-4">
                                 <a href="/importdata" class="hover:underline ">Import data</a>
                             </li>
@@ -87,7 +87,7 @@
                                     </label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
                                                 <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
                                                 <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
                                             </svg>
@@ -103,7 +103,7 @@
                                     </label>
                                     <div class="relative">
                                         <input name="phone" type="tel" id="phone-cf" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[20rem] md:w-[22rem] lg:w-[11.5rem] ps-10 p-2.5" placeholder="" required />
-                                    </div>                            
+                                    </div>
                                 </div>
                                 <div class="relative z-0 w-full mb-5 group">
                                     <label for="email-address-icon" class="block mb-2 text-sm font-medium">
@@ -145,13 +145,13 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8"/>
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm font-medium text-gray-500 sm:text-center dark:text-gray-500">
+                <span class="text-sm font-medium text-gray-500 sm:text-center">
                     © 2024 
                     <a href="https://www.tradeimex.in/" target="_blank" class="hover:underline hover:text-gray-900">
                         TradeImeX™
                     </a>. All Rights Reserved.
                 </span>
-                <span class="text-sm font-medium text-gray-500 sm:text-center dark:text-gray-500">
+                <span class="text-sm font-medium text-gray-500 sm:text-center">
                     <a href="/tou" class="hover:underline hover:text-gray-900">
                         Terms Of Use
                     </a>
