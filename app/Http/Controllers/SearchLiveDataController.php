@@ -404,8 +404,8 @@ class SearchLiveDataController extends Controller
                             ->select('*')
                             ->where('HS_CODE','like',$filterdata .'%')
                             ->orwhere('HS_CODE', '=',  $hs_codedetails)
-                            ->whereNotNull('HS_CODE')
-                            ->whereNotNull('US_EXPORTER_NAME')
+                            // ->whereNotNull('HS_CODE')
+                            // ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
                             // dd($results->toSql(), $results->getBindings());
@@ -417,8 +417,8 @@ class SearchLiveDataController extends Controller
                             ->select('*')
                             ->where('HS_CODE','like',$hs_codedetails .'%')
                             ->where('DESTINATION_COUNTRY', 'LIKE', '%' . $filterdata . '%')
-                            ->whereNotNull('HS_CODE')
-                            ->whereNotNull('US_EXPORTER_NAME')
+                            // ->whereNotNull('HS_CODE')
+                            // ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
                             // dd('Numeric Country',$results);
@@ -429,8 +429,8 @@ class SearchLiveDataController extends Controller
                             ->select('*')
                             ->where('UNLOADING_PORT', 'LIKE', '%' . $filterdata . '%')
                             ->where('HS_CODE','like', '%' .$hs_codedetails .'%')
-                            ->whereNotNull('HS_CODE')
-                            ->whereNotNull('US_EXPORTER_NAME')
+                            // ->whereNotNull('HS_CODE')
+                            // ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
                             // dd('Numeric unloading_port',$results);
@@ -447,10 +447,10 @@ class SearchLiveDataController extends Controller
                         // dd($descdetails,$filterdata);
                         $results = DB::table('EXP_AMERICA_BL_SEA')
                             ->select('*')
-                            ->where('HS_CODE', 'like', $filterdata . '%')
+                            ->where('HS_CODE', 'like','%'. $filterdata . '%')
                             ->where('PRODUCT_DESCRIPTION','like','%'.$descdetails .'%')
-                            ->whereNotNull('HS_CODE')
-                            ->whereNotNull('US_EXPORTER_NAME')
+                            // ->whereNotNull('HS_CODE')
+                            // ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
                             // dd('Non numeric HS_CODE',$results);
@@ -463,8 +463,8 @@ class SearchLiveDataController extends Controller
                             ->select('*')
                             ->where('DESTINATION_COUNTRY', 'like', '%' . $filterdata . '%')
                             ->where('PRODUCT_DESCRIPTION', 'like', '%' . $descdetails . '%') 
-                            ->whereNotNull('HS_CODE')
-                            ->whereNotNull('US_EXPORTER_NAME')
+                            // ->whereNotNull('HS_CODE')
+                            // ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
                     
@@ -476,8 +476,8 @@ class SearchLiveDataController extends Controller
                             ->select('*')
                             ->where('UNLOADING_PORT', 'like', '%' . $filterdata . '%')
                             ->where('PRODUCT_DESCRIPTION', 'like', '%' . $descdetails . '%') 
-                            ->whereNotNull('HS_CODE')
-                            ->whereNotNull('US_EXPORTER_NAME')
+                            // ->whereNotNull('HS_CODE')
+                            // ->whereNotNull('US_EXPORTER_NAME')
                             ->limit(10)
                             ->get();
                             // dd('Non Numeric Unloading Port',$results);
@@ -880,20 +880,18 @@ class SearchLiveDataController extends Controller
                     ->where('DESTINATION_COUNTRY', 'LIKE', '%' . $filterdata1 . '%')
                     ->where('PRODUCT_DESCRIPTION', 'like', '%' . $base_search . '%')
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_EXPORTER_NAME')
+                    // ->whereNotNull('US_EXPORTER_NAME')
                     ->where(function($query) use ($filterdata) {
                         $query->where('HS_Code', 'like', '%' . $filterdata . '%')
                               ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
                               ->orWhere('Unloading_port', 'like', '%' . $filterdata . '%');
                     })
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_EXPORTER_NAME')
+                    // ->whereNotNull('US_EXPORTER_NAME')
                     ->limit(10)
                     ->get();
                 
                     // dd('Query Results', $results);
-                
-                    // dd('Country Block');
                 } else if ($filterby == 'unloading_port'){
                     $results = DB::table('EXP_AMERICA_BL_SEA')
                     ->select('*')
@@ -906,7 +904,7 @@ class SearchLiveDataController extends Controller
                             //   ->orWhere('PRODUCT_DESCRIPTION', 'like', '%' . $searchDetails1 . '%');
                     })
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_EXPORTER_NAME')
+                    // ->whereNotNull('US_EXPORTER_NAME')
                     ->limit(10)
                     ->get();
                    
@@ -955,8 +953,8 @@ class SearchLiveDataController extends Controller
                               ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
+                    ->whereNotNull('HS_CODE');
+                    // ->whereNotNull('US_IMPORTER_NAME');
                     $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
                     ->select('*')
                     ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
@@ -970,8 +968,8 @@ class SearchLiveDataController extends Controller
                               ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
+                    ->whereNotNull('HS_CODE');
+                    // ->whereNotNull('US_IMPORTER_NAME');
                     $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
                     ->select('*')
                     ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
@@ -985,8 +983,8 @@ class SearchLiveDataController extends Controller
                               ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
+                    ->whereNotNull('HS_CODE');
+                    // ->whereNotNull('US_IMPORTER_NAME');
         
                     $combinedQuery = $query1
                     ->union($query2)
@@ -1331,7 +1329,7 @@ class SearchLiveDataController extends Controller
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_EXPORTER_NAME')
+                    // ->whereNotNull('US_EXPORTER_NAME')
                     ->limit(10)
                     ->get();
                     // dd('Export last hs_code');
@@ -1352,7 +1350,7 @@ class SearchLiveDataController extends Controller
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_EXPORTER_NAME')
+                    // ->whereNotNull('US_EXPORTER_NAME')
                     ->limit(10)
                     ->get();
 
@@ -1373,7 +1371,7 @@ class SearchLiveDataController extends Controller
                               ->orWhere('DESTINATION_COUNTRY', 'like', '%' . $filterdata . '%')
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
-                    // ->whereNotNull('HS_CODE')
+                    ->whereNotNull('HS_CODE')
                     // ->whereNotNull('US_EXPORTER_NAME')
                     ->limit(10)
                     ->get();
@@ -1424,10 +1422,10 @@ class SearchLiveDataController extends Controller
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME')
+                    // ->whereNotNull('US_IMPORTER_NAME')
                     ->limit(10)
                     ->get();
-                    dd('Export last country non numeric',$results);
+                    // dd('Export last country non numeric',$results);
                 } elseif ($filterby == 'unloading_port') {
                     # code...     
                     // dd('PRODUCT_DESCRIPTION', $searchDetails1,'UNLOADING_PORT', $filterdata,'DESTINATION_COUNTRY',$searchDetails);
@@ -1447,7 +1445,7 @@ class SearchLiveDataController extends Controller
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_EXPORTER_NAME')
+                    // ->whereNotNull('US_EXPORTER_NAME')
                     ->limit(10)
                     ->get();
                 }
