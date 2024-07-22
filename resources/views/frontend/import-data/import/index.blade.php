@@ -179,10 +179,10 @@
                                             @endphp
                                             @if(isset($productResults) && count($productResults) > 0)
                                                 @foreach ($productResults as $productResult)
-                                                    <a href="{{ route('product.list1', ['type' => 'data', 'role' => 'import', 'description' => $productResult->product_name]) }}" target="_blank">
+                                                    <a href="{{ route('product.list1', ['type' => 'data', 'role' => 'import', 'description' => $productResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
                                                         <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                             <p class="text-lg font-medium capitalize">
-                                                                {{ $productResult->product_name }}
+                                                                {{ $productResult->PRODUCT_DESCRIPTION }}
                                                             </p>
                                                         </div>
                                                     </a>
@@ -199,10 +199,10 @@
                                             @endphp
                                             @if(isset($companyResults) && count($companyResults) > 0)
                                                 @foreach ($companyResults as $companyResult)
-                                                    <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $companyResult->company_name]) }}" target="_blank">
+                                                    <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $companyResult->US_EXPORTER_NAME]) }}" target="_blank">
                                                         <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                             <p class="text-lg font-medium capitalize">
-                                                                {{ $companyResult->company_name }}
+                                                                {{ $companyResult->US_EXPORTER_NAME }}
                                                             </p>
                                                         </div>
                                                     </a>
@@ -219,10 +219,10 @@
                                             @endphp
                                             @if(isset($productCompanyResults) && count($productCompanyResults) > 0)
                                                 @foreach ($productCompanyResults as $productCompanyResult)
-                                                    <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $productCompanyResult->product_name]) }}" target="_blank">
+                                                    <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $productCompanyResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
                                                         <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                             <p class="text-lg font-medium capitalize">
-                                                                {{ $productCompanyResult->product_name }}
+                                                                {{ $productCompanyResult->PRODUCT_DESCRIPTION }}
                                                             </p>
                                                         </div>
                                                     </a>
