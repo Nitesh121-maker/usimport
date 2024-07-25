@@ -9,292 +9,175 @@
 </head>
 <body>
     @include('frontend.header')
+    @php
+        $results = $results;
+    @endphp
 
-    {{-- Company overview --}}
-    <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
-        <div class="mx-auto max-w-screen-xl flex justify-center px-5 md:px-12 lg:px-5 pt-28 pb-6">
-            <div class="bg-white max-w-screen-2xl rounded-xl p-10 flex flex-wrap">
-                <div class="mb-6">
-                    <img class="w-1/12 mb-3" src="{{ url('frontend/img/company.png') }}"/>
-                    <h2 class="mb-3 text-4xl text-gray-800 font-medium">Tata Steels</h2>
-                    <p class="text-md text-gray-600 font-medium">
-                        View a sample of KATEX TEKSTIL ANONIM SIRKETI. bill of lading data and analyse import market and other 
-                        trading activities. Fill-up our request a demo form to access full import data of BITUMEN GLOBAL 
-                        ALLIANZ INC.
+    @if (isset($results) && $results->count() > 0)
+        @foreach ($results as $data)
+        {{-- Company overview --}}
+        <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
+            <div class="mx-auto max-w-screen-xl flex justify-center px-5 md:px-12 lg:px-5 pt-28 pb-6">
+                <div class="bg-white max-w-screen-2xl rounded-xl p-10 flex flex-wrap">
+                    <div class="mb-6">
+                        <img class="w-1/12 mb-3" src="{{ url('frontend/img/company.png') }}"/>
+                        <h2 class="mb-3 text-4xl text-gray-800 font-medium">{{$data->US_IMPORTER_NAME}}</h2>
+                        <p class="text-md text-gray-600 font-medium">
+                            {{$data->PRODUCT_DESCRIPTION}}
+                        </p>
+                    </div>
+                    <div class="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="flex flex-wrap items-center">
+                            <img class="w-1/12" src="{{ url('frontend/img/role.png') }}">
+                            <h1 class="mx-2 text-2xl text-gray-600 font-medium">Importer</h1>
+                        </div>
+                        <div class="flex flex-wrap items-center">
+                            <img class="w-1/12" src="{{ url('frontend/img/company_address.png') }}">
+                            <h1 class="mx-2 text-2xl text-gray-600 font-medium">USA</h1>
+                        </div>
+                        <div class="flex flex-wrap items-center">
+                            <img class="w-1/12" src="{{ url('frontend/img/since.png') }}">
+                            <h1 class="mx-2 text-2xl text-gray-600 font-medium">1950</h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-start">
+                        <button data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:outline-none">
+                            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
+                                <p class="font-medium lg:text-md">
+                                    Track All Shipment
+                                </p>
+                            </span>
+                        </button>
+                        {{-- <button  class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-glory-red to-glory-blue hover:text-white">
+                            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
+                                Track All Shipment
+                            </span>
+                        </button> --}}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{-- Company overview --}}
+
+        {{-- Sample Bill Of Lading with table & Form --}}
+        <section class="bg-gray-50">
+            <div class="mx-auto max-w-screen-xl px-5 py-12">
+                <div class="text-center mb-8">
+                    <h1 class="mb-3 text-3xl lg:text-4xl font-medium text-gray-800">
+                        Sample Bill Of Lading
+                    </h1>
+                    <p class="text-sm lg:text-lg font-medium text-gray-600">
+                        View a sample of KATEX TEKSTIL ANONIM SIRKETI. bill of lading data and analyse 
+                        import market and other trading activities. Fill-up our request a demo form to access
+                        full import data of BITUMEN GLOBAL ALLIANZ INC.
                     </p>
                 </div>
-                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="flex flex-wrap items-center">
-                        <img class="w-1/12" src="{{ url('frontend/img/role.png') }}">
-                        <h1 class="mx-2 text-2xl text-gray-600 font-medium">Importer</h1>
-                    </div>
-                    <div class="flex flex-wrap items-center">
-                        <img class="w-1/12" src="{{ url('frontend/img/company_address.png') }}">
-                        <h1 class="mx-2 text-2xl text-gray-600 font-medium">USA</h1>
-                    </div>
-                    <div class="flex flex-wrap items-center">
-                        <img class="w-1/12" src="{{ url('frontend/img/since.png') }}">
-                        <h1 class="mx-2 text-2xl text-gray-600 font-medium">1950</h1>
-                    </div>
-                </div>
-                <div class="flex justify-start">
-                    <button data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:outline-none">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
-                            <p class="font-medium lg:text-md">
-                                Track All Shipment
-                            </p>
-                        </span>
-                    </button>
-                    {{-- <button  class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-glory-red to-glory-blue hover:text-white">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
-                            Track All Shipment
-                        </span>
-                    </button> --}}
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Company overview --}}
-
-    {{-- Sample Bill Of Lading with table & Form --}}
-    <section class="bg-gray-50">
-        <div class="mx-auto max-w-screen-xl px-5 py-12">
-            <div class="text-center mb-8">
-                <h1 class="mb-3 text-3xl lg:text-4xl font-medium text-gray-800">
-                    Sample Bill Of Lading
-                </h1>
-                <p class="text-sm lg:text-lg font-medium text-gray-600">
-                    View a sample of KATEX TEKSTIL ANONIM SIRKETI. bill of lading data and analyse 
-                    import market and other trading activities. Fill-up our request a demo form to access
-                    full import data of BITUMEN GLOBAL ALLIANZ INC.
-                </p>
-            </div>
-            <div class="flex justify-center">
-                <div class="relative w-full sm:rounded-lg">
-                    <table class="responsive-table lg:w-full text-sm text-left font-medium text-gray-800">
-                        <tbody>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    DATE
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    10-September-2023
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    BILL OF LADING NUMBER
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    PYMNAKL221000506	
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    US IMPORTER NAME
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    TECHNOLOGY TRADE PARTNERS LLC
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    FOREIGN EXPORTER NAME
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    COMPUTER ENHANCEMENTS NZ LIMITED
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    HS CODE
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    850699
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    Product Description
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    COMPUTER EQUIPMENT
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    Quantity
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    245
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    Unit
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    Carton
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    CIF VALUE
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    $3941	
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    LOADING PORT
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    TAURANGA
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    UNLOADING PORT
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    LONG BEACH
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    ORIGIN COUNTY
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    NEW ZEALAND
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
-                                    DESTINATION COUNTRY
-                                </th>
-                                <td class="px-6 py-4 font-medium text-md">
-                                    UNITED STATES
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Shipment Details of KATEX TEKSTIL ANONIM SIRKETI --}}
-    <section class="bg-gray-50">
-        <div class="mx-auto max-w-screen-xl px-5 py-12">
-            <div>
-                <h1 class="mb-6 text-center text-3xl font-medium text-gray-800">
-                    Shipment Details of Tata Steel
-                </h1>
                 <div class="flex justify-center">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="responsive-table w-full text-sm text-left text-gray-500">
-                            <thead class="text-sm text-gray-100 uppercase bg-glory-blue">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Date
+                    <div class="relative w-full sm:rounded-lg">
+                        <table class="responsive-table lg:w-full text-sm text-left font-medium text-gray-800">
+                            <tbody>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        DATE
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        HS Code
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->DATE}}
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        BILL OF LADING NUMBER
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Product Description 
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->MASTER_BILL_OF_LADDING_NUMBER}}	
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        US IMPORTER NAME
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Foreign Country
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->US_IMPORTER_NAME}}
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        FOREIGN EXPORTER NAME
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Qty.
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->FOREIGN_EXPORTER_NAME}}
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        HS CODE
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->HS_CODE}}
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        Product Description
+                                    </th>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->PRODUCT_DESCRIPTION}}
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        Quantity
+                                    </th>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->QUANTITY}}
+                                    </td>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
                                         Unit
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Weight
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Value
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Importer Name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Exporter Name
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white border-b hover:bg-gray-50">
-                                    <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                        2020-02-17T00:00:00Z
-                                    </td>
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 align-top"> 
-                                        520513000000
-                                    </th>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        100% cotton yarn (ne 30/1 carded yarn)
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top"> 
-                                        Uzbekistan
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        21200.91
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        Kilogram
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        21200.91
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        64808.93
-                                    </td>
-                                    <td class="px-6 py-4 font-medium align-top">
-                                        KATEX TEKSTIL ANONIM SIRKETI
-                                    </td>
-                                    <td class="px-6 py-4 font-medium align-top">
-                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
-                                            Exporter Name
-                                        </p>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->UNIT}}
                                     </td>
                                 </tr>
-                                <tr class="bg-white border-b hover:bg-gray-50">
-                                    <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                        2020-02-17T00:00:00Z
-                                    </td>
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 align-top"> 
-                                        520513000000
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        WEIGHT
                                     </th>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        100% cotton yarn (ne 30/1 carded yarn)
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->WEIGHT	}}
                                     </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top"> 
-                                        Uzbekistan
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        LOADING PORT
+                                    </th>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->LOADING_PORT}}
                                     </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        21200.91
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        UNLOADING PORT
+                                    </th>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->LOADING_PORT}}
                                     </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        Kilogram
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        ORIGIN COUNTY
+                                    </th>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->ORIGIN_COUNTRY}}
                                     </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        21200.91
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                        64808.93
-                                    </td>
-                                    <td class="px-6 py-4 font-medium align-top">
-                                        KATEX TEKSTIL ANONIM SIRKETI
-                                    </td>
-                                    <td class="px-6 py-4 font-medium align-top">
-                                        <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
-                                            Exporter Name
-                                        </p>
+                                </tr>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <th scope="row" class="px-6 py-4 font-bold text-gray-100 whitespace-nowrap bg-glory-red">
+                                        DESTINATION COUNTRY
+                                    </th>
+                                    <td class="px-6 py-4 font-medium text-md">
+                                        {{$data->DESTINATION_COUNTRY}}
                                     </td>
                                 </tr>
                             </tbody>
@@ -302,8 +185,101 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        {{-- Shipment Details of KATEX TEKSTIL ANONIM SIRKETI --}}
+        <section class="bg-gray-50">
+            <div class="mx-auto max-w-screen-xl px-5 py-12">
+                <div>
+                    <h1 class="mb-6 text-center text-3xl font-medium text-gray-800">
+                        Shipment Details of Tata Steel
+                    </h1>
+                    <div class="flex justify-center">
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                            <table class="responsive-table w-full text-sm text-left text-gray-500">
+                                <thead class="text-sm text-gray-100 uppercase bg-glory-blue">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">
+                                            Date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            HS Code
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Product Description 
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Origin Country
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Qty.
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Unit
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Weight
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            TEU
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Importer Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                           Foreign Exporter Name
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <td class="w-4 p-4 font-medium text-gray-900 align-top">
+                                           {{$data->DATE}}
+                                        </td>
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 align-top"> 
+                                            {{$data->HS_CODE}}
+                                        </th>
+                                        <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                           {{$data->PRODUCT_DESCRIPTION}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 align-top"> 
+                                            {{$data->ORIGIN_COUNTRY}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                            {{$data->QUANTITY}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                            {{$data->UNIT}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                            {{$data->WEIGHT}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 align-top">
+                                            {{$data->TEU}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium align-top">
+                                            {{$data->US_IMPORTER_NAME}}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium align-top">
+                                            <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
+                                                {{$data->FOREIGN_EXPORTER_NAME}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endforeach
+    @else
+        <tbody>
+            <tr>Data Not Found</tr>
+        </tbody>
+    @endif
+
     
     {{-- Top Foreign with Timeline --}}
     <section class="bg-glory-blue">

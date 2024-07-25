@@ -677,11 +677,14 @@
                                             <td class="px-6 py-4 align-top">
                                                 {{-- @dd('hs_code', $hs_code_url) --}}
                                                 <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $Dresult->HS_CODE }}
+                                                    {{-- {{ $Dresult->HS_CODE }} --}}
+                                                    @foreach (explode(',', $Dresult->HS_CODE) as $code)
+                                                        <div>{{ $code }}</div>
+                                                    @endforeach
                                                 </a>
                                             </td>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ strip_tags($Dresult->PRODUCT_DESCRIPTION) }}</p>
+                                                <p style="display: table">{{ strip_tags($Dresult->PRODUCT_DESCRIPTION) }}</p>
                                             </td>
                                             {{-- @dd($result) --}}
                                             <td class="px-6 py-4 align-top">
@@ -714,6 +717,8 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                @else
+                                    <H4>Data Not Found Please Contact US</H4>
                                 @endif
                             </tbody>
                         </table>
@@ -924,7 +929,9 @@
                                             </td>
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->HS_CODE }}
+                                                    @foreach (explode(',', $result->HS_CODE) as $code)
+                                                        <div>{{ $code }}</div>
+                                                    @endforeach
                                                 </a>
                                             </th>
                                             <td class="px-6 py-4 font-medium text-gray-900 align-top">
@@ -1140,7 +1147,7 @@
                                         <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%] mr-2">
                                         USA
                                     </span>
-                                    <a href="/usa-import" target="_blank">
+                                    <a href="{{route('Companydata',['role'=>$role,'companyname'=>$result->US_IMPORTER_NAME])}}" target="_blank">
                                         <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
                                             {{$result->PRODUCT_DESCRIPTION}}
                                         </h5>

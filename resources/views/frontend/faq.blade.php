@@ -71,7 +71,7 @@
                 <div class="inline-flex items-center justify-center w-full">
                     <hr class="w-64 h-1 bg-gray-200 border-0 rounded">
                     <div class="absolute px-4 -translate-x-1/2 bg-gray-50 left-1/2">
-                        <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
+                        <svg class="w-4 h-4 text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                             <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"/>
                         </svg>
                     </div>
@@ -178,7 +178,7 @@
                                 The TradeImeX data provides valuable insights for businesses, researchers, and
                                 government agencies in the US, including:
                             </p>
-                            <ul class="max-w-xl space-y-1 font-medium text-gray-600 list-disc list-inside dark:text-gray-400">
+                            <ul class="max-w-xl space-y-1 font-medium text-gray-600 list-disc list-inside">
                                 <li>
                                     Identifying new market opportunities and emerging trends.
                                 </li>
@@ -210,7 +210,7 @@
                             <p class="mb-2 text-md font-medium text-gray-600">
                                 TradeImeX data is relevant to various industries, such as:
                             </p>
-                            <ul class="max-w-md space-y-1 font-medium text-gray-500 list-disc list-inside dark:text-gray-400">
+                            <ul class="max-w-md space-y-1 font-medium text-gray-600 list-disc list-inside">
                                 <li>
                                     Manufacturing.
                                 </li>
@@ -337,7 +337,7 @@
                 </h1>
             </div>
             <div class="px-5 md:px-12 lg:px-12 mb-8 py-4 mx-auto">
-                <div id="accordion-flush-1" data-accordion="collapse" data-active-classes="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                <div id="accordion-flush-1" data-accordion="collapse" data-active-classes="bg-gray-50 text-gray-900" data-inactive-classes="text-gray-500">
                     <h2 id="accordion-flush-heading-11">
                         <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-11" aria-expanded="true" aria-controls="accordion-flush-body-11">
                             <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
@@ -410,7 +410,7 @@
                             <p class="mb-2 text-md font-medium text-gray-600">
                                 The US trade data is collected through:
                             </p>
-                            <ul class="max-w-xl space-y-1 font-medium text-gray-600 list-disc list-inside dark:text-gray-400">
+                            <ul class="max-w-xl space-y-1 font-medium text-gray-600 list-disc list-inside">
                                 <li>
                                     Customs documents submitted by importers and exporters.
                                 </li>
@@ -439,7 +439,7 @@
                             <p class="mb-2 text-md font-medium text-gray-600">
                                 US trade data is essential for understanding:
                             </p>
-                            <ul class="max-w-md space-y-1 font-medium text-gray-500 list-disc list-inside dark:text-gray-400">
+                            <ul class="max-w-md space-y-1 font-medium text-gray-500 list-disc list-inside">
                                 <li>
                                     The US economy's dependence on international trade.
                                 </li>
@@ -471,7 +471,7 @@
                             <p class="mb-2 text-md font-medium text-gray-600">
                                 US trade data is used as:
                             </p>
-                            <ul class="space-y-1 font-medium text-gray-500 list-disc list-inside dark:text-gray-400">
+                            <ul class="space-y-1 font-medium text-gray-500 list-disc list-inside">
                                 <li>
                                     Businesses make decisions on imports and exports with confidence.
                                 </li>
@@ -577,7 +577,7 @@
                 </h1>
             </div>
             <div class="px-5 md:px-12 lg:px-12 mb-8 py-4 mx-auto">
-                <div id="accordion-flush-2" data-accordion="collapse" data-active-classes="bg-gray-50 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                <div id="accordion-flush-2" data-accordion="collapse" data-active-classes="bg-gray-50 text-gray-900" data-inactive-classes="text-gray-500">
                     <h2 id="accordion-flush-heading-21">
                         <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-21" aria-expanded="true" aria-controls="accordion-flush-body-21">
                             <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
@@ -685,7 +685,7 @@
             </div>
 
             <div class="px-5 md:px-12 lg:px-12 py-8 mx-auto">
-                <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-gray-50 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-gray-50 text-gray-900" data-inactive-classes="text-gray-500">
                     <h2 id="accordion-flush-heading-26">
                         <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
                             <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
