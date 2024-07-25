@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     //
-    public function companydata($type,$companyname){
-      if ($type=='import') {
+    public function companydata($role,$companyname){
+      if ($role=='import') {
         # code...
         $query1=DB::table('IMP_AMERICA_BL_SEA_part_xmain')
         ->select ('*')
@@ -26,7 +26,7 @@ class CompanyController extends Controller
         ;
         $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
         ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
-        ->limit(10)
+        ->limit(1)
         ->get();   
         // dd($results);
         return view('frontend.livedata.companyimport',
