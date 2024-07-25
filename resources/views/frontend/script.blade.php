@@ -3,6 +3,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"
         crossorigin="anonymous"></script>
+    <script src="//code.tidio.co/sdzqyzkqyjktbhjlcr0v8xbgipvxwtc9.js"></script>
 
     {{-- Ajax Call For Product ] --}}
     <script>
@@ -69,7 +70,7 @@
     {{-- Key point Counting Js  --}}
     <script type="text/JavaScript">
         let count = document.querySelectorAll(".count")
-            let arr = Array.from(count)
+        let arr = Array.from(count)
 
             arr.map(function(item){
             let startnumber = 0
@@ -81,11 +82,11 @@
             if(startnumber == item.dataset.number){
                 clearInterval(stop)
             }
-            }
+        }
 
-            let stop =setInterval(function(){
+        let stop =setInterval(function(){
             counterup()
-            },50)
+        },50)
 
         })
     </script>
@@ -93,19 +94,16 @@
     {{-- Background Connecting js --}}
     <script>
         var canvasContainer = document.getElementById("canvas-container"),
-            canvasDiv = document.getElementById("canvas"),
-            canvas = document.createElement("canvas"),
+            canvas = document.getElementById("canvas"),
             ctx = canvas.getContext('2d');
 
-        canvasDiv.appendChild(canvas);
+        function resizeCanvas() {
+            canvas.width = canvasContainer.clientWidth;
+            canvas.height = canvasContainer.clientHeight;
+        }
 
-        canvas.width = canvasContainer.offsetWidth;
-        canvas.height = canvasContainer.offsetHeight;
-
-        canvasContainer.addEventListener('resize', function() {
-            canvas.width = canvasContainer.offsetWidth;
-            canvas.height = canvasContainer.offsetHeight;
-        });
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial call to set the canvas size
 
         var stars = [], // Array that contains the stars
             FPS = 60, // Frames per second
@@ -116,7 +114,6 @@
             }; // mouse location
 
         // Push stars to array
-
         for (var i = 0; i < x; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
@@ -128,7 +125,6 @@
         }
 
         // Draw the scene
-
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -153,7 +149,6 @@
                 for (var j = 0, x = stars.length; j < x; j++) {
                     var starII = stars[j];
                     if (distance(starI, starII) < 150) {
-                        //ctx.globalAlpha = (1 / 150 * distance(starI, starII).toFixed(1));
                         ctx.lineTo(starII.x, starII.y);
                     }
                 }
@@ -177,7 +172,6 @@
         }
 
         // Update star locations
-
         function update() {
             for (var i = 0, x = stars.length; i < x; i++) {
                 var s = stars[i];
@@ -191,11 +185,12 @@
         }
 
         canvas.addEventListener('mousemove', function(e) {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            var rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
         });
-        // Update and draw
 
+        // Update and draw
         function tick() {
             draw();
             update();
@@ -204,6 +199,117 @@
 
         tick();
     </script>
+    {{-- <script>
+        var canvasContainer = document.getElementById("canvas-container"),
+        canvasDiv = document.getElementById("canvas"),
+        canvas = document.createElement("canvas"),
+        ctx = canvas.getContext('2d');
+
+        canvasDiv.appendChild(canvas);
+
+        function resizeCanvas() {
+            canvas.width = canvasContainer.offsetWidth;
+            canvas.height = canvasContainer.offsetHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial call to set the canvas size
+
+        var stars = [], // Array that contains the stars
+            FPS = 60, // Frames per second
+            x = 100, // Number of stars
+            mouse = {
+                x: 0,
+                y: 0
+            }; // mouse location
+
+        // Push stars to array
+        for (var i = 0; i < x; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1 + 1,
+                vx: Math.floor(Math.random() * 50) - 25,
+                vy: Math.floor(Math.random() * 50) - 25
+            });
+        }
+
+        // Draw the scene
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.globalCompositeOperation = "lighter";
+
+            for (var i = 0, x = stars.length; i < x; i++) {
+                var s = stars[i];
+
+                ctx.fillStyle = "#f1f1f1";
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.fillStyle = 'black';
+                ctx.stroke();
+            }
+
+            ctx.beginPath();
+            for (var i = 0, x = stars.length; i < x; i++) {
+                var starI = stars[i];
+                ctx.moveTo(starI.x, starI.y);
+                if (distance(mouse, starI) < 150) ctx.lineTo(mouse.x, mouse.y);
+                for (var j = 0, x = stars.length; j < x; j++) {
+                    var starII = stars[j];
+                    if (distance(starI, starII) < 150) {
+                        ctx.lineTo(starII.x, starII.y);
+                    }
+                }
+            }
+            ctx.lineWidth = 0.05;
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
+        }
+
+        function distance(point1, point2) {
+            var xs = 0;
+            var ys = 0;
+
+            xs = point2.x - point1.x;
+            xs = xs * xs;
+
+            ys = point2.y - point1.y;
+            ys = ys * ys;
+
+            return Math.sqrt(xs + ys);
+        }
+
+        // Update star locations
+        function update() {
+            for (var i = 0, x = stars.length; i < x; i++) {
+                var s = stars[i];
+
+                s.x += s.vx / FPS;
+                s.y += s.vy / FPS;
+
+                if (s.x < 0 || s.x > canvas.width) s.vx = -s.vx;
+                if (s.y < 0 || s.y > canvas.height) s.vy = -s.vy;
+            }
+        }
+
+        canvas.addEventListener('mousemove', function(e) {
+            var rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        // Update and draw
+        function tick() {
+            draw();
+            update();
+            requestAnimationFrame(tick);
+        }
+
+        tick();
+
+    </script> --}}
 
     {{-- phone selection input js --}}
     <script>

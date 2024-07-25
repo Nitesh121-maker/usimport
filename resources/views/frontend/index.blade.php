@@ -86,7 +86,7 @@
         </section>
 
         {{-- Search Bar --}}
-        <section class="bg-solid">
+        <section class="bg-solid z-3">
             <div class="px-5 md:px-12 lg:px-5 py-12 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-4 lg:gap-16">
                 <div class="flex flex-col justify-center">
                     <h1 class="mb-4 text-3xl lg:text-4xl font-normal tracking-normal text-white text-center lg:text-start">

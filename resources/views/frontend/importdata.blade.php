@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="canonical" href="https://www.usimportdata.com/us-import-data">
         <meta name="keywords"
             content="Import Export Data,Export Import Data, Import Export Data Provider, 
             Export Import Data Provider, Business Intelligence Report, Import Export Trade Data, 
@@ -304,7 +305,8 @@
 
         {{-- Top 10 US import partners in 2023 --}}
         <section class="bg-white">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 px-5 md:px-12 lg:px-8 py-16">
+            <div class="mx-auto max-w-screen-2xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 px-5 md:px-12 lg:px-8 py-16">
                 <div class="lg:mt-6 md:mt-0 flex items-center">
                     <div>
                         <h1 class="text-3xl lg:text-4xl font-medium mb-4 text-center lg:text-start">
@@ -440,12 +442,13 @@
                     </ol>
                 </div>
             </div>
+            </div>
         </section>
         {{-- Top 10 US import partners in 2023 --}}
 
         {{-- Top 10 US Import Ports in 2023 --}}
         <section class="bg-pattern-img">
-            <div class="mx-auto mx-w-screen-xl px-5 md:px-8 lg:px-8 py-12 backdrop-blur-sm">
+            <div class="mx-auto mx-w-screen-2xl px-5 md:px-8 lg:px-8 py-12 backdrop-blur-sm">
                 <div class="mb-6">
                     <h1 class="text-white font-medium mb-3 text-3xl lg:text-4xl text-center">
                         Top 10 US Import Ports in 2023
@@ -455,8 +458,7 @@
                         The top 10 US Import Ports in 2023 include:
                     </p>
                 </div>
-                <div class="flex justify-center">
-                    <div>
+                <div class="flex flex-wrap justify-center">
                         <button type="button" class="text-gray-900 bg-white import_label border border-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles.svg')}}" width="100%">
                             Port of Los Angeles 
@@ -498,111 +500,112 @@
                             Plaquemines Port
                         </button>
                     </div>
-                </div>
             </div>
         </section>
         {{-- Top 10 US Import Ports in 2023 --}}
 
         {{-- Top 10 US Importer Companies in 2023 --}} 
         <section class="bg-white">
-            <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-8 py-8">
-                <div class="flex items-center ">
-                    <div>
-                        <h1 class="text-3xl lg:text-4xl font-medium mb-4">
-                            Top 10 US Importer Companies in 2023
-                        </h1>
-                        <p class="mb-4 text-md font-medium text-gray-600">
-                            Based on customs information, the top 10 US importer companies are released 
-                            annually. These numbers, which indicate shipment capacity, are given in TEUs 
-                            (Twenty-foot Equivalent Unit). The retail industry uses the majority of the
-                            goods that are imported into the US. In 2023, the top 10 US importers include:
-                        </p>
+            <div class="mx-auto max-w-screen-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-8 py-8">
+                    <div class="flex items-center ">
+                        <div>
+                            <h1 class="text-3xl lg:text-4xl font-medium mb-4">
+                                Top 10 US Importer Companies in 2023
+                            </h1>
+                            <p class="mb-4 text-md font-medium text-gray-600">
+                                Based on customs information, the top 10 US importer companies are released 
+                                annually. These numbers, which indicate shipment capacity, are given in TEUs 
+                                (Twenty-foot Equivalent Unit). The retail industry uses the majority of the
+                                goods that are imported into the US. In 2023, the top 10 US importers include:
+                            </p>
+                        </div>
                     </div>
+                    {{-- Company list--}}
+                    <div class="mt-6 px-6 overflow-x-auto max-h-96">
+                        <ol class="relative border-s border-glory-red">                  
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/walmart.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Walmart: 864800 TEU 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/target.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Target: 590300 TEU
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/home_depot.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Home Depot: 388000 TEU
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/lowe.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Lowe's: 287500 TEU
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/dole_food.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Dole Food: 220200 TEU
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/samsung.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Samsung America: 184800 TEU 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/family_dollar.jpg')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Family Dollar: 168400 TEU 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/lg.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    LG Group: 161600 TEU
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/philips.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Philips Electronics: 142900 TEU
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/company/ikea.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Ikea: 120500 TEU 
+                                </h3>
+                            </li>
+                        </ol>
                 </div>
-                {{-- Company list--}}
-                <div class="mt-6 px-6 overflow-x-auto max-h-96">
-                    <ol class="relative border-s border-glory-red">                  
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/walmart.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Walmart: 864800 TEU 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/target.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Target: 590300 TEU
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/home_depot.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Home Depot: 388000 TEU
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/lowe.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Lowe's: 287500 TEU
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/dole_food.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Dole Food: 220200 TEU
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/samsung.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Samsung America: 184800 TEU 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-red rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/family_dollar.jpg')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Family Dollar: 168400 TEU 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/lg.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                LG Group: 161600 TEU
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/philips.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Philips Electronics: 142900 TEU
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/ikea.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Ikea: 120500 TEU 
-                            </h3>
-                        </li>
-                    </ol>
                 </div>
             </div>
         </section>
@@ -613,8 +616,7 @@
             <div class="mx-auto mx-w-screen-xl px-3 md:px-8 lg:px-8 py-12">
                 <div class="mb-6">
                     <h1 class="text-center text-3xl lg:text-4xl font-medium">
-                        Statistical comparison of US 
-                        import data in the last 5 years
+                        Statistical comparison of US import data in the last 5 years
                     </h1>
                     <div class="inline-flex items-center justify-center w-full">
                         <hr class="w-64 h-1 my-8 bg-glory-red border-0 rounded dark:bg-gray-700">

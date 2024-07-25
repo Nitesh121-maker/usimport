@@ -56,6 +56,9 @@ class PageController extends Controller
     function companydetail() {
         return view('frontend.livedata/companyimport');
     }
+    function thankyou() {
+        return view('frontend/thankyou');
+    }
     function test() {
         return view('frontend.test');
     }
