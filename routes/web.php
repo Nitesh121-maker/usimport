@@ -5,7 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\SearchLiveDataController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +48,7 @@ Route::get('/search-datap1/{type}/{role}/{description?}/{hs_code?}',[SearchLiveD
 Route::get('/searchp2/{type}/{role}/{base_search}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
 Route::get('/searchp3/{type}/{role}/{base_search}/{searchDetails}/{filterdata}/{filterby}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
 Route::get('/searchp4/last/{type}/{role}/{searchDetails1}/{searchDetails}/{filter}/{filterdata}/{filterby}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
-Route::get('/usa-import', [PageController::class, 'usimportcompany']);
+Route::get('/search/company/{role}/{companyname}', [CompanyController::class, 'companydata'])->name('Companydata');
 
 // Contact Form Route
 Route::post('/contact', [ContactFormController::class, 'sendContactForm'])->name('contact.send');

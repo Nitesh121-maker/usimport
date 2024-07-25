@@ -50,7 +50,7 @@
         {{-- <nav class="flex px-5 pt-24 pb-4 text-gray-700 border border-gray-200 bg-white" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                    <a href="/" class="inline-flex items-center text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                    <a href="/" class="inline-flex items-center text-md font-medium text-gray-700 hover:text-blue-600">
                         <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path 
                                 d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
@@ -64,7 +64,7 @@
                         <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                         </svg>
-                        <span class="ms-1 text-md font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                        <span class="ms-1 text-md font-medium text-gray-500 md:ms-2">
                             Export Data
                         </span>
                     </div>
@@ -345,7 +345,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/canada_r.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Canada: $352.84 billion (17.5%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -353,10 +353,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/china.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Mexico: $323.22 billion (16%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -364,10 +364,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/canada.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 China: $147.80 billion (7.3%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -375,10 +375,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/germany.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Netherlands: $82.18 billion (4.1%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -386,10 +386,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/japan.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Germany: $76.69 billion (3.8%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -397,10 +397,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/south-korea.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Japan: $76.16 billion (3.8%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -408,10 +408,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/vietnam.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 United Kingdom: $74.08 billion (3.7%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -420,10 +420,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/taiwan.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 South Korea: $64.83 billion (3.2%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -432,10 +432,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/india.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 France: $45.25 billion (2.2%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -444,10 +444,10 @@
                             </p>
                         </li>
                         <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/img/ireland.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Brazil: $44.80 billion (2.2%)
                             </h3>
                             <p class="mb-4 text-md font-medium text-gray-600">
@@ -479,7 +479,7 @@
                             <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/houston.svg')}}" width="100%">
                             Port of Houston
                         </button>
-                        <div id="tooltip-houston" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        <div id="tooltip-houston" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                             139.79 billion tons
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
@@ -593,7 +593,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/exxon.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Exxon Mobil Corporation (Mineral fuels, oil, and gas): $344.6 billion 
                             </h3>
                         </li>
@@ -601,7 +601,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/chevron.jpg')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Chevron Corporation (Oil, gas): $196.91 billion 
                             </h3>
                         </li>
@@ -609,7 +609,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/cargill.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Cargill (Conglomerate): $177 billion 
                             </h3>
                         </li>
@@ -617,7 +617,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/koch.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Koch Industries (Conglomerate): $125 billion 
                             </h3>
                         </li>
@@ -625,7 +625,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/ldc.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Louis Dreyfus Company (Cotton): $50.6 billion 
                             </h3>
                         </li>
@@ -633,7 +633,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/dow.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Dow Chemical (Chemicals): $44.6 billion 
                             </h3>
                         </li>
@@ -641,7 +641,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/paper.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 International Paper (Paper and packaging): $18.9 billion 
                             </h3>
                         </li>
@@ -649,7 +649,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/cellmark.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 CellMark Group (Diversified): $4.2 billion 
                             </h3>
                         </li>
@@ -657,7 +657,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/delong.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 DeLong (Animal fodder): $1 billion 
                             </h3>
                         </li>
@@ -665,7 +665,7 @@
                             <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
                                 <img src="{{url('frontend/company/apple.png')}}">
                             </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
                                 Apple (Electronics): $926 million 
                             </h3>
                         </li>
@@ -685,7 +685,7 @@
                     <div class="inline-flex items-center justify-center w-full">
                         <hr class="w-64 h-1 my-8 bg-glory-blue border-0 rounded">
                         <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2">
-                            <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
+                            <svg class="w-4 h-4 text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                                 <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"/>
                             </svg>
                         </div>
@@ -1139,7 +1139,7 @@
                     </h1>
                 </div>
                 <div class="mb-8 py-4 mx-auto">
-                    <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white text-gray-900 dark:text-white" data-inactive-classes="text-gray-500">
+                    <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white text-gray-900" data-inactive-classes="text-gray-500">
                         <h2 id="accordion-flush-heading-26">
                             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
                                 <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
@@ -1170,7 +1170,7 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-27" class="hidden" aria-labelledby="accordion-flush-heading-27">
-                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
                                     The US exported goods worth a total value of $2.01 trillion in 2023. 
                                 </p>
@@ -1188,7 +1188,7 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-28" class="hidden" aria-labelledby="accordion-flush-heading-28">
-                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
                                     Mineral fuels and mineral oils are the biggest US 
                                     exports worth $323.17 billion in 2023. 
@@ -1207,7 +1207,7 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-29" class="hidden" aria-labelledby="accordion-flush-heading-29">
-                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
                                     Canada is the biggest export partner of the US with exports worth $352.84 billion in 2023. 
                                 </p>
