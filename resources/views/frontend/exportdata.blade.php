@@ -270,52 +270,54 @@
 
         {{-- Top 10 US Imports in 2023 --}}
         <section class="bg-glory-blue">
-            <div class="grid grid-cols-1 lg:grid-cols-3 px-5 md:px-5 lg:px-5 py-16">
-                <div class="col-span-2 md:pl-8 lg:pl-0">
-                    <h1 class="text-3xl text-white lg:text-4xl font-medium mb-4">
-                        Top 10 US Exports in 2023
-                    </h1>   
-                    <p class="mb-4 text-md font-medium text-gray-100">
-                        The US is known for its vast export products around the world. The year 2023 was 
-                        a great year for the US in terms of its export trade. Mineral Fuels and mineral 
-                        oils are the biggest US exports with a total export value of $323.17 billion in 2023. 
-                        The top 10 exports of the US in 2023 include: 
-                    </p>
-                    <ul class="max-w-2xl space-y-1 font-medium text-gray-100 list-disc list-inside">
-                        <li>
-                            Mineral fuels and mineral oils: $323.17 billion (16.01%)
-                        </li>
-                        <li>
-                            Nuclear reactors, machinery, and mechanical appliances: $233 billion (11.54%)
-                        </li>
-                        <li>
-                            Electrical machinery and equipment: $200.65 billion (9.94%)
-                        </li>
-                        <li>
-                            Vehicles: $152.82 billion (7.57%)
-                        </li>
-                        <li>
-                            Aircraft, spacecraft, and parts thereof: $124.90 billion (6.19%)
-                        </li>
-                        <li>
-                            Optical, measuring, medical, or surgical instruments: $105.10 billion (5.21%)
-                        </li>
-                        <li>
-                            Pharmaceutical products: $90.30 billion (4.47%)
-                        </li>
-                        <li>
-                            Plastics and articles thereof: $77.79 billion (3.85%)
-                        </li>
-                        <li>
-                            Natural or cultured pearls, precious stones, and metals: $76.67 billion (3.8%)
-                        </li>
-                        <li>
-                            Commodities not elsewhere specified: $67.35 billion (3.34%)
-                        </li>
-                    </ul>
-                </div>
-                <div class="cols-span-1">
-                    <img class="w-full contrast-500 saturation-500 relative -right-5" src="{{url('frontend/img/top_10_blue.svg')}}" />
+            <div class="mx-auto max-w-screen-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 px-5 md:px-5 lg:px-5 py-16">
+                    <div class="col-span-2 md:pl-8 lg:pl-0">
+                        <h1 class="text-3xl text-white lg:text-4xl font-medium mb-4">
+                            Top 10 US Exports in 2023
+                        </h1>   
+                        <p class="mb-4 text-md font-medium text-gray-100">
+                            The US is known for its vast export products around the world. The year 2023 was 
+                            a great year for the US in terms of its export trade. Mineral Fuels and mineral 
+                            oils are the biggest US exports with a total export value of $323.17 billion in 2023. 
+                            The top 10 exports of the US in 2023 include: 
+                        </p>
+                        <ul class="max-w-2xl space-y-1 font-medium text-gray-100 list-disc list-inside">
+                            <li>
+                                Mineral fuels and mineral oils: $323.17 billion (16.01%)
+                            </li>
+                            <li>
+                                Nuclear reactors, machinery, and mechanical appliances: $233 billion (11.54%)
+                            </li>
+                            <li>
+                                Electrical machinery and equipment: $200.65 billion (9.94%)
+                            </li>
+                            <li>
+                                Vehicles: $152.82 billion (7.57%)
+                            </li>
+                            <li>
+                                Aircraft, spacecraft, and parts thereof: $124.90 billion (6.19%)
+                            </li>
+                            <li>
+                                Optical, measuring, medical, or surgical instruments: $105.10 billion (5.21%)
+                            </li>
+                            <li>
+                                Pharmaceutical products: $90.30 billion (4.47%)
+                            </li>
+                            <li>
+                                Plastics and articles thereof: $77.79 billion (3.85%)
+                            </li>
+                            <li>
+                                Natural or cultured pearls, precious stones, and metals: $76.67 billion (3.8%)
+                            </li>
+                            <li>
+                                Commodities not elsewhere specified: $67.35 billion (3.34%)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cols-span-1">
+                        <img class="w-full contrast-500 saturation-500 relative -right-5" src="{{url('frontend/img/top_10_blue.svg')}}" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -323,139 +325,141 @@
 
         {{-- Top 10 US import partners in 2023 --}}
         <section class="bg-white">
-            <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
-                <div class="flex items-center">
-                    <div>
-                        <h1 class="text-3xl lg:text-4xl font-medium mb-4">
-                            Top 10 US export partners in 2023
-                        </h1>
-                        <p class="mb-4 text-md font-medium text-gray-600">
-                            The US exports are famous for their high-quality goods and services all around 
-                            the world. There are several export destinations for the US to export its goods. 
-                            Canada is the biggest export destination of the US followed by Mexico and China. 
-                            Canada imported goods worth $352.84 billion from the US in 2023. The top 10 US 
-                            export partners in 2023 include:
-                        </p>
+            <div class="mx-auto max-w-screen-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
+                    <div class="flex items-center">
+                        <div>
+                            <h1 class="text-3xl lg:text-4xl font-medium mb-4">
+                                Top 10 US export partners in 2023
+                            </h1>
+                            <p class="mb-4 text-md font-medium text-gray-600">
+                                The US exports are famous for their high-quality goods and services all around 
+                                the world. There are several export destinations for the US to export its goods. 
+                                Canada is the biggest export destination of the US followed by Mexico and China. 
+                                Canada imported goods worth $352.84 billion from the US in 2023. The top 10 US 
+                                export partners in 2023 include:
+                            </p>
+                        </div>
                     </div>
-                </div>
-                {{-- country list --}}
-                <div class="mt-6 px-6 max-h-96 overflow-x-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-thumb:rounded scrollbar-thumb-glory-blue scrollbar-track-gray-100">
-                    <ol class="relative border-s border-glory-blue">                  
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/img/canada_r.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Canada: $352.84 billion (17.5%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Vehicles are the biggest US exports to Canada worth $57.72 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/china.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Mexico: $323.22 billion (16%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Electrical machinery and equipment are the biggest US exports to Canada worth $51.60 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/canada.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                China: $147.80 billion (7.3%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to China worth $19.73 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/germany.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Netherlands: $82.18 billion (4.1%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to the Netherlands worth $30.55 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/japan.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Germany: $76.69 billion (3.8%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Vehicles are the biggest US exports to Germany worth $10.41 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/south-korea.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Japan: $76.16 billion (3.8%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to Japan worth $12.06 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/vietnam.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                United Kingdom: $74.08 billion (3.7%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to the United 
-                                Kingdom worth $13.33 billion in 2023.
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/taiwan.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                South Korea: $64.83 billion (3.2%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to 
-                                South Korea worth $17.21 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/india.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                France: $45.25 billion (2.2%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to France 
-                                worth $11.11 billion in 2023.
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/ireland.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Brazil: $44.80 billion (2.2%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to Brazil 
-                                worth $8.56 billion in 2023.
-                            </p>
-                        </li>
-                    </ol>
+                    {{-- country list --}}
+                    <div class="mt-6 px-6 max-h-96 overflow-x-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-thumb:rounded scrollbar-thumb-glory-blue scrollbar-track-gray-100">
+                        <ol class="relative border-s border-glory-blue">                  
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('frontend/img/canada_r.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    Canada: $352.84 billion (17.5%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Vehicles are the biggest US exports to Canada worth $57.72 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/china.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    Mexico: $323.22 billion (16%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Electrical machinery and equipment are the biggest US exports to Canada worth $51.60 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/canada.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    China: $147.80 billion (7.3%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to China worth $19.73 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/germany.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    Netherlands: $82.18 billion (4.1%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to the Netherlands worth $30.55 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/japan.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    Germany: $76.69 billion (3.8%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Vehicles are the biggest US exports to Germany worth $10.41 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/south-korea.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    Japan: $76.16 billion (3.8%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to Japan worth $12.06 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/vietnam.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    United Kingdom: $74.08 billion (3.7%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to the United 
+                                    Kingdom worth $13.33 billion in 2023.
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/taiwan.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    South Korea: $64.83 billion (3.2%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to 
+                                    South Korea worth $17.21 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/india.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    France: $45.25 billion (2.2%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to France 
+                                    worth $11.11 billion in 2023.
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('frontend/img/ireland.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
+                                    Brazil: $44.80 billion (2.2%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to Brazil 
+                                    worth $8.56 billion in 2023.
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>

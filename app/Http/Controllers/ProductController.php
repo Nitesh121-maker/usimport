@@ -66,9 +66,9 @@ class ProductController extends Controller
             ->where(DB::raw('`PRODUCT_DESCRIPTION`'), 'like', $letter . '%')
             ->limit(10)
             ->get();
-            $companyresult = DB::table('export')
+            $companyresult = DB::table('EXP_AMERICA_BL_SEA')
             ->select('*')
-            ->where('company_name', 'like', $letter . '%')
+            ->where('PRODUCT_DESCRIPTION', 'like', $letter . '%')
             ->limit(15)
             ->get();
             return view (

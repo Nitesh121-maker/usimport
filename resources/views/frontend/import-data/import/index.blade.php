@@ -62,14 +62,14 @@
                             <li class="flex justify-end items-center text-center" role="presentation">
                                 <button
                                 onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
-                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-200" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-50" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
                                     Import
                                 </button>
                             </li>
                             <li class="flex justify-start items-center text-center" role="presentation">
                                 <button
                                 onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
-                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 !text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:bg-glory-blue hover:!text-white" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 !text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer global_hover" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
                                     Export
                                 </button>
                             </li>
@@ -79,14 +79,14 @@
                             <li class="flex justify-end items-center text-center" role="presentation">
                                 <button
                                 onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
-                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer hover:bg-glory-blue hover:text-white" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer global_hover" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
                                     Import
                                 </button>
                             </li>
                             <li class="flex justify-start items-center text-center" role="presentation">
                                 <button
                                 onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
-                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-200" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
+                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-50" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
                                     Export
                                 </button>
                             </li>
@@ -134,13 +134,13 @@
                                     @foreach(range('A', 'Z') as $letter)
                                         @if ($letter == Str::upper($activeLetter))
                                                <li class="active">
-                                                    <a href="{{ route('directory.list', ['role'=>'import','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 bg-blue-50 bg-glory-blue text-white">
+                                                    <a href="{{ route('directory.list', ['role'=>'import','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 bg-glory-blue text-white">
                                                         {{ $letter }}
                                                     </a>
                                                 </li>
                                         @else
                                            <li class="active">
-                                                <a href="{{ route('directory.list', ['role'=>'import','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
+                                                <a href="{{ route('directory.list', ['role'=>'import','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 global_hover">
                                                     {{ $letter }}
                                                 </a>
                                             </li>
@@ -180,7 +180,7 @@
                                             @if(isset($productResults) && count($productResults) > 0)
                                                 @foreach ($productResults as $productResult)
                                                     <a href="{{ route('product.list1', ['type' => 'data', 'role' => 'import', 'description' => $productResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
-                                                        <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
+                                                        <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow global_hover">
                                                             <p class="text-lg font-medium capitalize">
                                                                 {{ $productResult->PRODUCT_DESCRIPTION }}
                                                             </p>
@@ -200,7 +200,7 @@
                                             @if(isset($companyResults) && count($companyResults) > 0)
                                                 @foreach ($companyResults as $companyResult)
                                                     <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $companyResult->US_EXPORTER_NAME]) }}" target="_blank">
-                                                        <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
+                                                        <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow global_hover">
                                                             <p class="text-lg font-medium capitalize">
                                                                 {{ $companyResult->US_EXPORTER_NAME }}
                                                             </p>
@@ -220,7 +220,7 @@
                                             @if(isset($productCompanyResults) && count($productCompanyResults) > 0)
                                                 @foreach ($productCompanyResults as $productCompanyResult)
                                                     <a href="{{ route('product.list', ['type' => 'company', 'role' => 'import', 'description' => $productCompanyResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
-                                                        <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
+                                                        <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow global_hover">
                                                             <p class="text-lg font-medium capitalize">
                                                                 {{ $productCompanyResult->PRODUCT_DESCRIPTION }}
                                                             </p>
@@ -332,10 +332,10 @@
                                     @endphp
                                     @if(isset($exportProductResults) && count($exportProductResults) > 0)
                                         @foreach ($exportProductResults as $exportProductResult)
-                                            <a href="{{ route('product.list', ['type' => 'data', 'role' => 'export', 'description' => $exportProductResult->product_name]) }}" target="_blank">
+                                            <a href="{{ route('product.list', ['type' => 'data', 'role' => 'export', 'description' => $exportProductResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
                                                 <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                     <p class="text-lg font-medium capitalize">
-                                                        {{ $exportProductResult->product_name }}
+                                                        {{ $exportProductResult->PRODUCT_DESCRIPTION }}
                                                     </p>
                                                 </div>
                                             </a>
@@ -352,10 +352,10 @@
                                     @endphp
                                     @if(isset($exportCompanyResults) && count($exportCompanyResults) > 0)
                                         @foreach ($exportCompanyResults as $exportCompanyResult)
-                                            <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $exportCompanyResult->company_name]) }}" target="_blank">
+                                            <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $exportCompanyResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
                                                 <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                     <p class="text-lg font-medium capitalize">
-                                                        {{ $exportCompanyResult->company_name }}
+                                                        {{ $exportCompanyResult->PRODUCT_DESCRIPTION }}
                                                     </p>
                                                 </div>
                                             </a>
@@ -372,10 +372,10 @@
                                     @endphp
                                     @if(isset($exportProductCompanyResults) && count($exportProductCompanyResults) > 0)
                                         @foreach ($exportProductCompanyResults as $exportProductCompanyResult)
-                                            <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $exportProductCompanyResult->product_name]) }}" target="_blank">
+                                            <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $exportProductCompanyResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
                                                 <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
                                                     <p class="text-lg font-medium capitalize">
-                                                        {{ $exportProductCompanyResult->product_name }}
+                                                        {{ $exportProductCompanyResult->PRODUCT_DESCRIPTION }}
                                                     </p>
                                                 </div>
                                             </a>

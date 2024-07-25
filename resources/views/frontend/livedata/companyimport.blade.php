@@ -38,11 +38,18 @@
                     </div>
                 </div>
                 <div class="flex justify-start">
-                    <button data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-glory-red to-glory-blue hover:text-white">
+                    <button data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:outline-none">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
+                            <p class="font-medium lg:text-md">
+                                Track All Shipment
+                            </p>
+                        </span>
+                    </button>
+                    {{-- <button  class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-glory-red to-glory-blue hover:text-white">
                         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
                             Track All Shipment
                         </span>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>
@@ -356,27 +363,27 @@
         <div class="mx-auto max-w-screen-xl px-5 py-12">
             <div class="mb-10">
                 <h1 class="text-center font-medium text-3xl">
-                    Where BEAUTE KOZMETIK ANONIM SIRKETI imports from ?
+                    Where BEAUTE KOZMETIK ANONIM SIRKETI imports from?
                 </h1>
             </div>
             <div class="flex justify-center">
                 <div>
-                    <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                    <button type="button" class="text-gray-900 bg-white global_hover border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                         <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/usa.png')}}" width="100%">
                         United States Of America
                     </button>
 
-                    <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                    <button type="button" class="text-gray-900 bg-white global_hover border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                         <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/france.png')}}" width="100%">
                         France
                     </button>
 
-                    <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                    <button type="button" class="text-gray-900 bg-white global_hover border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                         <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/japan.png')}}" width="100%">
                         Japan
                     </button>
 
-                    <button type="button" class="text-gray-900 bg-white hover:bg-glory-blue hover:text-white border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                    <button type="button" class="text-gray-900 bg-white global_hover border border-gray-500 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                         <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/flag/italy.png')}}" width="100%">
                         Italy
                     </button>
