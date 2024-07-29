@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html class="scroll-smooth"> 
+<html class="scroll-smooth" lang="en"> 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        {{-- <meta name="keywords"
+        <link rel="canonical" href="https://www.usimportdata.com">
+        <link rel="alternate" href="https://www.usimportdata.com" hreflang="en-US"/>
+        <meta name="keywords"
             content="us import list, top 10 imports of us, importers in us, us import data,
             us import data by country, us imports, major us imports, us import data 2024,
             us live export data, usa import data"
-        /> --}}
+        /> 
         <meta name="description"
-            content="Discover live US trade data insights with TradeImpeX - your trusted source for 
-            US import-export data. Bridge the gap between US importers and exporters, optimise strategies, 
-            and stay competitive in the global market."
+            content="Get easy access of live US trade import-export data, real time shipment records, list of 
+            all US importers and exporters, or  our customs reports includes us exporter importer company name, HS code, 
+            value, qty, product description, origin & destination country"
         />
         <title>
-            Explore the live US trade import
-            export data with Tradeimex
+            Get Access Of Live US Trade Data, US Import Data, US Export Data
         </title>
         @include('frontend.link')
     </head>
@@ -37,18 +38,7 @@
                                 Your Trusted Source for US Trade Data
                             </h1>
                             <p class="mb-1 text-md font-normal text-gray-100 text-center lg:text-start md:text-start">
-                                TradeImeX is a leading US trade data provider offering comprehensive insights into the 
-                                import and export activities of the United States. US trade data provides comprehensive 
-                                information about all import and export transactions that have occurred in the United States. 
-                                It covers all the major trade data fields such as product description, HS code, date of shipment, 
-                                US exporter details/importer details, quantity, mode of transport, and more. As a trusted source 
-                                for US import-export data, TradeImeX bridges the gap between US importers and exporters, providing 
-                                valuable information to help businesses make informed decisions and stay competitive in the global 
-                                market. With detailed data on US trade trends and market analysis, we empower companies to optimize 
-                                their strategies, identify new opportunities, and mitigate risks. The US trade data we provide will 
-                                assist you in finding answers to any questions you may have if you are aiming your marketing at the 
-                                US market. Whether you are a seasoned importer or exporter, TradeImeX offers reliable US trade data 
-                                and unparalleled expertise to support your international trade endeavors.
+                                As a product of TradeImeX, USimportdata is a trusted source for US trade data and offers comprehensive insights into the import and export activities of the United States. US trade data provides comprehensive information about all import and export transactions that have occurred in the United States. It covers all the major trade data fields such as product description, HS code, date of shipment, US exporter details/importer details, quantity, mode of transport, and more. As a trusted source for US import-export data, usimportdata bridges the gap between US importers and exporters making it very easy for you to find buyers and suppliers in us according to your product, providing valuable information to help businesses make informed decisions and stay competitive in the global market. With detailed data on US trade trends and market analysis, we empower companies to optimize their strategies, identify new opportunities, and mitigate risks. The US trade data we provide will assist you in finding answers to any questions you may have if you are aiming your marketing at the US market. Whether you are a seasoned importer or exporter, usimportdata offers reliable or Up-to-date US trade data and unparalleled expertise to support your international trade endeavors.
                             </p>
                         </div>
                         <div class="flex justify-center">
@@ -57,43 +47,49 @@
                     </div>
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white mt-14" id="counter">
                         <div class="flex flex-col items-center justify-center">
-                            <h1 class="mb-2 text-3xl font-bold">
-                                <span class="count" data-number="5"></span>+
-                            </h1>
+                            <h2 class="mb-2 text-3xl font-bold">
+                                <span class="count" data-number="6"></span>+
+                            </h2>
                             <dd class="text-white text-center">Years Of Experience</dd>
                         </div>
                         <div class="flex flex-col items-center justify-center">
-                            <h1 class="mb-2 text-3xl font-bold">
+                            <h2 class="mb-2 text-3xl font-bold">
                                 <span class="count" data-number="10"></span>k+
-                            </h1>
+                            </h2>
                             <dd class="text-white text-center">Clients</dd>
                         </div>
                         <div class="flex flex-col items-center justify-center">
-                            <h1 class="mb-2 text-3xl font-bold">
+                            <h2 class="mb-2 text-3xl font-bold">
                                 <span class="count" data-number="80"></span>+
-                            </h1>
+                            </h2>
                             <dd class="text-white text-center">Countries Covered</dd>
                         </div>
                         <div class="flex flex-col items-center justify-center">
-                            <h1 class="mb-2 text-3xl font-bold">
-                                <span class="count" data-number="100"></span>%
-                            </h1>
-                            <dd class="text-white text-center">Satisfaction</dd>
+                            <h2 class="mb-2 text-3xl font-bold">
+                                <span class="count" data-number="1"></span>B+
+                            </h2>
+                            <dd class="text-white text-center">Reports Delivered</dd>
                         </div>
+                        <!--<div class="flex flex-col items-center justify-center">-->
+                        <!--    <h1 class="mb-2 text-3xl font-bold">-->
+                        <!--        <span class="count" data-number="100"></span>%-->
+                        <!--    </h1>-->
+                        <!--    <dd class="text-white text-center">Satisfaction</dd>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
         </section>
 
         {{-- Search Bar --}}
-        <section class="bg-solid z-3">
+        <section class="bg-solid z-10 relative">
             <div class="px-5 md:px-12 lg:px-5 py-12 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-4 lg:gap-16">
                 <div class="flex flex-col justify-center">
-                    <h1 class="mb-4 text-3xl lg:text-4xl font-normal tracking-normal text-white text-center lg:text-start">
+                    <h2 class="mb-4 text-3xl lg:text-4xl font-normal tracking-normal text-white text-center lg:text-start">
                         Search Live Data for US Trade
-                    </h1>
+                    </h2>
                     <p class="mb-4 lg:text-md font-normal text-gray-100 text-center lg:text-start">
-                        Stay Ahead With Real-Time US Trade Updates from TradeImeX
+                        Stay Ahead With Real-Time US Trade Updates from usimportdata
                     </p>
                 </div>
                 <div class="flex justify-center items-center">
@@ -120,9 +116,9 @@
         <section class="bg-white">
             <div class="py-12 md:py-12 lg:py-20 px-5 md:px-12 lg:px-5 mx-auto max-w-screen-xl"> 
                 <div>
-                    <h1 class="mb-2 text-3xl lg:text-4xl lg:text-start md:text-start text-center font-medium text-gray-900">
+                    <h2 class="mb-2 text-3xl lg:text-4xl lg:text-start md:text-start text-center font-medium text-gray-900">
                         Search Live Data for US Trade
-                    </h1>
+                    </h2>
                     <p class="mt-3 mb-3 text-md font-normal lg:text-start md:text-start text-center text-gray-500">
                         US Trade Data will enable you to discover many answers to your queries regarding
                         the US import-export data. When accessing real-time information about US trade data, 
@@ -132,7 +128,7 @@
                         offers a comprehensive database that enables professionals to track trade trends, 
                         monitor competitors, and identify potential business opportunities. You can search 
                         live data for the US buyers, suppliers, and US importer-exporter names very easily 
-                        with TradeImeX. There are some amazing benefits of our search live data feature.
+                        with UsImportData. There are some amazing benefits of our search live data feature.
                     </p>
                 </div>
                 <div class="px-3 py-6 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -140,9 +136,9 @@
                         <div class="mb-4 flex justify-center md:justify-start lg:justify-start">
                             <img src="{{url('frontend/img/insight.png')}}" class="w-2/6 contrast-100 saturate-200">
                         </div>
-                        <h1 class="mb-2 text-center md:text-start lg:text-start text-xl font-medium">
+                        <h3 class="mb-2 text-center md:text-start lg:text-start text-xl font-medium">
                             Simultaneous Insights
-                        </h1>
+                        </h3>
                         <p class="mb-3 text-center md:text-start lg:text-start text-gray-500 text-md font-normal">
                             One of the main advantages of using the Search live
                             data feature for US trade data is the ability to access 
@@ -154,9 +150,9 @@
                             <img src="{{url('frontend/img/decision-making.png')}}" class="contrast-100 saturate-200 w-2/6">
                             {{-- <i class="fa-solid font-2xl fa-database"></i> --}}
                         </div>
-                        <h1 class="mb-2 text-center md:text-start lg:text-start text-xl font-medium">
+                        <h3 class="mb-2 text-center md:text-start lg:text-start text-xl font-medium">
                             Improved Decision-Making
-                        </h1>
+                        </h3>
                         <p class="mb-3 text-center md:text-start lg:text-start text-gray-500 text-md font-normal">
                             By leveraging our Search live data feature, 
                             businesses can make more informed decisions 
@@ -168,9 +164,9 @@
                             <img src="{{url('frontend/img/pie-chart (1).png')}}" class="contrast-100 saturate-200 w-2/6">
                             {{-- <i class="fa-solid font-2xl fa-database"></i> --}}
                         </div>
-                        <h1 class="mb-2 text-center md:text-start lg:text-start lg:text-lg text-xl font-medium">
+                        <h3 class="mb-2 text-center md:text-start lg:text-start lg:text-lg text-xl font-medium">
                             Enhanced Market Intelligence
-                        </h1>
+                        </h3>
                         <p class="mb-3 text-center md:text-start lg:text-start text-gray-500 text-md font-normal">
                             By monitoring trade flows, businesses can gain a 
                             deeper understanding of market dynamics and 
@@ -181,9 +177,9 @@
                         <div class="mb-4 flex justify-center md:justify-start lg:justify-start">
                             <img src="{{url('frontend/img/transparency.png')}}" class="contrast-100 saturate-200 w-2/6">
                         </div>
-                        <h1 class="mb-2 text-center md:text-start lg:text-start text-xl font-medium">
+                        <h3 class="mb-2 text-center md:text-start lg:text-start text-xl font-medium">
                             Increased Transparency
-                        </h1>
+                        </h3>
                         <p class="mb-3 text-center md:text-start lg:text-start text-gray-500 text-md font-normal">
                             Transparency is essential in today's global market, and the 
                             Search live data feature provides businesses with increased 
@@ -199,9 +195,9 @@
             <div class="py-8 px-5 md:px-12 lg:px-5 mx-auto max-w-screen-xl">
                 <div class="px-2 grid lg:grid-cols-2 md:grid-col-2 gap-8">
                     <div>
-                        <h1 class="mb-8 md:mb-10 text-3xl lg:text-4xl font-medium lg:text-start text-center">
-                            Key Features of TradeImeX for US Trade Data
-                        </h1>
+                        <h2 class="mb-8 md:mb-10 text-3xl lg:text-4xl font-medium lg:text-start text-center">
+                            Key Features of UsImportData For US Trade Data
+                        </h2>
                         <ol class="relative border-s border-gray-200">                  
                             <li class="mb-10 ms-4">
                                 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-4 -start-1.5 border border-white"></div>
@@ -211,7 +207,7 @@
                                 </h3>
                                 <p class="mb-4 text-base font-normal text-gray-500">
                                     Access detailed US trade data including import and export information. 
-                                    With TradeImeX, users get full access to comprehensive US import-export data. 
+                                    With UsImportData, users get full access to comprehensive US import-export data. 
                                 </p>
                             </li>
                             <li class="mb-10 ms-4">
@@ -222,7 +218,7 @@
                                 </h3>
                                 <p class="text-base font-normal text-gray-500">
                                     Stay informed of the latest US trade data as it happens. 
-                                    TradeImeX provides real-time updates on the US trade 
+                                    UsImportData provides real-time updates on the US trade 
                                     data for a better experience.
                                 </p>
                             </li>
@@ -262,11 +258,11 @@
             <div class="mx-auto max-w-screen-xl px-5 lg:px-5 md:px-12 lg:py-16 md:py-12 py-8">
                 <div class="mb-6 grid gap-8 lg:gap-16">
                     <div class="flex flex-col justify-center">
-                        <h1 class="mb-4 font-medium text-3xl lg:text-4xl text-gray-900 text-center lg:text-start">
+                        <h2 class="mb-4 font-medium text-3xl lg:text-4xl text-gray-900 text-center lg:text-start">
                             Explore great possibilities in US trade with the US import-export data.
-                        </h1>
+                        </h2>
                         <p class="mb-2 text-md font-normal text-gray-500 lg:text-lg text-center lg:text-start">
-                            Discover how TradeImeX can help businesses acquire US trade data with 
+                            Discover how UsImportData can help businesses acquire US trade data with 
                             exclusive US import-export data reports. Here is how our US trade data 
                             reports can help you stay ahead in your business and trade in the US.
                         </p>
@@ -278,9 +274,9 @@
                             <img src="{{url('frontend/img/8.png')}}" class="w-1/4 mb-3">    
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
+                            <h3 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Up-to-date information
-                            </h5>
+                            </h3>
                         </div>
                         <p class="mb-3 font-normal text-gray-500">
                             Access the latest data on US imports and exports to stay ahead of the competition.
@@ -291,9 +287,9 @@
                             <img src="{{url('frontend/img/9.png')}}" class="w-1/4 mb-3">
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
+                            <h3 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Market analysis
-                            </h5>
+                            </h3>
                         </div>
                         <p class="mb-3 font-normal text-gray-500">
                             Gain insights into US market trends and consumer behavior 
@@ -305,9 +301,9 @@
                             <img src="{{url('frontend/img/10.png')}}" class="w-1/4 mb-3">
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
+                            <h3 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Monitor Competitors
-                            </h5>
+                            </h3>
                         </div>
                         <p class="mb-3 font-normal text-gray-500">
                             Keep track of your competitors' activities in the US market 
@@ -319,9 +315,9 @@
                             <img src="{{url('frontend/img/11.png')}}" class="w-1/4 mb-3">
                         </div>
                         <div>
-                            <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
+                            <h3 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">
                                 Improve supply chain management
-                            </h5>
+                            </h3>
                         </div>
                         <p class="mb-3 font-normal text-gray-500">
                             Optimize your supply chain by identifying key US 
@@ -341,9 +337,9 @@
                         <img class="w-4/6 md:w-6/12 lg:w-3/4" src="{{url('frontend/img/why_choose.svg')}}">
                     </div>
                     <div class="py-4">
-                        <h1 class="mb-4 mt-4 font-medium text-3xl lg:text-4xl text-glory-blue">
+                        <h2 class="mb-4 mt-4 font-medium text-3xl lg:text-4xl text-glory-blue">
                             Acquire unparalleled benefits with our US trade data reports
-                        </h1>
+                        </h2>
                         <p class="text-gray-500 text-md font-normal">
                             Our US trade data is collected from Reputable organizations, US customs, transportation 
                             companies, and customs ports. Numerous fields are included in this trade data, including 
@@ -397,11 +393,11 @@
                 <div class="grid lg:grid-cols-2">
                     <div>
                         <div class="items-center">
-                            <h1 class="font-medium text-3xl lg:text-4xl text-glory-red">
+                            <h2 class="font-medium text-3xl lg:text-4xl text-glory-red">
                                 Exclusive statistics of the US trade
-                            </h1>
+                            </h2>
                             <p class="text-md lg:text-lg font-normal my-4 text-gray-500 dark:text-white">
-                                We at TradeImeX provide exclusive statistics which are included in the 
+                                We at UsImportData provide exclusive statistics which are included in the 
                                 US trade data. These statistics cover exclusive information 
                                 related to US trade.
                             </p>
@@ -412,9 +408,9 @@
                                     <div class="mb-2">
                                         <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/29.png')}}">
                                     </div>
-                                    <h5 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
+                                    <h3 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
                                         Biggest US import-export Commodities
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-md font-normal text-gray-500">
                                         Explore and access the latest trade data on the biggest US 
                                         imports and exports.
@@ -426,9 +422,9 @@
                                     <div class="mb-2">
                                         <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/28.png')}}">
                                     </div>
-                                    <h5 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
+                                    <h3 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
                                         Top import and export partners of the US
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-md font-normal text-gray-500">
                                         Acquire the latest information on the biggest import and 
                                         export partners of the US.
@@ -440,9 +436,9 @@
                                     <div class="mb-2">
                                         <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/27.png')}}">
                                     </div>
-                                    <h5 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
+                                    <h3 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
                                         US trade data analysis
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-md font-normal text-gray-500">
                                         Get exclusive information and market analysis on the US trade data.
                                     </p>
@@ -453,9 +449,9 @@
                                     <div class="mb-2">
                                         <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/30.png')}}">
                                     </div>
-                                    <h5 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
+                                    <h3 class="mb-2 text-lg md:text-xl font-medium text-gray-900">
                                         Latest US trade trends
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-md font-normal text-gray-500">
                                         Discover the latest market trends in the US trade landscape to stay 
                                         ahead in your business in the US. 
@@ -475,11 +471,11 @@
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
                 <div>
-                    <h1 class="mb-4 text-gray-900 text-3xl lg:text-4xl font-medium">
+                    <h2 class="mb-4 text-gray-900 text-3xl lg:text-4xl font-medium">
                         Happy and Satisfied clients
-                    </h1>
+                    </h2>
                     <p class="text-md font-normal text-gray-500">
-                        At TradeImeX, we take pride in our commitment to delivering reliable and 
+                        At UsImportData, we take pride in our commitment to delivering reliable and 
                         accurate US trade data services that leave our clients satisfied. With a 
                         professional tone of voice, we prioritize the needs of our clients and 
                         strive to exceed their expectations. Many US companies such as Exxon Mobil,
@@ -535,12 +531,14 @@
         </section>
 
         {{-- Browse More Data --}}
-        <section class="bg-white">
+        <section class="bg-gray-100">
             <div class="py-12 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-2 md:gap- lg:gap-16">
                 <div class="flex flex-col justify-center">
-                    <h1 class="mb-4 text-center text-4xl lg:text-4xl font-medium animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue bg-clip-text text-transparent">
-                        Browse More Data TradeImeX
-                    </h1>
+                    <a href="https://www.tradeimex.in/global-trade-data" target="_blank">
+                        <h2 class="mb-4 text-center text-4xl lg:text-4xl font-medium underline hover:no-underline animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue bg-clip-text text-transparent">
+                            Browse More Data TradeImeX
+                        </h2>
+                    </a>
                 </div>
                 <div>
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-4">
@@ -562,7 +560,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/img/bangladesh.jpg')}}" alt="Bangladesh">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/bangladesh.png')}}" alt="Bangladesh">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/bangladesh-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -577,7 +575,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/turkey_1.jpg')}}" alt="Turkey">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/turkey.png')}}" alt="Turkey">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/turkey-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -592,7 +590,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/philipines.jpg')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/phillipines.png')}}" alt="">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/philippines-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -607,7 +605,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/indonesia.jpg')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/indonesia.png')}}" alt="">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/indonesia-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -622,7 +620,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/russia_lg.jpg')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/russia_lg.png')}}" alt="">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/russia-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -637,7 +635,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ukraine.jpg')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ukraine.png')}}" alt="">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ukraine-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -697,7 +695,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/mexico.webp')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/mexico.png')}}" alt="">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/mexico-import" target="_blank" class="text-xl font-medium hover:underline">

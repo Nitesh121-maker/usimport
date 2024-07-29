@@ -78,15 +78,15 @@
                         <ul class="mb-6 grid w-full gap-2 grid-cols-2 md:grid-cols-2" id="ButtonTab" data-tabs-toggle="#ButtonTab" role="tablist">
                             <li class="flex justify-end items-center text-center" role="presentation">
                                 <button
-                                onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
-                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer global_hover" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
+                                    onclick="window.location.href='{{ route('directory.list', ['role'=>'import' , 'letter' => 'a']) }}';handleimport();"
+                                    class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg cursor-pointer global_hover" id="import-btn" data-tabs-target="#import" type="button" role="tab" aria-controls="import" aria-selected="false">
                                     Import
                                 </button>
                             </li>
                             <li class="flex justify-start items-center text-center" role="presentation">
                                 <button
-                                onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
-                                class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-50" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
+                                    onclick="window.location.href='{{ route('directoryexport.list', ['role'=>'export','letter' => 'a']) }}';handleexport();"
+                                    class="text-md font-medium text-center items-center w-3/4 lg:w-1/5 p-3 bg-glory-blue text-white border border-blue-100 rounded-lg cursor-pointer hover:text-gray-50" id="export-btn" data-tabs-target="#export" type="button" role="tab" aria-controls="export" aria-selected="false">
                                     Export
                                 </button>
                             </li>
@@ -288,13 +288,13 @@
                                 @foreach(range('A', 'Z') as $letter)
                                     @if ($letter == Str::upper($exportactiveLetter))
                                         <li class="active">
-                                            <a href="{{ route('directoryexport.list', ['role'=>'export','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 bg-blue-50 bg-glory-blue text-white">
+                                            <a href="{{ route('directoryexport.list', ['role'=>'export','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 bg-glory-blue text-white">
                                                 {{ $letter }}
                                             </a>
                                         </li>
                                     @else
                                         <li class="active">
-                                            <a href="{{ route('directoryexport.list', ['role'=>'export','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 hover:bg-glory-blue hover:text-white">
+                                            <a href="{{ route('directoryexport.list', ['role'=>'export','letter' => Str::lower($letter)]) }}" class="flex items-center justify-center px-4 h-10 leading-tight text-glory-blue bg-white border border-gray-300 bg-blue-50 global_hover">
                                                 {{ $letter }}
                                             </a>
                                         </li>
@@ -333,7 +333,7 @@
                                     @if(isset($exportProductResults) && count($exportProductResults) > 0)
                                         @foreach ($exportProductResults as $exportProductResult)
                                             <a href="{{ route('product.list', ['type' => 'data', 'role' => 'export', 'description' => $exportProductResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
-                                                <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
+                                                <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow global_hover">
                                                     <p class="text-lg font-medium capitalize">
                                                         {{ $exportProductResult->PRODUCT_DESCRIPTION }}
                                                     </p>
@@ -353,7 +353,7 @@
                                     @if(isset($exportCompanyResults) && count($exportCompanyResults) > 0)
                                         @foreach ($exportCompanyResults as $exportCompanyResult)
                                             <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $exportCompanyResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
-                                                <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
+                                                <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow global_hover">
                                                     <p class="text-lg font-medium capitalize">
                                                         {{ $exportCompanyResult->PRODUCT_DESCRIPTION }}
                                                     </p>
@@ -373,7 +373,7 @@
                                     @if(isset($exportProductCompanyResults) && count($exportProductCompanyResults) > 0)
                                         @foreach ($exportProductCompanyResults as $exportProductCompanyResult)
                                             <a href="{{ route('product.list', ['type' => 'company', 'role' => 'export', 'description' => $exportProductCompanyResult->PRODUCT_DESCRIPTION]) }}" target="_blank">
-                                                <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow hover:bg-glory-blue hover:text-white">
+                                                <div class="flex items-center justify-center p-6 text-glory-blue bg-blue-100 border border-blue-100 rounded-lg shadow global_hover">
                                                     <p class="text-lg font-medium capitalize">
                                                         {{ $exportProductCompanyResult->PRODUCT_DESCRIPTION }}
                                                     </p>

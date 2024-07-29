@@ -333,7 +333,7 @@ table thead tr th {
 
     /* google recaptcha verification tag off */
     .grecaptcha-badge {
-        visibility: hidden !important
+        visibility: hidden !important;
     }
 
     .global_hover {
