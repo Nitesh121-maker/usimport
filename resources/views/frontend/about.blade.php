@@ -6,6 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
          <link rel="canonical" href="https://www.usimportdata.com/about">
         <title>About Us || Tradeimex</title>
+        {{-- <style>
+            .active-tab {
+                border-bottom-color: gray !important; /* Change to your desired color */
+                color: #B31942 !important; /* Change to your desired color */
+            }
+        </style> --}}
         @include('frontend.link')
     </head>
     <body>
@@ -169,7 +175,7 @@
                     </div>
                 </div>
                 <div class="py-8">
-                    <div class="mb-4 border-b border-gray-200">
+                    {{-- <div class="mb-4 border-b border-gray-200">
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                             <li class="me-2" role="presentation">
                                 <button
@@ -230,7 +236,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                 <div class="flex justify-center items-center">
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
-                                        At TradeImeX, we pride ourselves on the accuracy and reliability 
+                                        At USimportdata, we pride ourselves on the accuracy and reliability 
                                         of our US trade data. Our team works tirelessly to ensure that our 
                                         clients receive the most up-to-date and reliable information available, 
                                         allowing them to make informed decisions with confidence.
@@ -247,7 +253,7 @@
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
                                         We offer detailed information on the US market, including detailed 
                                         information on imports, exports, tariffs, trade partners, and more. 
-                                        With TradeImeX, you can access a wealth of data to gain a deep 
+                                        With USimportdata, you can access a wealth of data to gain a deep 
                                         understanding of the market landscape and identify new growth 
                                         opportunities.
                                     </p>
@@ -263,7 +269,7 @@
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
                                         Our platform is designed with the user in mind, making it easy to 
                                         navigate and access the information you need quickly and efficiently. 
-                                        The TradeImeX user-friendly interface makes it easy to find the US 
+                                        The USimportdata user-friendly interface makes it easy to find the US 
                                         trade data you need to make informed decisions.
                                     </p>
                                 </div>
@@ -276,13 +282,89 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                 <div class="flex justify-center items-center">
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
-                                        At TradeImeX, we provide market insights and analysis as per your 
+                                        At USimportdata, we provide market insights and analysis as per your 
                                         requirements for US trade data, helping businesses understand the US market 
                                         trends, identify opportunities, and make strategic decisions.
                                     </p>
                                 </div>
                                 <div class="flex justify-center items-center">
                                     <img src="{{url('public/frontend/img/market-research.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                    <div class="container mx-auto mt-10">
+                        <div class="mb-4 border-b border-gray-300">
+                            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="research-tab" type="button" role="tab" aria-controls="research" aria-selected="true">
+                                        Reliability And Accuracy
+                                    </button>
+                                </li>
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="business-tab" type="button" role="tab" aria-controls="business" aria-selected="false">
+                                        Detailed Information
+                                    </button>
+                                </li>
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="risk-tab" type="button" role="tab" aria-controls="risk" aria-selected="false">
+                                        User-Friendly Platform
+                                    </button>
+                                </li>
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="insight-tab" type="button" role="tab" aria-controls="insight" aria-selected="false">
+                                        Market Analysis and Insights
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="default-tab-content">
+                            <div class="p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="research" role="tabpanel" aria-labelledby="research-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            At USimportdata, we pride ourselves on the accuracy and reliability of our US trade data. Our team works tirelessly to ensure that our clients receive the most up-to-date and reliable information available, allowing them to make informed decisions with confidence.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/reliable.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="business" role="tabpanel" aria-labelledby="business-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            We offer detailed information on the US market, including detailed information on imports, exports, tariffs, trade partners, and more. With USimportdata, you can access a wealth of data to gain a deep understanding of the market landscape and identify new growth opportunities.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/info.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="risk" role="tabpanel" aria-labelledby="risk-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            Our platform is designed with the user in mind, making it easy to navigate and access the information you need quickly and efficiently. The USimportdata user-friendly interface makes it easy to find the US trade data you need to make informed decisions.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/user-friendly.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="insight" role="tabpanel" aria-labelledby="insight-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            At USimportdata, we provide market insights and analysis as per your requirements for US trade data, helping businesses understand the US market trends, identify opportunities, and make strategic decisions.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/market-research.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
                                 </div>
                             </div>
                         </div>

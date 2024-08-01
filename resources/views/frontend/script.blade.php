@@ -5,6 +5,107 @@
         crossorigin="anonymous"></script>
     <script src="//code.tidio.co/sdzqyzkqyjktbhjlcr0v8xbgipvxwtc9.js"></script>
 
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('[role="tab"]');
+            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+            let currentTabIndex = 0;
+            let intervalId;
+    
+            function showTab(index) {
+                tabs.forEach((tab, i) => {
+                    if (i === index) {
+                        tab.setAttribute('aria-selected', 'true');
+                        tab.classList.add('border-gray-300', 'text-blue-600');
+                    } else {
+                        tab.setAttribute('aria-selected', 'false');
+                        tab.classList.remove('border-gray-300', 'text-gray-600');
+                    }
+                });
+                tabPanels.forEach((panel, i) => {
+                    panel.classList.toggle('hidden', i !== index);
+                });
+            }
+    
+            function startTabRotation() {
+                intervalId = setInterval(() => {
+                    currentTabIndex = (currentTabIndex + 1) % tabs.length;
+                    showTab(currentTabIndex);
+                }, 3000);
+            }
+    
+            function stopTabRotation() {
+                clearInterval(intervalId);
+            }
+    
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    stopTabRotation();
+                    showTab(index);
+                    currentTabIndex = index;
+                    startTabRotation();
+                });
+                tab.addEventListener('mouseover', stopTabRotation);
+                tab.addEventListener('mouseout', startTabRotation);
+            });
+    
+            showTab(currentTabIndex);
+            startTabRotation();
+        });
+    </script> --}}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('[role="tab"]');
+            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+            let currentTabIndex = 0;
+            let intervalId;
+    
+            function showTab(index) {
+                tabs.forEach((tab, i) => {
+                    if (i === index) {
+                        tab.setAttribute('aria-selected', 'true');
+                        tab.classList.add('border-blue-700', 'text-blue-500','border-b-2');
+                        tab.classList.remove('text-gray-500', 'border-transparent');
+                    } else {
+                        tab.setAttribute('aria-selected', 'false');
+                        tab.classList.remove('border-blue-500', 'text-blue-500','border-b-2');
+                        tab.classList.add('text-gray-500', 'border-transparent');
+                    }
+                });
+                tabPanels.forEach((panel, i) => {
+                    panel.classList.toggle('hidden', i !== index);
+                });
+            }
+    
+            function startTabRotation() {
+                intervalId = setInterval(() => {
+                    currentTabIndex = (currentTabIndex + 1) % tabs.length;
+                    showTab(currentTabIndex);
+                }, 30000); // 30 seconds
+            }
+    
+            function stopTabRotation() {
+                clearInterval(intervalId);
+            }
+    
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    stopTabRotation();
+                    showTab(index);
+                    currentTabIndex = index;
+                    startTabRotation();
+                });
+                tab.addEventListener('mouseover', stopTabRotation);
+                tab.addEventListener('mouseout', startTabRotation);
+            });
+    
+            showTab(currentTabIndex);
+            startTabRotation();
+        });
+    </script>
+    
+
     {{-- Ajax Call For Product ] --}}
     <script>
         $(document).ready(function() {
