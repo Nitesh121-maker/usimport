@@ -545,7 +545,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/vietnam.png')}}" alt="Egypt">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/vietnam.png')}}" alt="Vietnam Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/vietnam-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -560,7 +560,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/bangladesh.png')}}" alt="Bangladesh">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/bangladesh.png')}}" alt="Bangladesh Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/bangladesh-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -575,13 +575,13 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/turkey.png')}}" alt="Turkey">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/turkey.png')}}" alt="Turkey Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/turkey-import" target="_blank" class="text-xl font-medium hover:underline">
                                         Turkey
                                         <span>
-                                            <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>    
+                                            <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
                                         </span> 
                                     </a>
                                 </div>
@@ -590,7 +590,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/phillipines.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/phillipines.png')}}" alt="Philippines Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/philippines-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -605,7 +605,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/indonesia.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/indonesia.png')}}" alt="Indonesia Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/indonesia-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -620,7 +620,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/russia_lg.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/russia_lg.png')}}" alt="Russia Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/russia-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -635,7 +635,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ukraine.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ukraine.png')}}" alt="Ukraine Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ukraine-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -650,7 +650,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ethiopia.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ethiopia.png')}}" alt="Ethiopia Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ethiopia-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -665,7 +665,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ghana.png')}}" alt="">      
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/ghana.png')}}" alt="Ghana Import">      
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/ghana-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -680,7 +680,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/uganda.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/uganda.png')}}" alt="Uganda Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/uganda-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -695,7 +695,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/mexico.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/mexico.png')}}" alt="Mexico Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/mexico-import" target="_blank" class="text-xl font-medium hover:underline">
@@ -710,7 +710,7 @@
                         <div class="flip-card pl-[1rem] md:pl-[2rem] lg:pl-0 !w-[90%] md:!w-[85%] lg:!w-[95%]">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img class="h-auto max-w-32 rounded-lg hover:drop-shadow-2xl" src="{{url('frontend/flag/panama.png')}}" alt="">
+                                    <img class="h-auto max-w-32 rounded-lg" src="{{url('frontend/flag/panama.png')}}" alt="Panama Import">
                                 </div>
                                 <div class="flex items-center justify-center bg-gray-300 rounded flip-card-back drop-shadow-xl">
                                     <a href="https://www.tradeimex.in/panama-import" target="_blank" class="text-xl font-medium hover:underline">

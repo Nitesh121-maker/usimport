@@ -343,6 +343,10 @@ table thead tr th {
         background-color: #0A3161;
         color: white !important;
     }
+    .global_hover:focus {
+        background-color: #0A3161;
+        color: white !important;
+    }
 
 
     /*Phone selection input */

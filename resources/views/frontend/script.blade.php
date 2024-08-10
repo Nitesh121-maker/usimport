@@ -5,6 +5,25 @@
         crossorigin="anonymous"></script>
     <script src="//code.tidio.co/sdzqyzkqyjktbhjlcr0v8xbgipvxwtc9.js"></script>
 
+    <script>
+        // Function to handle the close event for a specific toast
+        function closeToast(event) {
+            const button = event.target;  // Get the button that was clicked
+            const toast = button.closest('#toast-default');  // Find the closest toast element
+            if (toast) {
+                toast.remove();  // Remove the toast from the DOM
+            }
+        }
+
+        // Get all close buttons within toasts
+        const closeButtons = document.querySelectorAll('#toast-default button[data-dismiss-target="#toast-default"]');
+
+        // Add a click event listener to each close button
+        closeButtons.forEach(button => {
+            button.addEventListener('click', closeToast);
+        });
+    </script>
+
     {{-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('[role="tab"]');
@@ -54,6 +73,7 @@
         });
     </script> --}}
 
+    {{-- auto tab --}}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('[role="tab"]');
@@ -412,7 +432,7 @@
 
     </script> --}}
 
-    {{-- phone selection input js --}}
+    {{-- Contact Us page phone selection input js --}}
     <script>
         var telInput = $("#phone"),
             errorMsg = $("#error-msg"),
@@ -425,7 +445,7 @@
             autoFormat: true,
             autoHideDialCode: true,
             autoPlaceholder: true,
-            defaultCountry: "auto",
+            defaultCountry: "us",
             ipinfoToken: "yolo",
             nationalMode: false,
             numberType: "MOBILE",
@@ -433,7 +453,7 @@
             preferredCountries: ['sa', 'ae', 'qa', 'om', 'bh', 'kw', 'ma'],
             preventInvalidNumbers: true,
             separateDialCode: true,
-            initialCountry: "auto",
+            initialCountry: "us",
             geoIpLookup: function(callback) {
                 $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
                     var countryCode = (resp && resp.country) ? resp.country : "";
@@ -487,7 +507,7 @@
         });
     </script>
 
-    {{-- phone selection input js --}}
+    {{-- Footer phone selection input js --}}
     <script>
         var telInput = $("#phone-cf"),
             errorMsg = $("#error-msg"),
@@ -500,7 +520,7 @@
             autoFormat: true,
             autoHideDialCode: true,
             autoPlaceholder: true,
-            defaultCountry: "auto",
+            defaultCountry: "us",
             ipinfoToken: "yolo",
             nationalMode: false,
             numberType: "MOBILE",
@@ -508,7 +528,7 @@
             preferredCountries: ['sa', 'ae', 'qa', 'om', 'bh', 'kw', 'ma'],
             preventInvalidNumbers: true,
             separateDialCode: true,
-            initialCountry: "auto",
+            initialCountry: "us",
             geoIpLookup: function(callback) {
                 $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
                     var countryCode = (resp && resp.country) ? resp.country : "";
@@ -561,8 +581,8 @@
             getPhoneNumberData();
         });
     </script>
+    
     {{-- Active class --}}
-
     <script>
         // Import button 
         function handleimport() {
