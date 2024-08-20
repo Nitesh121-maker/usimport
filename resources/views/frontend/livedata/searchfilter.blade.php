@@ -34,14 +34,14 @@
                         </a>
                     </div>
                 </li>
-                <li class="inline-flex items-center aria-current="page">
+                <li class="inline-flex items-center" aria-current="page">
                     <div class="flex items-center">
                         <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                         </svg>
                         <span class="line-clamp-1 ms-1 text-sm font-medium text-gray-500 md:ms-2 capitalize">
                             @if ($desc)
-                                {{ $desc }}&nbsp;{{ $role }} Live Data
+                                {{ $base_search }}&nbsp;{{ $role }} Live Data
                             @else
                                 {{ $role }} Live Data
                             @endif
@@ -58,10 +58,10 @@
     <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
             <div class="px-5 mb-12">
-                <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase">
-                    {{ $desc }}&nbsp;{{ $role }} Data Of USA || {{ $desc }}&nbsp;{{ $role }}s
+                <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                    {{ $base_search }}&nbsp;{{ $role }} Data Of USA || {{ $base_search }}&nbsp;{{ $role }}s
                 </h1>
-                <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg">
+                <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
                     Search {{ $desc }}&nbsp;{{ $role }} data of USA based on bill of lading database and other shipment details 
                     by customs. Our USA import statistics of {{ $desc }} includes hs code, product, port, importers name, 
                     value, qty etc.
@@ -142,361 +142,14 @@
         </div>
     </section>
     {{-- End of search bar --}}
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
     {{--  ($type) --}}
-    @if($type == "") 
-        {{-- Table Of desktop, Laptop & Tab View --}}
-        <section class="bg-white py-12 hidden md:block lg:block">
-            @if($role == 'import')
-                {{-- Filter By Option --}}
-                <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
-                    <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
-                        <h1 class="text-end text-2xl font-medium">Filter By:</h1>
-                    </div>
-                    <div class="col-span-5">
-                        <form>
-                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Unloading Port</option>
-                                            <option value="">1703, SAVANNAH, GA</option>
-                                            <option value="">1401, NORFOLK, VA</option>
-                                            <option value="">2811, OAKLAND, CA</option>
-                                            <option value="">1803, JACKSONVILLE, FL</option>
-                                            <option value="">0401, BOSTON, MA</option>
-                                            <option value="">1601, CHARLESTON, SC</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Origin Country</option>
-                                            <option value="">CN, China</option>
-                                            <option value="">VN, VIET NAM</option>
-                                            <option value="">MY, MALAYSIA</option>
-                                            <option value="">TW, TAIWAN</option>
-                                            <option value="">TH, THAILAND</option>
-                                            <option value="">JP, JAPAN</option>
-                                            <option value="">AT, AUSTRIA</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose HS Code</option>
-                                            <option value="">401170, 401190</option>
-                                            <option value="">401170</option>
-                                            <option value="">730210</option>
-                                            <option value="">400122</option>
-                                            <option value="">902230</option>
-                                            <option value="">940161</option>
-                                            <option value="">400129</option>
-                                        </select>
-                                    </div>
-                                </div>  
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-span-1"></div>
-                </div>
-                
-                {{-- Import Table --}}
-                <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="responsive-table w-full text-sm text-left text-gray-500">
-                            <thead class="text-sm text-gray-700 uppercase bg-gray-200">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Date
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        HS Code
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Product Description 
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Origin Country
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Unloading Port
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Qty.
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Unit
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Weight
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Importer Name
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if(isset($result) && $result->count() > 0)
-                                    @foreach ($result as $result)
-                                    {{-- @dd($result) --}}
-                                        <tr class="bg-white border-b hover:bg-gray-50">
-                                            <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                {{ $result->day }}/{{ $result->month }}/{{ $result->year }}
-                                            </td>
-                                            <th scope="row" class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->HS_Code }}
-                                                </p>
-                                            </th>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{$result->Product_Description}}</p>
-                                            </td>
-                                            <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->Country }}
-                                                </p>
-                                            </td>
-                                            <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->Unloading_Port }}
-                                                </p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                               <p>{{ $result->Quantity }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity_Unit }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Weight_KG }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
-                                                    Importer Name
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
-                        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                            <span class="text-sm font-normal text-gray-500 mb-4 p-4 block w-full md:inline md:w-auto">
-                                Showing 
-                                <span class="font-semibold text-gray-900">
-                                    1-10
-                                </span> 
-                                of 
-                                <span class="font-semibold text-gray-900">
-                                    10
-                                </span>
-                            </span>
-                            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
-                                <li>
-                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                                        2
-                                    </p>
-                                </li>
-                                <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                                        3
-                                    </p>
-                                </li>
-                                <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
-                                        Next
-                                    </p>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            @elseif($role == 'export')
-                {{-- Filter By Option --}}
-                <div class="grid grid-cols-1 gap-4 lg:grid-cols-8 mb-8 px-5">
-                    <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
-                        <h1 class="text-end text-2xl font-medium">Filter By:</h1>
-                    </div>
-                    <div class="col-span-5">
-                        <form>
-                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Unloading Port</option>
-                                            <option value="">1703, SAVANNAH, GA</option>
-                                            <option value="">1401, NORFOLK, VA</option>
-                                            <option value="">2811, OAKLAND, CA</option>
-                                            <option value="">1803, JACKSONVILLE, FL</option>
-                                            <option value="">0401, BOSTON, MA</option>
-                                            <option value="">1601, CHARLESTON, SC</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose Origin Country</option>
-                                            <option value="">CN, China</option>
-                                            <option value="">VN, VIET NAM</option>
-                                            <option value="">MY, MALAYSIA</option>
-                                            <option value="">TW, TAIWAN</option>
-                                            <option value="">TH, THAILAND</option>
-                                            <option value="">JP, JAPAN</option>
-                                            <option value="">AT, AUSTRIA</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="relative z-0 w-full mb-5 lg:mb-0 group">
-                                        <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                            <option selected>Choose HS Code</option>
-                                            <option value="">401170, 401190</option>
-                                            <option value="">401170</option>
-                                            <option value="">730210</option>
-                                            <option value="">400122</option>
-                                            <option value="">902230</option>
-                                            <option value="">940161</option>
-                                            <option value="">400129</option>
-                                        </select>
-                                    </div>
-                                </div>  
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-span-1"></div>
-                </div>
-
-                {{-- Export Table --}}
-                <div class="mx-auto mx-w-screen-xl px-5 hidden lg:block">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="responsive-table w-full text-sm text-left text-gray-500">
-                            <thead class="text-sm text-gray-700 uppercase bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Date
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        HS Code
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Product Description 
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Origin Country
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Unloading Port
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Qty.
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Unit
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Weight
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Importer Name
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if(isset($result) && $result->count() > 0)
-                                    @foreach ($result as $result)
-                                        <tr class="bg-white border-b hover:bg-gray-50">
-                                            <td class="w-4 p-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Act_Arrival_Date }}</p>
-                                            </td>
-                                            <th scope="row" class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->HS_Code }}
-                                                </p>
-                                            </th>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{$result->Products }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->Port_of_Departure }}
-                                                </p>
-                                            </td>
-                                            <td class="px-6 py-4 align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $result->Foreign_Port }}
-                                                </p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Quantity_Unit }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
-                                                <p>{{ $result->Weight_Unit }}</p>
-                                            </td>
-                                            <td class="px-6 py-4 font-medium align-top">
-                                                <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
-                                                    Importer Name
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
-                        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                            <span class="text-sm font-normal text-gray-500 mb-4 p-4 block w-full md:inline md:w-auto">
-                                Showing 
-                                <span class="font-semibold text-gray-900">
-                                    1-10
-                                </span> 
-                                of 
-                                <span class="font-semibold text-gray-900">
-                                    10
-                                </span>
-                            </span>
-                            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 pr-3">
-                                <li>
-                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                                        2
-                                    </p>
-                                </li>
-                                <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                                        3
-                                    </p>
-                                </li>
-                                <li>
-                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
-                                        Next
-                                    </p>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            @else
-                <p class="text-4xl text-gray-800 text-center">
-                    Role Isn't Defined
-                </p>
-            @endif
-        </section>
-    @elseif($type == 'data')
+    @if($type == 'data')
         {{-- Table Of desktop, Laptop & Tab View --}}
         <section class="bg-white py-12 hidden md:block lg:block">
             @if($role == 'import')
@@ -508,6 +161,7 @@
                     {{-- @dd($resultDetails) --}}
                     <div class="col-span-5">
                         {{-- @dd($resultDetails) --}}
+                       
                         <form action="">
                             <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                 <div>
@@ -515,25 +169,40 @@
                                         <label class="mb-2 text-sm font-medium">
                                             Choose HS Code
                                         </label>
-                                        
+
                                         <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Choose HS Code</option>
                                             @php
                                                 $SelectResult = $result;
                                             @endphp
-                                          
+                                            
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
-                                                @foreach ($result as $SelectResult)
-                                                   
-                                                    @if ($base_search)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
-                                                            {{ $SelectResult->HS_CODE }}                          
-                                                        </option>
-                                                    @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
-                                                            {{ $SelectResult->HS_CODE }}
-                                                        </option>
+                                                @foreach ($SelectResult as $SelectResult)
+                                                    @if(count($args)==4)
+                                                        @if (is_numeric($base_search)) 
+                                                            <option value="{{route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $SelectResult->HS_CODE]);}}">
+                                                                {{ $SelectResult->HS_CODE }}
+                                                            </option>
+                                                        @else
+                                                            <option value="{{route('search-filterone', ['type' => $type, 'role' => $role,'searchDetails' => $desc, 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
+                                                                {{ $SelectResult->HS_CODE }}
+                                                            </option>
+                                                        @endif
+                                                    @elseif(count($args)==6)
+                                                        @if (is_numeric($base_search))
+                                                            <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
+                                                                {{ $SelectResult->HS_CODE }}                          
+                                                            </option>
+                                                            @if($filterdata==$SelectResult->HS_CODE)
+                                                              @break
+                                                            @endif
+                                                        @else
+                                                            <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
+                                                                {{ $SelectResult->HS_CODE }}
+                                                            </option>
+                                                        @endif
                                                     @endif
+
                                                 @endforeach
                                             @endif
                                         </select>
@@ -552,14 +221,23 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                    @if ($base_search)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->ORIGIN_COUNTRY])}}">
+                                                    @if(count($args) == 4)
+                                                        <option value="{{route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $SelectResult->ORIGIN_COUNTRY])}}">
                                                             {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
+                                                    @elseif(count($args) == 6)
+                                                        @if ($base_search)
+                                                            <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->ORIGIN_COUNTRY??'null'])}}">
+                                                                {{ $SelectResult->ORIGIN_COUNTRY }}
+                                                            </option>
+                                                            @if($filterdata==$SelectResult->ORIGIN_COUNTRY)
+                                                              @break
+                                                            @endif
                                                         @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->ORIGIN_COUNTRY])}}">
-                                                            {{ $SelectResult->ORIGIN_COUNTRY }}
-                                                        </option>
+                                                            <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->ORIGIN_COUNTRY??'null'])}}">
+                                                                {{ $SelectResult->ORIGIN_COUNTRY }}
+                                                            </option>
+                                                        @endif
                                                     @endif
                                                 @endforeach
                                             @endif
@@ -578,15 +256,25 @@
                                             @endphp
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                   @if ($base_search)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->UNLOADING_PORT])}}">
+                                                   @if(count($args)==4)
+                                                         <option value="{{route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $SelectResult->UNLOADING_PORT ?? 'null'])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
-                                                   @else
-                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->UNLOADING_PORT])}}">
-                                                            {{ $SelectResult->UNLOADING_PORT }}
-                                                        </option>
+                                                   @elseif(count($args)==6)
+                                                        @if ($base_search)
+                                                            <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->UNLOADING_PORT])}}">
+                                                                {{ $SelectResult->UNLOADING_PORT }}
+                                                            </option>
+                                                        @if($filterdata==$SelectResult->UNLOADING_PORT)
+                                                          @break
+                                                        @endif
+                                                       @else
+                                                           <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->UNLOADING_PORT])}}">
+                                                                {{ $SelectResult->UNLOADING_PORT }}
+                                                            </option>
+                                                       @endif
                                                    @endif
+
                                                 @endforeach
                                             @endif
                                         </select> 
@@ -638,36 +326,122 @@
                                     $Dresult = $result;
                                 @endphp
                                 {{-- @dd($searfilterdata) --}}
+                              
                                 @if(isset($Dresult) && $Dresult->count() > 0)
                                     @foreach ($Dresult as $Dresult)
                                         @php
                                             $hs_code = $Dresult->HS_CODE;
                                             $country = $Dresult->ORIGIN_COUNTRY;
+                                            $country = str_ireplace(" ", "-", $country);
                                             $unloading_port  = $Dresult->UNLOADING_PORT;
+                                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                            $args = $args??[];
+                                            //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
                                             // Hs code Url
-                                            if ($base_search) {
-                                            # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $hs_code ??'hs_code']);
-                                            } else {
-                                                # code...
-                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $hs_code ??'hs_code']);
+                                            $searchDetailsParts = explode(',', $base_search);
+                                            $all_numeric = true;
+                                            
+                                            foreach ($searchDetailsParts as $part) {
+                                                if (!is_numeric($part)) {
+                                                    $all_numeric = false;
+                                                    break;
+                                                }
                                             }
-                                            // Country URl
-                                            if ($base_search) {
+                                          
+                                            if ($all_numeric) {
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
+                                                if(count($args)== 4){
+                                                    //dd($args,$filterby,$filterdata,$hs_code);
+                                                    if($filterby=='hs_code'){
+                                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                        $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port ?? 'null']);
+                                                    }else if($filterby == 'country'){
+                                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    } else if($filterby == 'unloading_port'){
+                                                        //Hs Code Url
+                                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                        //Coutry Url
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    }else{
+                                                    
+                                                    }
+                                                }else if(count($args)==6){
+                                                   if ($filterby == 'hs_code'){
+                                                   //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $filterdata??'null']);
+                                                        
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                                                                                //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                   } else if($filterby == 'country'){
+                                                        //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                        //Hs-Code Url
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                        
+                                                        //Country Url
+                                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                        
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
+                                                   }else if($filterby == 'unloading_port'){
+                                                        //dd('in this Group');
+                                                        $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                        //Hs_code Url 
+                                                        
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=> $search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                        //Country Url 
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                   }
+                                                }
                                             } else {
+                                                //dd('In HS_CODE Else Block',$filterby,$base_search,$hs_code,count($args));
                                                 # code...
-                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country]);
+                                                if(count($args)==4){
+                                                    $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                }else if(count($args)==6){
+                                                   //dd('In This Block');
+                                                   //dd('IN This GRoup',$searfilterdata,$filterby);
+                                                   if ($filterby == 'hs_code'){
+                                                       //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $hs_code??"null"]);
+                                                        //Country Url
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??"null"]);
+                                                   } else if($filterby == 'country'){
+                                                        //dd($search,$filterby,$searfilterdata,$filterby);
+                                                        $searfilterdata = str_ireplace(" ", "-", $searfilterdata);
+                                                        //Hs_Code
+                                                        $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                        //Country Url 
+                                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'country', 'filterdata' => $country??"null"]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??'null']);
+                                                   }else if($filterby == 'unloading_port'){
+                                                        //dd($base_search,$search,$filterby,$searfilterdata);
+                                                        $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                        $searfilterdata = str_ireplace(" ", "-", $searfilterdata);
+                                                        //HS_code
+                                                        $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                        //Country URL
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                   }
+                                                }
                                             }
-                                            // Port Url
-                                            if ($base_search) {
-                                                # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $unloading_port]);
-                                            } else {
-                                                # code...
-                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $unloading_port]);
-                                            }
+                 
+               
                                         @endphp
                                         
                                         <tr class="bg-white border-b hover:bg-gray-50">
@@ -677,10 +451,13 @@
                                             <td class="px-6 py-4 align-top">
                                                 {{-- @dd('hs_code', $hs_code_url) --}}
                                                 <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 hover:underline">
-                                                    {{ $Dresult->HS_CODE ?? 'null' }}
+                                                    @foreach (explode(',', $Dresult->HS_CODE) as $code)
+                                                        <div>{{ $code ?? 'null'}}</div>
+                                                    @endforeach
+                                                    <!--{{ $Dresult->HS_CODE ?? 'null' }}-->
                                                 </a>
                                             </td>
-                                            <td class="px-6 py-4 font-medium text-gray-900 align-top line-clamp-2">
+                                            <td class="px-6 py-4 font-medium text-gray-900 align-top">
                                                 <p>{{ strip_tags($Dresult->PRODUCT_DESCRIPTION) }}</p>
                                             </td>
                                             {{-- @dd($result) --}}
@@ -776,13 +553,15 @@
                                           
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
-                                                   
                                                     @if ($base_search)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
                                                             {{ $SelectResult->HS_CODE }}                          
                                                         </option>
+                                                        @if($filterdata==$SelectResult->HS_CODE)
+                                                          @break
+                                                        @endif
                                                     @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->HS_CODE ??'hs_code'])}}">
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @endif
@@ -805,12 +584,15 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                     @if ($base_search)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->DESTINATION_COUNTRY??'country'])}}">
-                                                            {{ $SelectResult->DESTINATION_COUNTRY }}
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->ORIGIN_COUNTRY??'null'])}}">
+                                                            {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
-                                                        @else
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->DESTINATION_COUNTRY??'country'])}}">
-                                                            {{ $SelectResult->DESTINATION_COUNTRY }}
+                                                        @if($filterdata==$SelectResult->ORIGIN_COUNTRY)
+                                                          @break
+                                                        @endif
+                                                    @else
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->ORIGIN_COUNTRY??'null'])}}">
+                                                            {{ $SelectResult->ORIGIN_COUNTRY }}
                                                         </option>
                                                     @endif
                                                 @endforeach
@@ -831,11 +613,14 @@
                                             @if(isset($SelectResult) && $SelectResult->count() > 0)
                                                 @foreach ($result as $SelectResult)
                                                    @if ($base_search)
-                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->UNLOADING_PORT??'unloading_port'])}}">
+                                                        <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata ,'filterdata1' => $SelectResult->UNLOADING_PORT??'null'])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
+                                                    @if($filterdata==$SelectResult->UNLOADING_PORT)
+                                                      @break
+                                                    @endif
                                                    @else
-                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->UNLOADING_PORT??'unloading_port'])}}">
+                                                       <option value="{{route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata, 'filterdata1' => $SelectResult->UNLOADING_PORT])}}">
                                                             {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @endif
@@ -866,7 +651,7 @@
                                         Product Description 
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        DESTINATION Country
+                                        Destination Country
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Unloading Port
@@ -881,43 +666,122 @@
                                         Weight
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Importer Name
+                                        Exporter Name
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($result) && $result->count() > 0)
-                                    @foreach ($result as $result)
-                                    {{-- @dd('HS CODE',$base_search,$hscode) --}}
-                                    @php
-                                        $hs_code = $result->HS_CODE;
-                                        $country = $result->DESTINATION_COUNTRY;
-                                        $unloading_port  = $result->UNLOADING_PORT;
-                                        // Hs code Url
-                                        if ($base_search) {
-                                            # code...
-                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'hs_code','filterdata'=>$searfilterdata, 'filterdata1' => $hs_code ??'hs_code']);
-                                        } else {
-                                            # code...
-                                            $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'hs_code','filterdata'=>$searfilterdata ,'filterdata1' => $hs_code ??'hs_code']);
-                                        }
-                                        // Country URl
-                                        if ($base_search) {
-                                            # code...
-                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country??'country']);
-                                        } else {
-                                            # code...
-                                            $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'country','filterdata'=>$searfilterdata ,'filterdata1' => $country??'country']);
-                                        }
-                                        // Port Url
-                                        if ($base_search) {
-                                            # code...
-                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $hscode, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata ,'filterdata1' => $unloading_port??'unloading_port']);
-                                        } else {
-                                            # code...
-                                            $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'base_search'=>$base_search,'searchDetails' => $desc, 'filterby' => 'unloading_port','filterdata'=>$searfilterdata, 'filterdata1' => $unloading_port??'unloading_port']);
-                                        }
-                                    @endphp
+                                @php
+                                    $Dresult = $result;
+                                @endphp
+                                {{-- @dd($searfilterdata) --}}
+                              
+                                @if(isset($Dresult) && $Dresult->count() > 0)
+                                    @foreach ($Dresult as $Dresult)
+                                        @php
+                                            $result = $Dresult
+                                        @endphp
+                                        @php
+                                            $hs_code = $Dresult->HS_CODE;
+                                            $country = $Dresult->DESTINATION_COUNTRY;
+                                            $country = str_ireplace(" ", "-", $country);
+                                            $unloading_port  = $Dresult->UNLOADING_PORT;
+                                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                            $args = $args??[];
+                                            //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                            // Hs code Url
+                                            if (is_numeric($base_search)) {
+                                                # code...
+                                                if(count($args)== 4){
+                                                    //dd($args,$filterby,$filterdata,$hs_code);
+                                                    if($filterby=='hs_code'){
+                                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                        $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port ?? 'null']);
+                                                    }else if($filterby == 'country'){
+                                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    } else if($filterby == 'unloading_port'){
+                                                        //Hs Code Url
+                                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                        //Coutry Url
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    }else{
+                                                    
+                                                    }
+                                                }else if(count($args)==6){
+                                                   if ($filterby == 'hs_code'){
+                                                   //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $filterdata??'null']);
+                                                        
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                                                                                //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                   } else if($filterby == 'country'){
+                                                        //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                        //Hs-Code Url
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                        
+                                                        //Country Url
+                                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                        
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
+                                                   }else if($filterby == 'unloading_port'){
+                                                        //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                        $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                        //Hs_code Url 
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=> $search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                        //Country Url 
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                   }
+                                                }
+                                            } else {
+                                                //dd('In HS_CODE Else Block',$base_search,$hs_code,count($args));
+                                                # code...
+                                                if(count($args)==4){
+                                                    $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                }else if(count($args)==6){
+                                                   //dd('In This Block');
+                                                   //dd('IN This GRoup',$searfilterdata,$filterby);
+                                                   if ($filterby == 'hs_code'){
+                                                       //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $hs_code??"null"]);
+                                                        //Country Url
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??"null"]);
+                                                   } else if($filterby == 'country'){
+                                                        //dd($search,$filterby,$searfilterdata,$filterby);
+                                                        $searfilterdata = str_ireplace(" ", "-", $searfilterdata);
+                                                        //Hs_Code
+                                                        $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                        //Country Url 
+                                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'country', 'filterdata' => $country??"null"]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??'null']);
+                                                   }else if($filterby == 'unloading_port'){
+                                                        //dd($base_search,$search,$filterby,$searfilterdata);
+                                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                        //HS_code
+                                                        $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                        //Country URL
+                                                        $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        //Port Url
+                                                        $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                   }
+                                                }
+                                            }
+                 
+               
+                                        @endphp
                                         <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="w-4 p-4 font-medium text-gray-900 align-top">
                                                 <p>{{ $result->DATE }}</p>
@@ -925,7 +789,9 @@
                                             <th scope="row" class="px-6 py-4 align-top">
                                                 <p class="font-medium text-blue-600 hover:underline">
                                                     <a href="{{ $hs_code_url }}" class="font-medium text-blue-600 hover:underline">
-                                                        {{ $result->HS_CODE ?? 'null' }}
+                                                        @foreach (explode(',', $result->HS_CODE??'null') as $code)
+                                                            <div>{{ $code??'null' }}</div>
+                                                        @endforeach
                                                     </a>
                                                 </p>
                                             </th>
@@ -958,7 +824,7 @@
                                             </td>
                                             <td class="px-6 py-4 font-medium align-top">
                                                 <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="font-medium text-blue-600 hover:underline transition-all">
-                                                    Importer Name
+                                                    Exporter Name
                                                 </p>
                                             </td>
                                         </tr>
@@ -1146,7 +1012,7 @@
                             @foreach ($result as $result) 
                                 <div class="max-w-sm p-6 bg-glory-blue border border-gray-200 rounded-lg shadow">
                                     <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-4">
-                                        <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%] mr-2">
+                                        <img src="{{url('public/frontend/flag/usa.png')}}" class="w-[10%] mr-2">
                                         USA
                                     </span>
                                     <a href="/usa-import" target="_blank">
@@ -1163,6 +1029,33 @@
                                 </div>
                             @endforeach
                         @endif
+                    </div>
+                    <!--Pagination-->
+                    <div class="flex justify-end py-6">
+                        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between" aria-label="Table navigation">
+                            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                                <li>
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
+                                        1
+                                    </a>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                        2
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                        3
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                                        Next
+                                    </p>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </section>
@@ -1182,7 +1075,7 @@
                             @foreach ($result as $result) 
                                 <div class="max-w-sm p-6 bg-glory-blue border border-gray-200 rounded-lg shadow">
                                     <span class="flex items-center text-md font-semibold text-green-400 me-3 mb-4">
-                                        <img src="{{url('frontend/flag/usa.png')}}" class="w-[10%] mr-2">
+                                        <img src="{{url('public/frontend/flag/usa.png')}}" class="w-[10%] mr-2">
                                         USA
                                     </span>
                                     <a href="/usa-import" target="_blank">
@@ -1200,6 +1093,33 @@
                             @endforeach
                         @endif
                     </div>
+                    <!--Pagination-->
+                    <div class="flex justify-end py-6">
+                        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between" aria-label="Table navigation">
+                            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                                <li>
+                                    <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
+                                        1
+                                    </a>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                        2
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                                        3
+                                    </p>
+                                </li>
+                                <li>
+                                    <p data-modal-target="crud-modal-1" data-modal-toggle="crud-modal-1" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                                        Next
+                                    </p>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </section>
         @else 
@@ -1211,12 +1131,12 @@
         @endphp
     @endif
     
-    <!-- Modal Form -->
+    <<!-- Modal Form -->
     <div id="crud-modal-1" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
         <div class="relative p-2 w-full max-w-4xl max-h-full px-5">
             <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 bg-white rounded-lg shadow">
                 <div class="flex justify-center items-center">
-                    <img class="w-4/5" src="{{ url('frontend/img/modal_form.png') }}">
+                    <img class="w-4/5" src="{{ url('public/frontend/img/modal_form.png') }}">
                 </div>
                 <div>
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
@@ -1231,63 +1151,63 @@
                         </button>
                     </div>
                     <!-- Modal form -->
-                    <form class="mx-auto px-5 lg:px-5 py-6" action="{{route('contact.send')}}" method="POST" onsubmit="return validatecontactForm()">
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    Name
-                                </label>
-                            </div>
-                            <div class="relative z-0 w-full mb-5 group">
-                                <input type="email" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <l/abel for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    Email
-                                </l>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 md:gap-6">
-                            <div class="relative z-0 w-full mb-5 group">
-                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    Phone number
-                                </label>
-                            </div>
-                            <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    Company
-                                </label>
-                            </div>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <label for="underline_select" class="sr-only">
-                                Underline select
-                            </label>
-                            <select id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                <option selected>Choose...</option>
-                                <option value="import">Import</option>
-                                <option value="export">Export</option>
-                                <option value="Both">Both</option>
-                            </select>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                Message
-                            </label>
-                        </div>
-                        <div class="flex justify-center">
-                            <button type="submit" class="text-white bg-gradient-to-br from-glory-red to-glory-blue focus:ring-2 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                                Submit
-                            </button>
-                        </div>
+                    <form class="mx-auto px-5 lg:px-5 py-6" action="{{url('/modal')}}" method="POST" onsubmit="return validatecontactForm()" id="pop-up">
+                      @csrf
+                      <div class="grid md:grid-cols-2 md:gap-6">
+                          <div class="relative z-0 w-full mb-5 group">
+                              <input type="text" name="name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                              <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Name
+                              </label>
+                          </div>
+                          <div class="relative z-0 w-full mb-5 group">
+                              <input type="email" name="email" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                              <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                  Email
+                              </label>
+                          </div>
+                      </div>
+                      <div class="grid md:grid-cols-2 md:gap-6">
+                          <div class="relative z-0 w-full mb-5 group">
+                              <input type="tel" name="phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                              <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Phone number
+                              </label>
+                          </div>
+                          <div class="relative z-0 w-full mb-5 group">
+                              <input type="text" name="company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                              <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                  Company
+                              </label>
+                          </div>
+                      </div>
+                      <div class="relative z-0 w-full mb-5 group">
+                          {{-- <label for="underline_select" class="sr-only">Underline select</label> --}}
+                          <select name="role" id="underline_select" class="appearance-none block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                              <option selected>Choose...</option>
+                              <option value="Import">Import</option>
+                              <option value="Export">Export</option>
+                              <option value="Both">Both</option>
+                          </select>
+                      </div>
+                      <div class="relative z-0 w-full mb-5 group">
+                          <input type="text" name="message" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
+                          <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                            Message
+                          </label>
+                      </div>
+                      <input type="hidden" name="recaptcha_response" id="popup">
+                      <div class="flex justify-center">
+                          <button type="submit" class="text-white bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:ring-2 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                              SUBMIT
+                          </button>
+                      </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal Form -->
+    <!-- Modal Form -->>
     
     @include('frontend.footer')
     @include('frontend.script')
