@@ -5,6 +5,127 @@
         crossorigin="anonymous"></script>
     <script src="//code.tidio.co/sdzqyzkqyjktbhjlcr0v8xbgipvxwtc9.js"></script>
 
+    <script>
+        // Function to handle the close event for a specific toast
+        function closeToast(event) {
+            const button = event.target;  // Get the button that was clicked
+            const toast = button.closest('#toast-default');  // Find the closest toast element
+            if (toast) {
+                toast.remove();  // Remove the toast from the DOM
+            }
+        }
+
+        // Get all close buttons within toasts
+        const closeButtons = document.querySelectorAll('#toast-default button[data-dismiss-target="#toast-default"]');
+
+        // Add a click event listener to each close button
+        closeButtons.forEach(button => {
+            button.addEventListener('click', closeToast);
+        });
+    </script>
+
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('[role="tab"]');
+            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+            let currentTabIndex = 0;
+            let intervalId;
+    
+            function showTab(index) {
+                tabs.forEach((tab, i) => {
+                    if (i === index) {
+                        tab.setAttribute('aria-selected', 'true');
+                        tab.classList.add('border-gray-300', 'text-blue-600');
+                    } else {
+                        tab.setAttribute('aria-selected', 'false');
+                        tab.classList.remove('border-gray-300', 'text-gray-600');
+                    }
+                });
+                tabPanels.forEach((panel, i) => {
+                    panel.classList.toggle('hidden', i !== index);
+                });
+            }
+    
+            function startTabRotation() {
+                intervalId = setInterval(() => {
+                    currentTabIndex = (currentTabIndex + 1) % tabs.length;
+                    showTab(currentTabIndex);
+                }, 3000);
+            }
+    
+            function stopTabRotation() {
+                clearInterval(intervalId);
+            }
+    
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    stopTabRotation();
+                    showTab(index);
+                    currentTabIndex = index;
+                    startTabRotation();
+                });
+                tab.addEventListener('mouseover', stopTabRotation);
+                tab.addEventListener('mouseout', startTabRotation);
+            });
+    
+            showTab(currentTabIndex);
+            startTabRotation();
+        });
+    </script> --}}
+
+    {{-- auto tab --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('[role="tab"]');
+            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+            let currentTabIndex = 0;
+            let intervalId;
+    
+            function showTab(index) {
+                tabs.forEach((tab, i) => {
+                    if (i === index) {
+                        tab.setAttribute('aria-selected', 'true');
+                        tab.classList.add('border-blue-700', 'text-blue-500','border-b-2');
+                        tab.classList.remove('text-gray-500', 'border-transparent');
+                    } else {
+                        tab.setAttribute('aria-selected', 'false');
+                        tab.classList.remove('border-blue-500', 'text-blue-500','border-b-2');
+                        tab.classList.add('text-gray-500', 'border-transparent');
+                    }
+                });
+                tabPanels.forEach((panel, i) => {
+                    panel.classList.toggle('hidden', i !== index);
+                });
+            }
+    
+            function startTabRotation() {
+                intervalId = setInterval(() => {
+                    currentTabIndex = (currentTabIndex + 1) % tabs.length;
+                    showTab(currentTabIndex);
+                }, 30000); // 30 seconds
+            }
+    
+            function stopTabRotation() {
+                clearInterval(intervalId);
+            }
+    
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    stopTabRotation();
+                    showTab(index);
+                    currentTabIndex = index;
+                    startTabRotation();
+                });
+                tab.addEventListener('mouseover', stopTabRotation);
+                tab.addEventListener('mouseout', startTabRotation);
+            });
+    
+            showTab(currentTabIndex);
+            startTabRotation();
+        });
+    </script>
+    
+
     {{-- Ajax Call For Product ] --}}
     <script>
         $(document).ready(function() {
@@ -311,7 +432,7 @@
 
     </script> --}}
 
-    {{-- phone selection input js --}}
+    {{-- Contact Us page phone selection input js --}}
     <script>
         var telInput = $("#phone"),
             errorMsg = $("#error-msg"),
@@ -324,7 +445,7 @@
             autoFormat: true,
             autoHideDialCode: true,
             autoPlaceholder: true,
-            defaultCountry: "auto",
+            defaultCountry: "us",
             ipinfoToken: "yolo",
             nationalMode: false,
             numberType: "MOBILE",
@@ -332,7 +453,7 @@
             preferredCountries: ['sa', 'ae', 'qa', 'om', 'bh', 'kw', 'ma'],
             preventInvalidNumbers: true,
             separateDialCode: true,
-            initialCountry: "auto",
+            initialCountry: "us",
             geoIpLookup: function(callback) {
                 $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
                     var countryCode = (resp && resp.country) ? resp.country : "";
@@ -386,7 +507,7 @@
         });
     </script>
 
-    {{-- phone selection input js --}}
+    {{-- Footer phone selection input js --}}
     <script>
         var telInput = $("#phone-cf"),
             errorMsg = $("#error-msg"),
@@ -399,7 +520,7 @@
             autoFormat: true,
             autoHideDialCode: true,
             autoPlaceholder: true,
-            defaultCountry: "auto",
+            defaultCountry: "us",
             ipinfoToken: "yolo",
             nationalMode: false,
             numberType: "MOBILE",
@@ -407,7 +528,7 @@
             preferredCountries: ['sa', 'ae', 'qa', 'om', 'bh', 'kw', 'ma'],
             preventInvalidNumbers: true,
             separateDialCode: true,
-            initialCountry: "auto",
+            initialCountry: "us",
             geoIpLookup: function(callback) {
                 $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
                     var countryCode = (resp && resp.country) ? resp.country : "";
@@ -460,8 +581,8 @@
             getPhoneNumberData();
         });
     </script>
+    
     {{-- Active class --}}
-
     <script>
         // Import button 
         function handleimport() {

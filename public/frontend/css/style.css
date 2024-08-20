@@ -333,13 +333,17 @@ table thead tr th {
 
     /* google recaptcha verification tag off */
     .grecaptcha-badge {
-        visibility: hidden !important
+        visibility: hidden !important;
     }
 
     .global_hover {
         color: #0A3161 !important;
     }
     .global_hover:hover {
+        background-color: #0A3161;
+        color: white !important;
+    }
+    .global_hover:focus {
         background-color: #0A3161;
         color: white !important;
     }

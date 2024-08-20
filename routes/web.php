@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\SearchLiveDataController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ModalMailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,19 @@ Route::get('/privacypolicy', [PageController::class, 'privacypolicy']);
 Route::get('/livedata/search', [PageController::class, 'livedataimport']);
 Route::get('/companydetail', [PageController::class, 'companydetail']);
 Route::get('/thankyou', [PageController::class, 'thankyou']);
+Route::get('sitemap.xml',function() {
+    return response()->view('frontend.sitemap')->header('Content-Type', 'xml');
+});
+Route::get('/robots.txt', function () {
+    $path = public_path('robots.txt');
+
+    if (File::exists($path)) {
+        return Response::file($path);
+    }
+
+    abort(404);
+});
+Route::get('/error', [PageController::class, 'error']);
 // Route::get('/testpage', [PageController::class, 'test']);
 
 // livedata
@@ -51,3 +65,4 @@ Route::get('/search/company/{role}/{companyname}', [CompanyController::class, 'c
 
 // Contact Form Route
 Route::post('/contact', [ContactFormController::class, 'sendContactForm'])->name('contact.send');
+Route::post('/modal', [ModalMailController::class, 'sendModalForm'])->name('modal.send');

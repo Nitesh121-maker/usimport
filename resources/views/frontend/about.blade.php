@@ -4,7 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+         <link rel="canonical" href="https://www.usimportdata.com/about">
         <title>About Us || Tradeimex</title>
+        {{-- <style>
+            .active-tab {
+                border-bottom-color: gray !important; /* Change to your desired color */
+                color: #B31942 !important; /* Change to your desired color */
+            }
+        </style> --}}
         @include('frontend.link')
     </head>
     <body>
@@ -69,7 +76,7 @@
                     </p>
                 </div>
                 <div class="flex items-center justify-center">
-                    <img src="{{url('frontend/img/about_us.svg')}}" class="lg:w-full md:w-3/5 w-full">
+                    <img src="{{url('public/frontend/img/about_us.svg')}}" class="lg:w-full md:w-3/5 w-full">
                 </div>
             </div>
         </section>
@@ -77,9 +84,9 @@
         {{-- Who We Are and What We Do --}}
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl lg:px-5 md:px-12 px-5 py-12">
-                <h1 class="mb-3 lg:text-4xl text-3xl font-medium text-center md:text-start lg:text-start">
+                <h2 class="mb-3 lg:text-4xl text-3xl font-medium text-center md:text-start lg:text-start">
                     Who We Are and What We Do
-                </h1>
+                </h2>
                 <p class="mb-3 font-normal text-md lg:text-md text-gray-500 text-center md:text-start lg:text-start">
                     TradeImeX is a renowned and dependable provider of US import-export data, 
                     providing complete and actual-time insights into the USA market. With 5+ years 
@@ -94,11 +101,11 @@
                     <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-red rounded-lg shadow col-span-1 md:col-span-4 lg:col-span-1">
                         <div class="mt-4 px-4 py-2">
                             <div class="mb-2 flex justify-center lg:justify-start">
-                                <img src="{{url('frontend/img/accurate.png')}}" width="25%">
+                                <img src="{{url('public/frontend/img/accurate.png')}}" width="25%">
                             </div>
-                            <h5 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
+                            <h3 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
                                 Accurate US Trade Data Analysis
-                            </h5>
+                            </h3>
                             <p class="mb-3 text-sm font-normal text-gray-500 text-center lg:text-start">
                                 Our team of experts compiles and analyzes vast amounts of US import-export 
                                 data from various reliable sources to provide our clients with accurate and 
@@ -111,11 +118,11 @@
                     <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-red rounded-lg shadow col-span-1 md:col-span-4 lg:col-span-1">
                         <div class="mt-4 px-4 py-2">
                             <div class="mb-2 flex justify-center lg:justify-start">
-                                <img src="{{url('frontend/img/personalized.png')}}" width="20%">
+                                <img src="{{url('public/frontend/img/personalized.png')}}" width="20%">
                             </div>
-                            <h5 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
+                            <h3 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
                                 Personalized Data
-                            </h5>
+                            </h3>
                             <p class="mb-3 text-sm font-normal text-gray-500 text-center lg:text-start">
                                 We are aware that each business has different demands and specifications 
                                 in the US. That's why we offer personalized data tailored to your US market, 
@@ -130,11 +137,11 @@
                     <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-red rounded-lg shadow col-span-1 md:col-span-4 lg:col-span-1">
                         <div class="mt-4 px-4 py-2">
                             <div class="mb-2 flex justify-center lg:justify-start">
-                                <img src="{{url('frontend/img/immediate.png')}}" width="20%">
+                                <img src="{{url('public/frontend/img/immediate.png')}}" width="20%">
                             </div>
-                            <h5 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
+                            <h3 class="mb-2 text-lg font-medium text-gray-900 text-center lg:text-start">
                                 Immediate results
-                            </h5>
+                            </h3>
                             <p class="mb-3 text-sm font-normal text-gray-500 text-center lg:text-start">
                                 Time is of the essence in the hectic world of global trade. With TradeImeX, 
                                 you can access quick updates on US trade data, market trends, and regulatory 
@@ -156,9 +163,9 @@
             <div class="mx-auto max-w-screen-xl lg:px-5 md:px-12 px-5 py-6 lg:py-8">
                 <div class="flex flex-wrap">
                     <div class="flex flex-col text-center md:text-start lg:text-start">
-                        <h1 class="mb-3 text-3xl lg:text-4xl font-medium">
+                        <h2 class="mb-3 text-3xl lg:text-4xl font-medium">
                             What makes TradeImeX the best option for US trade data?
-                        </h1>
+                        </h2>
                         <p class="font-normal text-md lg:text-md text-gray-500">
                             When it comes to choosing a US trade data provider, there are several reasons 
                             why TradeImeX stands out from the competition. TradeImeX is unique in many 
@@ -168,7 +175,7 @@
                     </div>
                 </div>
                 <div class="py-8">
-                    <div class="mb-4 border-b border-gray-200">
+                    {{-- <div class="mb-4 border-b border-gray-200">
                         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                             <li class="me-2" role="presentation">
                                 <button
@@ -229,14 +236,14 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                 <div class="flex justify-center items-center">
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
-                                        At TradeImeX, we pride ourselves on the accuracy and reliability 
+                                        At USimportdata, we pride ourselves on the accuracy and reliability 
                                         of our US trade data. Our team works tirelessly to ensure that our 
                                         clients receive the most up-to-date and reliable information available, 
                                         allowing them to make informed decisions with confidence.
                                     </p>
                                 </div>
                                 <div class="flex justify-center items-center">
-                                    <img src="{{url('frontend/img/reliable.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    <img src="{{url('public/frontend/img/reliable.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
                                 </div>
                             </div>
                         </div>
@@ -246,13 +253,13 @@
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
                                         We offer detailed information on the US market, including detailed 
                                         information on imports, exports, tariffs, trade partners, and more. 
-                                        With TradeImeX, you can access a wealth of data to gain a deep 
+                                        With USimportdata, you can access a wealth of data to gain a deep 
                                         understanding of the market landscape and identify new growth 
                                         opportunities.
                                     </p>
                                 </div>
                                 <div class="flex justify-center items-center">
-                                    <img src="{{url('frontend/img/info.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    <img src="{{url('public/frontend/img/info.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
                                 </div>
                             </div>
                         </div>
@@ -262,12 +269,12 @@
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
                                         Our platform is designed with the user in mind, making it easy to 
                                         navigate and access the information you need quickly and efficiently. 
-                                        The TradeImeX user-friendly interface makes it easy to find the US 
+                                        The USimportdata user-friendly interface makes it easy to find the US 
                                         trade data you need to make informed decisions.
                                     </p>
                                 </div>
                                 <div class="flex justify-center items-center">
-                                    <img src="{{url('frontend/img/user-friendly.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    <img src="{{url('public/frontend/img/user-friendly.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
                                 </div>
                             </div>
                         </div>
@@ -275,13 +282,89 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                 <div class="flex justify-center items-center">
                                     <p class="mb-4 text-md font-normal text-gray-200 text-center lg:text-start">
-                                        At TradeImeX, we provide market insights and analysis as per your 
+                                        At USimportdata, we provide market insights and analysis as per your 
                                         requirements for US trade data, helping businesses understand the US market 
                                         trends, identify opportunities, and make strategic decisions.
                                     </p>
                                 </div>
                                 <div class="flex justify-center items-center">
-                                    <img src="{{url('frontend/img/market-research.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    <img src="{{url('public/frontend/img/market-research.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                    <div class="container mx-auto mt-10">
+                        <div class="mb-4 border-b border-gray-300">
+                            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="research-tab" type="button" role="tab" aria-controls="research" aria-selected="true">
+                                        Reliability And Accuracy
+                                    </button>
+                                </li>
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="business-tab" type="button" role="tab" aria-controls="business" aria-selected="false">
+                                        Detailed Information
+                                    </button>
+                                </li>
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="risk-tab" type="button" role="tab" aria-controls="risk" aria-selected="false">
+                                        User-Friendly Platform
+                                    </button>
+                                </li>
+                                <li class="mr-2" role="presentation">
+                                    <button class="text-lg inline-block p-4 border-b-2 rounded-t-lg" id="insight-tab" type="button" role="tab" aria-controls="insight" aria-selected="false">
+                                        Market Analysis and Insights
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="default-tab-content">
+                            <div class="p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="research" role="tabpanel" aria-labelledby="research-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            At USimportdata, we pride ourselves on the accuracy and reliability of our US trade data. Our team works tirelessly to ensure that our clients receive the most up-to-date and reliable information available, allowing them to make informed decisions with confidence.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/reliable.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="business" role="tabpanel" aria-labelledby="business-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            We offer detailed information on the US market, including detailed information on imports, exports, tariffs, trade partners, and more. With USimportdata, you can access a wealth of data to gain a deep understanding of the market landscape and identify new growth opportunities.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/info.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="risk" role="tabpanel" aria-labelledby="risk-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            Our platform is designed with the user in mind, making it easy to navigate and access the information you need quickly and efficiently. The USimportdata user-friendly interface makes it easy to find the US trade data you need to make informed decisions.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/user-friendly.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-6 bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue rounded-lg shadow" id="insight" role="tabpanel" aria-labelledby="insight-tab">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex justify-center items-center">
+                                        <p class="text-md font-normal text-gray-200 md:text-left">
+                                            At USimportdata, we provide market insights and analysis as per your requirements for US trade data, helping businesses understand the US market trends, identify opportunities, and make strategic decisions.
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{url('frontend/img/market-research.png')}}" class="w-2/4 md:w-2/5 lg:w-1/4">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -296,9 +379,9 @@
                 <hr class="h-px my-4 bg-gray-300 border-0">
                 <div class="grid lg:grid-cols-2 gap-4">
                     <div class="flex items-center justify-center">
-                        <h1 class="text-center font-medium text-3xl lg:text-4xl">
+                        <h2 class="text-center font-medium text-3xl lg:text-4xl">
                             Illustrating the present situation of the US trade
-                        </h1>
+                        </h2>
                     </div>
                     <div class="flex items-center">
                         <p class="text-center font-normal text-md lg:text-md text-gray-500">
@@ -322,9 +405,9 @@
         {{-- The vision of TradeImeX for US trade data --}}
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl lg:px-5 md:px-12 px-5 py-12">
-                <h1 class="mb-4 text-center font-medium text-3xl lg:text-4xl">
+                <h2 class="mb-4 text-center font-medium text-3xl lg:text-4xl">
                     The vision of TradeImeX for US trade data
-                </h1>
+                </h2>
                 <p class="mb-6 text-md lg:text-md font-normal text-center text-gray-500">
                     TradeImeX is at the forefront of providing US import-export data 
                     to businesses around the world. This information empowers agencies to 
@@ -340,11 +423,11 @@
                             <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-blue rounded-lg shadow">
                                 <div class="mt-4 px-4 py-2">
                                     <div class="mb-2 flex justify-center lg:justify-start">
-                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/building.png')}}">
+                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('public/frontend/img/building.png')}}">
                                     </div>
-                                    <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                                    <h3 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
                                         Building Long-Term Relationships
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-sm font-medium text-gray-500 text-center lg:text-start">
                                         At TradeImeX, we are not just a US data provider. We are committed to
                                         building long-term relationships with our clients, offering personalized support
@@ -355,11 +438,11 @@
                             <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-blue rounded-lg shadow">
                                 <div class="mt-4 px-4 py-2">
                                     <div class="mb-2 flex justify-center lg:justify-start">
-                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/driving.png')}}">
+                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('public/frontend/img/driving.png')}}">
                                     </div>
-                                    <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                                    <h3 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
                                         Driving Innovation and Growth
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-sm font-medium text-gray-500 text-center lg:text-start">
                                         We believe that access to high-quality trade data is essential for 
                                         driving innovation and growth. By arming businesses with the 
@@ -370,11 +453,11 @@
                             <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-blue rounded-lg shadow">
                                 <div class="mt-4 px-4 py-2">
                                     <div class="mb-2 flex justify-center lg:justify-start">
-                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/empowering.png')}}">
+                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('public/frontend/img/empowering.png')}}">
                                     </div>
-                                    <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                                    <h3 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
                                         Empowering Businesses in the US
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-sm font-medium text-gray-500 text-center lg:text-start">
                                         Our vision at TradeImeX is to empower US businesses by 
                                         providing them with the tools and insights they need to 
@@ -385,11 +468,11 @@
                             <div class="flex items-end mb-3 max-w-sm bg-white border-2 border-gray-200 border-l-glory-blue rounded-lg shadow">
                                 <div class="mt-4 px-4 py-2">
                                     <div class="mb-2 flex justify-center lg:justify-start">
-                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('frontend/img/trust.png')}}">
+                                        <img class="contrast-100 saturate-100 w-1/4" src="{{url('public/frontend/img/trust.png')}}">
                                     </div>
-                                    <h5 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
+                                    <h3 class="mb-2 lg:text-lg md:text-md font-medium text-gray-900 text-center lg:text-start">
                                         Trust in US data presentation
-                                    </h5>
+                                    </h3>
                                     <p class="mb-3 text-sm font-medium text-gray-500 text-center lg:text-start">
                                         Our vision of transparency is evident in how we present our data. We strive 
                                         to make our US trade reports easy to understand, so users can quickly find the 
@@ -400,7 +483,7 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center">
-                        <img class="w-4/5 md:w-3/5 lg:w-4/5" src="{{url('frontend/img/sample_data.png')}}">
+                        <img class="w-4/5 md:w-3/5 lg:w-4/5" src="{{url('public/frontend/img/sample_data.png')}}">
                     </div>
                 </div>
             </div>
@@ -410,9 +493,9 @@
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl py-4 lg:py-8 md:px-12 px-6 grid grid-cols-1 gap-4">
                 <div>
-                    <h1 class="my-4 font-medium text-3xl lg:text-4xl text-center lg:text-start">
+                    <h2 class="my-4 font-medium text-3xl lg:text-4xl text-center lg:text-start">
                         The commitment of TradeImeX to US trade data
-                    </h1>
+                    </h2>
                     <p class="mb-2 font-medium lg:text-md text-gray-500 text-center lg:text-start">
                         At TradeImeX, we are devoted to excellence in everything we do. This commitment 
                         is meditated within the excellence of our US trade data, the reliability of our 
@@ -425,10 +508,10 @@
                 <div class="grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 px-2">
                     <div class="py-4">
                         <div class="mb-4">
-                            <img src="{{url('frontend/img/1.png')}}" class="contrast-100 saturate-200 w-4/5">
+                            <img src="{{url('public/frontend/img/1.png')}}" class="contrast-100 saturate-200 w-4/5">
                             {{-- <i class="fa-solid font-2xl fa-database"></i> --}}
                         </div>
-                        <h1 class="mb-2 text-2xl font-medium">Accuracy</h1>
+                        <h3 class="mb-2 text-2xl font-medium">Accuracy</h3>
                         <p class="mb-3 text-gray-500 text-md font-medium">
                             Our US trade data is sourced directly from customs authorities, 
                             ensuring that you receive the most reliable information available.
@@ -436,10 +519,10 @@
                     </div>
                     <div class="py-4">
                         <div class="mb-4">
-                            <img src="{{url('frontend/img/2.png')}}" class="contrast-100 saturate-200 w-4/5">
+                            <img src="{{url('public/frontend/img/2.png')}}" class="contrast-100 saturate-200 w-4/5">
                             {{-- <i class="fa-solid font-2xl fa-database"></i> --}}
                         </div>
-                        <h1 class="mb-2 text-2xl font-medium">Timeliness</h1>
+                        <h3 class="mb-2 text-2xl font-medium">Timeliness</h3>
                         <p class="mb-3 text-gray-500 text-md font-medium">
                             We update our database in real-time, so you can access the latest 
                             trade data whenever you need it.
@@ -447,10 +530,10 @@
                     </div>
                     <div class="py-4">
                         <div class="mb-4">
-                            <img src="{{url('frontend/img/3.png')}}" class="contrast-100 saturate-200 w-4/5">
+                            <img src="{{url('public/frontend/img/3.png')}}" class="contrast-100 saturate-200 w-4/5">
                             {{-- <i class="fa-solid font-2xl fa-database"></i> --}}
                         </div>
-                        <h1 class="mb-2 text-2xl font-medium">Customization</h1>
+                        <h3 class="mb-2 text-2xl font-medium">Customization</h3>
                         <p class="mb-3 text-gray-500 text-md font-medium">
                             We offer customized data solutions to meet your specific 
                             business needs, giving you the flexibility to focus 
@@ -459,10 +542,10 @@
                     </div>
                     <div class="py-4">
                         <div class="mb-4">
-                            <img src="{{url('frontend/img/4.png')}}" class="contrast-100 saturate-200 w-4/5">
+                            <img src="{{url('public/frontend/img/4.png')}}" class="contrast-100 saturate-200 w-4/5">
                             {{-- <i class="fa-solid font-2xl fa-database"></i> --}}
                         </div>
-                        <h1 class="mb-2 text-2xl font-medium">Expertise</h1>
+                        <h3 class="mb-2 text-2xl font-medium">Expertise</h3>
                         <p class="mb-3 text-gray-500 text-md font-medium">
                             Our team of data analysts and industry experts are here to help you 
                             understand the numbers and provide valuable insights into the USA market 

@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="canonical" href="https://www.usimportdata.com/us-export-data">
         <meta name="keywords"
             content="us export list, top 10 exports of us, exporters in us, us export data, 
             us export data by country, us exports, major us exports, us export data 2024, 
@@ -108,8 +109,8 @@
                             </button>
                         </div>
                     </div>
-                    <div class="mt-4 flex justify-center items-start">
-                        <img src="{{url('frontend/img/export_data.svg')}}" class="w-4/6 object-contain"/>
+                    <div class="mt-4 flex justify-center items-center">
+                        <img src="{{url('public/frontend/img/export_data.svg')}}" class="w-4/5 object-contain"/>
                     </div>
                 </div>
             </div>
@@ -123,11 +124,11 @@
                         <div class="flex">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
-                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('frontend/img/rank-blue.png')}}">
+                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('public/frontend/img/rank-blue.png')}}">
                                 </div>
-                                <h1 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold text-center">
+                                <h2 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold text-center">
                                     2
-                                </h1>
+                                </h2>
                                 <p class="mb-4 text-gray-500 text-sm font-medium">
                                     The US has been ranked 2nd in global exports, showing a strong position 
                                     in the global trade arena.    
@@ -141,11 +142,11 @@
                         <div class="flex">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
-                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('frontend/img/piechart_blue.png')}}">
+                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('public/frontend/img/piechart_blue.png')}}">
                                 </div>
-                                <h1 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold">
+                                <h2 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold">
                                     13.35%
-                                </h1>
+                                </h2>
                                 <p class="mb-4 text-gray-500 text-sm font-medium">
                                     The US has a 13.35% market share in the global export market, 
                                     which makes its presence increasingly significant.    
@@ -162,11 +163,11 @@
                         <div class="flex">
                             <div class="text-center">
                                 <div class="mb-4 flex justify-center">
-                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('frontend/img/canada_rect.png')}}">
+                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('public/frontend/img/canada_rect.png')}}">
                                 </div>
-                                <h1 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold">
+                                <h2 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold">
                                     CANADA
-                                </h1>  
+                                </h2>  
                                 <p class="mb-4 text-gray-500 text-sm font-medium">
                                     Canada is the biggest export partner of the USA for goods exports in 2023.   
                                 </p> 
@@ -179,11 +180,11 @@
                         <div class="flex">
                             <div class="text-center"> 
                                 <div class="mb-4 flex justify-center">
-                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('frontend/img/oil-tank.png')}}">
+                                    <img class="w-1/5 md:w-3/12 lg:w-1/5" src="{{url('public/frontend/img/oil-tank.png')}}">
                                 </div>  
-                                <h1 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold">
+                                <h2 class="mb-4 text-2xl md:text-xl lg:text-xl font-semibold">
                                     MINERAL FUELS & OILS
-                                </h1>
+                                </h2>
                                 <p class="mb-4 text-gray-500 text-sm font-medium">
                                     Mineral Fuels and mineral oils are the biggest US exports in 2023, 
                                     playing a huge role in the country’s economy.
@@ -199,9 +200,9 @@
         {{-- Major Information Included in the US Import Data --}}
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl px-5 lg:px-5 md:px-12 py-16">
-                <h1 class="text-3xl lg:text-4xl font-medium text-center mb-8">
+                <h2 class="text-3xl lg:text-4xl font-medium text-center mb-8">
                     Major Information Included in the US Export Data
-                </h1>
+                </h2>
                 <div class="py-6 grid grid-cols-2 lg:grid-cols-5 gap-8">
                     <div>
                         <span class="w-full flex items-start text-sm md:text-md lg:text-lg font-semibold text-gray-900 me-3">
@@ -273,9 +274,9 @@
             <div class="mx-auto max-w-screen-2xl">
                 <div class="grid grid-cols-1 lg:grid-cols-3 px-5 md:px-5 lg:px-5 py-16">
                     <div class="col-span-2 md:pl-8 lg:pl-0">
-                        <h1 class="text-3xl text-white lg:text-4xl font-medium mb-4">
+                        <h2 class="text-3xl text-white lg:text-4xl font-medium mb-4">
                             Top 10 US Exports in 2023
-                        </h1>   
+                        </h2>   
                         <p class="mb-4 text-md font-medium text-gray-100">
                             The US is known for its vast export products around the world. The year 2023 was 
                             a great year for the US in terms of its export trade. Mineral Fuels and mineral 
@@ -316,7 +317,7 @@
                         </ul>
                     </div>
                     <div class="cols-span-1">
-                        <img class="w-full contrast-500 saturation-500 relative -right-5" src="{{url('frontend/img/top_10_blue.svg')}}" />
+                        <img class="w-full contrast-500 saturation-500 relative -right-5" src="{{url('public/frontend/img/top_10_blue.svg')}}" />
                     </div>
                 </div>
             </div>
@@ -325,139 +326,141 @@
 
         {{-- Top 10 US import partners in 2023 --}}
         <section class="bg-white">
-            <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
-                <div class="flex items-center">
-                    <div>
-                        <h1 class="text-3xl lg:text-4xl font-medium mb-4">
-                            Top 10 US export partners in 2023
-                        </h1>
-                        <p class="mb-4 text-md font-medium text-gray-600">
-                            The US exports are famous for their high-quality goods and services all around 
-                            the world. There are several export destinations for the US to export its goods. 
-                            Canada is the biggest export destination of the US followed by Mexico and China. 
-                            Canada imported goods worth $352.84 billion from the US in 2023. The top 10 US 
-                            export partners in 2023 include:
-                        </p>
+            <div class="mx-auto max-w-screen-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
+                    <div class="flex items-center">
+                        <div>
+                            <h2 class="text-3xl lg:text-4xl font-medium mb-4">
+                                Top 10 US export partners in 2023
+                            </h2>
+                            <p class="mb-4 text-md font-medium text-gray-600">
+                                The US exports are famous for their high-quality goods and services all around 
+                                the world. There are several export destinations for the US to export its goods. 
+                                Canada is the biggest export destination of the US followed by Mexico and China. 
+                                Canada imported goods worth $352.84 billion from the US in 2023. The top 10 US 
+                                export partners in 2023 include:
+                            </p>
+                        </div>
                     </div>
-                </div>
-                {{-- country list --}}
-                <div class="mt-6 px-6 max-h-96 overflow-x-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-thumb:rounded scrollbar-thumb-glory-blue scrollbar-track-gray-100">
-                    <ol class="relative border-s border-glory-blue">                  
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/img/canada_r.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Canada: $352.84 billion (17.5%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Vehicles are the biggest US exports to Canada worth $57.72 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/china.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Mexico: $323.22 billion (16%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Electrical machinery and equipment are the biggest US exports to Canada worth $51.60 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/canada.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                China: $147.80 billion (7.3%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to China worth $19.73 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/germany.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Netherlands: $82.18 billion (4.1%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to the Netherlands worth $30.55 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/japan.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Germany: $76.69 billion (3.8%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Vehicles are the biggest US exports to Germany worth $10.41 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/south-korea.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Japan: $76.16 billion (3.8%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to Japan worth $12.06 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/vietnam.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                United Kingdom: $74.08 billion (3.7%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to the United 
-                                Kingdom worth $13.33 billion in 2023.
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/taiwan.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                South Korea: $64.83 billion (3.2%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to 
-                                South Korea worth $17.21 billion in 2023. 
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/india.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                France: $45.25 billion (2.2%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to France 
-                                worth $11.11 billion in 2023.
-                            </p>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                <img src="{{url('frontend/img/ireland.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
-                                Brazil: $44.80 billion (2.2%)
-                            </h3>
-                            <p class="mb-4 text-md font-medium text-gray-600">
-                                Mineral fuels and mineral oils are the biggest US exports to Brazil 
-                                worth $8.56 billion in 2023.
-                            </p>
-                        </li>
-                    </ol>
+                    {{-- country list --}}
+                    <div class="mt-6 px-6 overflow-x-auto max-h-96">
+                        <ol class="relative border-s border-glory-blue">                  
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/img/canada_r.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Canada: $352.84 billion (17.5%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Vehicles are the biggest US exports to Canada worth $57.72 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/mexico_kp.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Mexico: $323.22 billion (16%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Electrical machinery and equipment are the biggest US exports to Canada worth $51.60 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/china.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    China: $147.80 billion (7.3%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to China worth $19.73 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/netherlands_r.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Netherlands: $82.18 billion (4.1%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to the Netherlands worth $30.55 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/germany.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Germany: $76.69 billion (3.8%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Vehicles are the biggest US exports to Germany worth $10.41 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/japan.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Japan: $76.16 billion (3.8%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to Japan worth $12.06 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/united_kingdom_r.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    United Kingdom: $74.08 billion (3.7%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to the United 
+                                    Kingdom worth $13.33 billion in 2023.
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/south-korea.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    South Korea: $64.83 billion (3.2%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to 
+                                    South Korea worth $17.21 billion in 2023. 
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/france_r.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    France: $45.25 billion (2.2%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to France 
+                                    worth $11.11 billion in 2023.
+                                </p>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <img src="{{url('public/frontend/img/brazil_r.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Brazil: $44.80 billion (2.2%)
+                                </h3>
+                                <p class="mb-4 text-md font-medium text-gray-600">
+                                    Mineral fuels and mineral oils are the biggest US exports to Brazil 
+                                    worth $8.56 billion in 2023.
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
@@ -465,107 +468,105 @@
 
         {{-- Top 10 US Import Ports in 2023 --}}
         <section class="bg-pattern-img">
-            <div class="mx-auto mx-w-screen-xl px-5 md:px-12 lg:px-5 py-16 backdrop-blur-sm">
+            <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
                 <div class="mb-6">
-                    <h1 class="text-white font-medium mb-3 text-3xl lg:text-4xl text-center">
-                        Top 10 US Export Ports in 2023
-                    </h1>
+                    <h2 class="text-white font-medium mb-3 text-3xl lg:text-4xl text-center">
+                        The top 10 US Export Ports in 2023 include
+                    </h2>
                     <p class="text-gray-100 font-normal mb-3 text-md lg:text-lg text-center">
                         The US is home to some of the busiest ports in the world. 
                         The top 10 US Import Ports in 2023 include:
                     </p>
                 </div>
-                <div class="flex justify-center">
-                    <div>
-                        <button data-tooltip-target="tooltip-houston" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/houston.svg')}}" width="100%">
-                            Port of Houston
-                        </button>
-                        <div id="tooltip-houston" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            139.79 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                <div class="flex flex-wrap justify-center">
+                    <button data-tooltip-target="tooltip-houston" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/houston.svg')}}" width="100%">
+                        Port of Houston
+                    </button>
+                    <div id="tooltip-houston" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        139.79 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-corpus" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/corpus.png')}}" width="100%">
-                            Port of Corpus Christi
-                        </button>
-                        <div id="tooltip-corpus" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            108.09 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-corpus" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/corpus.png')}}" width="100%">
+                        Port of Corpus Christi
+                    </button>
+                    <div id="tooltip-corpus" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        108.09 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-louisiana" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/south.png')}}" width="100%">
-                            Port of South Louisiana
-                        </button>
-                        <div id="tooltip-louisiana" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            82.29 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-louisiana" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/south.png')}}" width="100%">
+                        Port of South Louisiana
+                    </button>
+                    <div id="tooltip-louisiana" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        82.29 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-hampton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/hampton.png')}}" width="100%">
-                            Port of Hampton Roads Virginia
-                        </button>
-                        <div id="tooltip-hampton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            40.72 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-hampton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/hampton.png')}}" width="100%">
+                        Port of Hampton Roads Virginia
+                    </button>
+                    <div id="tooltip-hampton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        40.72 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-beaumont" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/beaumont.png')}}" width="100%">
-                            Port of Beaumont Texas
-                        </button>
-                        <div id="tooltip-beaumont" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            29.61 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-beaumont" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/beaumont.png')}}" width="100%">
+                        Port of Beaumont Texas
+                    </button>
+                    <div id="tooltip-beaumont" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        29.61 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-baton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/ambassador.webp')}}" width="80%">
-                            Port of Greater Baton Rouge Louisiana
-                        </button>
-                        <div id="tooltip-baton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            22.60 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-baton" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/ambassador.webp')}}" width="80%">
+                        Port of Greater Baton Rouge Louisiana
+                    </button>
+                    <div id="tooltip-baton" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        22.60 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-orleans" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/orlena.png')}}" width="100%">
-                            Port of New Orleans Louisiana
-                        </button>
-                        <div id="tooltip-orleans" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            22.52 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-orleans" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/orlena.png')}}" width="100%">
+                        Port of New Orleans Louisiana
+                    </button>
+                    <div id="tooltip-orleans" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        22.52 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-beach" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/california.jpg')}}" width="100%">
-                            Port of Long Beach California
-                        </button>
-                        <div id="tooltip-beach" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            19.13 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-beach" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/california.jpg')}}" width="100%">
+                        Port of Long Beach California
+                    </button>
+                    <div id="tooltip-beach" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        19.13 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-angeles" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/los_angeles.svg')}}" width="100%">
-                            Port of Los Angeles California
-                        </button>
-                        <div id="tooltip-angeles" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            16.29 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-angeles" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/los_angeles.svg')}}" width="100%">
+                        Port of Los Angeles California
+                    </button>
+                    <div id="tooltip-angeles" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        16.29 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
 
-                        <button data-tooltip-target="tooltip-jersey" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
-                            <img class="w-8 h-8 me-4 -ms-1" src="{{url('frontend/port/new_jersey.png')}}" width="100%">
-                            Port of New York and New Jersey Port Newark
-                        </button>
-                        <div id="tooltip-jersey" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                            15.25 billion tons
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                    <button data-tooltip-target="tooltip-jersey" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <img class="w-8 h-8 me-4 -ms-1" src="{{url('public/frontend/port/new_jersey.png')}}" width="100%">
+                        Port of New York and New Jersey Port Newark
+                    </button>
+                    <div id="tooltip-jersey" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                        15.25 billion tons
+                        <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
                 </div>
             </div>
@@ -574,104 +575,105 @@
 
         {{-- Top 10 US Exporter Companies in 2023 --}}
         <section class="bg-white">
-            <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
-                <div class="flex items-center">
-                    <div>
-                        <h1 class="text-3xl lg:text-4xl font-medium mb-4">
-                            Top 10 US Export Companies in 2023
-                        </h1>
-                        <p class="mb-4 text-md font-medium text-gray-600">
-                            The US is famous for its top-class companies, exporting goods around the world. 
-                            Exxon Mobil Corporation is the biggest export company in the US, with its mineral 
-                            fuels and oil exports worth $344.6 billion in 2023. The top 10 export companies in 
-                            the US with their export revenue in 2023 include: 
-                        </p>
+            <div class="mx-auto max-w-screen-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 px-5 md:px-12 lg:px-5 py-16">
+                    <div class="flex items-center">
+                        <div>
+                            <h2 class="text-3xl lg:text-4xl font-medium mb-4">
+                                Top 10 US Export Companies in 2023
+                            </h2>
+                            <p class="mb-4 text-md font-medium text-gray-600">
+                                The US is famous for its top-class companies, exporting goods around the world. 
+                                Exxon Mobil Corporation is the biggest export company in the US, with its mineral 
+                                fuels and oil exports worth $344.6 billion in 2023. The top 10 export companies in 
+                                the US with their export revenue in 2023 include: 
+                            </p>
+                        </div>
                     </div>
-                </div>
-                {{-- Company list --}}
-                <div class="mt-6 px-6 overflow-x-auto max-h-96">
-                    <ol class="relative border-s border-glory-blue">                  
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/exxon.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Exxon Mobil Corporation (Mineral fuels, oil, and gas): $344.6 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/chevron.jpg')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Chevron Corporation (Oil, gas): $196.91 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/cargill.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Cargill (Conglomerate): $177 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/koch.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Koch Industries (Conglomerate): $125 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/ldc.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Louis Dreyfus Company (Cotton): $50.6 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/dow.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Dow Chemical (Chemicals): $44.6 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/paper.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                International Paper (Paper and packaging): $18.9 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/cellmark.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                CellMark Group (Diversified): $4.2 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/delong.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                DeLong (Animal fodder): $1 billion 
-                            </h3>
-                        </li>
-                        <li class="mb-10 ms-6">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
-                                <img src="{{url('frontend/company/apple.png')}}">
-                            </span>
-                            <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
-                                Apple (Electronics): $926 million 
-                            </h3>
-                        </li>
-                    </ol>
+                    <div class="mt-6 px-6 overflow-x-auto max-h-96">
+                        <ol class="relative border-s border-glory-blue">                  
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/exxon.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Exxon Mobil Corporation (Mineral fuels, oil, and gas): $344.6 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/chevron.jpg')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Chevron Corporation (Oil, gas): $196.91 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/cargill.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Cargill (Conglomerate): $177 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/koch.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Koch Industries (Conglomerate): $125 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/ldc.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Louis Dreyfus Company (Cotton): $50.6 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/dow.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Dow Chemical (Chemicals): $44.6 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-glory-blue rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/paper.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    International Paper (Paper and packaging): $18.9 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/cellmark.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    CellMark Group (Diversified): $4.2 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/delong.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    DeLong (Animal fodder): $1 billion 
+                                </h3>
+                            </li>
+                            <li class="mb-10 ms-6">            
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white">
+                                    <img src="{{url('public/frontend/company/apple.png')}}">
+                                </span>
+                                <h3 class="flex items-center mb-1 text-2xl font-semibold text-gray-900">
+                                    Apple (Electronics): $926 million 
+                                </h3>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
@@ -681,9 +683,9 @@
         <section class="bg-white">
             <div class="mx-auto mx-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
                 <div class="mb-6">
-                    <h1 class="text-center text-3xl lg:text-4xl font-medium">
+                    <h2 class="text-center text-3xl lg:text-4xl font-medium">
                         Statistical comparison of US Export data in the last 5 years
-                    </h1>
+                    </h2>
                     <div class="inline-flex items-center justify-center w-full">
                         <hr class="w-64 h-1 my-8 bg-glory-blue border-0 rounded">
                         <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2">
@@ -951,9 +953,9 @@
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
                 <div class="mb-8">
-                    <h1 class="mb-4 text-3xl lg:text-4xl font-medium text-center">
+                    <h2 class="mb-4 text-3xl lg:text-4xl font-medium text-center">
                         Sample US Export Data
-                    </h1>
+                    </h2>
                     <p class="text-md text-gray-500 font-medium text-center">
                         We get reliable US export data from government agencies, shipping companies, 
                         and customs ports. Numerous fields are included in this trade data, including 
@@ -1087,9 +1089,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2">
                     <div class="flex items-center justify-center">
                         <div>
-                            <h1 class="mb-4 text-3xl lg:text-4xl font-medium text-center lg:text-start">
+                            <h2 class="mb-4 text-3xl lg:text-4xl font-medium text-center lg:text-start">
                                 Benefits of the US Export Data
-                            </h1>
+                            </h2>
                             <ul class="max-w-full space-y-1 font-medium text-gray-500 list-inside">
                                 <li class="flex items-start">
                                     <svg class="w-3.5 h-3.5 me-2 mt-1 text-glory-blue flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -1125,7 +1127,7 @@
                         </div>
                     </div>
                     <div class="flex justify-center mt-6">
-                        <img class="w-3/5" src="{{url('frontend/img/benefit_blue.png')}}"/>
+                        <img class="w-3/5" src="{{url('public/frontend/img/benefit_blue.png')}}"/>
                     </div>
                 </div>
             </div>
@@ -1136,13 +1138,13 @@
         <section class="bg-white">
             <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-8 py-12">
                 <div>
-                    <h1 class="mb-4 text-center text-glory-blue text-3xl lg:text-4xl md:text-3xl font-medium">
+                    <h2 class="mb-4 text-center text-glory-blue text-3xl lg:text-4xl md:text-3xl font-medium">
                         FAQs
-                    </h1>
+                    </h2>
                 </div>
                 <div class="mb-8 py-4 mx-auto">
                     <div id="accordion-flush-3" data-accordion="collapse" data-active-classes="bg-white text-gray-900" data-inactive-classes="text-gray-500">
-                        <h2 id="accordion-flush-heading-26">
+                        <h3 id="accordion-flush-heading-26">
                             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-26" aria-expanded="true" aria-controls="accordion-flush-body-26">
                                 <span class="font-semibold lg:text-xl md:text-lg sm:text-sm">
                                     What is the US export data?
@@ -1151,7 +1153,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
-                        </h2>
+                        </h3>
                         <div id="accordion-flush-body-26" class="hidden" aria-labelledby="accordion-flush-heading-26">
                             <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
@@ -1161,7 +1163,7 @@
                             </div>
                         </div>
     
-                        <h2 id="accordion-flush-heading-27">
+                        <h3 id="accordion-flush-heading-27">
                             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-27" aria-expanded="false" aria-controls="accordion-flush-body-27">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     How much value of goods did the US export in 2023?
@@ -1170,7 +1172,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
-                        </h2>
+                        </h3>
                         <div id="accordion-flush-body-27" class="hidden" aria-labelledby="accordion-flush-heading-27">
                             <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
@@ -1179,7 +1181,7 @@
                             </div>
                         </div>
     
-                        <h2 id="accordion-flush-heading-28">
+                        <h3 id="accordion-flush-heading-28">
                             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-28" aria-expanded="false" aria-controls="accordion-flush-body-28">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     What are the biggest US export goods in 2023?
@@ -1188,7 +1190,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
-                        </h2>
+                        </h3>
                         <div id="accordion-flush-body-28" class="hidden" aria-labelledby="accordion-flush-heading-28">
                             <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
@@ -1198,7 +1200,7 @@
                             </div>
                         </div>
     
-                        <h2 id="accordion-flush-heading-29">
+                        <h3 id="accordion-flush-heading-29">
                             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-29" aria-expanded="false" aria-controls="accordion-flush-body-29">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     Who is the biggest import partner of the US in 2023?
@@ -1207,7 +1209,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
-                        </h2>
+                        </h3>
                         <div id="accordion-flush-body-29" class="hidden" aria-labelledby="accordion-flush-heading-29">
                             <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
@@ -1216,7 +1218,7 @@
                             </div>
                         </div>
     
-                        <h2 id="accordion-flush-heading-30">
+                        <h3 id="accordion-flush-heading-30">
                             <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-30" aria-expanded="false" aria-controls="accordion-flush-body-30">
                                 <span class="font-medium lg:text-xl md:text-lg sm:text-sm">
                                     What are the major details included in the US export data?
@@ -1225,7 +1227,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
-                        </h2>
+                        </h3>
                         <div id="accordion-flush-body-30" class="hidden" aria-labelledby="accordion-flush-heading-30">
                             <div class="py-5 border-b border-gray-200">
                                 <p class="mb-2 lg:text-start md:text-start text-center text-md font-medium text-gray-600">
