@@ -42,8 +42,6 @@ Route::get('/search-live-data', [PageController::class, 'searchpage']);
 Route::get('/search-live/{type}/{role}/{description}', [SearchLiveDataController::class, 'searchlivedata'])->name('product.list1');
 Route::get('/search', [SearchLiveDataController::class, 'handleForm'])->name('product.list');
 
-// Route::get('/search/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
-// Route::get('/search-data/{type}/{role}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
 Route::get('/search-datap1/{type}/{role}/{description?}/{hs_code?}',[SearchLiveDataController::class, 'search'])->name('search');
 
 Route::get('/searchp2/{type}/{role}/{base_search}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');

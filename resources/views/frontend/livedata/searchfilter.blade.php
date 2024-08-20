@@ -786,6 +786,7 @@
                                                             {{ $SelectResult->HS_CODE }}
                                                         </option>
                                                     @endif
+                                                    
                                                 @endforeach
                                             @endif
                                         </select>
