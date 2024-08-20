@@ -689,3 +689,21 @@
             window.location.href = selectedOption;
         });
     </script>
+<script>
+    // Function to handle the close event for a specific toast
+    function closeToast(event) {
+        const button = event.target;  // Get the button that was clicked
+        const toast = button.closest('#toast-default');  // Find the closest toast element
+        if (toast) {
+            toast.remove();  // Remove the toast from the DOM
+        }
+    }
+
+    // Get all close buttons within toasts
+    const closeButtons = document.querySelectorAll('#toast-default button[data-dismiss-target="#toast-default"]');
+
+    // Add a click event listener to each close button
+    closeButtons.forEach(button => {
+        button.addEventListener('click', closeToast);
+    });
+</script>
