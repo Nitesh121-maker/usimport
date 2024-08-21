@@ -36,6 +36,7 @@
     {{-- Breadcrumb --}}
 
         @php
+            $desc = trim($desc, '"');
             $base_search = ($hs_code === null) ? $desc : $hs_code;
             $isNumeric = is_numeric($base_search);
             $search = $isNumeric ? 'hscode' : 'product';
@@ -235,8 +236,8 @@
                             <option selected value="import">Import</option>
                             <option value="export">Export</option>
                         </select>
-                        <input name="hs_code" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="HS Code"/>
-                        <input name="description" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Description"/>
+                        <input name="hs_code" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="HS Code" value = "{{$hs_code}}"/>
+                        <input name="description" type="text" id="large-input" class="block w-full p-6 text-base text-gray-900 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Description"value = "{{$desc}}"/>
                         <button type="submit" class="text-white bg-blue-600 hover:bg-white hover:text-blue-600 font-medium rounded-none lg:rounded-r-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                             Search
                         </button>
@@ -384,42 +385,7 @@
                     <div class="col-span-1"></div>
                 </div>
 
-                {{-- toast --}}
-                <div class="flex mx-auto mx-w-screen-xl px-5">
-                    <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
-                        <div class="ms-3 text-lg font-medium">
-                            180632
-                        </div>
-                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
-                            <span class="sr-only">Close</span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
-                        <div class="ms-3 text-lg font-medium">
-                            Rubber
-                        </div>
-                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
-                            <span class="sr-only">Close</span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
-                        <div class="ms-3 text-lg font-medium">
-                            West Palm Beach florida West Palm
-                        </div>
-                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
-                            <span class="sr-only">Close</span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+                
                 {{-- Import Table --}}
                 <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
                     <div class="relative shadow-md sm:rounded-lg">
@@ -1385,7 +1351,16 @@
                     <div class="flex justify-center">
                         <h2 class="mb-6 text-2xl lg:text-4xl text-center font-medium text-gray-800">
                             List of All
-                            <span class="text-blue-800 capitalize">{{ $desc }}&nbsp;{{ $role }}ers</span> 
+                                <span class="text-blue-800 capitalize">
+                                    @if(!empty($hs_code) && !empty($desc))
+                                        HS Code: {{ $hs_code }}  {{ $desc }}
+                                    @elseif(!empty($hs_code))
+                                        HS Code: {{ $hs_code }}
+                                    @elseif(!empty($desc))
+                                        {{ $desc }}
+                                    @endif&nbsp;{{ $role }}ers
+                                </span>
+
                             In USA
                         </h2>
                     </div>  
@@ -1403,13 +1378,13 @@
                                     @endphp
                                     
                                     <a href="{{route('Companydata',['base_search'=> $base_search,'role'=>$role,'companyname'=> $US_IMPORTER_NAME])}}" target="_blank">
-                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline">
+                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline" style="word-break:break-all;">
                                             {{$result->PRODUCT_DESCRIPTION}}
                                         </h5>
                                     </a>
                                     <span class="flex" style="align-items:baseline;">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                                        <p class="pl-2 text-lg font-semibold text-red-400">
+                                        <p class="pl-2 text-lg font-semibold text-red-400" style="word-break:break-all;">
                                             {{$result->US_IMPORTER_NAME}}
                                         </p>
                                     </span>
@@ -1466,17 +1441,17 @@
                                         USA
                                     </span>
                                      @php
-                                       $US_IMPORTER_NAME = str_ireplace(" ", "-", $result->US_IMPORTER_NAME);
+                                       $US_EXPORTER_NAME = str_ireplace(" ", "-", $result->US_EXPORTER_NAME);
                                        $base_search = str_replace(" ", "-",$base_search);
                                     @endphp
                                     <a href="{{route('Companydata',['base_search',$base_search,'role'=>$role,'companyname'=> rawurlencode($result->US_EXPORTER_NAME??'null')])}}" target="_blank">
-                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline">
+                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline" style="word-break:break-all;">
                                             {{$result->PRODUCT_DESCRIPTION}}
                                         </h5>
                                     </a>
                                     <span class="flex" style="align-items:baseline;">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                                        <p class="pl-2 text-lg font-semibold text-red-400">
+                                        <p class="pl-2 text-lg font-semibold text-red-400" style="word-break:break-all;">
                                             {{$result->US_EXPORTER_NAME}}
                                         </p>
                                     </span>

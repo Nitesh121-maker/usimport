@@ -5,7 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @include('frontend.link')
-    <title>Filter Search - US Import Data</title>
+    @php
+       $Dresult = $result;
+    @endphp
+    {{-- @dd($searfilterdata) --}}
+
+    @if(isset($Dresult) && $Dresult->count() > 0)
+        @foreach ($Dresult as $Dresult)
+            @php
+                $base_search = trim($base_search, '"');
+                $hs_code = $Dresult->HS_CODE;
+                $country = $Dresult->ORIGIN_COUNTRY;
+                $country = str_ireplace(" ", "-", $country);
+                $unloading_port  = $Dresult->UNLOADING_PORT;
+                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                $args = $args??[];
+                //dd($role ,$base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                // Hs code Url
+                $searchDetailsParts = explode(',', $base_search);
+                $all_numeric = true;
+                
+                foreach ($searchDetailsParts as $part) {
+                    if (!is_numeric($part)) {
+                        $all_numeric = false;
+                        break;
+                    }
+                }
+                
+            @endphp
+            @if ($all_numeric)
+                @if(count($args) == 4)
+                 
+                    @if($filterby == 'hs_code')
+                        <title> {{$role}} Data of USA Under the {{$hs_code}}</title>
+                        <meta name="description" content="Live Import Data of USA under the {{$hs_code}}
+                         Our bill of lading reports, which include hs code, date, b/l number, product description,
+                         loading and unloading ports, us {{$role}} name, quantity, etc.">
+                    @elseif($filterby == 'country')
+                       
+                        <title>USA {{$hs_code}}  {{$role}} data from {{$filterdata}} </title>
+                    @elseif($filterby == 'unloading_port')
+                        <title>Import Data of USA Under the {{$hs_code}}</title>
+                    @endif
+                @elseif(count($args) == 6)
+                    @if ($filterby == 'hs_code')
+                        <title>USA {{$hs_code}}  {{$role}} data from {{$filterdata}} </title>
+                    @elseif($filterby == 'country')
+                        <title> USA HS Code {{$base_search}} {{$role}} data from {{$filterdata}} </title>
+                        <meta name="description" content="USA {{$role}}s data under the hs code {{$base_search}} form {{$filterdata}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif($filterby == 'unloading_port')
+                        <title>USA {{$role}}s data  under the HS code {{$base_search}} At {{$filterdata}}</title>
+                         <meta name="description" content="USA {{$role}}s data under the hs code 8703 At Freeport texas Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.
+">
+                    @endif
+                @endif
+            @else
+                @if(count($args) == 4)
+                    {{-- If you need to use a route, handle it outside the <title> tag --}}
+                    @php
+                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role, 'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                    @endphp
+                @elseif(count($args) == 6)
+                    @if ($filterby == 'hs_code')
+                        <title>{{$base_search}} {{$role}} Data of USA Under the {{$filterdata}}</title>
+                        <meta name="description" content="Live {{$base_search}} {{$role}} Data of USA under the hs Code {{$filterdata}}
+                         Our bill of lading reports, which include hs code, date, b/l number, product description,
+                         loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif($filterby == 'country')
+                        <title>Usa {{$base_search}} {{$role}} Data from {{$filterdata}}</title>
+                        <meta name="description" content="live USA {{$base_search}} {{$role}} data from {{$filterdata}}, Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif($filterby == 'unloading_port')
+                        <title> USA {{$base_search}} {{$role}}s Data at {{$filterdata}}</title>
+                        <meta name="description" content="live USA {{$base_search}} {{$role}} data at {{$filterdata}}.  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @endif
+                @endif
+            @endif
+        @endforeach
+    @endif
 </head>
 <body>
     @include('frontend.header')
@@ -1016,13 +1092,13 @@
                                         USA
                                     </span>
                                     <a href="/usa-import" target="_blank">
-                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
+                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2" style="word-break:break-all;">
                                             {{$result->Product_Description}}
                                         </h5>
                                     </a>
                                     <span class="flex items-center">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                                        <p class="pl-2 text-lg font-semibold text-red-400">
+                                        <p class="pl-2 text-lg font-semibold text-red-400" style="word-break:break-all;">
                                             {{$result->HS_Code}}
                                         </p>
                                     </span>
@@ -1079,13 +1155,13 @@
                                         USA
                                     </span>
                                     <a href="/usa-import" target="_blank">
-                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
+                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2" style="word-break:break-all;">
                                             {{$result->Products}}
                                         </h5>
                                     </a>
                                     <span class="flex items-center">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                                        <p class="pl-2 text-lg font-semibold text-red-400">
+                                        <p class="pl-2 text-lg font-semibold text-red-400" style="word-break:break-all;">
                                             {{$result->HS_Code}}
                                         </p>
                                     </span>
