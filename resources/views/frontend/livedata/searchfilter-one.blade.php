@@ -1462,13 +1462,13 @@
                                         USA
                                     </span>
                                     <a href="/usa-import" target="_blank">
-                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
+                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2" style="word-break:break-all;">
                                             {{$result->Product_Description}}
                                         </h5>
                                     </a>
                                     <span class="flex items-center">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                                        <p class="pl-2 text-lg font-semibold text-red-400">
+                                        <p class="pl-2 text-lg font-semibold text-red-400" style="word-break:break-all;">
                                             {{$result->HS_Code}}
                                         </p>
                                     </span>
@@ -1525,13 +1525,13 @@
                                         USA
                                     </span>
                                     <a href="/usa-import" target="_blank">
-                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2">
+                                        <h5 class="mb-4 text-xl font-medium text-white hover:underline line-clamp-2" style="word-break:break-all;">
                                             {{$result->Products}}
                                         </h5>
                                     </a>
                                     <span class="flex items-center">
                                         <i class="fa-solid fa-box-open text-gray-200"></i>
-                                        <p class="pl-2 text-lg font-semibold text-red-400">
+                                        <p class="pl-2 text-lg font-semibold text-red-400" style="word-break:break-all;">
                                             {{$result->HS_Code}}
                                         </p>
                                     </span>

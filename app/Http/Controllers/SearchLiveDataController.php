@@ -126,6 +126,11 @@ class SearchLiveDataController extends Controller
                 }
              
                 // dd($result);
+                // Check if result is empty
+            // Check if result is empty
+                if ($result->isEmpty()) {
+                    return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+                }
                 $resultsArray = $result->toArray();
                 return view(
                     'frontend.livedata.search', 
@@ -164,7 +169,7 @@ class SearchLiveDataController extends Controller
                          ->whereRaw('LENGTH(HS_CODE) <= 12') 
                         ->where(DB::raw('PRODUCT_DESCRIPTION'), 'LIKE', '%' . $description . '%')
                         ->where('US_IMPORTER_NAME', '!=', 'N/A')
-                        ->limit(10);
+                        ->limit(12);
                         
                         foreach ($columns as $column) {
                             $query->whereNotNull($column);
@@ -181,7 +186,7 @@ class SearchLiveDataController extends Controller
                         foreach ($columns as $column) {
                             $query->whereNotNull($column);
                         }
-                        $result = $query->limit(10)->get();
+                        $result = $query->limit(12)->get();
                 }
                 
             } 
@@ -200,7 +205,10 @@ class SearchLiveDataController extends Controller
                     $result = $query->limit(12)->get();
             }
         
-
+            // Check if result is empty
+            if ($result->isEmpty()) {
+                return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+            }
 
             return view (
                 'frontend.livedata.search', 
