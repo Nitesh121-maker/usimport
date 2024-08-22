@@ -52,11 +52,10 @@
                         <title>USA {{$hs_code}}  {{$role}} data from {{$filterdata}} </title>
                     @elseif($filterby == 'country')
                         <title> USA HS Code {{$base_search}} {{$role}} data from {{$filterdata}} </title>
-                        <meta name="description" content="USA {{$role}}s data under the hs code {{$base_search}} form {{$filterdata}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        <meta name="description" content="USA {{$role}}s data under the HS code {{$base_search}} form {{$filterdata}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                     @elseif($filterby == 'unloading_port')
                         <title>USA {{$role}}s data  under the HS code {{$base_search}} At {{$filterdata}}</title>
-                         <meta name="description" content="USA {{$role}}s data under the hs code 8703 At Freeport texas Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.
-">
+                         <meta name="description" content="USA {{$role}}s data under the HS code {{$base_search}} At {{$filterdata}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                     @endif
                 @endif
             @else

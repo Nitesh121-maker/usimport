@@ -5,7 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @include('frontend.link')
+    <!----------------------- Meta Tags Start---------------------------->
+    @php
+        $Dresult = $result;
+    @endphp
+    
+    @if(isset($Dresult) && $Dresult->count() > 0)
+        @foreach ($Dresult as $Dresult)
+            {{-- @dd($searchDetails1) --}}
+            @php
+                $res_hs_code = $Dresult->HS_CODE;
+                $country = $Dresult->ORIGIN_COUNTRY;
+                $country = str_ireplace(" ", "-", $country);
+                $unloading_port = $Dresult->UNLOADING_PORT;
+                $args = $args ?? [];
+                $arg = $arg ?? [];
+                //dd($filterby,$filterby1,$args,$searchDetails1,$arg);
+                $searchDetailsParts = explode(',', $searchDetails1);
+                $all_numeric = true;
+    
+                foreach ($searchDetailsParts as $part) {
+                    if (!is_numeric($part)) {
+                        $all_numeric = false;
+                        break;
+                    }
+                }
+            @endphp
+    
+            @if ($all_numeric)
+                @php
+                    $filterdata = str_ireplace(" ", "-", $filterdata);
+                    $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                    $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                @endphp
+    
+                @if (count($args) == 6)
+                    @if ($filterby1 == 'hs_code')
+                        {{-- Handle hs_code logic --}}
+                    @elseif ($filterby1 == 'unloading_port')
+                        @if($filterby == 'hs_code')
+                            <title> USA HS Code {{$filterdata}} {{$role}} data at {{$filterdata1}} </title>
+                            <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} at {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        @elseif($filterby=='country')
+                        
+                        @endif
+                    @elseif ($filterby1 == 'country')
+                        @if($filterby == 'hs_code')
+                            <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
+                            <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        @elseif($filterby=='unloading_port')
+                        
+                        @endif
+                    @endif
+                @elseif (count($args) == 8)
+                    @if ($filterby1 == 'country')
+                        {{-- Handle country logic --}}
+                    @elseif ($filterby1 == 'hs_code')
+                        @php
+                            $base_search = $search;
+                        @endphp
+                    @elseif ($filterby1 == 'unloading_port')
+                        {{-- Handle unloading_port logic --}}
+                    @endif
+                @elseif (count($arg) == 8)
+                    @php
+                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                    @endphp
+                @elseif (count($arg) == 10)
+                    @php
+                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                    @endphp
+                    @if ($filterby2 == 'hs_code')
+                        {{-- Handle hs_code logic --}}
+                    @elseif ($filterby2 == 'country')
+                        {{-- Handle country logic --}}
+                    @elseif ($filterby2 == 'unloading_port')
+                        {{-- Handle unloading_port logic --}}
+                    @endif
+                @else
+                    {{-- Handle else logic --}}
+                @endif
+            @else
+                @if (count($args) == 6)
+                    {{-- Handle logic for count($args) == 6 --}}
+                @elseif (count($args) == 8)
+                    @if ($filterby1 == 'country')
+                        @php
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                            $filterdata = str_ireplace(" ", "-", $filterdata);
+                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                        @endphp
+                        @if($filterby = 'hs_code')
+                            <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
+                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
+                             Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                            
+                        @elseif($filterby = 'unloading_port')
+                            <title> USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}</title>
+                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}
+                             Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        @endif
+
+                    @elseif ($filterby1 == 'hs_code')
+                        @php
+                            $base_search = $search;
+                        @endphp
+                        <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
+                        <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
+                         Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif ($filterby1 == 'unloading_port')
+                        @php
+                            $base_search = $search;
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                        @endphp
+                        @if($filterby=='hs_code')
+                            <title>USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} </title>
+                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        @else
+                            <title>USA {{$searchDetails1}} {{$role}}s data from {{$filterdata}} At {{$filterdata1}} </title>
+                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  from {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        @endif
+
+                    @endif
+                @elseif (count($arg) == 8)
+                    @php
+                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                    @endphp
+                    @if ($filterby2 == 'country')
+                        {{-- Handle country logic --}}
+                    @elseif ($filterby2 == 'unloading_port')
+                        @php
+                            $base_search = $search;
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                        @endphp
+                    @endif
+                @elseif (count($arg) == 10)
+                    @php
+                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                    @endphp
+                    @if ($filterby2 == 'hs_code')
+                        {{-- Handle hs_code logic --}}
+                    @elseif ($filterby2 == 'country')
+                        @php
+                            $filterdata = str_ireplace(" ", "-", $filterdata);
+                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                        @endphp
+                    @elseif ($filterby2 == 'unloading_port')
+                        @php
+                            $filterdata = str_ireplace(" ", "-", $filterdata);
+                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                        @endphp
+                    @endif
+                @else
+                    @php
+                        $country_url = route('search-filter-two', ['type' => $type, 'role' => $role, 'search' => $search, 'searchDetails1' => $searchDetails1, 'filterby2' => 'country', 'filterby' => $filterby, 'filter' => $filterdata, 'filterby1' => $filterby1, 'filterdata' => $filterdata1, 'filterdata1' => $country ?? "null"]);
+                    @endphp
+                @endif
+            @endif
+        @endforeach
+    @endif
     <title>Filter Search - US Import Data</title>
+    <!------------------------------Meta Tags End---------------------------------->
 </head>
 <body>
     @include('frontend.header')
