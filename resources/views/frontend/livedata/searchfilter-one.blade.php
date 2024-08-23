@@ -47,25 +47,38 @@
                             <title> USA HS Code {{$filterdata}} {{$role}} data at {{$filterdata1}} </title>
                             <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} at {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                         @elseif($filterby=='country')
-                        
+                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
+                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
                         @endif
                     @elseif ($filterby1 == 'country')
                         @if($filterby == 'hs_code')
                             <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
                             <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                         @elseif($filterby=='unloading_port')
-                        
+                            <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
+                            <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                         @endif
                     @endif
                 @elseif (count($args) == 8)
                     @if ($filterby1 == 'country')
-                        {{-- Handle country logic --}}
+                       @if($filterby == 'unloading_port')
+                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
+                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                       @endif
                     @elseif ($filterby1 == 'hs_code')
                         @php
                             $base_search = $search;
                         @endphp
+
                     @elseif ($filterby1 == 'unloading_port')
-                        {{-- Handle unloading_port logic --}}
+                        @if($filterby == 'hs_code')
+                        @elseif($filterby ==  'country')
+                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
+                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                        @elseif($filterby == 'unloading_port')
+                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
+                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                        @endif
                     @endif
                 @elseif (count($arg) == 8)
                     @php
