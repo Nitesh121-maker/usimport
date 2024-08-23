@@ -12,8 +12,8 @@
 
     @if($type=='data')
          @if($hs_code)
-                <title>HS code {{$base_search}} {{$role}} Data Of US</title>
-                <meta name="description" content="HS code {{$base_search}} {{$role}} Data Of US, our bill of lading reports include hs code, date, unit, product description, loading and unloading ports, exporter name and address, quantity, etc.">
+                <title>US {{$role}} Data Under The HS Code {{$base_search}}</title>
+                <meta name="description" content="US import Data under HS Code {{$base_search}},  Our US bill of lading Data reports include hs code, date, unit, product description, loading and unloading ports, importer name and address, quantity, etc.">
          @else
                 <title>US {{$base_search}} {{$role}} Data - list of {{$base_search}} {{$role}}ers in us </title>
                 <meta name="description" content="{{$base_search}} {{$role}} data of us - us {{$base_search}} {{$role}}ers, our bill of lading reports include hs code, date, unit, product description, loading and unloading ports, exporter name and address, quantity, etc.">
@@ -88,8 +88,8 @@
             <div class="px-5 mb-12">
                 @if($type=='data')
                        @if($hs_code)
-                             <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
-                                HS CODE {{ $base_search }}&nbsp;{{ $role }} Data Of USA ||  HS CODE {{ $base_search }}&nbsp;{{ $role }}
+                             <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;"> 
+                                US {{ $role }} Data Under The HS Code {{ $base_search }}
                              </h1>
                         @elseif($desc)
                              <h2 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
@@ -116,12 +116,12 @@
                     @if($hs_code)
                         @if($role == 'import')
                             <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
-                                Search HS Code {{ $base_search }}&nbsp;{{ $role }} data of USA and Understand what 
+                                Search Live HS Code {{ $base_search }}&nbsp;{{ $role }} data of USA and Understand what 
                                 Commodities USA imports under the HS Code of {{ $base_search }}.
                             </p>
                         @elseif($role == 'export')
                             <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
-                                Search HS Code {{ $base_search }}&nbsp;{{ $role }} data of USA and Understand what 
+                                Search Live HS Code {{ $base_search }}&nbsp;{{ $role }} data of USA and Understand what 
                                 Commodities USA exports under the HS Code of {{ $base_search }}.
                             </p>
                         @endif
