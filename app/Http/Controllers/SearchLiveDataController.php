@@ -127,9 +127,8 @@ class SearchLiveDataController extends Controller
              
                 // dd($result);
                 // Check if result is empty
-            // Check if result is empty
                 if ($result->isEmpty()) {
-                    return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+                   return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
                 }
                 $resultsArray = $result->toArray();
                 return view(
@@ -146,12 +145,9 @@ class SearchLiveDataController extends Controller
                 );
             }
             else{
-                $error = "Please Enter Product Description or HS_CODE"; // Example error message
-        
-                // Return the view with the error message
-                return view('frontend.searchlivedata', [
-                    'error' => $error,
-                ]);
+                if ($result->isEmpty()) {
+                      return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+                }
             }
 
         } elseif($type == "company") {
@@ -206,9 +202,9 @@ class SearchLiveDataController extends Controller
             }
         
             // Check if result is empty
-            if ($result->isEmpty()) {
-                return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
-            }
+                if ($result->isEmpty()) {
+                     return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+                }
 
             return view (
                 'frontend.livedata.search', 
@@ -262,7 +258,9 @@ class SearchLiveDataController extends Controller
                         
                     }
                }
-               
+            if ($results->isEmpty()) {
+                 return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+            }
             return view('frontend.livedata.searchfilter', [
                 'result' => $results,
                 'desc' => $filterdata,
@@ -465,7 +463,9 @@ class SearchLiveDataController extends Controller
                 }
             }
         }
-
+            if ($results->isEmpty()) {
+                 return redirect()->back()->with('error', 'Searched Data Not Found For More Details Contact us.');
+            }
          return view('frontend.livedata.searchfilter', [
             'result' => $results,
             'desc' => $filterdata,
@@ -1074,7 +1074,7 @@ class SearchLiveDataController extends Controller
                 if ($filterby2 == 'hs_code') {
                     // dd('IN Numeric hs_code','SearchDetails', $filter, 'filterdata', $filterdata, 'filterby', $filterby, 'filterdata1', $filterdata1);
 
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    $results = DB::table('IMP_AMERICA_BL_SEA')
                     ->select('*')
                     ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
                     ->where(function($query) use ($filter) {
@@ -1088,54 +1088,55 @@ class SearchLiveDataController extends Controller
                               ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
                     })
                     ->whereRaw('LENGTH(HS_CODE) <= 12')
-                    ->whereNotNull('HS_CODE');
-                    // ->whereNotNull('US_IMPORTER_NAME');
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
-                    ->select('*')
-                    ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
-                    ->where(function($query) use ($filter) {
-                        $query->where('HS_CODE', 'like', '%' . $filter . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
-                    })
-                    ->where(function($query) use ($filterdata) {
-                        $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
-                    })
-                    ->whereRaw('LENGTH(HS_CODE) <= 12')
-                    ->whereNotNull('HS_CODE');
-                    // ->whereNotNull('US_IMPORTER_NAME');
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                    ->select('*')
-                    ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
-                    ->where(function($query) use ($filter) {
-                        $query->where('HS_CODE', 'like', '%' . $filter . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
-                    })
-                    ->where(function($query) use ($filterdata) {
-                        $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
-                    })
-                    ->whereRaw('LENGTH(HS_CODE) <= 12')
-                    ->whereNotNull('HS_CODE');
-                    // ->whereNotNull('US_IMPORTER_NAME');
-        
-                    $combinedQuery = $query1
-                    ->union($query2)
-                    ->union($query3)
-                    ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    ->whereNotNull('HS_CODE')
                     ->limit(10)
-                    ->get();   
+                    ->get();  
+                    // $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                    // ->select('*')
+                    // ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
+                    // ->where(function($query) use ($filter) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filter . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
+                    // })
+                    // ->where(function($query) use ($filterdata) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
+                    // })
+                    // ->whereRaw('LENGTH(HS_CODE) <= 12')
+                    // ->whereNotNull('HS_CODE');
+                    // // ->whereNotNull('US_IMPORTER_NAME');
+                    // $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                    // ->select('*')
+                    // ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
+                    // ->where(function($query) use ($filter) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filter . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
+                    // })
+                    // ->where(function($query) use ($filterdata) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
+                    // })
+                    // ->whereRaw('LENGTH(HS_CODE) <= 12')
+                    // ->whereNotNull('HS_CODE');
+                    // // ->whereNotNull('US_IMPORTER_NAME');
+        
+                    // $combinedQuery = $query1
+                    // ->union($query2)
+                    // ->union($query3)
+                    // ;
+                    // $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    // ->mergeBindings($combinedQuery) // You need to merge bindings to avoid SQL errors
+                    // ->limit(10)
+                    // ->get();   
                     // dd('HS_CODE',$results);
                     // dd('if BlockS');
                 } else if ($filterby2 == 'country') {
                     // dd('IN Numeric Country','SearchDetails', $searchDetails, 'filterdata', $filterdata, 'filterby', $filterby, 'filterdata1', $filterdata1);
-                    $query1 = DB::table('IMP_AMERICA_BL_SEA_part_xmain')
+                    $results = DB::table('IMP_AMERICA_BL_SEA')
                     ->select('*')
                     ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata1 . '%')
                     ->where(function($query) use ($filter) {
@@ -1150,48 +1151,51 @@ class SearchLiveDataController extends Controller
                     })
                     ->whereRaw('LENGTH(HS_CODE) <= 12')
                     ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
-                    $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
-                    ->select('*')
-                    ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata1 . '%')
-                    ->where(function($query) use ($filter) {
-                        $query->where('HS_CODE', 'like', '%' . $filter . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
-                    })
-                    ->where(function($query) use ($filterdata) {
-                        $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
-                    })
-                    ->whereRaw('LENGTH(HS_CODE) <= 12')
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
-                    $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
-                    ->select('*')
-                    ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata1 . '%')
-                    ->where(function($query) use ($filter) {
-                        $query->where('HS_CODE', 'like', '%' . $filter . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
-                    })
-                    ->where(function($query) use ($filterdata) {
-                        $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
-                              ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
-                              ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
-                    })
-                    ->whereRaw('LENGTH(HS_CODE) <= 12')
-                    ->whereNotNull('HS_CODE')
-                    ->whereNotNull('US_IMPORTER_NAME');
-        
-                    $combinedQuery = $query1
-                    ->union($query2)
-                    ->union($query3)
-                    ;
-                    $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
-                    ->mergeBindings($combinedQuery) 
+                    ->whereNotNull('US_IMPORTER_NAME')
                     ->limit(10)
                     ->get();   
+                    
+                    // $query2 = DB::table('IMP_AMERICA_BL_SEA_part_ymain')
+                    // ->select('*')
+                    // ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata1 . '%')
+                    // ->where(function($query) use ($filter) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filter . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
+                    // })
+                    // ->where(function($query) use ($filterdata) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
+                    // })
+                    // ->whereRaw('LENGTH(HS_CODE) <= 12')
+                    // ->whereNotNull('HS_CODE')
+                    // ->whereNotNull('US_IMPORTER_NAME');
+                    // $query3 = DB::table('IMP_AMERICA_BL_SEA_part_zmain')
+                    // ->select('*')
+                    // ->where('ORIGIN_COUNTRY', 'LIKE', '%' . $filterdata1 . '%')
+                    // ->where(function($query) use ($filter) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filter . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filter . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filter . '%');
+                    // })
+                    // ->where(function($query) use ($filterdata) {
+                    //     $query->where('HS_CODE', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('ORIGIN_COUNTRY', 'like', '%' . $filterdata . '%')
+                    //           ->orWhere('UNLOADING_PORT', 'like', '%'. $filterdata . '%');
+                    // })
+                    // ->whereRaw('LENGTH(HS_CODE) <= 12')
+                    // ->whereNotNull('HS_CODE')
+                    // ->whereNotNull('US_IMPORTER_NAME');
+        
+                    // $combinedQuery = $query1
+                    // ->union($query2)
+                    // ->union($query3)
+                    // ;
+                    // $results = DB::table(DB::raw("({$combinedQuery->toSql()}) as sub"))
+                    // ->mergeBindings($combinedQuery) 
+                    // ->limit(10)
+                    // ->get();   
                     // dd('Country',$results);
                 } else if ($filterby2 == 'unloading_port') {
                     // dd('IN Numeric UNLOADING_PORT','Filter',$filter,'filterdata', $filterdata, 'filterby', $filterby,'Filterby1', $filterby1,'Filterby2', $filterby2, 'filterdata1', $filterdata1);
