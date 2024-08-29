@@ -37,12 +37,10 @@
                 @if(count($args) == 4)
                  
                     @if($filterby == 'hs_code')
-                        <title> {{$role}} Data of USA Under the {{$hs_code}}</title>
-                        <meta name="description" content="Live Import Data of USA under the {{$hs_code}}
-                         Our bill of lading reports, which include hs code, date, b/l number, product description,
-                         loading and unloading ports, us {{$role}} name, quantity, etc.">
+                        <title>USA {{$role}} Data Under the HS code {{$hs_code}}</title>
+                        <meta name="description" content="live USA {{$role}} data under the HS Code {{$hs_code}}, Our USA bill of lading data reports, include hs code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+
                     @elseif($filterby == 'country')
-                       
                         <title>USA {{$hs_code}}  {{$role}} data from {{$filterdata}} </title>
                     @elseif($filterby == 'unloading_port')
                         <title>Import Data of USA Under the {{$hs_code}}</title>
@@ -133,14 +131,42 @@
     <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
             <div class="px-5 mb-12">
-                <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
-                    {{ $base_search }}&nbsp;{{ $role }} Data Of USA || {{ $base_search }}&nbsp;{{ $role }}s
-                </h1>
-                <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
-                    Search {{ $desc }}&nbsp;{{ $role }} data of USA based on bill of lading database and other shipment details 
-                    by customs. Our USA import statistics of {{ $desc }} includes hs code, product, port, importers name, 
-                    value, qty etc.
-                </p>
+                @php
+                   $Dresult = $result;
+                @endphp
+                    {{-- @dd($searfilterdata) --}}
+                
+                @if($filterby == 'hs_code')
+                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                        US {{$role}} Data by HS Code {{ $base_search }}
+                    </h1>
+                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                        Search live USA {{$role}}s data By HS Code {{ $base_search }} and understand what Commodities USA {{$role}}s under this HS Code
+                    </p>
+                @elseif($filterby == 'country')
+                    @if($role == 'import')
+                        <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                            US {{$role}} Data from {{$filterdata}} by the HS Code {{$base_search}}
+                        </h1>
+                        <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                            Search live USA {{$role}}s Data from {{$filterdata}} by the hs code  {{$base_search}} and understand what commodities USA {{$role}}s from {{$filterdata}} under this HS Code
+                        </p>
+                    @elseif($role == 'export')
+                         <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                            US {{$role}} Data to {{$filterdata}} by the HS Code {{$base_search}}
+                        </h1>
+                        <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                            Search live USA {{$role}}s Data to {{$filterdata}} by the hs code  {{$base_search}} and understand what commodities USA {{$role}}s to {{$filterdata}} under this HS Code
+                        </p>
+                    @endif
+                @elseif($filterby == 'unloading_port')
+                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                        US {{$role}} Data at port {{$filterdata}} by the HS Code {{$base_search}}
+                    </h1>
+                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                        Search live USA {{$role}}s Data at port {{$filterdata}} by the hs code  {{$base_search}} and understand what commodities USA {{$role}}s at port {{$filterdata}} under this HS Code
+                    </p>
+                @endif
             </div>
             {{-- forms --}}
             <div class="px-5 flex justify-center items-center">
@@ -360,7 +386,46 @@
                     </div>
                     <div class="col-span-1"></div>
                 </div>
-                
+                {{-- toast --}}
+                <div class="flex mx-auto mx-w-screen-xl px-5">
+                    @if($filterby=='hs_code')
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $searfilterdata }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    @elseif($filterby=='country')
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $searfilterdata }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    @elseif($filterby == 'unloading_port')
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $searfilterdata }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    @endif
+                </div>
                 {{-- Import Table --}}
                 <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -951,125 +1016,463 @@
         </section>
 
         {{-- Card view of table for mobile view --}}
-        <section class="bg-white block md:hidden lg:hidden">
+        <section class="bg-white block  lg:hidden">
             <div class="mx-auto mx-w-screen-xl px-5 py-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    @php
-                        $MobileResult = $result;
-                    @endphp
-                    @if(isset($result) && is_iterable($result) && count($result) > 0)
-                        @foreach ($result as $MobileResult)
-                            <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
-                                <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
-                                    Shipment No. {{ $loop->iteration }}
-                                </h5>
-                                <div class="grid grid-cols-2">
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Date
-                                        </h1>
+                @if($role=='import')                 
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            @php
+                                $iteration = 0;
+                                $Dresult = $result;
+                            @endphp
+                            {{-- @dd($searfilterdata) --}}
+                          
+                            @if(isset($Dresult) && $Dresult->count() > 0)
+                                @foreach ($Dresult as $Dresult)
+                                    @php
+                                        $iteration++;
+                                        $hs_code = $Dresult->HS_CODE;
+                                        $country = $Dresult->ORIGIN_COUNTRY;
+                                        $country = str_ireplace(" ", "-", $country);
+                                        $unloading_port  = $Dresult->UNLOADING_PORT;
+                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                        $args = $args??[];
+                                        //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                        // Hs code Url
+                                        $searchDetailsParts = explode(',', $base_search);
+                                        $all_numeric = true;
+                                        
+                                        foreach ($searchDetailsParts as $part) {
+                                            if (!is_numeric($part)) {
+                                                $all_numeric = false;
+                                                break;
+                                            }
+                                        }
+                                      
+                                        if ($all_numeric) {
+                                            # code...
+                                            if(count($args)== 4){
+                                                //dd($args,$filterby,$filterdata,$hs_code);
+                                                if($filterby=='hs_code'){
+                                                    $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                    $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port ?? 'null']);
+                                                }else if($filterby == 'country'){
+                                                    $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                    $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    //Port Url
+                                                    $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                } else if($filterby == 'unloading_port'){
+                                                    //Hs Code Url
+                                                    $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                    //Coutry Url
+                                                    $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    //Port Url
+                                                    $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                }else{
+                                                
+                                                }
+                                            }else if(count($args)==6){
+                                               if ($filterby == 'hs_code'){
+                                               //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                    $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $filterdata??'null']);
+                                                    
+                                                    $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                                                                            //Port Url
+                                                    $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                               } else if($filterby == 'country'){
+                                                    //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                    $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                    //Hs-Code Url
+                                                    $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                    
+                                                    //Country Url
+                                                    $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                    
+                                                    //Port Url
+                                                    $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
+                                               }else if($filterby == 'unloading_port'){
+                                                    //dd('in this Group');
+                                                    $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                    //Hs_code Url 
+                                                    
+                                                    $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=> $search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                    //Country Url 
+                                                    $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    //Port Url
+                                                    $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                               }
+                                            }
+                                        } else {
+                                            //dd('In HS_CODE Else Block',$filterby,$base_search,$hs_code,count($args));
+                                            # code...
+                                            if(count($args)==4){
+                                                $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                            }else if(count($args)==6){
+                                               //dd('In This Block');
+                                               //dd('IN This GRoup',$searfilterdata,$filterby);
+                                               if ($filterby == 'hs_code'){
+                                                   //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                                    $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $hs_code??"null"]);
+                                                    //Country Url
+                                                    $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    //Port Url
+                                                    $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??"null"]);
+                                               } else if($filterby == 'country'){
+                                                    //dd($search,$filterby,$searfilterdata,$filterby);
+                                                    $searfilterdata = str_ireplace(" ", "-", $searfilterdata);
+                                                    //Hs_Code
+                                                    $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                    //Country Url 
+                                                    $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'country', 'filterdata' => $country??"null"]);
+                                                    //Port Url
+                                                    $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??'null']);
+                                               }else if($filterby == 'unloading_port'){
+                                                    //dd($base_search,$search,$filterby,$searfilterdata);
+                                                    $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                    $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                    $searfilterdata = str_ireplace(" ", "-", $searfilterdata);
+                                                    //HS_code
+                                                    $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                    //Country URL
+                                                    $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                    //Port Url
+                                                    $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                               }
+                                            }
+                                        }
+                                    @endphp
+                                    <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+                                        <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
+                                            Shipment No. {{ $loop->iteration }}
+                                        </h5>
+                                        <div class="grid grid-cols-2">
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Date
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    {{ $Dresult->DATE ?? '' }}
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    HS Code
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    <a href="{{$hs_code_url}}" class="text-blue-600 hover:underline">
+                                                        {{ $Dresult->HS_CODE ?? '' }}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Product Description
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal text-justify">
+                                                    {{ strip_tags($Dresult->PRODUCT_DESCRIPTION ?? '') }}
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Origin Country
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    <a href="{{$country_url}}" class="text-blue-600 hover:underline">
+                                                        {{ $Dresult->ORIGIN_COUNTRY ?? '' }}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Unloading Port
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    <a href="{{$port_url}}" class="text-blue-600 hover:underline">
+                                                        {{ $Dresult->UNLOADING_PORT ?? '' }}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Quantity
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    {{ $Dresult->QUANTITY ?? '' }}
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Unit
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    {{ $Dresult->UNIT ?? '' }}
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Weight
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    {{ $Dresult->WEIGHT ?? '' }}
+                                                </p>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                    Importer Name
+                                                </h1>
+                                            </div>
+                                            <div class="mt-4">
+                                                <p class="text-md font-normal">
+                                                    <a href="#" class="text-blue-600 hover:underline">
+                                                        Importer Name
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            {{ $MobileResult->DATE ?? '' }}
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            HS Code
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->HS_CODE ?? '' }}
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Product Description
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal text-justify">
-                                            {{ strip_tags($MobileResult->PRODUCT_DESCRIPTION ?? '') }}
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Origin Country
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->ORIGIN_COUNTRY ?? '' }}
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Unloading Port
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
-                                                {{ $MobileResult->UNLOADING_PORT ?? '' }}
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Quantity
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            {{ $MobileResult->QUANTITY ?? '' }}
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Unit
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            {{ $MobileResult->UNIT ?? '' }}
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Weight
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            {{ $MobileResult->WEIGHT ?? '' }}
-                                        </p>
-                                    </div>
-                                    <div class="mt-4">
-                                        <h1 class="text-md text-gray-800 font-medium uppercase">
-                                            Importer Name
-                                        </h1>
-                                    </div>
-                                    <div class="mt-4">
-                                        <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
+                                @endforeach
+                            @endif
+                    </div>
+                @elseif($role=='export')
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        @php
+                            $MobileResult = $exportresults;
+                            //dd($MobileResult);
+                        @endphp
+    
+                        @if(isset($MobileResult) && $MobileResult->count() > 0)
+                            @foreach ($MobileResult as $MobileResult)
+                                @php
+                                    $iteration = 0;
+                                    $Dresult = $MobileResult;
+                                @endphp
+                                @php
+                                    $iteration++;
+                                    $hs_code = $Dresult->HS_CODE;
+                                    $country = $Dresult->DESTINATION_COUNTRY;
+                                    $country = str_ireplace(" ", "-", $country);
+                                    $unloading_port  = $Dresult->UNLOADING_PORT;
+                                    $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                    $args = $args??[];
+                                    //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                    // Hs code Url
+                                    if (is_numeric($base_search)) {
+                                        # code...
+                                        if(count($args)== 4){
+                                            //dd($args,$filterby,$filterdata,$hs_code);
+                                            if($filterby=='hs_code'){
+                                                $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port ?? 'null']);
+                                            }else if($filterby == 'country'){
+                                                $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                            } else if($filterby == 'unloading_port'){
+                                                //Hs Code Url
+                                                $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                                //Coutry Url
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                            }else{
+                                            
+                                            }
+                                        }else if(count($args)==6){
+                                           if ($filterby == 'hs_code'){
+                                           //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $filterdata??'null']);
+                                                
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                                                                        //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                           } else if($filterby == 'country'){
+                                                //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                //Hs-Code Url
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                
+                                                //Country Url
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                
+                                                //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
+                                           }else if($filterby == 'unloading_port'){
+                                                //dd('Error In this Grpoup',$filterdata,$filterby);
+                                                $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                //Hs_code Url 
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=> $search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                                //Country Url 
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                //Port Url
+                                                $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $hs_code, 'filterby' => $filterby, 'filterdata' => $filterdata??'null']);
+                                           }
+                                        }
+                                    } else {
+                                        //dd('In HS_CODE Else Block',$base_search,$hs_code,count($args));
+                                        # code...
+                                        if(count($args)==4){
+                                            $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $hs_code]);
+                                        }else if(count($args)==6){
+                                           //dd('In This Block');
+                                           //dd('IN This GRoup',$searfilterdata,$filterby);
+                                           if ($filterby == 'hs_code'){
+                                               //dd($base_search,count($args),$args,$filterby,$filterdata,$hs_code);
+                                                $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'hs_code', 'filterdata' => $hs_code??"null"]);
+                                                //Country Url
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??"null"]);
+                                           } else if($filterby == 'country'){
+                                                //dd($search,$filterby,$searfilterdata,$filterby);
+                                                $searfilterdata = str_ireplace(" ", "-", $searfilterdata);
+                                                //Hs_Code
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                //Country Url 
+                                                $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_search, 'filterby' => 'country', 'filterdata' => $country??"null"]);
+                                                //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port??'null']);
+                                           }else if($filterby == 'unloading_port'){
+                                                //dd($base_search,$search,$filterby,$searfilterdata);
+                                                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                //HS_code
+                                                $hs_code_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => $filterby,'filterby'=>'hs_code','filterdata'=>$hs_code ??'hs_code','filterdata1' => $searfilterdata]);
+                                                //Country URL
+                                                $country_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                //Port Url
+                                                $port_url = route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$base_search,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                           }
+                                        }
+                                    }
+                                @endphp
+                                <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+                                    <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
+                                        Shipment No. {{ $loop->iteration }}
+                                    </h5>
+                                    <div class="grid grid-cols-2">
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                Date
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                {{ $MobileResult->DATE ?? '' }}
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                HS Code
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                <a href="{{$hs_code_url}}" class="text-blue-600 hover:underline">
+                                                    {{ $MobileResult->HS_CODE ?? '' }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                Product Description
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal text-justify">
+                                                {{ strip_tags($MobileResult->PRODUCT_DESCRIPTION ?? '') }}
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                               Dstination Country
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                <a href="{{$country_url}}" class="text-blue-600 hover:underline">
+                                                    {{ $MobileResult->DESTINATION_COUNTRY ?? '' }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                Unloading Port
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                <a href="{{$port_url}}" class="text-blue-600 hover:underline">
+                                                    {{ $MobileResult->UNLOADING_PORT ?? '' }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                Quantity
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                {{ $MobileResult->QUANTITY ?? '' }}
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                Unit
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                {{ $MobileResult->UNIT ?? '' }}
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
+                                                Weight
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                {{ $MobileResult->WEIGHT ?? '' }}
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h1 class="text-md text-gray-800 font-medium uppercase">
                                                 Importer Name
-                                            </a>
-                                        </p>
+                                            </h1>
+                                        </div>
+                                        <div class="mt-4">
+                                            <p class="text-md font-normal">
+                                                <a href="#" class="text-blue-600 hover:underline">
+                                                    Importer Name
+                                                </a>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                @endif
             </div>
         </section>
-    
     @elseif($type == 'company')
         @if($role == 'import')
             {{-- Import Company Data --}}

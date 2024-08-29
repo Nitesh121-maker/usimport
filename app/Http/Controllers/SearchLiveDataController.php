@@ -496,7 +496,15 @@ class SearchLiveDataController extends Controller
                 // dd($type, $role,'Filterby',$filterby,'Filterdat', $filterdata,'Filtervy1',  $filterby1,'Filterdata1',$filterdata1);
                         if ($role=='import') {
                                 if($filterby1 == 'hs_code'){
-    
+                                    $results = DB::table('IMP_AMERICA_BL_SEA')
+                                    ->select('*')
+                                    ->where('HS_CODE', 'LIKE', '%' . $filterdata1 . '%')
+   
+                                    ->whereNotNull('HS_CODE')
+                                    ->whereRaw('LENGTH(HS_CODE) <= 12')
+                                    ->whereNotNull('US_IMPORTER_NAME')
+                                    ->limit(10)
+                                    ->get();
                                 }else if($filterby1 == 'country'){
                                  $results = DB::table('IMP_AMERICA_BL_SEA')
                                     ->select('*')

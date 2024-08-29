@@ -66,25 +66,27 @@ Route::get('/search-data/{type}/{role}/{description?}/{hs_code?}', [SearchLiveDa
 Route::get('/search-data/{type}/{role}er/{description?}/{hs_code?}', [SearchLiveDataController::class, 'search'])
      ->name('search.company');
      
-Route::get('/search-1/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('hs-code');
-Route::get('/search-01/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
-Route::get('/search-2/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('searchfilterone');
-Route::get('/search2/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filterone');
-Route::get('/search-02/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}/{filterby1}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
-Route::get('/search-03/{type}/{role}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('searchfiltertwo');
+// Route::get('/search-1/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('hs-code');
+// Route::get('/search-01/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
+// Route::get('/search-2/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('searchfilterone');
+// Route::get('/search2/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filterone');
+// Route::get('/search-02/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}/{filterby1}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
+// Route::get('/search-03/{type}/{role}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('searchfiltertwo');
 
-Route::get('/search-03/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
-Route::get('/search-04/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter2'])->name('filter-two');
-// Route::group(['prefix' => 'search'], function () {
-//     Route::get('/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('hs-code');
-//     Route::get('/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
-//     Route::get('/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('searchfilterone');
-//     Route::get('/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filterone');
-//     Route::get('/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}/{filterby1}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
-//     Route::get('/{type}/{role}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('searchfiltertwo');
-//     Route::get('/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
-//     Route::get('/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter2'])->name('filter-two');
-// });
+// Route::get('/search-03/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
+// Route::get('/search-04/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter2'])->name('filter-two');
+
+Route::group(['prefix' => 'search'], function () {
+    Route::get('/{type}/{role}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('hs-code');
+    Route::get('/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filterone');
+    Route::get('/{type}/{role}/{filterby}-{filterdata}/{filterby1}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter1'])->name('searchfilterone');  
+    Route::get('/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}', [SearchLiveDataController::class, 'searchFilter'])->name('search-filter');
+    Route::get('/{type}/{role}/{search}-{base_search}/{filterby}-{filterdata}/{filterby1}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter1'])->name('search-filter-one');
+    Route::get('/{type}/{role}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby2}-{filterdata1?}', [SearchLiveDataController::class, 'searchFilter2'])->name('searchfiltertwo');
+    Route::get('/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter2'])->name('filter-two');
+    Route::get('/{type}/{role}/{search}-{searchDetails1}/{filterby}-{filter}/{filterby1}-{filterdata}/{filterby?}-{filterdata1}', [SearchLiveDataController::class, 'searchFilter2'])->name('search-filter-two');
+});
+
 Route::get('/search-test/company/{base_search}/{role}/{companyname}', [CompanyController::class, 'companydata'])->name('Companydata');
 
 // Contact Form Route
