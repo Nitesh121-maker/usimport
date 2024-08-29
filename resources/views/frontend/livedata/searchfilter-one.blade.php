@@ -5,181 +5,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @include('frontend.link')
-    <!----------------------- Meta Tags Start---------------------------->
-    @php
-        $Dresult = $result;
-    @endphp
-    
-    @if(isset($Dresult) && $Dresult->count() > 0)
-        @foreach ($Dresult as $Dresult)
-            {{-- @dd($searchDetails1) --}}
-            @php
-                $res_hs_code = $Dresult->HS_CODE;
-                $country = $Dresult->ORIGIN_COUNTRY;
-                $country = str_ireplace(" ", "-", $country);
-                $unloading_port = $Dresult->UNLOADING_PORT;
-                $args = $args ?? [];
-                $arg = $arg ?? [];
-                //dd($filterby,$filterby1,$args,$searchDetails1,$arg);
-                $searchDetailsParts = explode(',', $searchDetails1);
-                $all_numeric = true;
-    
-                foreach ($searchDetailsParts as $part) {
-                    if (!is_numeric($part)) {
-                        $all_numeric = false;
-                        break;
-                    }
-                }
-            @endphp
-    
-            @if ($all_numeric)
-                @php
-                    $filterdata = str_ireplace(" ", "-", $filterdata);
-                    $filterdata1 = str_ireplace(" ", "-", $filterdata1);
-                    $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                @endphp
-    
-                @if (count($args) == 6)
-                    @if ($filterby1 == 'hs_code')
-                        {{-- Handle hs_code logic --}}
-                    @elseif ($filterby1 == 'unloading_port')
-                        @if($filterby == 'hs_code')
-                            <title> USA HS Code {{$filterdata}} {{$role}} data at {{$filterdata1}} </title>
-                            <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} at {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                        @elseif($filterby=='country')
-                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
-                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
-                        @endif
-                    @elseif ($filterby1 == 'country')
-                        @if($filterby == 'hs_code')
-                            <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
-                            <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                        @elseif($filterby=='unloading_port')
-                            <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
-                            <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                        @endif
-                    @endif
-                @elseif (count($args) == 8)
-                    @if ($filterby1 == 'country')
-                       @if($filterby == 'unloading_port')
-                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
-                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
-                       @endif
-                    @elseif ($filterby1 == 'hs_code')
-                        @php
-                            $base_search = $search;
-                        @endphp
+   <!----------------------- Meta Tags Start---------------------------->
+   @php
+   $Dresult = $result;
+@endphp
 
-                    @elseif ($filterby1 == 'unloading_port')
-                        @if($filterby == 'hs_code')
-                        @elseif($filterby ==  'country')
-                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
-                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
-                        @elseif($filterby == 'unloading_port')
-                            <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
-                            <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
-                        @endif
-                    @endif
-                @elseif (count($arg) == 8)
-                    @php
-                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                    @endphp
-                @elseif (count($arg) == 10)
-                    @php
-                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                    @endphp
-                    @if ($filterby2 == 'hs_code')
-                        {{-- Handle hs_code logic --}}
-                    @elseif ($filterby2 == 'country')
-                        {{-- Handle country logic --}}
-                    @elseif ($filterby2 == 'unloading_port')
-                        {{-- Handle unloading_port logic --}}
-                    @endif
-                @else
-                    {{-- Handle else logic --}}
-                @endif
-            @else
-                @if (count($args) == 6)
-                    {{-- Handle logic for count($args) == 6 --}}
-                @elseif (count($args) == 8)
-                    @if ($filterby1 == 'country')
-                        @php
-                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                            $filterdata = str_ireplace(" ", "-", $filterdata);
-                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
-                        @endphp
-                        @if($filterby = 'hs_code')
-                            <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
-                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
-                             Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                            
-                        @elseif($filterby = 'unloading_port')
-                            <title> USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}</title>
-                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}
-                             Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                        @endif
+@if(isset($Dresult) && $Dresult->count() > 0)
+   @foreach ($Dresult as $Dresult)
+       {{-- @dd($searchDetails1) --}}
+       @php
+           $res_hs_code = $Dresult->HS_CODE;
+           $country = $Dresult->ORIGIN_COUNTRY;
+           $country = str_ireplace(" ", "-", $country);
+           $unloading_port = $Dresult->UNLOADING_PORT;
+           $args = $args ?? [];
+           $arg = $arg ?? [];
+           //dd($filterby2,$filterby1,$filterby,$args,$searchDetails1,$arg);
+           $searchDetailsParts = explode(',', $searchDetails1);
+           $all_numeric = true;
 
-                    @elseif ($filterby1 == 'hs_code')
-                        @php
-                            $base_search = $search;
-                        @endphp
-                        <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
-                        <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
-                         Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                    @elseif ($filterby1 == 'unloading_port')
-                        @php
-                            $base_search = $search;
-                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
-                        @endphp
-                        @if($filterby=='hs_code')
-                            <title>USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} </title>
-                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                        @else
-                            <title>USA {{$searchDetails1}} {{$role}}s data from {{$filterdata}} At {{$filterdata1}} </title>
-                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  from {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
-                        @endif
+           foreach ($searchDetailsParts as $part) {
+               if (!is_numeric($part)) {
+                   $all_numeric = false;
+                   break;
+               }
+           }
+       @endphp
 
-                    @endif
-                @elseif (count($arg) == 8)
-                    @php
-                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                    @endphp
-                    @if ($filterby2 == 'country')
-                        {{-- Handle country logic --}}
-                    @elseif ($filterby2 == 'unloading_port')
-                        @php
-                            $base_search = $search;
-                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                        @endphp
-                    @endif
-                @elseif (count($arg) == 10)
-                    @php
-                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                    @endphp
-                    @if ($filterby2 == 'hs_code')
-                        {{-- Handle hs_code logic --}}
-                    @elseif ($filterby2 == 'country')
-                        @php
-                            $filterdata = str_ireplace(" ", "-", $filterdata);
-                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
-                        @endphp
-                    @elseif ($filterby2 == 'unloading_port')
-                        @php
-                            $filterdata = str_ireplace(" ", "-", $filterdata);
-                            $filterdata1 = str_ireplace(" ", "-", $filterdata1);
-                        @endphp
-                    @endif
-                @else
-                    @php
-                        $country_url = route('search-filter-two', ['type' => $type, 'role' => $role, 'search' => $search, 'searchDetails1' => $searchDetails1, 'filterby2' => 'country', 'filterby' => $filterby, 'filter' => $filterdata, 'filterby1' => $filterby1, 'filterdata' => $filterdata1, 'filterdata1' => $country ?? "null"]);
-                    @endphp
-                @endif
-            @endif
-        @endforeach
-    @endif
-    <title>Filter Search - US Import Data</title>
-    <!------------------------------Meta Tags End---------------------------------->
+       @if ($all_numeric)
+           @php
+               $filterdata = str_ireplace(" ", "-", $filterdata);
+               $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+               $unloading_port = str_ireplace(" ", "-", $unloading_port);
+           @endphp
+
+           @if (count($args) == 6)
+               @if ($filterby1 == 'hs_code')
+                   {{-- Handle hs_code logic --}}
+               @elseif ($filterby1 == 'unloading_port')
+                   @if($filterby == 'hs_code')
+                       <title> USA HS Code {{$filterdata}} {{$role}} data at {{$filterdata1}} </title>
+                       <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} at {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                   @elseif($filterby=='country')
+                       <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
+                       <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                   @endif
+               @elseif ($filterby1 == 'country')
+                   @if($filterby == 'hs_code')
+                       <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
+                       <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                   @elseif($filterby=='unloading_port')
+                       <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
+                       <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                   @endif
+               @endif
+           @elseif (count($args) == 8)
+               @if ($filterby1 == 'country')
+
+                  @if($filterby == 'unloading_port')
+                       <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata1}} At Port {{$filterdata}}</title>
+                       <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata1}} At Port {{$filterdata}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                  @endif
+               @elseif ($filterby1 == 'hs_code')
+                   @php
+                       $base_search = $search;
+                   @endphp
+
+               @elseif ($filterby1 == 'unloading_port')
+                   @if($filterby == 'hs_code')
+                   
+                   @elseif($filterby ==  'country')
+                       <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                       <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At  {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                   @elseif($filterby == 'unloading_port')
+                       <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                       <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At  {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                   @endif
+               @endif
+           @elseif (count($arg) == 8)
+               @php
+                   $unloading_port = str_ireplace(" ", "-", $unloading_port);
+               @endphp
+           
+               @if ($filterby == 'hs_code')
+                    <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                    <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+               @elseif ($filterby == 'country')
+                    <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                    <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+               @elseif ($filterby == 'unloading_port')
+                    <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                    <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+               @endif
+           @elseif (count($arg) == 10)
+               @php
+                   $unloading_port = str_ireplace(" ", "-", $unloading_port);
+               @endphp
+               @if ($filterby2 == 'hs_code')
+                   {{-- Handle hs_code logic --}}
+               @elseif ($filterby2 == 'country')
+                   {{-- Handle country logic --}}
+               @elseif ($filterby2 == 'unloading_port')
+                   {{-- Handle unloading_port logic --}}
+               @endif
+           @else
+               {{-- Handle else logic --}}
+           @endif
+       @else
+           @if (count($args) == 6)
+               {{-- Handle logic for count($args) == 6 --}}
+           @elseif (count($args) == 8)
+               @if ($filterby1 == 'country')
+                   @php
+                       $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                       $filterdata = str_ireplace(" ", "-", $filterdata);
+                       $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                   @endphp
+                   @if($filterby = 'hs_code')
+                       <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
+                       <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
+                        Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                       
+                   @elseif($filterby = 'unloading_port')
+                       <title> USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}</title>
+                       <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}
+                        Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                   @endif
+
+               @elseif ($filterby1 == 'hs_code')
+                   @php
+                       $base_search = $search;
+                   @endphp
+                   <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
+                   <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
+                    Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+               @elseif ($filterby1 == 'unloading_port')
+                   @php
+                       $base_search = $search;
+                       $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                       $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                   @endphp
+                   @if($filterby=='hs_code')
+                       <title>USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} </title>
+                       <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                   @else
+                       <title>USA {{$searchDetails1}} {{$role}}s data from {{$filterdata}} At {{$filterdata1}} </title>
+                       <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  from {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                   @endif
+
+               @endif
+           @elseif (count($arg) == 8)
+               @php
+                   $unloading_port = str_ireplace(" ", "-", $unloading_port);
+               @endphp
+               @if ($filterby2 == 'country')
+                   {{-- Handle country logic --}}
+               @elseif ($filterby2 == 'unloading_port')
+                   @php
+                       $base_search = $search;
+                       $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                   @endphp
+               @endif
+           @elseif (count($arg) == 10)
+               @php
+                   $unloading_port = str_ireplace(" ", "-", $unloading_port);
+               @endphp
+               @if ($filterby2 == 'hs_code')
+                   {{-- Handle hs_code logic --}}
+               @elseif ($filterby2 == 'country')
+                   @php
+                       $filterdata = str_ireplace(" ", "-", $filterdata);
+                       $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                   @endphp
+               @elseif ($filterby2 == 'unloading_port')
+                   @php
+                       $filterdata = str_ireplace(" ", "-", $filterdata);
+                       $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                   @endphp
+               @endif
+           @else
+               @php
+                   $country_url = route('search-filter-two', ['type' => $type, 'role' => $role, 'search' => $search, 'searchDetails1' => $searchDetails1, 'filterby2' => 'country', 'filterby' => $filterby, 'filter' => $filterdata, 'filterby1' => $filterby1, 'filterdata' => $filterdata1, 'filterdata1' => $country ?? "null"]);
+               @endphp
+           @endif
+       @endif
+   @endforeach
+@endif
+<title>Filter Search - US Import Data</title>
+<!------------------------------Meta Tags End---------------------------------->
 </head>
 <body>
     @include('frontend.header')
@@ -230,14 +243,294 @@
     <section class="animate-text bg-gradient-to-r from-glory-red via-fuchsia-600 to-glory-blue">
         <div class="mx-auto max-w-screen-xl px-5 md:px-12 lg:px-5 py-16">
             <div class="px-5 mb-12">
-                <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
-                    {{ $desc }}&nbsp;{{ $role }} Data Of USA || {{ $desc }}&nbsp;{{ $role }}s
-                </h1>
-                <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
-                    Search {{ $desc }}&nbsp;{{ $role }} data of USA based on bill of lading database and other shipment details 
-                    by customs. Our USA import statistics of {{ $desc }} includes hs code, product, port, importers name, 
-                    value, qty etc.
-                </p>
+                @php
+                    $args = $args ?? [];
+                    $arg = $arg ?? [];
+                    //dd($filterby,$filterby1,$args,$searchDetails1,$arg);
+                    $searchDetailsParts = explode(',', $searchDetails1);
+                    $all_numeric = true;
+        
+                    foreach ($searchDetailsParts as $part) {
+                        if (!is_numeric($part)) {
+                            $all_numeric = false;
+                            break;
+                        }
+                    }
+                @endphp
+        
+                @if ($all_numeric)
+                    @php
+                        $filterdata = str_ireplace("-", " ", $filterdata);
+                        $filterdata1 = str_ireplace("-", " ", $filterdata1);
+                        $unloading_port = str_ireplace("-", " ", $unloading_port);
+                    @endphp
+        
+                    @if (count($args) == 6)
+                        @if ($filterby1 == 'hs_code')
+                            {{-- Handle hs_code logic --}}
+                        @elseif ($filterby1 == 'unloading_port')
+                            @if($filterby == 'hs_code')
+                                 @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data at port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search live USA {{ $role }}s Data at port {{$filterdata1}} by the hs code {{$searchDetails1}} and understand what commodities USA {{ $role }}s at port {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data at port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search live USA {{ $role }}s Data at port {{$filterdata1}} by the hs code {{$searchDetails1}} and understand what commodities USA {{ $role }}s at port {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @endif
+                            @elseif($filterby=='country')
+                                <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At Port {{$filterdata1}}</title>
+                                <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At Port {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                            @endif
+                        @elseif ($filterby1 == 'country')
+                            @if($filterby == 'hs_code')
+                                 @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search live USA {{ $role }}s Data from {{$filterdata1}} by the hs code {{$searchDetails1}} and understand what commodities USA {{ $role }}s from {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data to {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search live USA {{ $role }}s Data to {{$filterdata1}} by the hs code {{$searchDetails1}} and understand what commodities USA {{ $role }}s to {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @endif
+                            @elseif($filterby=='unloading_port')
+                                <title> USA HS Code {{$filterdata}} {{$role}} data from {{$filterdata1}} </title>
+                                <meta name="description" content="USA {{$role}}s data under the HS code {{$filterdata}} form {{$filterdata1}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                            @endif
+                        @endif
+                    @elseif (count($args) == 8)
+                        @if ($filterby1 == 'country')
+     
+                           @if($filterby == 'unloading_port')
+                                 @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata1}} At port {{$filterdata}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data from {{$filterdata1}} at port {{$filterdata}} and Understand what Commodities USA {{ $role }}s from {{$filterdata1}} at port {{$filterdata}} under this HS Code
+                                    </p>
+                                 @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data to {{$filterdata1}} At port {{$filterdata}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data to {{$filterdata1}} at port {{$filterdata}} and Understand what Commodities USA {{ $role }}s to {{$filterdata1}} At port {{$filterdata}} under this HS Code
+                                    </p>
+                                 @endif
+                           @endif
+                        @elseif ($filterby1 == 'hs_code')
+                            @if($filterby == 'hs_code')
+                                @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata}} At port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data from {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s from {{$filterdata}} at port {{$filterdata1}} under this HS Code
+                                    </p>
+                                @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data to {{$filterdata}} At port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data to {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s to {{$filterdata}} At port {{$filterdata1}} under this HS Code
+                                    </p>
+                                @endif
+                            @elseif($filterby ==  'unloading_port')
+                                 @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata}} At port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data from {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s from {{$filterdata}} at port {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data to {{$filterdata}} At port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data to {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s to {{$filterdata}} At port {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @endif
+                            @endif
+    
+                        @elseif ($filterby1 == 'unloading_port')
+                            @if($filterby == 'hs_code')
+                            
+                            @elseif($filterby ==  'country')
+                                 @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata}} At port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data from {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s from {{$filterdata}} at port {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data to {{$filterdata}} At port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data to {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s to {{$filterdata}} At port {{$filterdata1}} under this HS Code
+                                    </p>
+                                 @endif
+                            @elseif($filterby == 'unloading_port')
+                                <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                                <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At  {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                            @endif
+                        @endif
+                    @elseif (count($arg) == 8)
+                        @php
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                        @endphp
+                        
+                        @if ($filterby2 == 'hs_code')
+                             <title>US HS code {{$searchDetails1}}  {{$role}} Data from {{$filterdata}} At  {{$filterdata1}}</title>
+                             <meta name="description" content="USA imports data under the HS code {{$searchDetails1}} form {{$filterdata}} At {{$filterdata1}} . Our US bill of lading data reports, which include HS code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
+                        @elseif ($filterby2 == 'country')
+                            @if($filterby1 == 'hs_code')
+                                
+                            @elseif($filterby1 == 'unloading_port')
+                                @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata1}} At Port {{$filterdata}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data from {{$filterdata1}} at port {{$filterdata}} and Understand what Commodities USA imports from {{$filterdata1}} At port {{$filterdata}} under this HS Code
+                                    </p>
+                                @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                         US {{ $role }} Data to {{$filterdata1}} At Port {{$filterdata}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data to {{$filterdata1}} at port {{$filterdata}} and Understand what Commodities USA {{ $role }}s to {{$filterdata1}} At port {{$filterdata}} under this HS Code
+                                    </p>
+                                @endif
+                             @endif
+                        @elseif ($filterby2 == 'unloading_port')
+                             @if($filterby1 == 'hs_code')
+                                
+                             @elseif($filterby1 == 'country')
+                                @if($role == 'import')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                        US {{ $role }} Data from {{$filterdata}} At Port by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data from {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA imports from {{$filterdata}} At port {{$filterdata1}} under this HS Code
+                                    </p>
+                                @elseif($role == 'export')
+                                    <h1 class="mb-3 text-center text-white font-medium text-2xl lg:text-4xl uppercase" style="word-break:break-all;">
+                                         US {{ $role }} Data to {{$filterdata}} At Port {{$filterdata1}} by the HS Code {{$searchDetails1}}
+                                    </h1>
+                                    <p class="mb-3 text-center text-gray-200 font-normal text-md lg:text-lg" style="word-break:break-all;">
+                                        Search Live US {{ $role }}s Data to {{$filterdata}} at port {{$filterdata1}} and Understand what Commodities USA {{ $role }}s to {{$filterdata}} At port {{$filterdata1}} under this HS Code
+                                    </p>
+                                @endif
+                             @endif
+                        @endif
+                    @elseif (count($arg) == 10)
+                        @php
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                        @endphp
+                        @if ($filterby2 == 'hs_code')
+                            {{-- Handle hs_code logic --}}
+                        @elseif ($filterby2 == 'country')
+                            {{-- Handle country logic --}}
+                        @elseif ($filterby2 == 'unloading_port')
+                            {{-- Handle unloading_port logic --}}
+                        @endif
+                    @else
+                        {{-- Handle else logic --}}
+                    @endif
+                @else
+                    @if (count($args) == 6)
+                        {{-- Handle logic for count($args) == 6 --}}
+                    @elseif (count($args) == 8)
+                        @if ($filterby1 == 'country')
+                            @php
+                                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                $filterdata = str_ireplace(" ", "-", $filterdata);
+                                $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                            @endphp
+                            @if($filterby = 'hs_code')
+                                <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
+                                <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
+                                 Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                                
+                            @elseif($filterby = 'unloading_port')
+                                <title> USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}</title>
+                                <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  at {{$filterdata}} from {{$filterdata1}}
+                                 Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                            @endif
+    
+                        @elseif ($filterby1 == 'hs_code')
+                            @php
+                                $base_search = $search;
+                            @endphp
+                            <title> USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}</title>
+                            <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under the HS code {{$filterdata}} from {{$filterdata1}}
+                             Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        @elseif ($filterby1 == 'unloading_port')
+                            @php
+                                $base_search = $search;
+                                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                            @endphp
+                            @if($filterby=='hs_code')
+                                <title>USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} </title>
+                                <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  under HS code {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                            @else
+                                <title>USA {{$searchDetails1}} {{$role}}s data from {{$filterdata}} At {{$filterdata1}} </title>
+                                <meta name="description" content="USA {{$searchDetails1}} {{$role}}s data  from {{$filterdata}} At {{$filterdata1}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                            @endif
+    
+                        @endif
+                    @elseif (count($arg) == 8)
+                        @php
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                        @endphp
+                        @if ($filterby2 == 'country')
+                            {{-- Handle country logic --}}
+                        @elseif ($filterby2 == 'unloading_port')
+                            @php
+                                $base_search = $search;
+                                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                            @endphp
+                        @endif
+                    @elseif (count($arg) == 10)
+                        @php
+                            $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                        @endphp
+                        @if ($filterby2 == 'hs_code')
+                            {{-- Handle hs_code logic --}}
+                        @elseif ($filterby2 == 'country')
+                            @php
+                                $filterdata = str_ireplace(" ", "-", $filterdata);
+                                $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                            @endphp
+                        @elseif ($filterby2 == 'unloading_port')
+                            @php
+                                $filterdata = str_ireplace(" ", "-", $filterdata);
+                                $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                            @endphp
+                        @endif
+                    @else
+                        @php
+                            $country_url = route('search-filter-two', ['type' => $type, 'role' => $role, 'search' => $search, 'searchDetails1' => $searchDetails1, 'filterby2' => 'country', 'filterby' => $filterby, 'filter' => $filterdata, 'filterby1' => $filterby1, 'filterdata' => $filterdata1, 'filterdata1' => $country ?? "null"]);
+                        @endphp
+                    @endif
+                @endif
             </div>
             {{-- forms --}}
             <div class="px-5 flex justify-center items-center">
@@ -524,7 +817,58 @@
                     </div>
                     <div class="col-span-1"></div>
                 </div>
-                
+                {{-- toast --}}
+                <div class="flex mx-auto mx-w-screen-xl px-5">
+                    @if($filterby1=='hs_code')
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $filterdata1 }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    @elseif($filterby1=='country')
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $filterdata }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $filterdata1 }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    @elseif($filterby1 == 'unloading_port')
+                        <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                            <div class="ms-3 text-lg font-medium">
+                                {{ $filterdata1 }}
+                            </div>
+                            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    @endif
+                   
+                </div>
                 {{-- Import Table --}}
                 <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
                     <div class="relative shadow-md sm:rounded-lg">
@@ -611,7 +955,7 @@
                                                          $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
                                                      }else if($filterby1=='country'){
                                                         // dd($filterby,$filterby1,$args,$filterdata);
-                                                        $hs_code_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                        $hs_code_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$res_hs_code,'filterdata1' => $country]);
                                                         $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
                                                         $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $country, 'filterdata1' => $unloading_port]);
                                                      }
@@ -718,6 +1062,9 @@
                                             }else{
                                                 //dd('IN Else Block',$filterby,$filterby1,$args);
                                                 if(count($args)==6){
+                                                         $hs_code_url =  route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$res_hs_code,'filterdata1' => $unloading_port]);
+                                                         $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                                         $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
                                                      if($filterby1=='unloading_port'){
                                                          $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
                                                      }else if($filterby1=='country'){
@@ -1498,12 +1845,292 @@
         {{-- Card view of table for mobile view --}}
         <section class="bg-white block md:hidden lg:hidden">
             <div class="mx-auto mx-w-screen-xl px-5 py-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                @if($role == 'import')
+                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @php
                         $MobileResult = $result;
+                       
                     @endphp
                     @if(isset($result) && is_iterable($result) && count($result) > 0)
                         @foreach ($result as $MobileResult)
+                            @php
+                                $res_hs_code = $MobileResult->HS_CODE;
+                                // dd($res_hs_code);
+                                $country = $MobileResult->ORIGIN_COUNTRY;
+                                $country= str_ireplace(" ","-",$country);
+                                $unloading_port  = $MobileResult->UNLOADING_PORT;
+                                 $args = $args??[];
+                                // Hs code Url
+                                $arg = $arg??[];
+                                
+                                //dd($filterby1,$args,$searchDetails1,$arg);
+                                 //dd($filterby,$filterby1,$args);
+                                $searchDetailsParts = explode(',', $searchDetails1);
+                                $all_numeric = true;
+                                
+                                foreach ($searchDetailsParts as $part) {
+                                    if (!is_numeric($part)) {
+                                        $all_numeric = false;
+                                        break;
+                                    }
+                                }
+                              
+                                if ($all_numeric) {
+                                
+                                    # code...
+                                      $filterdata = str_ireplace(" ", "-", $filterdata);
+                                      $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                      $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                    if(count($args)==6){
+                                    
+                                         if($filterby1=='hs_code'){
+                                             $hs_code_url =  route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$res_hs_code,'filterdata1' => $unloading_port]);
+                                             $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                             $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
+                                         }else if($filterby1=='unloading_port'){
+                                             //dd('In this Group');
+                                             $hs_code_url =  route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$res_hs_code,'filterdata1' => $unloading_port]);
+                                             $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                             $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $unloading_port]);
+                                         }else if($filterby1=='country'){
+                                            // dd($filterby,$filterby1,$args,$filterdata);
+                                            $hs_code_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                            $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                            $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $country, 'filterdata1' => $unloading_port]);
+                                         }
+                                    }
+                                    else if(count($args)==8){
+                                    
+                                          if($filterby1 == 'country'){
+                                            
+                                             //dd('In Country Args',$args,$filterby1,$filterby,$filterdata,$filterdata1,$search,$filterby1);
+                                             //Hs Code URl
+                                             $hs_code_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$res_hs_code??'null', 'filterby1' => $filterby1,'filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $filterdata1??'null']);
+                                             
+                                             //Country Url
+                                             $country_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                             
+                                             //Port Url
+                                             $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                             
+                                          }else if($filterby1 == 'hs_code'){
+                                               $base_search = $search;
+                                               $port_url = route('filter-two', [
+                                                    'type' => $type, 
+                                                    'role' => $role,
+                                                    'search' => $base_search,
+                                                    'searchDetails1' => $searchDetails1, 
+                                                    'filterby2' => 'unloading_port',
+                                                    'filterby' => $filterby,
+                                                    'filter' => $filterdata,
+                                                    'filterby1' => $filterby1,
+                                                    'filterdata' => $filterdata1,
+                                                    'filterdata1' => $unloading_port ?? 'Default'
+                                                ]);
+    
+                                          }else if($filterby1 == 'unloading_port'){
+                                           
+                                                $base_search = $search;
+                                                  //dd($type, $role, $search, $res_hs_code,$filterby,$filterby1,$args,$filterdata1,$filterdata);
+                                                 $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                 //Hs code Url
+                                                 $hs_code_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$res_hs_code??"null", 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $MobileResult->UNLOADING_PORT??'null']);
+                                                
+                                                 //Country Url
+                                                 $country_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$searchDetails1, 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $unloading_port??'null']);
+                                                
+                                                //Port Url 
+                                                 $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                          }
+                                     }
+                                     else if(count($arg)==8){
+                                         $unloading_port = str_ireplace(" ", "-", $unloading_port);
+
+                                        if($filterby2 == 'hs_code'){
+                                           //Hs_code
+                                           $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                           //Country Url
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           //Port Url
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                        }else if($filterby2 == 'country'){
+                                           //dd($filterby,$filterby1,$arg,$filterby2,$search,$searchDetails1);
+                                           //$hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=> $filterby,'searchDetails1'=>$res_hs_code, 'filterby2' => 'country','filterby'=>$filterby1,'filter'=>$filterdata,'filterby1'=>$filterby2,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                           $hs_code_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$res_hs_code,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $filterdata1??'default']);
+                                           
+                                         }else if($filterby2 == 'unloading_port'){
+                                         
+                                            //Hs_code
+                                            $hs_code_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            //Country url
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            //Port Url                                                           //Port Url 
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                           
+                                         }
+                                      } else if(count($arg)==10){
+                                         $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                          //dd($filterby,$filterby1,$arg,$filterby2);
+                                        if($filterby2 == 'hs_code'){
+                                           //Hs_code
+                                           $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                           //Country Url
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           //Port Url
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                        }else if($filterby2 == 'country'){
+                                           $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                           
+                                         }else if($filterby2 == 'unloading_port'){
+                                            //Hs_code
+                                            $hs_code_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            //Country url
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            //Port Url                                                           //Port Url 
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                           
+                                         }
+                                      }
+                                    else{
+                                          $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                      }
+                                    // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country]);
+                                }else{
+                                    //dd('IN Else Block',$filterby,$filterby1,$args);
+                                    if(count($args)==6){
+                                         if($filterby1=='unloading_port'){
+                                             $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                         }else if($filterby1=='country'){
+                                            $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                         }
+                                    }
+                                    else if(count($args)==8){
+                                    
+                                          if($filterby1 == 'country'){
+                                                $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                             //dd('In Country Args','search',$search,'searchDetails1',$searchDetails1,'filterby1',$filterby1,'filterby',$filterby,'filter',$filterdata,'filterdata', $filterdata1);
+                                             //Hs Code URl
+                                             if($filterby=='hs_code'){
+                                               $hs_code_url =   route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                               $port_url =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
+                                             }else{
+                                               $hs_code_url =  route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby1,'filterby'=>'hs_code','filter'=>$res_hs_code,'filterby1'=>$filterby,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                                $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                             }
+                                             
+                                             //Country Url
+                                             $country_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                             
+                                             //Port Url
+                                               //$port_url =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
+                                              
+                                             
+                                          }else if($filterby1 == 'hs_code'){
+                                               $base_search = $search;
+                                               $port_url = route('filter-two', [
+                                                    'type' => $type, 
+                                                    'role' => $role,
+                                                    'search' => $base_search,
+                                                    'searchDetails1' => $searchDetails1, 
+                                                    'filterby2' => 'unloading_port',
+                                                    'filterby' => $filterby,
+                                                    'filter' => $filterdata,
+                                                    'filterby1' => $filterby1,
+                                                    'filterdata' => $filterdata1,
+                                                    'filterdata1' => $unloading_port ?? 'Default'
+                                                ]);
+    
+                                          }else if($filterby1 == 'unloading_port'){
+                                           //dd('in Product unloading_port Url');
+                                                $base_search = $search;
+                                                 $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                 $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                             //Hs Code URl
+                                             $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby1,'filterby'=>'hs_code','filter'=>$res_hs_code,'filterby1'=>$filterby,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                                
+                                             //Country Url
+                                             //dd($filterby,$filterdata,$searchDetails1,$search);
+                                               $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$res_hs_code,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $country??'Default']);
+                                              //$country_url  = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $unloading_port??'Default']);
+                                             //Port Url
+                                             $port_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $unloading_port??'Default']);
+                                          }
+                                     }
+                                     else if(count($arg)==8){
+                                         $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                         
+                                         if($filterby2 == 'country'){
+                                           $hs_code_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           //Port Url
+                                           $port_url =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
+                                         }else if($filterby2 == 'unloading_port'){
+                                        
+                                                $base_search = $search;
+                                                 $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                 //Hs code Url
+                                                 $hs_code_url =   route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                 //dd($type, $role,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                                 //Country Url
+                                                   $country_url  = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$filterby,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby1,'filter'=>$filterdata,'filterby1'=>$filterby2,'filterdata' => $filterdata1,'filterdata1' => $country??'Default']);
+                                                
+                                                //Port Url 
+                                                 $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                 
+                                           //$country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                         }
+                                      }else if(count($arg)==10){
+                                         $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                          //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                        if($filterby2 == 'hs_code'){
+                                           //Hs_code
+                                           $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                           //Country Url
+                                           $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                           //Port Url
+                                           $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                        }else if($filterby2 == 'country'){
+                                        //HS_code Url
+                                             $filterdata = str_ireplace(" ", "-", $filterdata);
+                                             $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                            //Hs_code
+                                            //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                            
+                                            $hs_code_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                            //Country url
+                                           $country_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                            //Port Url                                                           
+                                           $port_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                           
+                                           
+                                         }else if($filterby2 == 'unloading_port'){
+                                             $filterdata = str_ireplace(" ", "-", $filterdata);
+                                             $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                            //Hs_code
+                                            //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                            
+                                            $hs_code_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                            //Country url
+                                           $country_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                            //Port Url                                                           
+                                           $port_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                           
+                                         }
+                                      }
+                                    else{
+                                          $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                      }
+                                    //$hs_code_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$searchDetails1??'null', 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $res_hs_code??'null']);
+                                    //$country_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$searchDetails1, 'filterby1' => $filterby1,'filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $country??'null']);
+                                }
+    
+                            @endphp
                             <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
                                 <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
                                     Shipment No. {{ $loop->iteration }}
@@ -1526,7 +2153,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
+                                            <a href="{{$res_hs_code}}" class="text-blue-600 hover:underline">
                                                 {{ $MobileResult->HS_CODE ?? '' }}
                                             </a>
                                         </p>
@@ -1548,7 +2175,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
+                                            <a href="{{$country_url}}" class="text-blue-600 hover:underline">
                                                 {{ $MobileResult->ORIGIN_COUNTRY ?? '' }}
                                             </a>
                                         </p>
@@ -1560,7 +2187,7 @@
                                     </div>
                                     <div class="mt-4">
                                         <p class="text-md font-normal">
-                                            <a href="#" class="text-blue-600 hover:underline">
+                                            <a href="{{$port_url}}" class="text-blue-600 hover:underline">
                                                 {{ $MobileResult->UNLOADING_PORT ?? '' }}
                                             </a>
                                         </p>
@@ -1612,6 +2239,385 @@
                         @endforeach
                     @endif
                 </div>
+                @else
+                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @php
+                        $MobileResult = $result;
+                    @endphp
+                    @if(isset($result) && is_iterable($result) && count($result) > 0)
+                        @foreach ($result as $MobileResult)
+                                @php
+                                    $res_hs_code = $MobileResult->HS_CODE;
+                                    // dd($res_hs_code);
+                                    $country = $MobileResult->DESTINATION_COUNTRY;
+                                    $country= str_ireplace(" ","-",$country);
+                                    $unloading_port  = $MobileResult->UNLOADING_PORT;
+                                     $args = $args??[];
+                                    // Hs code Url
+                                    $arg = $arg??[];
+                                    
+                                     //dd($filterby1,$args,$searchDetails1,$arg);
+                                     //dd($filterby,$filterby1,$args);
+                                     $searchDetailsParts = explode(',', $searchDetails1);
+                                    $all_numeric = true;
+                                    
+                                    foreach ($searchDetailsParts as $part) {
+                                        if (!is_numeric($part)) {
+                                            $all_numeric = false;
+                                            break;
+                                        }
+                                    }
+                                  
+                                    if ($all_numeric) {
+                                        
+                                        # code...
+                                          $filterdata = str_ireplace(" ", "-", $filterdata);
+                                          $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                          $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                        if(count($args)==6){
+                                             if($filterby1=='unloading_port'){
+                                                 $hs_code_url =  route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$res_hs_code,'filterdata1' => $unloading_port]);
+                                                 $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->DESTINATION_COUNTRY]);
+                                                 $port_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$res_hs_code,'filterdata1' => $unloading_port]);
+                                             }else if($filterby1=='country'){
+                                                // dd($filterby,$filterby1,$args,$filterdata);
+                                                $hs_code_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                                $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $country, 'filterdata1' => $unloading_port]);
+                                             }
+                                        }
+                                        else if(count($args)==8){
+                                        //dd('In Country Args',$args,$filterby1,$filterby,$filterdata,$filterdata1,$search,$filterby1);
+                                              if($filterby1 == 'country'){
+                                                
+                                                 //dd('In Country Args',$args,$filterby1,$filterby,$filterdata,$filterdata1,$search,$filterby1);
+                                                 //Hs Code URl
+                                                 $hs_code_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$res_hs_code??'null', 'filterby1' => $filterby1,'filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $filterdata1??'null']);
+                                                 
+                                                 //Country Url
+                                                 $country_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                                 
+                                                 //Port Url
+                                                 $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                                 
+                                              }else if($filterby1 == 'hs_code'){
+                                                   $base_search = $search;
+                                                   $port_url = route('filter-two', [
+                                                        'type' => $type, 
+                                                        'role' => $role,
+                                                        'search' => $base_search,
+                                                        'searchDetails1' => $searchDetails1, 
+                                                        'filterby2' => 'unloading_port',
+                                                        'filterby' => $filterby,
+                                                        'filter' => $filterdata,
+                                                        'filterby1' => $filterby1,
+                                                        'filterdata' => $filterdata1,
+                                                        'filterdata1' => $unloading_port ?? 'Default'
+                                                    ]);
+
+                                              }else if($filterby1 == 'unloading_port'){
+                                               
+                                                    $base_search = $search;
+                                                      //dd($filterby,$filterby1,$args);
+                                                     $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                     //Hs code Url
+                                                     $hs_code_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$res_hs_code??'null', 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $unloading_port??'null']);
+                                                    
+                                                     //Country Url
+                                                     $country_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$searchDetails1, 'filterby1' => 'unloading_port','filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $unloading_port??'null']);
+                                                    
+                                                    //Port Url 
+                                                     $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                              }
+                                         }
+                                         else if(count($arg)==8){
+                                             $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                             
+                                            if($filterby2 == 'hs_code'){
+                                               //Hs_code
+                                               $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                               //Country Url
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->DESTINATION_COUNTRY]);
+                                               //Port Url
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            }else if($filterby2 == 'country'){
+                                               //dd($filterby,$filterby1,$arg,$filterby2,$search,$searchDetails1);
+                                               //$hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=> $filterby,'searchDetails1'=>$res_hs_code, 'filterby2' => 'country','filterby'=>$filterby1,'filter'=>$filterdata,'filterby1'=>$filterby2,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                               $hs_code_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$res_hs_code,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $filterdata1]);
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->DESTINATION_COUNTRY]);
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $filterdata1??'default']);
+                                               
+                                             }else if($filterby2 == 'unloading_port'){
+                                                //Hs_code
+                                                $hs_code_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                //Country url
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                //Port Url                                                           //Port Url 
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                               
+                                             }
+                                          } else if(count($arg)==10){
+                                             $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                              //dd($filterby,$filterby1,$arg,$filterby2);
+                                            if($filterby2 == 'hs_code'){
+                                               //Hs_code
+                                               $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                               //Country Url
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                               //Port Url
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            }else if($filterby2 == 'country'){
+                                               $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->DESTINATION_COUNTRY]);
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                               
+                                             }else if($filterby2 == 'unloading_port'){
+                                                //Hs_code
+                                                $hs_code_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                //Country url
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                //Port Url                                                           //Port Url 
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                               
+                                             }
+                                          }
+                                        else{
+                                              $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                          }
+                                        // $country_url = route('search-filter', ['type' => $type, 'role' => $role,'searchDetails' => $hscode, 'filterby' => 'country', 'filterdata' => $country]);
+                                    }else{
+                                        //dd('IN Else Block',$filterby,$filterby1,$args);
+                                        if(count($args)==6){
+                                             if($filterby1=='unloading_port'){
+                                                 $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $Dresult->DESTINATION_COUNTRY]);
+                                             }else if($filterby1=='country'){
+                                                $country_url = route('searchfilterone', ['type' => $type, 'role' => $role,'filterby1' => 'country','filterby'=>$filterby,'filterdata'=>$searfilterdata,'filterdata1' => $country]);
+                                             }
+                                        }
+                                        else if(count($args)==8){
+                                        
+                                              if($filterby1 == 'country'){
+                                              
+                                                 //dd('In Country Args','search',$search,'searchDetails1',$searchDetails1,$filterby1,'filterby',$filterby,'filter',$filterdata,'filterdata', $filterdata1);
+                                                 //Hs Code URl
+                                                 $hs_code_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                                 
+                                                 //Country Url
+                                                 $country_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                                 
+                                                 //Port Url
+                                                 $port_url =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
+                                                 
+                                              }else if($filterby1 == 'hs_code'){
+                                                   $base_search = $search;
+                                                   $port_url = route('filter-two', [
+                                                        'type' => $type, 
+                                                        'role' => $role,
+                                                        'search' => $base_search,
+                                                        'searchDetails1' => $searchDetails1, 
+                                                        'filterby2' => 'unloading_port',
+                                                        'filterby' => $filterby,
+                                                        'filter' => $filterdata,
+                                                        'filterby1' => $filterby1,
+                                                        'filterdata' => $filterdata1,
+                                                        'filterdata1' => $unloading_port ?? 'Default'
+                                                    ]);
+
+                                              }else if($filterby1 == 'unloading_port'){
+                                               //dd('in Product Country Url');
+                                                    $base_search = $search;
+                                                     $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                     $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                                 //Hs Code URl
+                                                 $hs_code_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $unloading_port??'Default']);
+                                                    
+                                                 //Country Url
+                                                 //dd($filterby,$filterdata,$searchDetails1,$search);
+                                                 $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$res_hs_code,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $country??'Default']);
+                                                 
+                                                 //Port Url
+                                                 $port_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $unloading_port??'Default']);
+                                              }
+                                         }
+                                         else if(count($arg)==8){
+                                             $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                             
+                                             if($filterby2 == 'country'){
+                                               $hs_code_url =  route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby1,'filterby'=>$search,'filter'=>$searchDetails1,'filterby1'=>$filterby,'filterdata' => $filterdata, 'filterdata1' => $country]);
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->ORIGIN_COUNTRY]);
+                                               //Port Url
+                                               $port_url =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1,'filterdata1' => $unloading_port??'Default']);
+                                             }else if($filterby2 == 'unloading_port'){
+                                            
+                                                    $base_search = $search;
+                                                     $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                                     //Hs code Url
+                                                     $hs_code_url =   route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                     //dd($type, $role,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                                     //Country Url
+                                                       $country_url  = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$filterby,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby1,'filter'=>$filterdata,'filterby1'=>$filterby2,'filterdata' => $filterdata1,'filterdata1' => $country??'Default']);
+                                                    
+                                                    //Port Url 
+                                                     $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                                     
+                                               //$country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                             }
+                                          }else if(count($arg)==10){
+                                             $unloading_port = str_ireplace(" ", "-", $unloading_port);
+                                              //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                            if($filterby2 == 'hs_code'){
+                                               //Hs_code
+                                                //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                               $hs_code_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                               //Country Url
+                                               $country_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata, 'filterdata1' => $Dresult->DESTINATION_COUNTRY]);
+                                               //Port Url
+                                               $port_url = route('searchfiltertwo', ['type' => $type, 'role' => $role,'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$searchDetails1,'filterby1'=>$filterby1,'filterdata' => $filterdata ,'filterdata1' => $unloading_port??'default']);
+                                            }else if($filterby2 == 'country'){
+                                            //HS_code Url
+                                                 $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                 $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                                //Hs_code
+                                                //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                                
+                                                $hs_code_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                                //Country url
+                                               $country_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                                //Port Url                                                           
+                                               $port_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => $filterby2,'filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                               
+                                               
+                                             }else if($filterby2 == 'unloading_port'){
+                                                 $filterdata = str_ireplace(" ", "-", $filterdata);
+                                                 $filterdata1 = str_ireplace(" ", "-", $filterdata1);
+                                                //Hs_code
+                                                //dd($type, $role,$search,$searchDetails1,$filterby, $filter, $filterby1, $filterdata, $filterby2, $filterdata1);
+                                                
+                                                $hs_code_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                                //Country url
+                                               $country_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                                //Port Url                                                           
+                                               $port_url  =route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'unloading_port','filterby'=>$filterby,'filter'=>$filter,'filterby1'=>$filterby1,'filterdata' => $filterdata,'filterdata1' => $filterdata1??'Default']);
+                                               
+                                             }
+                                          }
+                                        else{
+                                              $country_url = route('search-filter-two', ['type' => $type, 'role' => $role,'search'=>$search,'searchDetails1'=>$searchDetails1, 'filterby2' => 'country','filterby'=>$filterby,'filter'=>$filterdata,'filterby1'=>$filterby1,'filterdata' => $filterdata1, 'filterdata1' => $country??"null"]);
+                                          }
+                                        //$hs_code_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$searchDetails1??'null', 'filterby1' => 'hs_code','filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $res_hs_code??'null']);
+                                        //$country_url =  route('search-filter-one', ['type' => $type, 'role' => $role,'search'=>$search,'base_search'=>$searchDetails1, 'filterby1' => $filterby1,'filterby'=>$filterby,'filterdata'=>$filterdata,'filterdata1' => $country??'null']);
+                                    }
+
+                                @endphp
+                               <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+                                <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
+                                    Shipment No. {{ $loop->iteration }}
+                                </h5>
+                                <div class="grid grid-cols-2">
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Date
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $MobileResult->DATE ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            HS Code
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="{{$hs_code_url}}" class="text-blue-600 hover:underline">
+                                                {{ $MobileResult->HS_CODE ?? '' }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Product Description
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal text-justify" style="word-wrap: word-break;">
+                                            {{ strip_tags($MobileResult->PRODUCT_DESCRIPTION ?? '') }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Destination Country
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="{{$country_url}}" class="text-blue-600 hover:underline">
+                                                {{ $MobileResult->DESTINATION_COUNTRY ?? '' }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Unloading Port
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="{{$port_url}}" class="text-blue-600 hover:underline">
+                                                {{ $MobileResult->UNLOADING_PORT ?? '' }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Quantity
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $MobileResult->QUANTITY ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Unit
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $MobileResult->UNIT ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Weight
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            {{ $MobileResult->WEIGHT ?? '' }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h1 class="text-md text-gray-800 font-medium uppercase">
+                                            Importer Name
+                                        </h1>
+                                    </div>
+                                    <div class="mt-4">
+                                        <p class="text-md font-normal">
+                                            <a href="#" class="text-blue-600 hover:underline">
+                                                Importer Name
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+                @endif
             </div>
         </section>
     

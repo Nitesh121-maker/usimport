@@ -11,21 +11,21 @@
         @endphp
 
     @if($type=='data')
-         @if($hs_code)
-                <title>US {{$role}} Data Under The HS Code {{$base_search}}</title>
-                <meta name="description" content="US import Data under HS Code {{$base_search}},  Our US bill of lading Data reports include hs code, date, unit, product description, loading and unloading ports, importer name and address, quantity, etc.">
-         @else
-                <title>US {{$base_search}} {{$role}} Data - list of {{$base_search}} {{$role}}ers in us </title>
-                <meta name="description" content="{{$base_search}} {{$role}} data of us - us {{$base_search}} {{$role}}ers, our bill of lading reports include hs code, date, unit, product description, loading and unloading ports, exporter name and address, quantity, etc.">
-         @endif
+    @if($hs_code)
+            <title>US {{$role}} Data Under The HS Code {{$base_search}}</title>
+            <meta name="description" content="US import Data under HS Code {{$base_search}},  Our US bill of lading Data reports include hs code, date, unit, product description, loading and unloading ports, importer name and address, quantity, etc.">
     @else
-         @if($hs_code)
-                <title>List of All HS code {{$base_search}} {{$role}}er data in USA </title>
-                <meta name="description" content="List of all HS code {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
-         @else
-                <title>List of All {{$base_search}} {{$role}}er data in USA </title>
-                <meta name="description" content="List of all {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
-         @endif
+            <title>US {{$base_search}} {{$role}} Data - list of {{$base_search}} {{$role}}ers in us </title>
+            <meta name="description" content="{{$base_search}} {{$role}} data of us - us {{$base_search}} {{$role}}ers, our bill of lading reports include hs code, date, unit, product description, loading and unloading ports, exporter name and address, quantity, etc.">
+    @endif
+    @else
+    @if($hs_code)
+            <title>List of All HS code {{$base_search}} {{$role}}er data in USA </title>
+            <meta name="description" content="List of all HS code {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
+    @else
+            <title>List of All {{$base_search}} {{$role}}er data in USA </title>
+            <meta name="description" content="List of all {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
+    @endif
 
     @endif
 
@@ -171,6 +171,7 @@
                     {{ session('error') }}
                 </div>
             @endif
+
 
             {{-- forms --}}
             <div class="px-5 flex justify-center items-center">
@@ -389,7 +390,13 @@
                 <div class="flex mx-auto mx-w-screen-xl px-5">
                     <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
                         <div class="ms-3 text-lg font-medium">
-                            180632
+                            @if($hs_code)
+                               {{ $hs_code }}
+                            @elseif($base_desc)
+                               {{ $base_desc }}
+                            @elseif($hs_code&&$base_desc)
+                               {{ $hs_code }} - {{ $base_desc }}
+                            @endif
                         </div>
                         <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
                             <span class="sr-only">Close</span>
@@ -398,7 +405,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
+                    {{-- <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
                         <div class="ms-3 text-lg font-medium">
                             Rubber
                         </div>
@@ -419,7 +426,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                             </svg>
                         </button>
-                    </div>
+                    </div> --}}
                 </div>
                 {{-- Import Table --}}
                 <div class="mx-auto mx-w-screen-xl px-5 hidden md:block lg:block">
@@ -855,17 +862,17 @@
         {{-- Card view of table for mobile view --}}
         <section class="bg-white block md:hidden lg:hidden">
             <div class="mx-auto mx-w-screen-xl px-5 py-8">
+               
                 @if($role == 'import')
                     <div class="col-span-5">
                         <form action="">
-                            <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
+                               <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                     <div>
-                                     
                                         <div class="relative text-center z-0 w-full mb-5 lg:mb-0 group">
                                             <label class="mb-2 text-sm font-medium">
                                                 Choose HS Code
                                             </label>
-                                            <select id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <select  class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" onChange="window.location.href=this.value;">
                                                 <option value="">Choose HS Code</option>
                                                 @php
                                                     $SelectResult = $result;
@@ -906,7 +913,7 @@
                                             <label class="mb-2 text-sm font-medium">
                                                 Choose Origin Country
                                             </label>
-                                            <select id="large-1" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <select id="large-1" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" onChange="window.location.href=this.value;">
                                                 <option selected>Choose Origin Country</option>
                                                 @php
                                                     $SelectResult = $result;
@@ -946,7 +953,7 @@
                                             <label class="mb-2 text-sm font-medium">
                                                 Choose Unloading Port
                                             </label>
-                                            <select  id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            <select  id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" onChange="window.location.href=this.value;">
                                                 <option selected>Choose Unloading Port</option>
                                                 @php
                                                     $SelectResult = $result;
@@ -974,6 +981,7 @@
                         @php
                             $iteration = 0;
                             $MobileResult = $result;
+                            //dd('result',$MobileResult);
                         @endphp
                         @if(isset($result) && is_iterable($result) && count($result) > 0)
                             @foreach ($result as $MobileResult)
@@ -1118,9 +1126,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                            @if($iteration == 10)
-                                                @break
-                                            @endif
+                                @if($iteration == 10)
+                                    @break
+                                @endif
                             @endforeach
                         @endif
                     </div>
@@ -1128,7 +1136,7 @@
                     <div class="col-span-4 lg:col-span-2 flex items-center justify-center lg:justify-end">
                         <h2 class="text-end text-2xl font-medium">Filter By:</h2>
                     </div>
-                      <div class="col-span-5">
+                    <div class="col-span-5">
                         <form>
                             <div class="grid gap-6 px-2 lg:px-5 grid-cols-1 md:grid-cols-3">
                                 <div>
@@ -1137,22 +1145,22 @@
                                             Choose HS Code
                                         </label>
                                             @php
-                                                $SelectResult = $result;
+                                                $ExSelectResult = $exportresult;
                                             @endphp
                                 
                                         <select id="large-2" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Choose HS Code</option>
 
-                                             @if(is_iterable($SelectResult))
-                                                @foreach ($result as $SelectResult)
+                                             @if(isset($ExSelectResult) && collect($ExSelectResult)->count() > 0)
+                                                @foreach ($ExSelectResult as $SelectResult)
                                                 {{-- @dd('data import') --}}
                                                     {{-- <option value="{{$SelectResult->HS_CODE}}">{{$SelectResult->HS_CODE}}</option> --}}
                                                     @if ($hs_code)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_hs_code,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_CODE??'null'])}}">
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'search'=>$search,'base_search' => $base_hs_code,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_CODE??'null'])}}">
                                                             {{ $SelectResult->HS_CODE??'null' }}
                                                         </option>
                                                     @else
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_CODE??'null'])}}">
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'search'=>$search,'base_search' => $base_desc,'filterby'=>'hs_code','filterdata'=>$SelectResult->HS_CODE??'null'])}}">
                                                             {{ $SelectResult->HS_CODE??'null' }}
                                                         </option>
                                                     @endif
@@ -1170,17 +1178,17 @@
                                         <select id="large-1" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option selected>Choose Origin Country</option>
                                             @php
-                                                $SelectResult = $result;
+                                                $SelectResult = $exportresult;
                                             @endphp
                                             
-                                          @if(is_iterable($SelectResult))
-                                                @foreach ($result as $SelectResult)
+                                          @if(isset($SelectResult) && collect($SelectResult)->count() > 0)
+                                                @foreach ($SelectResult as $SelectResult)
                                                 @if ($hs_code)
-                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_hs_code,'filterby'=>'country','filterdata'=>$SelectResult->DESTINATION_COUNTRY??'null'])}}">
+                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'search'=>$search,'base_search' => $base_hs_code,'filterby'=>'country','filterdata'=>$SelectResult->DESTINATION_COUNTRY??'null'])}}">
                                                         {{ $SelectResult->DESTINATION_COUNTRY??'null' }}
                                                     </option>
                                                     @else
-                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_desc,'filterby'=>'country','filterdata'=>$SelectResult->DESTINATION_COUNTRY??'null'])}}">
+                                                    <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'search'=>$search,'base_search' => $base_desc,'filterby'=>'country','filterdata'=>$SelectResult->DESTINATION_COUNTRY??'null'])}}">
                                                         {{ $SelectResult->DESTINATION_COUNTRY??'null' }}
                                                     </option>
                                                 @endif
@@ -1195,20 +1203,22 @@
                                         <label class="mb-2 text-sm font-medium">
                                             Choose Unloading Port
                                         </label>
+                                            @php
+                                                $SelectResult = $exportresult;
+                                                
+                                            @endphp
                                         <select  id="large" class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                                             <option selected>Choose Unloading Port</option>
-                                            @php
-                                                $SelectResult = $result;
-                                            @endphp
-                                             @if(is_iterable($SelectResult))
-                                                @foreach ($result as $SelectResult)
+
+                                             @if(isset($SelectResult) && collect($SelectResult)->count() > 0)
+                                                @foreach ($SelectResult as $SelectResult)
                                                    @if ($hs_code)
-                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_hs_code,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT??'null'])}}">
-                                                            {{ $SelectResult->UNLOADING_PORT }}
+                                                        <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'search'=>$search,'base_search' => $base_hs_code,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT??'null'])}}">
+                                                           {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @else
-                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'base_search' => $base_desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT??'null'])}}">
-                                                            {{ $SelectResult->UNLOADING_PORT }}
+                                                       <option value="{{route('search-filter',['type'=>$type,'role'=>$role,'search'=>$search,'base_search' => $base_desc,'filterby'=>'unloading_port','filterdata'=>$SelectResult->UNLOADING_PORT??'null'])}}">
+                                                           {{ $SelectResult->UNLOADING_PORT }}
                                                         </option>
                                                    @endif
                                                 @endforeach
@@ -1221,47 +1231,49 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @php
-                            $iteration = 0;
-                            $MobileResult = $result;
+                              $result = $exportresult;
+                              
+                              $iteration = 0;
                         @endphp
-       
-                        @if(is_iterable($SelectResult))
-                            @foreach ($result as $MobileResult)
-                                <!--@php-->
-                                <!--   $iteration++;-->
-                                <!--@endphp-->
+
+                        @if(isset($result) && is_iterable($result) && count($result) > 0)
+                            @foreach ($result as $result)
+                            {{-- @dd($hs_code) --}}
                                 @php
                                     $iteration++;
-                                     $res_hs_code = $MobileResult->HS_CODE;
-                                    $country = $MobileResult->ORIGIN_COUNTRY;
-                                    $unloading_port  = $MobileResult->UNLOADING_PORT;
+                                    $res_hs_code = $result->HS_CODE;
+                                    $country = $result->DESTINATION_COUNTRY;
+                                    $unloading_port  = $result->UNLOADING_PORT;
                                     // Hs code Url
                                     if ($hs_code) {
                                         # code...
-                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_hs_code, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code]);
+                                        $hs_code_url = route('hs-code', ['type' => $type, 'role' => $role,'filterby' => 'hs_code', 'filterdata' => $res_hs_code??'null']);
                                     } else {
                                         # code...
-                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_desc, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code??"null"]);
+                                        $hs_code_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_desc, 'filterby' => 'hs_code', 'filterdata' => $res_hs_code??'null']);
                                     }
                                     // Country URl
                                     if ($hs_code) {
                                         # code...
-                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_hs_code, 'filterby' => 'country', 'filterdata' => $country]);
+                                         $country = str_ireplace(" ", "-", $country??'null');
+                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_hs_code, 'filterby' => 'country', 'filterdata' => $country??'null']);
                                     } else {
                                         # code...
-                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_desc, 'filterby' => 'country', 'filterdata' => $country??"null"]);
+                                         $country = str_ireplace(" ", "-", $country??'null');
+                                        $country_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_desc, 'filterby' => 'country', 'filterdata' => $country??'null']);
                                     }
                                     // Port Url
                                     if ($hs_code) {
                                         # code...
-                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port]);
+                                         $unloading_port = str_ireplace(" ", "-", $unloading_port??'null');
+                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_hs_code, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port??'null']);
                                     } else {
                                         # code...
-                                        $unloading_port = str_ireplace(" ", "-", $unloading_port);
-                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'base_search' => $base_desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port]);
+                                         $unloading_port = str_ireplace(" ", "-", $unloading_port??'null');
+                                        $port_url = route('search-filter', ['type' => $type, 'role' => $role,'search'=>$search,'base_search' => $base_desc, 'filterby' => 'unloading_port', 'filterdata' => $unloading_port??'null']);
                                     }
                                 @endphp
+                                {{-- @dd( $port_url) --}}
                                 <div class="block max-w-md my-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
                                     <h5 class="mb-2 text-center text-2xl font-bold tracking-tight rounded bg-gray-100 text-blue-500">
                                         Shipment No. {{ $loop->iteration }}
@@ -1274,7 +1286,7 @@
                                         </div>
                                         <div class="mt-4">
                                             <p class="text-md text-center font-normal text-center">
-                                                {{ $MobileResult->DATE ?? '' }} 
+                                                {{ $result->DATE ?? '' }} 
                                             </p>
                                         </div>
                                         <div class="mt-4">
@@ -1286,31 +1298,31 @@
                                             <p class="text-md text-center font-normal" style="word-wrap: break-word;">
                                                 <a href="{{$hs_code_url}}" class="text-blue-600 hover:underline">
                                                
-                                                    @foreach(explode(',', $MobileResult->HS_CODE  ) as $code)
+                                                    @foreach(explode(',', $result->HS_CODE  ) as $code)
                                                          {{ $code }}
                                                     @endforeach
                                                 </a>
                                             </p>
                                         </div>
                                         <div class="mt-4">
-                                            <h1 class="text-lg text-center text-gray-800 font-semibold uppercase" style="word-wrap: break-word;">
+                                            <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
                                                 Product Description
                                             </h1>
                                         </div>
                                         <div class="mt-4">
-                                            <p class="text-md text-center font-normal">
-                                                {{ strip_tags($MobileResult->PRODUCT_DESCRIPTION ?? '') }}
+                                            <p class="text-md text-center font-normal" style="word-wrap: break-word;">
+                                                {{ strip_tags($result->PRODUCT_DESCRIPTION ?? '') }}
                                             </p>
                                         </div>
                                         <div class="mt-4">
                                             <h1 class="text-lg text-center text-gray-800 font-semibold uppercase">
-                                                Destination Country
+                                               Destination Country
                                             </h1>
                                         </div>
                                         <div class="mt-4">
                                             <p class="text-md text-center font-normal">
                                                 <a href="{{$country_url}}" class="text-blue-600 hover:underline">
-                                                    {{ $MobileResult->DESTINATION_COUNTRY ?? '' }}
+                                                    {{ $result->DESTINATION_COUNTRY ?? '' }}
                                                 </a>
                                             </p>
                                         </div>
@@ -1321,8 +1333,8 @@
                                         </div>
                                         <div class="mt-4">
                                             <p class="text-md text-center font-normal">
-                                                <a href="$port_url" class="text-blue-600 hover:underline">
-                                                    {{ $MobileResult->UNLOADING_PORT ?? '' }}
+                                                <a href="{{$port_url}}" class="text-blue-600 hover:underline">
+                                                    {{ $result->UNLOADING_PORT ?? '' }}
                                                 </a>
                                             </p>
                                         </div>
@@ -1333,7 +1345,7 @@
                                         </div>
                                         <div class="mt-4">
                                             <p class="text-md text-center font-normal">
-                                                {{ $MobileResult->QUANTITY ?? '' }}
+                                                {{ $result->QUANTITY ?? '' }}
                                             </p>
                                         </div>
                                         <div class="mt-4">
@@ -1343,7 +1355,7 @@
                                         </div>
                                         <div class="mt-4">
                                             <p class="text-md text-center font-normal">
-                                                {{ $MobileResult->UNIT ?? '' }}
+                                                {{ $result->UNIT ?? '' }}
                                             </p>
                                         </div>
                                         <div class="mt-4">
@@ -1353,7 +1365,7 @@
                                         </div>
                                         <div class="mt-4">
                                             <p class="text-md text-center font-normal">
-                                                {{ $MobileResult->WEIGHT ?? '' }}
+                                                {{ $result->WEIGHT ?? '' }}
                                             </p>
                                         </div>
                                         <div class="mt-4">
@@ -1372,6 +1384,9 @@
                                     @break
                                 @endif
                             @endforeach
+                        @else
+                            <h1>Data is not iterable </h1>
+                            @dd($result)
                         @endif
                     </div>
                 @endif
