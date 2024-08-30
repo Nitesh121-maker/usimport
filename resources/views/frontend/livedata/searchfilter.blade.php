@@ -35,7 +35,7 @@
             @endphp
             @if ($all_numeric)
                 @if(count($args) == 4)
-                 
+                
                     @if($filterby == 'hs_code')
                         <title>USA {{$role}} Data Under the HS code {{$hs_code}}</title>
                         <meta name="description" content="live USA {{$role}} data under the HS Code {{$hs_code}}, Our USA bill of lading data reports, include hs code, date, b/l number, product description, loading and unloading ports, us importer name, quantity, etc.">
@@ -46,6 +46,7 @@
                         <title>Import Data of USA Under the {{$hs_code}}</title>
                     @endif
                 @elseif(count($args) == 6)
+    
                     @if ($filterby == 'hs_code')
                         <title>USA {{$hs_code}}  {{$role}} data from {{$filterdata}} </title>
                     @elseif($filterby == 'country')
@@ -53,7 +54,7 @@
                         <meta name="description" content="USA {{$role}}s data under the HS code {{$base_search}} form {{$filterdata}} .  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                     @elseif($filterby == 'unloading_port')
                         <title>USA {{$role}}s data  under the HS code {{$base_search}} At {{$filterdata}}</title>
-                         <meta name="description" content="USA {{$role}}s data under the HS code {{$base_search}} At {{$filterdata}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                        <meta name="description" content="USA {{$role}}s data under the HS code {{$base_search}} At {{$filterdata}} Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
                     @endif
                 @endif
             @else
@@ -64,16 +65,29 @@
                     @endphp
                 @elseif(count($args) == 6)
                     @if ($filterby == 'hs_code')
-                        <title>{{$base_search}} {{$role}} Data of USA Under the {{$filterdata}}</title>
-                        <meta name="description" content="Live {{$base_search}} {{$role}} Data of USA under the hs Code {{$filterdata}}
-                         Our bill of lading reports, which include hs code, date, b/l number, product description,
-                         loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @if($role == 'import')
+                            <title>{{$base_search}} {{$role}} Data of US by the HS Code {{$filterdata}}</title>
+                            <meta name="description" content="Search Live {{$base_search}} {{$role}} Data of USA under the hs Code {{$filterdata}}, Our US bill of lading data reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif($role == 'export')
+                            <title>{{$base_search}} {{$role}} Data of US by the HS Code {{$filterdata}}</title>
+                            <meta name="description" content="Search Live {{$base_search}} {{$role}} Data of USA under the hs Code {{$filterdata}}, Our US bill of lading data reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @endif
                     @elseif($filterby == 'country')
-                        <title>Usa {{$base_search}} {{$role}} Data from {{$filterdata}}</title>
-                        <meta name="description" content="live USA {{$base_search}} {{$role}} data from {{$filterdata}}, Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @if($role == 'import')
+                            <title>US {{$base_search}} {{$role}} Data from {{$filterdata}}</title>
+                            <meta name="description" content="Live US {{$base_search}} {{$role}} data from {{$filterdata}}, Our US bill of lading data reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif($role == 'export')
+                            <title>US {{$base_search}} {{$role}} Data to {{$filterdata}}</title>
+                            <meta name="description" content="Live US {{$base_search}} {{$role}} data to {{$filterdata}}, Our US bill of lading data reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @endif
                     @elseif($filterby == 'unloading_port')
-                        <title> USA {{$base_search}} {{$role}}s Data at {{$filterdata}}</title>
-                        <meta name="description" content="live USA {{$base_search}} {{$role}} data at {{$filterdata}}.  Our bill of lading reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @if($role == 'import')
+                            <title> US {{$base_search}} {{$role}}s Data at port {{$filterdata}}</title>
+                            <meta name="description" content="Live USA {{$base_search}} {{$role}} data at {{$filterdata}}.  Our US bill of lading data reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @elseif($role == 'export')
+                            <title> US {{$base_search}} {{$role}}s Data at port {{$filterdata}}</title>
+                            <meta name="description" content="Live USA {{$base_search}} {{$role}} data at {{$filterdata}}.  Our US bill of lading data reports, which include hs code, date, b/l number, product description, loading and unloading ports, us {{$role}}er name, quantity, etc.">
+                    @endif
                     @endif
                 @endif
             @endif
@@ -167,6 +181,7 @@
                         Search live USA {{$role}}s Data at port {{$filterdata}} by the hs code  {{$base_search}} and understand what commodities USA {{$role}}s at port {{$filterdata}} under this HS Code
                     </p>
                 @endif
+
             </div>
             {{-- forms --}}
             <div class="px-5 flex justify-center items-center">
