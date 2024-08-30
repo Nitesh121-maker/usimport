@@ -10,24 +10,24 @@
             $base_search = ($hs_code === null) ? $desc : $hs_code;
         @endphp
 
-    @if($type=='data')
-    @if($hs_code)
-            <title>US {{$role}} Data Under The HS Code {{$base_search}}</title>
-            <meta name="description" content="US import Data under HS Code {{$base_search}},  Our US bill of lading Data reports include hs code, date, unit, product description, loading and unloading ports, importer name and address, quantity, etc.">
-    @else
-            <title>US {{$base_search}} {{$role}} Data - list of {{$base_search}} {{$role}}ers in us </title>
-            <meta name="description" content="{{$base_search}} {{$role}} data of us - us {{$base_search}} {{$role}}ers, our bill of lading reports include hs code, date, unit, product description, loading and unloading ports, exporter name and address, quantity, etc.">
-    @endif
-    @else
-    @if($hs_code)
-            <title>List of All HS code {{$base_search}} {{$role}}er data in USA </title>
-            <meta name="description" content="List of all HS code {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
-    @else
-            <title>List of All {{$base_search}} {{$role}}er data in USA </title>
-            <meta name="description" content="List of all {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
-    @endif
+        @if($type=='data')
+            @if($hs_code)
+                <title>US {{$role}} Data Under The HS Code {{$base_search}}</title>
+                <meta name="description" content="US import Data under HS Code {{$base_search}},  Our US bill of lading Data reports include hs code, date, unit, product description, loading and unloading ports, importer name and address, quantity, etc.">
+            @else
+                <title>US {{$base_search}} {{$role}} Data - list of {{$base_search}} {{$role}}ers in us </title>
+                <meta name="description" content="{{$base_search}} {{$role}} data of us - us {{$base_search}} {{$role}}ers, our bill of lading reports include hs code, date, unit, product description, loading and unloading ports, exporter name and address, quantity, etc.">
+            @endif
+        @else
+            @if($hs_code)
+                <title>List of All HS code {{$base_search}} {{$role}}er data in USA </title>
+                <meta name="description" content="List of all HS code {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
+            @else
+                <title>List of All {{$base_search}} {{$role}}er data in USA </title>
+                <meta name="description" content="List of all {{$base_search}} {{$role}}er in usa on the basis of real time shipments data. Our bill of lading reports include HS code, product description, unit, weight, quantity, exporter name & address etc">
+            @endif
 
-    @endif
+        @endif
 
 </head>
 <body>
@@ -390,12 +390,12 @@
                 <div class="flex mx-auto mx-w-screen-xl px-5">
                     <div id="toast-default" class="mb-4 mx-2 flex flex-wrap items-center w-[100%] max-w-sm p-3 text-gray-100 bg-glory-red rounded-xl shadow" role="alert">
                         <div class="ms-3 text-lg font-medium">
-                            @if($hs_code)
+                            @if($hs_code && $base_desc)
+                               {{ $hs_code }} - {{ $base_desc }}                           
+                            @elseif($hs_code)
                                {{ $hs_code }}
                             @elseif($base_desc)
                                {{ $base_desc }}
-                            @elseif($hs_code&&$base_desc)
-                               {{ $hs_code }} - {{ $base_desc }}
                             @endif
                         </div>
                         <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-glory-red text-gray-100 hover:text-gray-900 rounded-xl focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-default" aria-label="Close">
